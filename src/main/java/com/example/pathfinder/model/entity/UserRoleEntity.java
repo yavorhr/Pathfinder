@@ -14,6 +14,11 @@ public class UserRoleEntity extends BaseEntity {
   public UserRoleEntity() {
   }
 
+  @ManyToMany(mappedBy = "roles")
+  public Set<User> getUsers() {
+    return users;
+  }
+
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   public UserRoleEnum getRole() {
@@ -22,11 +27,6 @@ public class UserRoleEntity extends BaseEntity {
 
   public void setRole(UserRoleEnum role) {
     this.role = role;
-  }
-
-  @ManyToMany
-  public Set<User> getUsers() {
-    return users;
   }
 
   public void setUsers(Set<User> users) {
