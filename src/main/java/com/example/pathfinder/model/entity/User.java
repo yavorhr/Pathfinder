@@ -43,7 +43,12 @@ public class User extends BaseEntity {
     return username;
   }
 
-  @ManyToMany(mappedBy = "users")
+
+  @ManyToMany
+  @JoinTable(
+          name = "users_roles",
+          joinColumns = @JoinColumn(name = "user_id"),
+          inverseJoinColumns = @JoinColumn(name = "role_id"))
   public Set<UserRoleEntity> getRoles() {
     return roles;
   }
