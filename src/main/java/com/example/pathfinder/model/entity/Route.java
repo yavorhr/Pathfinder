@@ -20,6 +20,11 @@ public class Route extends BaseEntity {
   }
 
   @ManyToMany
+  @JoinTable(
+          name = "routes_categories", // The name of the join table
+          joinColumns = @JoinColumn(name = "route_id"), // The join column in the join table that refers to this entity (Role)
+          inverseJoinColumns = @JoinColumn(name = "category_id") // The join column that refers to the other entity (User)
+  )
   public Set<Category> getCategories() {
     return categories;
   }
