@@ -21,7 +21,6 @@
                     </div>
                     <div class="col-auto">
                         <input th:field="*{username}"
-                               required minlength="5" maxlength="20"
                                type="text"
                                id="inputUsername"
                                class="form-control"
@@ -44,7 +43,6 @@
                     <div class="col-auto">
                         <input
                                 th:field="*{fullName}"
-                                required minlength="5" maxlength="20"
                                 type="text"
                                 id="inputFullName"
                                 class="form-control"
@@ -62,7 +60,6 @@
                     <div class="col-auto">
                         <input
                                 th:field="*{email}"
-                                required
                                 type="email"
                                 id="inputEmail"
                                 class="form-control"
@@ -77,7 +74,7 @@
                     </div>
                     <div class="col-auto">
                         <input
-                                th:field="*{age}" required
+                                th:field="*{age}"
                                 type="number"
                                 id="inputAge"
                                 class="form-control"
@@ -94,7 +91,6 @@
                     <div class="col-auto">
                         <input
                                 th:field="*{password}"
-                                required minlength="5" maxlength="20"
                                 type="password"
                                 id="inputPassword"
                                 class="form-control"
@@ -112,7 +108,7 @@
                     </div>
                     <div class="col-auto">
                         <input
-                                th:field="*{confirmPassword}" required minlength="5" maxlength="20"
+                                th:field="*{confirmPassword}"
                                 type="password"
                                 id="inputConfirmPassword"
                                 class="form-control"
