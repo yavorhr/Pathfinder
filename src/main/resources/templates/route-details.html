@@ -6,8 +6,8 @@
 <body>
 <div class="wrapper">
     <header>
-    <nav class="main-nav">
-        <ul>
+        <nav class="main-nav">
+            <ul>
                 <li>
                     <a href="/">Home</a>
                 </li>
@@ -20,7 +20,7 @@
                 <li>
                     <a href="/">About</a>
                 </li>
-				<li>
+                <li>
                     <a href="/">Add new route</a>
                 </li>
                 <li>
@@ -32,11 +32,11 @@
                 <li>
                     <a href="/">Logout</a>
                 </li>
-        </ul>
-    </nav>
-</header>
+            </ul>
+        </nav>
+    </header>
 
-    <input type="hidden" name="routeId" id="routeId">   
+    <input type="hidden" name="routeId" id="routeId">
     <div class="details-main">
         <section class="route-info text-center">
             <h4 id="track-name"></h4>
@@ -47,12 +47,12 @@
                 <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
                 <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
                 <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
-                
+
             </div>
             <div>
                 <h4>Choose picture</h4>
                 <form action="/" method="POST" enctype="multipart/form-data">
-                    <input  type="hidden" id="id" name="routeId">
+                    <input type="hidden" id="id" name="routeId">
                     <div class="form-group">
                         <label>
                             <input type="text" name="title">
@@ -123,17 +123,13 @@
         </section>
         <p style="visibility: hidden">GPX Download: <a id="gpxDownload"></a></p>
     </div>
-	<!-- Scripts: track and comments 
+    <!-- Scripts: track and comments
     <script th:src="@{/js/track.js}"></script>
     <script th:src="@{/js/comments.js}"></script>
-	-->
+    -->
 </div>
-<footer class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
-        </div>
-    </div>
-</footer>
+
+<footer th:replace="fragments/footer"></footer>
+
 </body>
 </html>

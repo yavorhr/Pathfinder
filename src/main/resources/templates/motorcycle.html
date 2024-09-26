@@ -6,9 +6,9 @@
 <body>
 <div class="wrapper">
     <!-- Navigation -->
-<header>
-    <nav class="main-nav">
-        <ul>
+    <header>
+        <nav class="main-nav">
+            <ul>
                 <li>
                     <a href="/">Home</a>
                 </li>
@@ -21,7 +21,7 @@
                 <li>
                     <a href="/">About</a>
                 </li>
-				<li>
+                <li>
                     <a href="/">Add new route</a>
                 </li>
                 <li>
@@ -33,11 +33,11 @@
                 <li>
                     <a href="/">Logout</a>
                 </li>
-        </ul>
-    </nav>
-</header>
+            </ul>
+        </nav>
+    </header>
 
-     <section class="road">
+    <section class="road">
         <div>
             <h2>Title</h2>
             <p>Very long description</p>
@@ -48,11 +48,7 @@
 </div>
 <!-- Wrapper Ends -->
 </body>
-<footer class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
-        </div>
-    </div>
-</footer>
+
+<footer th:replace="fragments/footer"></footer>
+
 </html>
