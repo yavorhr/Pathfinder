@@ -10,6 +10,7 @@ import java.util.Set;
 public class User extends BaseEntity {
   private Integer age;
   private String fullName;
+  private String email;
   private LevelEnum level;
   private String password;
   private String username;
@@ -21,6 +22,11 @@ public class User extends BaseEntity {
   @Column
   public Integer getAge() {
     return age;
+  }
+
+  @Column(unique = true, nullable = false)
+  public String getEmail() {
+    return email;
   }
 
   @Column(name = "full_name", nullable = false)
@@ -75,5 +81,10 @@ public class User extends BaseEntity {
 
   public void setRoles(Set<UserRoleEntity> roles) {
     this.roles = roles;
+  }
+
+  public User setEmail(String email) {
+    this.email = email;
+    return this;
   }
 }
