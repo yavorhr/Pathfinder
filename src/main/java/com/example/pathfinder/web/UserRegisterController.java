@@ -1,7 +1,10 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.binding.UserRegisterBindingModel;
+import com.example.pathfinder.model.service.UserRegisterServiceModel;
+import com.example.pathfinder.service.UserService;
 import jakarta.validation.Valid;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/users")
 public class UserRegisterController {
+  private final UserService userService;
+  private final ModelMapper modelMapper;
+
+  public UserRegisterController(UserService userService, ModelMapper modelMapper) {
+    this.userService = userService;
+    this.modelMapper = modelMapper;
+  }
 
   @ModelAttribute
   public UserRegisterBindingModel userRegisterBindingModel() {
@@ -30,13 +40,28 @@ public class UserRegisterController {
                              RedirectAttributes redirectAttributes) {
 
     if (bindingResult.hasErrors() ||
-    !userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())) {
+            !userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())) {
       redirectAttributes
               .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
               .addFlashAttribute("org.springframework.validation.userRegisterBindingModel", bindingResult);
 
-      return "redirect:/register";
+      return "redirect:register";
     }
+
+    boolean doesUsernameExist = this.userService.doesUsernameAlreadyExist(userRegisterBindingModel.getUsername());
+
+    if (doesUsernameExist) {
+      redirectAttributes
+              .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
+              .addFlashAttribute("org.springframework.validation.userRegisterBindingModel", bindingResult)
+              .addFlashAttribute("usernameAlreadyExists", "true");
+
+      return "redirect:register/";
+    }
+
+    this.userService
+            .registerUser(modelMapper
+                    .map(userRegisterBindingModel, UserRegisterServiceModel.class));
 
     return "redirect:login";
   }
