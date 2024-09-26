@@ -12,6 +12,9 @@
                     th:object="${userRegisterBindingModel}"
                     th:action="@{/users/register}"
                     method="POST">
+
+                <small th:if="${usernameAlreadyExists}" class="text-danger">Username already exists!</small>
+
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
@@ -40,7 +43,7 @@
                     </div>
                     <div class="col-auto">
                         <input
-                                th:field="*{fullname}"
+                                th:field="*{fullName}"
                                 required minlength="5" maxlength="20"
                                 type="text"
                                 id="inputFullName"
