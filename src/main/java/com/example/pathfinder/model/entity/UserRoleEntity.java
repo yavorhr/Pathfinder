@@ -14,6 +14,10 @@ public class UserRoleEntity extends BaseEntity {
   public UserRoleEntity() {
   }
 
+  public UserRoleEntity(UserRoleEnum role) {
+    this.role = role;
+  }
+
   @ManyToMany(mappedBy = "roles")
   public Set<User> getUsers() {
     return users;
