@@ -39,4 +39,29 @@ public class UserRegisterBindingModel {
     this.username = username;
     return this;
   }
+
+  public UserRegisterBindingModel setFullName(String fullName) {
+    this.fullName = fullName;
+    return this;
+  }
+
+  public UserRegisterBindingModel setEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public UserRegisterBindingModel setAge(Integer age) {
+    this.age = age;
+    return this;
+  }
+
+  public UserRegisterBindingModel setPassword(String password) {
+    this.password = password;
+    return this;
+  }
+
+  public UserRegisterBindingModel setConfirmPassword(String confirmPassword) {
+    this.confirmPassword = confirmPassword;
+    return this;
+  }
 }
