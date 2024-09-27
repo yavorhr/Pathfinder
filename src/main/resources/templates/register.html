@@ -14,6 +14,7 @@
                     method="POST">
 
                 <small th:if="${usernameAlreadyExists}" class="text-danger">Username already exists!</small>
+                <small th:if="${emailAlreadyExist}" class="text-danger">Email already exists!</small>
 
                 <div>
                     <div class="col-auto">
@@ -60,7 +61,6 @@
                     <div class="col-auto">
                         <input
                                 th:field="*{email}"
-                                type="email"
                                 id="inputEmail"
                                 class="form-control"
                                 aria-describedby="emailHelpInline">
