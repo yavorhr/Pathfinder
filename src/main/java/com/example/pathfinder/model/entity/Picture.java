@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "pictures")
 public class Picture extends BaseEntity {
@@ -17,16 +16,6 @@ public class Picture extends BaseEntity {
   public Picture() {
   }
 
-  @Column()
-  public String getTitle() {
-    return title;
-  }
-
-  @Column()
-  public String getUrl() {
-    return url;
-  }
-
   @ManyToOne
   public User getAuthor() {
     return author;
@@ -35,6 +24,16 @@ public class Picture extends BaseEntity {
   @ManyToOne
   public Route getRoute() {
     return route;
+  }
+
+  @Column()
+  public String getTitle() {
+    return title;
+  }
+
+  @Column()
+  public String getUrl() {
+    return url;
   }
 
   public void setTitle(String title) {
