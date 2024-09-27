@@ -6,4 +6,6 @@ public interface UserService {
   boolean doesUsernameAlreadyExist(String username);
 
   void registerUser(UserRegisterServiceModel map);
+
+  boolean doesEmailExist(String email);
 }
