@@ -8,30 +8,35 @@
 <header th:fragment="navbar">
     <nav class="main-nav">
         <ul>
-            <li>
-                <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="/users/login">Login</a>
-            </li>
-            <li>
-                <a href="/users/register">Register</a>
-            </li>
-            <li>
-                <a href="/about">About</a>
-            </li>
-            <li>
-                <a href="/routes/add">Add new route</a>
-            </li>
-            <li>
-                <a href="/users/profile">Profile</a>
-            </li>
-            <li>
-                <a href="/admin">Admin</a>
-            </li>
-            <li>
-                <a href="/users/logout">Logout</a>
-            </li>
+            <th:block th:if="${@currentUser.isLoggedIn()}">
+                <li>
+                    <a href="/routes/add">Add new route</a>
+                </li>
+                <li>
+                    <a href="/users/profile">Profile</a>
+                </li>
+                <li>
+                    <a href="/admin">Admin</a>
+                </li>
+                <li>
+                    <a href="/users/logout">Logout</a>
+                </li>
+            </th:block>
+
+            <th:block th:unless="${@currentUser.isLoggedIn()}">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/users/login">Login</a>
+                </li>
+                <li>
+                    <a href="/users/register">Register</a>
+                </li>
+                <li>
+                    <a href="/about">About</a>
+                </li>
+            </th:block>
         </ul>
     </nav>
 </header>
