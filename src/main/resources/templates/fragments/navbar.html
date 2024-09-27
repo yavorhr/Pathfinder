@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-<header th:fragment="navbar">
+<header
+        th:fragment="navbar">
     <nav class="main-nav">
         <ul>
             <th:block th:if="${@currentUser.isLoggedIn()}">
@@ -13,7 +14,7 @@
                     <a href="/routes/add">Add new route</a>
                 </li>
                 <li>
-                    <a href="/users/profile">Profile</a>
+                    <a th:href="@{/users/profile/{id}(id=${@currentUser.id})}">Profile</a>
                 </li>
                 <li>
                     <a href="/admin">Admin</a>
