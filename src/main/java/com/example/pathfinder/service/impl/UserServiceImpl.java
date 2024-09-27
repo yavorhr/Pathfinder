@@ -60,6 +60,11 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void loginUser(Long id, String username) {
-    currentUser.setId(id).setUsername(username);
+    currentUser.login(id,username);
+  }
+
+  @Override
+  public void logout() {
+    this.currentUser.clear();
   }
 }
