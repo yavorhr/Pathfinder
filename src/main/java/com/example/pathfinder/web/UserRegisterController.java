@@ -49,6 +49,7 @@ public class UserRegisterController {
     }
 
     boolean doesUsernameExist = this.userService.doesUsernameAlreadyExist(userRegisterBindingModel.getUsername());
+    boolean doesEmailExist = this.userService.doesEmailExist(userRegisterBindingModel.getEmail());
 
     if (doesUsernameExist) {
       redirectAttributes
@@ -56,7 +57,16 @@ public class UserRegisterController {
               .addFlashAttribute("org.springframework.validation.userRegisterBindingModel", bindingResult)
               .addFlashAttribute("usernameAlreadyExists", "true");
 
-      return "redirect:register/";
+      return "redirect:register";
+    }
+
+    if (doesEmailExist) {
+      redirectAttributes
+              .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
+              .addFlashAttribute("org.springframework.validation.userRegisterBindingModel", bindingResult)
+              .addFlashAttribute("emailAlreadyExist", "true");
+
+      return "redirect:register";
     }
 
     this.userService
