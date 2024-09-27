@@ -12,6 +12,15 @@ public class CurrentUser {
   public CurrentUser() {
   }
 
+  public String getUsername() {
+    return username;
+  }
+
+  public CurrentUser setUsername(String username) {
+    this.username = username;
+    return this;
+  }
+
   public Long getId() {
     return id;
   }
