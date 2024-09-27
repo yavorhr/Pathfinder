@@ -5,6 +5,7 @@ import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import com.example.pathfinder.model.service.UserLoginServiceModel;
+import com.example.pathfinder.model.service.UserProfileServiceModel;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
@@ -60,11 +61,20 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void loginUser(Long id, String username) {
-    currentUser.login(id,username);
+    currentUser.login(id, username);
   }
 
   @Override
   public void logout() {
     this.currentUser.clear();
+  }
+
+  @Override
+  public UserProfileServiceModel findById(Long id) {
+    return
+            this.userRepository
+                    .findById(id)
+                    .map(user -> this.modelMapper.map(user, UserProfileServiceModel.class))
+                    .orElse(null);
   }
 }
