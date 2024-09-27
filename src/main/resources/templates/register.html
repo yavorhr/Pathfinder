@@ -9,9 +9,9 @@
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
-                    th:object="${userRegisterBindingModel}"
+                    method="POST"
                     th:action="@{/users/register}"
-                    method="POST">
+                    th:object="${userRegisterBindingModel}">
 
                 <small th:if="${usernameAlreadyExists}" class="text-danger">Username already exists!</small>
                 <small th:if="${emailAlreadyExist}" class="text-danger">Email already exists!</small>
