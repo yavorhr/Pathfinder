@@ -3,6 +3,7 @@ package com.example.pathfinder.web;
 import com.example.pathfinder.model.binding.UserLoginBindingModel;
 import com.example.pathfinder.model.service.UserLoginServiceModel;
 import com.example.pathfinder.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -61,7 +62,8 @@ public class UserLoginAndLogoutController {
   }
 
   @GetMapping("/logout")
-  public String logout() {
+  public String logout(HttpSession httpSession) {
+//    httpSession.invalidate();
     this.userService.logout();
     return "redirect:/";
   }
