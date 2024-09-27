@@ -29,4 +29,18 @@ public class CurrentUser {
     this.id = id;
     return this;
   }
+
+  public void clear() {
+    this.id = null;
+    this.username = "";
+  }
+
+  public void login(Long id, String username) {
+    this.setUsername(username);
+    this.setId(id);
+  }
+
+  public boolean isLoggedIn(){
+    return this.id != null;
+  }
 }
