@@ -9,17 +9,20 @@
     <div class="d-flex justify-content-center">
 
         <div class="row g-3 align-items-center">
+
+            <small th:if="${userNotExists}" class="text-danger">Username or password does not match!</small>
+
             <form
-                    action="/"
-                    method="">
+                    th:object="${userLoginBindingModel}"
+                    th:action="@{/users/login}"
+                    th:method="POST">
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
                         <input type="text"
-                               name="username"
-                               required minlength="4" maxlength="20"
+                               th:field="*{username}"
                                id="inputUsername"
                                class="form-control"
                                aria-describedby="usernameHelpInline">
@@ -32,7 +35,6 @@
                     <div class="col-auto">
                         <input type="password"
                                name="password"
-                               required minlength="4" maxlength="20"
                                id="inputPassword" class="form-control"
                                aria-describedby="passwordHelpInline">
                     </div>
