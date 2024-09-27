@@ -11,6 +11,10 @@ public class UserLoginServiceModel {
     return id;
   }
 
+  public String getUsername() {
+    return username;
+  }
+
   public UserLoginServiceModel setId(Long id) {
     this.id = id;
     return this;
