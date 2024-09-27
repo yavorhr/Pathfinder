@@ -15,31 +15,22 @@ public class UserRegisterServiceModel {
   public UserRegisterServiceModel() {
   }
 
-  @NotNull
-  @Size(min = 5,max = 20)
   public String getUsername() {
     return username;
   }
 
-  @Email
-  @NotNull
   public String getEmail() {
     return email;
   }
 
-  @NotNull
-  @Size(min = 3, max = 20)
   public String getFullName() {
     return fullName;
   }
 
-  @Positive
   public Integer getAge() {
     return age;
   }
 
-  @NotNull
-  @Size(min = 5,max = 20)
   public String getPassword() {
     return password;
   }
