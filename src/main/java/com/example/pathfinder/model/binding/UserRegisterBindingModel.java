@@ -1,5 +1,10 @@
 package com.example.pathfinder.model.binding;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
 public class UserRegisterBindingModel {
   private String username;
   private String fullName;
@@ -11,26 +16,37 @@ public class UserRegisterBindingModel {
   public UserRegisterBindingModel() {
   }
 
+//  @NotNull
+//  @Size(min = 5,max = 20)
   public String getUsername() {
     return username;
   }
 
+//  @NotNull
+//  @Size(min = 3, max = 20)
   public String getFullName() {
     return fullName;
   }
 
+  @Email
+  @NotNull
   public String getEmail() {
     return email;
   }
 
+//  @Positive
   public Integer getAge() {
     return age;
   }
 
+//  @NotNull
+//  @Size(min = 5,max = 20)
   public String getPassword() {
     return password;
   }
 
+//  @NotNull
+//  @Size(min = 5,max = 20)
   public String getConfirmPassword() {
     return confirmPassword;
   }
