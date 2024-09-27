@@ -15,11 +15,12 @@ public class Route extends BaseEntity {
   private String videoUrl;
   private User author;
   private Set<Category> categories;
+  private Set<Picture> pictures;
 
   public Route() {
   }
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
           name = "routes_categories", // The name of the join table
           joinColumns = @JoinColumn(name = "route_id"), // The join column in the join table that refers to this entity (Role)
@@ -27,6 +28,11 @@ public class Route extends BaseEntity {
   )
   public Set<Category> getCategories() {
     return categories;
+  }
+
+  @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+  public Set<Picture> getPictures() {
+    return pictures;
   }
 
   @ManyToOne
@@ -49,7 +55,7 @@ public class Route extends BaseEntity {
     return level;
   }
 
-  @Column(nullable = false,unique = true)
+  @Column(nullable = false, unique = true)
   public String getName() {
     return name;
   }
@@ -57,6 +63,11 @@ public class Route extends BaseEntity {
   @Column(name = "video_url")
   public String getVideoUrl() {
     return videoUrl;
+  }
+
+  public Route setPictures(Set<Picture> pictures) {
+    this.pictures = pictures;
+    return this;
   }
 
   public void setCategories(Set<Category> categories) {
