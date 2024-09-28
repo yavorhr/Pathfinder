@@ -15,8 +15,13 @@ public class RouteDetailsViewModel {
     private Set<Category> categories;
     private Set<Picture> pictures;
     private String authorFullName;
+    private Integer distance;
 
     public RouteDetailsViewModel() {
+    }
+
+    public Integer getDistance() {
+        return distance;
     }
 
     public String getAuthorFullName() {
@@ -88,6 +93,11 @@ public class RouteDetailsViewModel {
 
     public RouteDetailsViewModel setAuthorFullName(String authorFullName) {
         this.authorFullName = authorFullName;
+        return this;
+    }
+
+    public RouteDetailsViewModel setDistance(Integer distance) {
+        this.distance = distance;
         return this;
     }
 }
