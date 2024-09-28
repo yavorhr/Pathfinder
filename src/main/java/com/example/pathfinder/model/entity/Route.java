@@ -13,6 +13,7 @@ public class Route extends BaseEntity {
   private LevelEnum level;
   private String name;
   private String videoUrl;
+  private Integer distance;
   private User author;
   private Set<Category> categories;
   private Set<Picture> pictures;
@@ -38,6 +39,11 @@ public class Route extends BaseEntity {
   @ManyToOne
   public User getAuthor() {
     return author;
+  }
+
+  @Column
+  public Integer getDistance() {
+    return distance;
   }
 
   @Column(columnDefinition = "TEXT")
@@ -96,5 +102,10 @@ public class Route extends BaseEntity {
 
   public void setAuthor(User user) {
     this.author = user;
+  }
+
+  public Route setDistance(Integer distance) {
+    this.distance = distance;
+    return this;
   }
 }
