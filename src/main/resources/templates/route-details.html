@@ -11,7 +11,7 @@
     <div class="details-main" th:object="${routeDetails}">
         <section class="route-info text-center">
             <h4 th:text="*{name}" id="track-name"></h4>
-            <p>Total distance: <span id="totalDistance"></span> km</p>
+            <p > Total distance: <span th:text="*{distance}"  id="totalDistance"></span> km</p>
             <p>Author name: <span th:text="*{authorFullName}" id="authorName"></span></p>
             <h4 th:text="*{level.name()}">Difficulty Level (1-3):</h4>
             <div class="level">
