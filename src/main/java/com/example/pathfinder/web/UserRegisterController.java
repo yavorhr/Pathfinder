@@ -31,7 +31,6 @@ public class UserRegisterController {
 
   @GetMapping("/register")
   public String registerPage() {
-    System.out.println(userRegisterBindingModel().getAge());
     return "register";
   }
 
@@ -48,26 +47,6 @@ public class UserRegisterController {
               .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
 
       return "redirect:/users/register";
-    }
-
-    boolean doesEmailExist = this.userService.doesEmailExist(userRegisterBindingModel.getEmail());
-
-//    if (doesUsernameExist) {
-//      redirectAttributes
-//              .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
-//              .addFlashAttribute("org.springframework.validation.userRegisterBindingModel", bindingResult)
-//              .addFlashAttribute("usernameAlreadyExists", "true");
-//
-//      return "redirect:register";
-//    }
-
-    if (doesEmailExist) {
-      redirectAttributes
-              .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
-              .addFlashAttribute("org.springframework.validation.userRegisterBindingModel", bindingResult)
-              .addFlashAttribute("emailAlreadyExist", "true");
-
-      return "redirect:register";
     }
 
     this.userService
