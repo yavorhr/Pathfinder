@@ -1,7 +1,9 @@
 package com.example.pathfinder.model.binding;
 
+import com.example.pathfinder.validation.UniqueUsername;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 public class UserRegisterBindingModel {
@@ -15,14 +17,15 @@ public class UserRegisterBindingModel {
   public UserRegisterBindingModel() {
   }
 
+  @UniqueUsername
   @NotNull
-  @Size(min = 5,max = 20)
+  @Size(min = 4,max = 20, message = "Username must be between 4 and 20 symbols")
   public String getUsername() {
     return username;
   }
 
-//  @NotNull
-//  @Size(min = 3, max = 20)
+  @NotNull
+  @Size(min = 3, max = 20)
   public String getFullName() {
     return fullName;
   }
@@ -33,19 +36,20 @@ public class UserRegisterBindingModel {
     return email;
   }
 
-//  @Positive
+  @Positive
+  @NotNull
   public Integer getAge() {
     return age;
   }
 
-//  @NotNull
-//  @Size(min = 5,max = 20)
+  @NotNull
+  @Size(min = 5,max = 20)
   public String getPassword() {
     return password;
   }
 
-//  @NotNull
-//  @Size(min = 5,max = 20)
+  @NotNull
+  @Size(min = 5, max = 20)
   public String getConfirmPassword() {
     return confirmPassword;
   }
