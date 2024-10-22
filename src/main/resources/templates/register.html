@@ -33,7 +33,6 @@
                                id="usernameUniqueError"
                                class="invalid-feedback errors alert alert-danger">
                         </small>
-
                     </div>
                 </div>
 
@@ -67,8 +66,11 @@
                                 id="inputEmail"
                                 class="form-control"
                                 aria-describedby="emailHelpInline">
-                        <small id="emailError"
-                               class="invalid-feedback errors alert alert-danger">Please insert valid email</small>
+                        <small th:if="${#fields.hasErrors('email')}"
+                               th:errors="*{email}"
+                               id="emailError"
+                               class="invalid-feedback errors alert alert-danger">
+                        </small>
                     </div>
                 </div>
                 <div>
