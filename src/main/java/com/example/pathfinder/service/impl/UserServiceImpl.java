@@ -77,4 +77,9 @@ public class UserServiceImpl implements UserService {
                     .map(user -> this.modelMapper.map(user, UserProfileServiceModel.class))
                     .orElse(null);
   }
+
+  @Override
+  public boolean isUserNameAvailable(String username) {
+    return this.userRepository.findUserByUsername(username).isEmpty();
+  }
 }

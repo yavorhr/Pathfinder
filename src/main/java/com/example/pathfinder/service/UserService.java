@@ -18,4 +18,6 @@ public interface UserService {
   void logout();
 
   UserProfileServiceModel findById(Long id);
+
+  boolean isUserNameAvailable(String username);
 }
