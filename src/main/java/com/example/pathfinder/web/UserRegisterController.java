@@ -31,6 +31,7 @@ public class UserRegisterController {
 
   @GetMapping("/register")
   public String registerPage() {
+    System.out.println(userRegisterBindingModel().getAge());
     return "register";
   }
 
@@ -41,24 +42,24 @@ public class UserRegisterController {
 
     if (bindingResult.hasErrors() ||
             !userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())) {
+
       redirectAttributes
               .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
-              .addFlashAttribute("org.springframework.validation.userRegisterBindingModel", bindingResult);
+              .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
 
-      return "redirect:register";
+      return "redirect:/users/register";
     }
 
-    boolean doesUsernameExist = this.userService.doesUsernameAlreadyExist(userRegisterBindingModel.getUsername());
     boolean doesEmailExist = this.userService.doesEmailExist(userRegisterBindingModel.getEmail());
 
-    if (doesUsernameExist) {
-      redirectAttributes
-              .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
-              .addFlashAttribute("org.springframework.validation.userRegisterBindingModel", bindingResult)
-              .addFlashAttribute("usernameAlreadyExists", "true");
-
-      return "redirect:register";
-    }
+//    if (doesUsernameExist) {
+//      redirectAttributes
+//              .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
+//              .addFlashAttribute("org.springframework.validation.userRegisterBindingModel", bindingResult)
+//              .addFlashAttribute("usernameAlreadyExists", "true");
+//
+//      return "redirect:register";
+//    }
 
     if (doesEmailExist) {
       redirectAttributes
