@@ -1,5 +1,6 @@
 package com.example.pathfinder.model.binding;
 
+import com.example.pathfinder.validation.UniqueEmail;
 import com.example.pathfinder.validation.UniqueUsername;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -30,6 +31,7 @@ public class UserRegisterBindingModel {
     return fullName;
   }
 
+  @UniqueEmail
   @Email
   @NotNull
   public String getEmail() {
