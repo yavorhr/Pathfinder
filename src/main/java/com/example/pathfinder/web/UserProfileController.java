@@ -23,10 +23,10 @@ public class UserProfileController {
 
     UserProfileViewModel userViewModel =
             this.modelMapper.map(this.userService.findById(id), UserProfileViewModel.class);
+
     model.addAttribute("userViewModel", userViewModel);
 
     return "profile";
   }
-
 }
 
