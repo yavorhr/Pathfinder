@@ -37,6 +37,14 @@ public class UserLoginAndLogoutController {
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes) {
 
+    if (bindingResult.hasErrors()) {
+      redirectAttributes
+              .addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
+              .addFlashAttribute("org.springframework.validation.userLoginBindingModel", bindingResult)
+              .addFlashAttribute("userNotExists", true);
+      return "redirect:login";
+    }
+
     UserLoginServiceModel user = userService.
             findUserByUserNameAndPassword
                     (userLoginBindingModel.getUsername(), userLoginBindingModel.getPassword());
@@ -46,13 +54,6 @@ public class UserLoginAndLogoutController {
               .addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
               .addFlashAttribute("org.springframework.validation.userLoginBindingModel", bindingResult)
               .addFlashAttribute("userNotExists", true);
-      return "redirect:login";
-    }
-
-    if (bindingResult.hasErrors()) {
-      redirectAttributes
-              .addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
-              .addFlashAttribute("org.springframework.validation.userLoginBindingModel", bindingResult);
       return "redirect:login";
     }
 

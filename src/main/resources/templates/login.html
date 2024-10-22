@@ -10,8 +10,6 @@
 
         <div class="row g-3 align-items-center">
 
-            <small th:if="${userNotExists}" class="text-danger">Username or password does not match!</small>
-
             <form
                     th:object="${userLoginBindingModel}"
                     th:action="@{/users/login}"
@@ -42,6 +40,9 @@
                 <div class="d-flex justify-content-center mt-2">
                     <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
                 </div>
+                <p th:if="${userNotExists}" class="errors alert alert-danger mt-3">
+                    Invalid username or password
+                </p>
             </form>
         </div>
 
