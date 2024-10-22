@@ -25,7 +25,7 @@ public class UserRegisterBindingModel {
   }
 
   @NotNull
-  @Size(min = 3, max = 20)
+  @Size(min = 3, max = 30)
   public String getFullName() {
     return fullName;
   }
