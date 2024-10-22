@@ -20,4 +20,6 @@ public interface UserService {
   UserProfileServiceModel findById(Long id);
 
   boolean isUserNameAvailable(String username);
+
+  boolean isEmailAvailable(String email);
 }

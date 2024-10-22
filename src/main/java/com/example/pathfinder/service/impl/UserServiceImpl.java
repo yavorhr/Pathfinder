@@ -82,4 +82,9 @@ public class UserServiceImpl implements UserService {
   public boolean isUserNameAvailable(String username) {
     return this.userRepository.findUserByUsername(username).isEmpty();
   }
+
+  @Override
+  public boolean isEmailAvailable(String email) {
+    return this.userRepository.findByEmail(email).isEmpty();
+  }
 }
