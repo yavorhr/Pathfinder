@@ -5,6 +5,7 @@ import com.example.pathfinder.model.service.UserLoginServiceModel;
 import com.example.pathfinder.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +18,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/users")
 public class UserLoginAndLogoutController {
   private final UserService userService;
+  private final ModelMapper modelMapper;
 
-  public UserLoginAndLogoutController(UserService userService) {
+  public UserLoginAndLogoutController(UserService userService, ModelMapper modelMapper) {
     this.userService = userService;
+    this.modelMapper = modelMapper;
   }
 
   @ModelAttribute("userLoginBindingModel")
@@ -40,24 +43,11 @@ public class UserLoginAndLogoutController {
     if (bindingResult.hasErrors()) {
       redirectAttributes
               .addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
-              .addFlashAttribute("org.springframework.validation.userLoginBindingModel", bindingResult)
-              .addFlashAttribute("userNotExists", true);
+              .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
       return "redirect:login";
     }
 
-    UserLoginServiceModel user = userService.
-            findUserByUserNameAndPassword
-                    (userLoginBindingModel.getUsername(), userLoginBindingModel.getPassword());
-
-    if (user == null) {
-      redirectAttributes
-              .addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
-              .addFlashAttribute("org.springframework.validation.userLoginBindingModel", bindingResult)
-              .addFlashAttribute("userNotExists", true);
-      return "redirect:login";
-    }
-
-    this.userService.loginUser(user.getId(), user.getUsername());
+    this.userService.login(this.modelMapper.map(userLoginBindingModel, UserLoginServiceModel.class));
 
     return "index";
   }
