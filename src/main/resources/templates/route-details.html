@@ -52,7 +52,7 @@
         </section>
         <section id="map"></section>
         <section id="video">
-            <iframe id="frame" src="https://www.youtube.com/embed/">
+            <iframe id="frame" th:src="'https://www.youtube.com/embed/' + *{videoUrl}">
             </iframe>
         </section>
         <section class="route-description text-center">
