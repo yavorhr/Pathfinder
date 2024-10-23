@@ -13,11 +13,8 @@
                     th:action="@{/users/register}"
                     th:object="${userRegisterBindingModel}">
 
-                <small th:if="${usernameAlreadyExists}" class="text-danger">Username already exists!</small>
-                <small th:if="${emailAlreadyExist}" class="text-danger">Email already exists!</small>
-
                 <div>
-                    <div class="col-auto">
+                    <div class="col-auto text-center">
                         <label for="username" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
@@ -31,13 +28,13 @@
                         <small th:if="${#fields.hasErrors('username')}"
                                th:errors="*{username}"
                                id="usernameUniqueError"
-                               class="invalid-feedback errors alert alert-danger">
+                               class="invalid-feedback errors alert alert-danger text-center">
                         </small>
                     </div>
                 </div>
 
                 <div>
-                    <div class="col-auto">
+                    <div class="col-auto text-center">
                         <label for="inputFullName" class="col-form-label ">Full Name</label>
                     </div>
                     <div class="col-auto">
@@ -49,14 +46,14 @@
                                 class="form-control"
                                 aria-describedby="fullNameHelpInline">
                         <small id="fullNameError"
-                               class="invalid-feedback errors alert alert-danger">Full name must be between 3 and 30
+                               class="invalid-feedback errors alert alert-danger text-center">Full name must be between 3 and 30
                             symbols
                         </small>
                     </div>
                 </div>
 
                 <div>
-                    <div class="col-auto">
+                    <div class="col-auto text-center">
                         <label for="inputEmail" class="col-form-label ">Email</label>
                     </div>
                     <div class="col-auto">
@@ -69,12 +66,12 @@
                         <small th:if="${#fields.hasErrors('email')}"
                                th:errors="*{email}"
                                id="emailError"
-                               class="invalid-feedback errors alert alert-danger">
+                               class="invalid-feedback errors alert alert-danger text-center">
                         </small>
                     </div>
                 </div>
                 <div>
-                    <div class="col-auto">
+                    <div class="col-auto text-center">
                         <label for="inputAge" class="col-form-label ">Age</label>
                     </div>
                     <div class="col-auto">
@@ -87,11 +84,11 @@
                                 min="0" max="100"
                                 aria-describedby="ageHelpInline">
                         <small id="ageError"
-                               class="invalid-feedback errors alert alert-danger">Please insert valid age</small>
+                               class="invalid-feedback errors alert alert-danger text-center">Please insert valid age</small>
                     </div>
                 </div>
                 <div>
-                    <div class="col-auto">
+                    <div class="col-auto text-center">
                         <label for="inputPassword" class="col-form-label ">Password</label>
                     </div>
                     <div class="col-auto">
@@ -103,14 +100,14 @@
                                 class="form-control"
                                 aria-describedby="passwordHelpInline">
                         <small id="passwordError"
-                               class="invalid-feedback errors alert alert-danger">
-                           Password between 5 and 20 symbols
+                               class="invalid-feedback errors alert alert-danger text-center">
+                            Password between 5 and 20 symbols
                         </small>
                     </div>
                 </div>
 
                 <div>
-                    <div class="col-auto">
+                    <div class="col-auto text-center">
                         <label for="inputConfirmPassword" class="col-form-label ">Confirm Password</label>
                     </div>
                     <div class="col-auto">
@@ -122,10 +119,18 @@
                                 class="form-control"
                                 aria-describedby="confirmPasswordHelpInline">
                         <small id="confirmPasswordError"
-                               class="invalid-feedback errors alert alert-danger">
-                          Confirm password must be between 5 and 20 symbols
+                               class="invalid-feedback errors alert alert-danger text-center">
+                            Confirm password must be between 5 and 20 symbols
                         </small>
                     </div>
+
+                    <div class="col-auto text-center mt-3 text-center"
+                            th:if="${#fields.hasGlobalErrors()}">
+                        <small class="errors alert alert-danger" th:each="error : ${#fields.globalErrors()}">
+                            <span th:text="${error}"></span>
+                        </small>
+                    </div>
+
                 </div>
 
                 <div class="d-flex justify-content-center mt-4">
