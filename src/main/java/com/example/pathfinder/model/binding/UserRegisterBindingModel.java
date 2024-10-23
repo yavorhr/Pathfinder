@@ -1,5 +1,6 @@
 package com.example.pathfinder.model.binding;
 
+import com.example.pathfinder.validation.DoesPasswordAndConfirmPasswordMatch;
 import com.example.pathfinder.validation.UniqueEmail;
 import com.example.pathfinder.validation.UniqueUsername;
 import jakarta.validation.constraints.Email;
@@ -7,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
+@DoesPasswordAndConfirmPasswordMatch
 public class UserRegisterBindingModel {
   private String username;
   private String fullName;
@@ -32,7 +34,7 @@ public class UserRegisterBindingModel {
   }
 
   @UniqueEmail
-  @Email
+  @Email(message ="PLease insert valid Email")
   @NotNull
   public String getEmail() {
     return email;
@@ -49,6 +51,7 @@ public class UserRegisterBindingModel {
   public String getPassword() {
     return password;
   }
+
 
   @NotNull
   @Size(min = 5, max = 20)
