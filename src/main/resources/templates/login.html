@@ -33,17 +33,21 @@
                     <div class="col-auto">
                         <input
                                 type="password"
-                               th:field="*{password}"
-                               id="inputPassword" class="form-control"
-                               aria-describedby="passwordHelpInline">
+                                th:field="*{password}"
+                                id="inputPassword" class="form-control"
+                                aria-describedby="passwordHelpInline">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-2">
                     <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
                 </div>
-                <p th:if="${userNotExists}" class="errors alert alert-danger mt-3">
-                    Invalid username or password
-                </p>
+                <div class="col-auto text-center mt-3 text-center"
+                     th:if="${#fields.hasGlobalErrors()}">
+                    <small class="errors alert alert-danger"
+                           th:each="error : ${#fields.globalErrors()}">
+                        <span th:text="${error}"></span>
+                    </small>
+                </div>
             </form>
         </div>
 
