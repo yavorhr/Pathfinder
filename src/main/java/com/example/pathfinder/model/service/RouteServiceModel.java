@@ -4,6 +4,7 @@ import com.example.pathfinder.model.entity.Category;
 import com.example.pathfinder.model.entity.Picture;
 import com.example.pathfinder.model.entity.User;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
+import jakarta.persistence.Lob;
 
 import java.util.Set;
 
@@ -24,6 +25,7 @@ public class RouteServiceModel {
     return description;
   }
 
+  @Lob
   public String getGpxCoordinates() {
     return gpxCoordinates;
   }
