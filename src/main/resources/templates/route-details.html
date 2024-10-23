@@ -3,7 +3,16 @@
 
 <head th:replace="fragments/head"></head>
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="/js/gpx.js"></script> <!-- Local reference -->
+<script src="/js/track.js"></script>
+
 <body>
+<!--<style>-->
+<!--    #map { height: 600px; width: 100%; }-->
+<!--</style>-->
+
 <div class="wrapper">
     <header th:replace="fragments/navbar"></header>
 
@@ -50,11 +59,20 @@
                 </form>
             </div>
         </section>
-        <section id="map"></section>
-        <section id="video">
-            <iframe id="frame" th:src="'https://www.youtube.com/embed/' + *{videoUrl}">
+
+            <div id="map" style="height: 600px;">
+                <!-- Inject the GPX data as a global JavaScript variable -->
+                <script
+                        th:inline="javascript">
+                    var gpxData = /*[[${routeDetails.gpxCoordinates}]]*/ "";
+                </script>
+            </div>
+
+        <section id="video" >
+            <iframe style="height: 100%;" id="frame" th:src="'https://www.youtube.com/embed/' + *{videoUrl}">
             </iframe>
         </section>
+
         <section class="route-description text-center">
             <h4>Description:</h4>
             <p th:text="*{description}" id="route-description">Description: </p>
@@ -102,9 +120,9 @@
         </section>
         <p style="visibility: hidden">GPX Download: <a id="gpxDownload"></a></p>
     </div>
-    <!-- Scripts: track and comments
-    <script th:src="@{/js/track.js}"></script>
-    <script th:src="@{/js/comments.js}"></script>
+
+
+<!--    <script th:src="@{/js/comments.js}"></script>-->
     -->
 </div>
 
