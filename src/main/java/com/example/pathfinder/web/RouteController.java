@@ -18,6 +18,7 @@ public class RouteController {
     this.routeService = routeService;
   }
 
+  // GET
   @GetMapping("/routes")
   public String getRoutesPage(Model model) {
     List<RouteViewModel> allRoutes = this.routeService.findAllRoutes();
@@ -27,11 +28,10 @@ public class RouteController {
   }
 
   @GetMapping("/routes/details/{id}")
-  public String getRouteDetailsPage(@PathVariable Long id ,Model model) {
+  public String getRouteDetailsPage(@PathVariable Long id, Model model) {
     RouteDetailsViewModel route = this.routeService.findById(id);
     model.addAttribute("routeDetails", route);
 
     return "route-details";
   }
-
 }
