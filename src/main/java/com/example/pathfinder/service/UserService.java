@@ -13,8 +13,6 @@ public interface UserService {
 
   UserLoginServiceModel findUserByUserNameAndPassword(String username, String password);
 
-  void loginUser(Long id, String username);
-
   void logout();
 
   UserProfileServiceModel findById(Long id);
@@ -22,4 +20,6 @@ public interface UserService {
   boolean isUserNameAvailable(String username);
 
   boolean isEmailAvailable(String email);
+
+  boolean login(UserLoginServiceModel serviceModel);
 }

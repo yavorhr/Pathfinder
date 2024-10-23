@@ -14,6 +14,7 @@ import com.example.pathfinder.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -60,11 +61,6 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void loginUser(Long id, String username) {
-    currentUser.login(id, username);
-  }
-
-  @Override
   public void logout() {
     this.currentUser.clear();
   }
@@ -86,5 +82,24 @@ public class UserServiceImpl implements UserService {
   @Override
   public boolean isEmailAvailable(String email) {
     return this.userRepository.findByEmail(email).isEmpty();
+  }
+
+  @Override
+  public boolean login(UserLoginServiceModel serviceModel) {
+    Optional<User> loggedInUserOpt =
+            this.userRepository.findUserByUsername(serviceModel.getUsername());
+
+    if (loggedInUserOpt.isEmpty()) {
+      logout();
+      return false;
+    } else {
+      boolean success = serviceModel.getPassword().equals(loggedInUserOpt.get().getPassword());
+
+      if (success) {
+        User loggedInUserEntity = loggedInUserOpt.get();
+        currentUser.saveUserToSession(loggedInUserEntity);
+      }
+      return success;
+    }
   }
 }
