@@ -58,7 +58,7 @@ public class RouteController {
   @GetMapping("/routes/add")
   public String getAddRoutePage() {
 
-    if (!currentUser.isLoggedIn()){
+    if (!currentUser.isLoggedIn()) {
       return "redirect:/users/login";
     }
 
@@ -79,6 +79,7 @@ public class RouteController {
 
     AddRouteServiceModel routeServiceModel = this.modelMapper.map(routeAddBindingModel, AddRouteServiceModel.class);
     routeServiceModel.setGpxCoordinates(new String(routeAddBindingModel.getGpxCoordinates().getBytes()));
+    routeServiceModel.setAuthorId(this.currentUser.getId());
 
     Long id = routeService.addNewRoute(routeServiceModel);
 
