@@ -34,4 +34,10 @@ public class RouteController {
 
     return "route-details";
   }
+
+  @GetMapping("/routes/add")
+  public  String getAddRoutePage(){
+
+    return "add-route";
+  }
 }
