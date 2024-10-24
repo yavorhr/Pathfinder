@@ -58,21 +58,45 @@
             </div>
         </div>
 
-        <div>
-            <div class="form-group">
-                <label for="inputGpx" class="col-form-label ">GPX Coordinates</label>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-6 flex-column align-items-center align-items-center text-center">
+                <div class="form-group">
+                    <label for="inputGpx" class="col-form-label ">GPX Coordinates</label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="form-group">
+                        <input type="file"
+                               th:field="*{gpxCoordinates}"
+                               th:errorclass="is-invalid"
+                               required
+                               id="inputGpx"
+                               class="form-control-file"
+                               aria-describedby="inputGpxError">
+                    </div>
+                    <small id="inputGpxError"
+                           class="invalid-feedback errors alert alert-danger text-center">
+                        Must be valid GPX Coordinates</small>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="file"
-                       th:field="*{gpxCoordinates}"
-                       th:errorclass="is-invalid"
-                       required
-                       id="inputGpx"
-                       class="form-control-file"
-                       aria-describedby="inputGpxError">
-                <small id="inputGpxError"
-                       class="invalid-feedback errors alert alert-danger text-center">
-                    Must be valid GPX Coordinates</small>
+            <div class="col-md-3 flex-column align-items-center justify-content-between text-center">
+                <div class="form-group">
+                    <label for="distance" class="col-form-label ">Distance km</label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="form-group">
+                        <input
+                                type="number"
+                                th:field="*{distance}"
+                                th:errorclass="is-invalid"
+                                required
+                                id="distance"
+                                aria-describedby="distanceError"
+                                class="input-group">
+                    </div>
+                    <small id="distanceError"
+                           class="invalid-feedback errors alert alert-danger text-center">
+                        Please add distance</small>
+                </div>
             </div>
         </div>
         <div>
