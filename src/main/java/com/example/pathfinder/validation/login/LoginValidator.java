@@ -1,4 +1,4 @@
-package com.example.pathfinder.validation;
+package com.example.pathfinder.validation.login;
 
 import com.example.pathfinder.model.binding.UserLoginBindingModel;
 import com.example.pathfinder.model.service.UserLoginServiceModel;

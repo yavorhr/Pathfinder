@@ -1,4 +1,4 @@
-package com.example.pathfinder.validation;
+package com.example.pathfinder.validation.register;
 
 import com.example.pathfinder.service.UserService;
 import jakarta.validation.ConstraintValidator;

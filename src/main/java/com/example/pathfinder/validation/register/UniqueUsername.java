@@ -1,4 +1,4 @@
-package com.example.pathfinder.validation;
+package com.example.pathfinder.validation.register;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

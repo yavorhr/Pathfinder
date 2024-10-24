@@ -1,4 +1,4 @@
-package com.example.pathfinder.validation;
+package com.example.pathfinder.validation.register;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -10,9 +10,9 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = LoginValidator.class)
-public @interface ValidLogin {
-  String message() default "Invalid username or password";
+@Constraint(validatedBy = PasswordsValidator.class)
+public @interface DoesPasswordAndConfirmPasswordMatch {
+  String message() default "Passwords don't match";
 
   Class<?>[] groups() default {};
 
