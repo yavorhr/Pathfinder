@@ -1,8 +1,8 @@
 package com.example.pathfinder.model.binding;
 
-import com.example.pathfinder.validation.DoesPasswordAndConfirmPasswordMatch;
-import com.example.pathfinder.validation.UniqueEmail;
-import com.example.pathfinder.validation.UniqueUsername;
+import com.example.pathfinder.validation.register.DoesPasswordAndConfirmPasswordMatch;
+import com.example.pathfinder.validation.register.UniqueEmail;
+import com.example.pathfinder.validation.register.UniqueUsername;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
