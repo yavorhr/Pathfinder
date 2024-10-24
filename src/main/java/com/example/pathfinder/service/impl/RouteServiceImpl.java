@@ -1,7 +1,6 @@
 package com.example.pathfinder.service.impl;
 
-import com.example.pathfinder.model.entity.Route;
-import com.example.pathfinder.model.service.RouteServiceModel;
+import com.example.pathfinder.model.service.AddRouteServiceModel;
 import com.example.pathfinder.model.view.RouteDetailsViewModel;
 import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.repository.RouteRepository;
@@ -45,7 +44,7 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
-  public Long addNewRoute(RouteServiceModel routeServiceModel) {
+  public Long addNewRoute(AddRouteServiceModel routeServiceModel) {
     return null;
   }
 

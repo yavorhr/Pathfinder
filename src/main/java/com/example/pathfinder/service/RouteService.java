@@ -1,6 +1,6 @@
 package com.example.pathfinder.service;
 
-import com.example.pathfinder.model.service.RouteServiceModel;
+import com.example.pathfinder.model.service.AddRouteServiceModel;
 import com.example.pathfinder.model.view.RouteDetailsViewModel;
 import com.example.pathfinder.model.view.RouteViewModel;
 
@@ -11,7 +11,7 @@ public interface RouteService {
 
   RouteDetailsViewModel findById(Long id);
 
-  Long addNewRoute(RouteServiceModel routeServiceModel);
+  Long addNewRoute(AddRouteServiceModel routeServiceModel);
 
   boolean findRouteByName(String name);
 }
