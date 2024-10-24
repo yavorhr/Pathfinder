@@ -6,6 +6,7 @@ import com.example.pathfinder.model.entity.User;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.Lob;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class RouteServiceModel {
