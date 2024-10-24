@@ -63,9 +63,6 @@ public class RouteController {
                          RedirectAttributes redirectAttributes) throws IOException {
 
     if (bindingResult.hasErrors()) {
-      bindingResult.getAllErrors().forEach(error -> {
-        System.out.println("Error: " + error.getObjectName() +  " - " + error.getDefaultMessage());
-      });
       redirectAttributes
               .addFlashAttribute("routeAddBindingModel", routeAddBindingModel)
               .addFlashAttribute("org.springframework.validation.BindingResult.routeAddBindingModel", bindingResult);
