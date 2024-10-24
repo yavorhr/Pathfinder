@@ -1,10 +1,11 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.binding.RouteAddBindingModel;
-import com.example.pathfinder.model.service.RouteServiceModel;
+import com.example.pathfinder.model.service.AddRouteServiceModel;
 import com.example.pathfinder.model.view.RouteDetailsViewModel;
 import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.service.RouteService;
+import com.example.pathfinder.util.CurrentUser;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -23,10 +24,12 @@ import java.util.List;
 public class RouteController {
   private final RouteService routeService;
   private ModelMapper modelMapper;
+  private final CurrentUser currentUser;
 
-  public RouteController(RouteService routeService, ModelMapper modelMapper) {
+  public RouteController(RouteService routeService, ModelMapper modelMapper, CurrentUser currentUser) {
     this.routeService = routeService;
     this.modelMapper = modelMapper;
+    this.currentUser = currentUser;
   }
 
   @ModelAttribute("routeAddBindingModel")
@@ -54,6 +57,11 @@ public class RouteController {
   // ADD
   @GetMapping("/routes/add")
   public String getAddRoutePage() {
+
+    if (!currentUser.isLoggedIn()){
+      return "redirect:/users/login";
+    }
+
     return "add-route";
   }
 
@@ -69,7 +77,7 @@ public class RouteController {
       return "redirect:add";
     }
 
-    RouteServiceModel routeServiceModel = this.modelMapper.map(routeAddBindingModel, RouteServiceModel.class);
+    AddRouteServiceModel routeServiceModel = this.modelMapper.map(routeAddBindingModel, AddRouteServiceModel.class);
     routeServiceModel.setGpxCoordinates(new String(routeAddBindingModel.getGpxCoordinates().getBytes()));
 
     Long id = routeService.addNewRoute(routeServiceModel);
