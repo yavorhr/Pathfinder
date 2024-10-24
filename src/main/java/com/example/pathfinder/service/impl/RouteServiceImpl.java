@@ -1,6 +1,7 @@
 package com.example.pathfinder.service.impl;
 
 import com.example.pathfinder.model.entity.Route;
+import com.example.pathfinder.model.service.RouteServiceModel;
 import com.example.pathfinder.model.view.RouteDetailsViewModel;
 import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.repository.RouteRepository;
@@ -41,5 +42,15 @@ public class RouteServiceImpl implements RouteService {
             .findById(id)
             .map(route -> modelMapper.map(route,RouteDetailsViewModel.class))
             .orElse(null);
+  }
+
+  @Override
+  public Long addNewRoute(RouteServiceModel routeServiceModel) {
+    return null;
+  }
+
+  @Override
+  public boolean findRouteByName(String name) {
+    return this.routeRepository.findByName(name).isEmpty();
   }
 }
