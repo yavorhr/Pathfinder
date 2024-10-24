@@ -1,8 +1,6 @@
 package com.example.pathfinder.model.binding;
 
-import com.example.pathfinder.validation.ValidLogin;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import com.example.pathfinder.validation.login.ValidLogin;
 
 @ValidLogin
 public class UserLoginBindingModel {
