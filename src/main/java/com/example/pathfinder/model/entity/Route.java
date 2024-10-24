@@ -21,6 +21,7 @@ public class Route extends BaseEntity {
   public Route() {
   }
 
+  @Column(nullable = false)
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
           name = "routes_categories", // The name of the join table
@@ -41,12 +42,12 @@ public class Route extends BaseEntity {
     return author;
   }
 
-  @Column
+  @Column(nullable = false)
   public Integer getDistance() {
     return distance;
   }
 
-  @Column(columnDefinition = "TEXT")
+  @Column(columnDefinition = "TEXT", nullable = false)
   public String getDescription() {
     return description;
   }
@@ -56,6 +57,7 @@ public class Route extends BaseEntity {
     return gpxCoordinates;
   }
 
+  @Column(nullable = false)
   @Enumerated(EnumType.STRING)
   public LevelEnum getLevel() {
     return level;
