@@ -2,13 +2,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var mapContainer = document.getElementById('map');
 
     if (mapContainer) {
-        var map = L.map('map').setView([0, 0], 2); // Initialize your map
+        // 1. Initializing the map with zoom level 15
+        var map = L.map('map').setView([0, 0], 14);
 
-        // Add tile layer
+        // Add title layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
-        }).addTo(map);
+        })
+            .addTo(map);
 
         // Load GPX data if available
         if (gpxData) {
