@@ -15,7 +15,7 @@ public class AddRouteServiceModel {
   private LevelEnum level;
   private String name;
   private String videoUrl;
-  private User author;
+  private Long authorId;
   private Set<CategoryEnum> categories;
 
   public AddRouteServiceModel() {
@@ -42,8 +42,8 @@ public class AddRouteServiceModel {
     return videoUrl;
   }
 
-  public User getAuthor() {
-    return author;
+  public Long getAuthorId() {
+    return authorId;
   }
 
   public Set<CategoryEnum> getCategories() {
@@ -75,8 +75,8 @@ public class AddRouteServiceModel {
     return this;
   }
 
-  public AddRouteServiceModel setAuthor(User author) {
-    this.author = author;
+  public AddRouteServiceModel setAuthorId(Long authorId) {
+    this.authorId = authorId;
     return this;
   }
 
