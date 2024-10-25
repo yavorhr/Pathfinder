@@ -32,11 +32,6 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public boolean doesUsernameAlreadyExist(String username) {
-    return this.userRepository.findUserByUsername(username).isPresent();
-  }
-
-  @Override
   public void registerUser(UserRegisterServiceModel serviceModel) {
     User user = this.modelMapper.map(serviceModel, User.class);
     user.setLevel(LevelEnum.BEGINNER);
