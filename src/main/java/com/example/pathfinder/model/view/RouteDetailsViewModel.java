@@ -7,97 +7,101 @@ import com.example.pathfinder.model.entity.enums.LevelEnum;
 import java.util.Set;
 
 public class RouteDetailsViewModel {
-    private String description;
-    private String gpxCoordinates;
-    private LevelEnum level;
-    private String name;
-    private String videoUrl;
-    private Set<Category> categories;
-    private Set<Picture> pictures;
-    private String authorFullName;
-    private Integer distance;
+  private String description;
+  private String gpxCoordinates;
+  private LevelEnum level;
+  private String name;
+  private String videoUrl;
+  private Set<Category> categories;
+  private Set<Picture> pictures;
+  private String authorFullName;
+  private Integer distance;
 
-    public RouteDetailsViewModel() {
-    }
+  public RouteDetailsViewModel() {
+  }
 
-    public Integer getDistance() {
-        return distance;
-    }
+  public Integer getDistance() {
+    return distance;
+  }
 
-    public String getAuthorFullName() {
-        return authorFullName;
-    }
+  public String getAuthorFullName() {
+    return authorFullName;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public RouteDetailsViewModel setDescription(String description) {
-        this.description = description;
-        return this;
-    }
+  public RouteDetailsViewModel setDescription(String description) {
+    this.description = description;
+    return this;
+  }
 
-    public String getGpxCoordinates() {
-        return gpxCoordinates;
-    }
+  public String getGpxCoordinates() {
+    return gpxCoordinates;
+  }
 
-    public RouteDetailsViewModel setGpxCoordinates(String gpxCoordinates) {
-        this.gpxCoordinates = gpxCoordinates;
-        return this;
-    }
+  public RouteDetailsViewModel setGpxCoordinates(String gpxCoordinates) {
+    this.gpxCoordinates = gpxCoordinates;
+    return this;
+  }
 
-    public LevelEnum getLevel() {
-        return level;
-    }
+  public LevelEnum getLevel() {
+    return level;
+  }
 
-    public RouteDetailsViewModel setLevel(LevelEnum level) {
-        this.level = level;
-        return this;
-    }
+  public RouteDetailsViewModel setLevel(LevelEnum level) {
+    this.level = level;
+    return this;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public RouteDetailsViewModel setName(String name) {
-        this.name = name;
-        return this;
-    }
+  public RouteDetailsViewModel setName(String name) {
+    this.name = name;
+    return this;
+  }
 
-    public String getVideoUrl() {
-        return videoUrl;
-    }
+  public String getVideoUrl() {
+    return videoUrl;
+  }
 
-    public RouteDetailsViewModel setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
-        return this;
-    }
+  public boolean isVideoUrlAvailable() {
+    return !this.videoUrl.isEmpty();
+  }
 
-    public Set<Category> getCategories() {
-        return categories;
-    }
+  public RouteDetailsViewModel setVideoUrl(String videoUrl) {
+    this.videoUrl = videoUrl;
+    return this;
+  }
 
-    public RouteDetailsViewModel setCategories(Set<Category> categories) {
-        this.categories = categories;
-        return this;
-    }
+  public Set<Category> getCategories() {
+    return categories;
+  }
 
-    public Set<Picture> getPictures() {
-        return pictures;
-    }
+  public RouteDetailsViewModel setCategories(Set<Category> categories) {
+    this.categories = categories;
+    return this;
+  }
 
-    public RouteDetailsViewModel setPictures(Set<Picture> pictures) {
-        this.pictures = pictures;
-        return this;
-    }
+  public Set<Picture> getPictures() {
+    return pictures;
+  }
 
-    public RouteDetailsViewModel setAuthorFullName(String authorFullName) {
-        this.authorFullName = authorFullName;
-        return this;
-    }
+  public RouteDetailsViewModel setPictures(Set<Picture> pictures) {
+    this.pictures = pictures;
+    return this;
+  }
 
-    public RouteDetailsViewModel setDistance(Integer distance) {
-        this.distance = distance;
-        return this;
-    }
+  public RouteDetailsViewModel setAuthorFullName(String authorFullName) {
+    this.authorFullName = authorFullName;
+    return this;
+  }
+
+  public RouteDetailsViewModel setDistance(Integer distance) {
+    this.distance = distance;
+    return this;
+  }
 }
