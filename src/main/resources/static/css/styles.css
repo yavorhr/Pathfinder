@@ -218,6 +218,13 @@ footer {
     grid-auto-rows: minmax(100px, auto);
 }
 
+.details-main-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
 .details-main .gallery {
     grid-column: 1/4;
     grid-row: 3;
@@ -257,7 +264,7 @@ footer {
 }
 
 #map {
-    height: 500px;
+    height: 600px;
     width: 100%;
     border-radius: 10px;
 }
