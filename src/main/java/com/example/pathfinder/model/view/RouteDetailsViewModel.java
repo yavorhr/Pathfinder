@@ -7,6 +7,7 @@ import com.example.pathfinder.model.entity.enums.LevelEnum;
 import java.util.Set;
 
 public class RouteDetailsViewModel {
+  private Long authorId;
   private String description;
   private String gpxCoordinates;
   private LevelEnum level;
@@ -18,6 +19,10 @@ public class RouteDetailsViewModel {
   private Integer distance;
 
   public RouteDetailsViewModel() {
+  }
+
+  public Long getAuthorId() {
+    return authorId;
   }
 
   public Integer getDistance() {
@@ -102,6 +107,11 @@ public class RouteDetailsViewModel {
 
   public RouteDetailsViewModel setDistance(Integer distance) {
     this.distance = distance;
+    return this;
+  }
+
+  public RouteDetailsViewModel setAuthorId(Long authorId) {
+    this.authorId = authorId;
     return this;
   }
 }
