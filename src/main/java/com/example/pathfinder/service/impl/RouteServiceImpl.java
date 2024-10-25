@@ -62,7 +62,7 @@ public class RouteServiceImpl implements RouteService {
     route.setCategories(mapCategories(routeServiceModel.getCategories()));
 
     route = this.routeRepository.save(route);
-    
+
     return route.getId();
   }
 
