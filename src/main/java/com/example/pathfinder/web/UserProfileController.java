@@ -22,7 +22,7 @@ public class UserProfileController {
   public String profilePage(@PathVariable Long id, Model model) {
 
     UserProfileViewModel userViewModel =
-            this.modelMapper.map(this.userService.findById(id), UserProfileViewModel.class);
+            this.modelMapper.map(this.userService.findUserServiceById(id), UserProfileViewModel.class);
 
     model.addAttribute("userViewModel", userViewModel);
 
