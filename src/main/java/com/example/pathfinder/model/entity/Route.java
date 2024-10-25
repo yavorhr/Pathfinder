@@ -17,6 +17,7 @@ public class Route extends BaseEntity {
   private User author;
   private Set<Category> categories;
   private Set<Picture> pictures;
+  private Set<Comment> comments;
 
   public Route() {
   }
@@ -30,6 +31,11 @@ public class Route extends BaseEntity {
   )
   public Set<Category> getCategories() {
     return categories;
+  }
+
+  @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+  public Set<Comment> getComments() {
+    return comments;
   }
 
   @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
@@ -108,6 +114,11 @@ public class Route extends BaseEntity {
 
   public Route setDistance(Integer distance) {
     this.distance = distance;
+    return this;
+  }
+
+  public Route setComments(Set<Comment> comments) {
+    this.comments = comments;
     return this;
   }
 }
