@@ -47,26 +47,12 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public boolean doesEmailExist(String email) {
-    return this.userRepository.findByEmail(email).isPresent();
-
-  }
-
-  @Override
-  public UserLoginServiceModel findUserByUserNameAndPassword(String username, String password) {
-    User userEntity = this.userRepository.findByUsernameAndPassword(username, password);
-
-    return this.modelMapper.map(userEntity, UserLoginServiceModel.class);
-
-  }
-
-  @Override
   public void logout() {
     this.currentUser.clear();
   }
 
   @Override
-  public UserProfileServiceModel findById(Long id) {
+  public UserProfileServiceModel findUserServiceById(Long id) {
     return
             this.userRepository
                     .findById(id)
@@ -101,5 +87,10 @@ public class UserServiceImpl implements UserService {
       }
       return success;
     }
+  }
+
+  @Override
+  public Optional<User> findById(Long id) {
+    return this.userRepository.findById(id);
   }
 }
