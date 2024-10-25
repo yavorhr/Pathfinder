@@ -17,8 +17,13 @@ public class AddRouteServiceModel {
   private String videoUrl;
   private Long authorId;
   private Set<CategoryEnum> categories;
+  private Integer distance;
 
   public AddRouteServiceModel() {
+  }
+
+  public Integer getDistance() {
+    return distance;
   }
 
   public String getDescription() {
@@ -82,6 +87,11 @@ public class AddRouteServiceModel {
 
   public AddRouteServiceModel setCategories(Set<CategoryEnum> categories) {
     this.categories = categories;
+    return this;
+  }
+
+  public AddRouteServiceModel setDistance(Integer distance) {
+    this.distance = distance;
     return this;
   }
 }
