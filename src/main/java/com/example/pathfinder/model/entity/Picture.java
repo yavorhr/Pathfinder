@@ -12,8 +12,13 @@ public class Picture extends BaseEntity {
   private String url;
   private User author;
   private Route route;
+  private String publicId;
 
   public Picture() {
+  }
+
+  public String getPublicId() {
+    return publicId;
   }
 
   @ManyToOne
@@ -50,5 +55,10 @@ public class Picture extends BaseEntity {
 
   public void setRoute(Route route) {
     this.route = route;
+  }
+
+  public Picture setPublicId(String publicId) {
+    this.publicId = publicId;
+    return this;
   }
 }
