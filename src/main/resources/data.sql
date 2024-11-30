@@ -123,8 +123,6 @@ INSERT INTO routes_categories VALUES (4,4);
 INSERT INTO routes_categories VALUES (5,1);
 INSERT INTO routes_categories VALUES (5,2);
 
-
-
 INSERT INTO pictures(title, url, author_id, route_id)
 VALUES ('Kumata', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630581072/d47iy8kxv6qni8euhojk.jpg', 1, 1);
 
@@ -150,8 +148,8 @@ INSERT INTO pictures(title, url, author_id, route_id)
 VALUES ('Shipka 2', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630583467/koncyanx4gqwzt9vxgx4.jpg', 1, 4);
 
 
- INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO pictures(title, url, author_id, route_id)
  VALUES ('Aladja Manastir', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630583842/qabnwpgq3pp1cui19nn5.jpg', 1, 5);
 
 INSERT INTO pictures(title, url, author_id, route_id)
-VALUES ('Aladja Manastir 2', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630584095/aznlgfzoxpuvl5belukb.jpg', 1, 5);
+VALUES ('Aladja Manastir 2', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630584095/aznlgfzoxpuvl5belukb.jpg', 1, 5,);
