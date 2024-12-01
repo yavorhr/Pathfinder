@@ -1,43 +1,53 @@
 package com.example.pathfinder.web;
 
-import com.example.pathfinder.model.binding.PictureBindingModel;
-import com.example.pathfinder.model.entity.Picture;
-import com.example.pathfinder.repository.PictureRepository;
+import com.example.pathfinder.model.binding.PictureAddBindingModel;
+import com.example.pathfinder.model.service.PictureAddServiceModel;
 import com.example.pathfinder.service.CloudinaryImage;
 import com.example.pathfinder.service.CloudinaryService;
+import com.example.pathfinder.service.PictureService;
+import com.example.pathfinder.util.CurrentUser;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
 @Controller
 public class PicturesController {
-  private final PictureRepository pictureRepository;
+  private final PictureService pictureService;
   private final CloudinaryService cloudinaryService;
+  private final CurrentUser currentUser;
+  private final ModelMapper modelMapper;
 
-  public PicturesController(PictureRepository pictureRepository, CloudinaryService cloudinaryService) {
-    this.pictureRepository = pictureRepository;
+  public PicturesController(PictureService pictureService, CloudinaryService cloudinaryService, CurrentUser currentUser, ModelMapper modelMapper) {
+    this.pictureService = pictureService;
     this.cloudinaryService = cloudinaryService;
+    this.currentUser = currentUser;
+    this.modelMapper = modelMapper;
   }
 
   @PostMapping("/pictures/add")
-  public String addPicture(PictureBindingModel bindingModel) throws IOException {
+  public String addPicture(PictureAddBindingModel bindingModel) throws IOException {
 
-    var picture = createPictureEntity(bindingModel.getPicture(),
-            bindingModel.getTitle());
+    CloudinaryImage uploaded = this.cloudinaryService.upload(bindingModel.getPicture());
 
-    pictureRepository.save(picture);
+    PictureAddServiceModel serviceModel =
+            mapToPictureServiceModel(uploaded, bindingModel);
 
-    return "redirect:/pictures/all";
+    this.pictureService.addPicture(serviceModel);
+
+    return "redirect:/routes/details/" + bindingModel.getRouteId();
   }
 
-  private Picture createPictureEntity(MultipartFile file, String title) throws IOException {
-    final CloudinaryImage uploaded = this.cloudinaryService.upload(file);
 
-    return new Picture().
-            setPublicId(uploaded.getPublicId()).
-            setUrl(uploaded.getUrl())
-            .setTitle(title);
+  private PictureAddServiceModel mapToPictureServiceModel(CloudinaryImage image, PictureAddBindingModel bindingModel) {
+    PictureAddServiceModel serviceModel =
+            this.modelMapper.map(bindingModel, PictureAddServiceModel.class);
+
+    serviceModel.setAuthorId(this.currentUser.getId());
+    serviceModel.setPublicId(image.getPublicId());
+    serviceModel.setUrl(image.getUrl());
+
+    return serviceModel;
   }
 }
