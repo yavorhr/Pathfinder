@@ -41,20 +41,24 @@ public class Picture extends BaseEntity {
     return url;
   }
 
-  public void setTitle(String title) {
+  public Picture setTitle(String title) {
     this.title = title;
+    return this;
   }
 
-  public void setUrl(String url) {
+  public Picture setUrl(String url) {
     this.url = url;
+    return this;
   }
 
-  public void setAuthor(User author) {
+  public Picture setAuthor(User author) {
     this.author = author;
+    return this;
   }
 
-  public void setRoute(Route route) {
+  public Picture setRoute(Route route) {
     this.route = route;
+    return this;
   }
 
   public Picture setPublicId(String publicId) {
