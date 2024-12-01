@@ -68,11 +68,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-http44 -->
+
+        <!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary -->
         <dependency>
             <groupId>com.cloudinary</groupId>
-            <artifactId>cloudinary-http44</artifactId>
-            <version>1.39.0</version>
+            <artifactId>cloudinary</artifactId>
+            <version>1.0.14</version> <!-- Use the latest version -->
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor -->
