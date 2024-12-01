@@ -7,6 +7,7 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="/js/gpx.js"></script> <!-- Local reference -->
 <script src="/js/track.js"></script>
+<script src="/js/toggleButton.js"></script>
 
 <body>
 
@@ -40,23 +41,38 @@
             </div>
             <div>
                 <h4>Choose picture</h4>
-                <form action="/"
-                      method="POST"
-                      enctype="multipart/form-data">
-                    <input type="hidden" id="id" name="routeId">
+                <form
+                        th:action="@{/pictures/add}"
+                        th:method="post"
+                        enctype="multipart/form-data">
+                    <input
+                            type="hidden"
+                            name="routeId"
+                            th:value="*{id}">
                     <div class="form-group">
                         <label>
-                            <input type="text" name="title">
+                            <input
+                                    type="text"
+                                    id="title"
+                                    name="title">
                         </label>
                     </div>
                     <div class="image-upload">
                         <label for="picture">
                             <img src="/images/add-img.png" alt=""/>
                         </label>
-                        <input style="display: none" id="picture" type="file" name="picture"/>
+                        <input
+                                id="picture"
+                                type="file"
+                                name="picture"
+                                onchange="toggleButtonState()"/>
                     </div>
                     <div class="form-group">
-                        <button class="btn-primary rounded">Upload Picture</button>
+                        <button
+                                id="upload-btn"
+                                class="btn-primary rounded"
+                                disabled>Upload Picture
+                        </button>
                     </div>
                 </form>
             </div>
@@ -135,6 +151,7 @@
 
 
     <!--    <script th:src="@{/js/comments.js}"></script>-->
+    <!--
     -->
 </div>
 
