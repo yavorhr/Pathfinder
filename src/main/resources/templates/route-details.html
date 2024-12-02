@@ -40,7 +40,7 @@
 
             </div>
             <div>
-                <h4>Choose picture</h4>
+                <h4>Select picture</h4>
                 <form
                         th:action="@{/pictures/add}"
                         th:method="post"
@@ -52,6 +52,7 @@
                     <div class="form-group">
                         <label>
                             <input
+                                    placeholder="Picture title"
                                     type="text"
                                     id="title"
                                     name="title">
@@ -62,6 +63,7 @@
                             <img src="/images/add-img.png" alt=""/>
                         </label>
                         <input
+                                hidden
                                 id="picture"
                                 type="file"
                                 name="picture"
