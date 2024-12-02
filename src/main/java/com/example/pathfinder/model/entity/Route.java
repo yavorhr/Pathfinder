@@ -25,10 +25,9 @@ public class Route extends BaseEntity {
   @Column(nullable = false)
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
-          name = "routes_categories", // The name of the join table
-          joinColumns = @JoinColumn(name = "route_id"), // The join column in the join table that refers to this entity (Role)
-          inverseJoinColumns = @JoinColumn(name = "category_id") // The join column that refers to the other entity (User)
-  )
+          name = "routes_categories",
+          joinColumns = @JoinColumn(name = "route_id"),
+          inverseJoinColumns = @JoinColumn(name = "category_id"))
   public Set<Category> getCategories() {
     return categories;
   }
