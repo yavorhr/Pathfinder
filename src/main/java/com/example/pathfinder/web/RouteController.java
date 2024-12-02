@@ -48,7 +48,7 @@ public class RouteController {
 
   @GetMapping("/routes/details/{id}")
   public String getRouteDetailsPage(@PathVariable Long id, Model model) {
-    RouteDetailsViewModel route = this.routeService.findById(id);
+    RouteDetailsViewModel route = this.modelMapper.map(this.routeService.findById(id).get(), RouteDetailsViewModel.class);
     model.addAttribute("routeDetails", route);
 
     return "route-details";

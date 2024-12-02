@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -47,11 +48,8 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
-  public RouteDetailsViewModel findById(Long id) {
-    return routeRepository
-            .findById(id)
-            .map(route -> modelMapper.map(route, RouteDetailsViewModel.class))
-            .orElse(null);
+  public Optional<Route> findById(Long id) {
+    return routeRepository.findById(id);
   }
 
   @Override
