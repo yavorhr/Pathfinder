@@ -19,6 +19,7 @@ public class RouteDetailsViewModel {
   private String authorFullName;
   private Integer distance;
 
+
   public RouteDetailsViewModel() {
   }
 
