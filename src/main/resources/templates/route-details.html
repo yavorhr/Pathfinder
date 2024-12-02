@@ -103,8 +103,28 @@
             <h4>Description:</h4>
             <p th:text="*{description}" id="route-description">Description: </p>
         </section>
+
+        <!-- Gallery -->
         <section class="gallery">
-            <img class="rounded" th:each="p : *{pictures}" th:src="${p.url}">
+            <div th:each="p : ${routeDetails.pictures}"
+                 th:object="${p}"
+                 class="routes-image-container">
+                <img class="rounded" th:src="*{url}" alt="Image"/>
+                <form th:if="*{publicId}"
+                      th:action="@{/pictures/delete}"
+                      th:method="DELETE"
+                      class="delete-form">
+                    <input
+                            type="hidden"
+                            th:value="*{publicId}"
+                            name="public_id">
+                    <input
+                            type="hidden"
+                            th:value="${routeDetails.id}"
+                            name="routeId">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
         </section>
         <section class="comments">
             <h1>Comments</h1>
