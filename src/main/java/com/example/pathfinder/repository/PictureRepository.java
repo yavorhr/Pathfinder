@@ -12,4 +12,6 @@ public interface PictureRepository extends JpaRepository<Picture, Long> {
 
   @Query("SELECT p.url FROM Picture as p")
   List<String> getAllPictureUrls();
+
+  void deleteByPublicId(String publicId);
 }

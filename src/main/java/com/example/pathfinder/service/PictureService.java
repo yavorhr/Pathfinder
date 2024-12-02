@@ -8,4 +8,6 @@ public interface PictureService {
   List<String> findPictureUrls();
 
   void addPicture(PictureAddServiceModel uploaded);
+
+  void deletePicture(String publicId);
 }
