@@ -6,9 +6,12 @@ import com.example.pathfinder.service.CloudinaryImage;
 import com.example.pathfinder.service.CloudinaryService;
 import com.example.pathfinder.service.PictureService;
 import com.example.pathfinder.util.CurrentUser;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 
@@ -39,7 +42,17 @@ public class PicturesController {
     return "redirect:/routes/details/" + bindingModel.getRouteId();
   }
 
+  @Transactional
+  @DeleteMapping("/pictures/delete")
+  public String delete(@RequestParam("public_id") String publicId, @RequestParam("routeId") String routeId) {
+    if (cloudinaryService.delete(publicId)) {
+      pictureService.deletePicture(publicId);
+    }
 
+    return "redirect:/routes/details/" + routeId;
+  }
+
+  // Helpers
   private PictureAddServiceModel mapToPictureServiceModel(CloudinaryImage image, PictureAddBindingModel bindingModel) {
     PictureAddServiceModel serviceModel =
             this.modelMapper.map(bindingModel, PictureAddServiceModel.class);
