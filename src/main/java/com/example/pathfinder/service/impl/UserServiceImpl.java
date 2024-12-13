@@ -21,13 +21,11 @@ public class UserServiceImpl implements UserService {
   private final UserRepository userRepository;
   private final ModelMapper modelMapper;
   private final UserRolesService userRolesService;
-  private final CurrentUser currentUser;
 
-  public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserRolesService userRolesService, CurrentUser currentUser) {
+  public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserRolesService userRolesService) {
     this.userRepository = userRepository;
     this.modelMapper = modelMapper;
     this.userRolesService = userRolesService;
-    this.currentUser = currentUser;
   }
 
   @Override
@@ -42,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void logout() {
-    this.currentUser.clear();
+//TODO
   }
 
   @Override
@@ -75,10 +73,12 @@ public class UserServiceImpl implements UserService {
     } else {
       boolean success = serviceModel.getPassword().equals(loggedInUserOpt.get().getPassword());
 
-      if (success) {
+
+      //TODO
+/*      if (success) {
         UserEntity loggedInUserEntity = loggedInUserOpt.get();
         currentUser.saveUserToSession(loggedInUserEntity);
-      }
+      }*/
       return success;
     }
   }

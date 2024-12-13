@@ -23,12 +23,10 @@ import java.util.List;
 public class RouteController {
   private final RouteService routeService;
   private ModelMapper modelMapper;
-  private final CurrentUser currentUser;
 
-  public RouteController(RouteService routeService, ModelMapper modelMapper, CurrentUser currentUser) {
+  public RouteController(RouteService routeService, ModelMapper modelMapper) {
     this.routeService = routeService;
     this.modelMapper = modelMapper;
-    this.currentUser = currentUser;
   }
 
   @ModelAttribute("routeAddBindingModel")
@@ -57,9 +55,10 @@ public class RouteController {
   @GetMapping("/routes/add")
   public String getAddRoutePage() {
 
-    if (!currentUser.isLoggedIn()) {
-      return "redirect:/users/login";
-    }
+    //TODO
+//    if (!currentUser.isLoggedIn()) {
+//      return "redirect:/users/login";
+//    }
 
     return "add-route";
   }
@@ -78,7 +77,7 @@ public class RouteController {
 
     AddRouteServiceModel routeServiceModel = this.modelMapper.map(routeAddBindingModel, AddRouteServiceModel.class);
     routeServiceModel.setGpxCoordinates(new String(routeAddBindingModel.getGpxCoordinates().getBytes()));
-    routeServiceModel.setAuthorId(this.currentUser.getId());
+//    routeServiceModel.setAuthorId(this.currentUser.getId());
 
     Long id = routeService.addNewRoute(routeServiceModel);
 

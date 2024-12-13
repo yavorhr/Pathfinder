@@ -18,13 +18,11 @@ import java.io.IOException;
 public class PicturesController {
   private final PictureService pictureService;
   private final CloudinaryService cloudinaryService;
-  private final CurrentUser currentUser;
   private final ModelMapper modelMapper;
 
-  public PicturesController(PictureService pictureService, CloudinaryService cloudinaryService, CurrentUser currentUser, ModelMapper modelMapper) {
+  public PicturesController(PictureService pictureService, CloudinaryService cloudinaryService, ModelMapper modelMapper) {
     this.pictureService = pictureService;
     this.cloudinaryService = cloudinaryService;
-    this.currentUser = currentUser;
     this.modelMapper = modelMapper;
   }
 
@@ -56,7 +54,7 @@ public class PicturesController {
     PictureAddServiceModel serviceModel =
             this.modelMapper.map(bindingModel, PictureAddServiceModel.class);
 
-    serviceModel.setAuthorId(this.currentUser.getId());
+/*    serviceModel.setAuthorId(this.currentUser.getId());*/
     serviceModel.setPublicId(image.getPublicId());
     serviceModel.setUrl(image.getUrl());
 

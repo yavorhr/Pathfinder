@@ -129,8 +129,8 @@
         <section class="comments">
             <h1>Comments</h1>
 
-            <th:block th:if="${@currentUser.isLoggedIn()}">
-                <div th:if="${@currentUser.getId()} != *{authorId}">
+<!--            <th:block th:if="${@currentUser.isLoggedIn()}">-->
+<!--                <div th:if="${@currentUser.getId()} != *{authorId}">-->
                     <!-- Comments submission -->
                     <form id="commentForm"
                           method="POST"
@@ -159,7 +159,7 @@
                     </form>
                     <!-- Comments submission -->
                 </div>
-            </th:block>
+<!--            </th:block>-->
 
             <!-- All comments section -->
             <div>
