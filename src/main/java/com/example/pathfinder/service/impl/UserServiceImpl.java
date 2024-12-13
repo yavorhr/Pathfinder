@@ -4,7 +4,6 @@ import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
-import com.example.pathfinder.model.service.UserLoginServiceModel;
 import com.example.pathfinder.model.service.UserProfileServiceModel;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.repository.UserRepository;
@@ -50,5 +49,15 @@ public class UserServiceImpl implements UserService {
   @Override
   public Optional<UserEntity> findById(Long id) {
     return this.userRepository.findById(id);
+  }
+
+  @Override
+  public boolean isUserNameAvailable(String username) {
+    return this.userRepository.findByUsername(username).isEmpty();
+  }
+
+  @Override
+  public boolean isEmailAvailable(String email) {
+    return this.userRepository.findByEmail(email).isEmpty();
   }
 }

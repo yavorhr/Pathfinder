@@ -13,4 +13,8 @@ public interface UserService {
   UserProfileServiceModel findUserServiceById(Long id);
 
   Optional<UserEntity> findById(Long id);
+
+  boolean isUserNameAvailable(String username);
+
+  boolean isEmailAvailable(String email);
 }
