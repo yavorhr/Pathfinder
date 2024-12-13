@@ -5,7 +5,6 @@ import com.example.pathfinder.model.service.AddRouteServiceModel;
 import com.example.pathfinder.model.view.RouteDetailsViewModel;
 import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.service.RouteService;
-import com.example.pathfinder.util.CurrentUser;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;

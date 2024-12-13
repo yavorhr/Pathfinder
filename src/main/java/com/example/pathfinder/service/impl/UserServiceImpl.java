@@ -10,7 +10,6 @@ import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.UserService;
-import com.example.pathfinder.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

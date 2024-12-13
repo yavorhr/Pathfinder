@@ -5,7 +5,6 @@ import com.example.pathfinder.model.service.PictureAddServiceModel;
 import com.example.pathfinder.service.CloudinaryImage;
 import com.example.pathfinder.service.CloudinaryService;
 import com.example.pathfinder.service.PictureService;
-import com.example.pathfinder.util.CurrentUser;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
