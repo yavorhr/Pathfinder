@@ -39,48 +39,12 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void logout() {
-//TODO
-  }
-
-  @Override
   public UserProfileServiceModel findUserServiceById(Long id) {
     return
             this.userRepository
                     .findById(id)
                     .map(user -> this.modelMapper.map(user, UserProfileServiceModel.class))
                     .orElse(null);
-  }
-
-  @Override
-  public boolean isUserNameAvailable(String username) {
-    return this.userRepository.findByUsername(username).isEmpty();
-  }
-
-  @Override
-  public boolean isEmailAvailable(String email) {
-    return this.userRepository.findByEmail(email).isEmpty();
-  }
-
-  @Override
-  public boolean login(UserLoginServiceModel serviceModel) {
-    Optional<UserEntity> loggedInUserOpt =
-            this.userRepository.findByUsername(serviceModel.getUsername());
-
-    if (loggedInUserOpt.isEmpty()) {
-      logout();
-      return false;
-    } else {
-      boolean success = serviceModel.getPassword().equals(loggedInUserOpt.get().getPassword());
-
-
-      //TODO
-/*      if (success) {
-        UserEntity loggedInUserEntity = loggedInUserOpt.get();
-        currentUser.saveUserToSession(loggedInUserEntity);
-      }*/
-      return success;
-    }
   }
 
   @Override
