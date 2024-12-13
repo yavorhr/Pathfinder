@@ -1,8 +1,5 @@
 package com.example.pathfinder.model.service;
 
-import com.example.pathfinder.model.entity.Category;
-import com.example.pathfinder.model.entity.Picture;
-import com.example.pathfinder.model.entity.User;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.Lob;
