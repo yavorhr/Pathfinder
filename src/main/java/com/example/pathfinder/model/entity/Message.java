@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 public class Message extends BaseEntity {
   private LocalDateTime dateTime;
   private String textContent;
-  private User author;
-  private User recipient;
+  private UserEntity author;
+  private UserEntity recipient;
 
   public Message() {
   }
@@ -26,12 +26,12 @@ public class Message extends BaseEntity {
   }
 
   @ManyToOne
-  public User getAuthor() {
+  public UserEntity getAuthor() {
     return author;
   }
 
   @ManyToOne
-  public User getRecipient() {
+  public UserEntity getRecipient() {
     return recipient;
   }
 
@@ -43,11 +43,11 @@ public class Message extends BaseEntity {
     this.textContent = textContent;
   }
 
-  public void setAuthor(User author) {
+  public void setAuthor(UserEntity author) {
     this.author = author;
   }
 
-  public void setRecipient(User recipient) {
+  public void setRecipient(UserEntity recipient) {
     this.recipient = recipient;
   }
 

@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity {
+public class UserEntity extends BaseEntity {
   private Integer age;
   private String fullName;
   private String email;
@@ -16,7 +16,7 @@ public class User extends BaseEntity {
   private String username;
   private Set<UserRoleEntity> roles;
 
-  public User() {
+  public UserEntity() {
   }
 
   @Column
@@ -83,8 +83,10 @@ public class User extends BaseEntity {
     this.roles = roles;
   }
 
-  public User setEmail(String email) {
+  public UserEntity setEmail(String email) {
     this.email = email;
     return this;
   }
+
+
 }

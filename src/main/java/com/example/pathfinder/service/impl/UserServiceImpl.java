@@ -1,6 +1,6 @@
 package com.example.pathfinder.service.impl;
 
-import com.example.pathfinder.model.entity.User;
+import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void registerUser(UserRegisterServiceModel serviceModel) {
-    User user = this.modelMapper.map(serviceModel, User.class);
+    UserEntity user = this.modelMapper.map(serviceModel, UserEntity.class);
     user.setLevel(LevelEnum.BEGINNER);
     UserRoleEntity roleEntity = this.userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.USER);
     user.setRoles(Set.of(roleEntity));
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public boolean isUserNameAvailable(String username) {
-    return this.userRepository.findUserByUsername(username).isEmpty();
+    return this.userRepository.findByUsername(username).isEmpty();
   }
 
   @Override
@@ -66,8 +66,8 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public boolean login(UserLoginServiceModel serviceModel) {
-    Optional<User> loggedInUserOpt =
-            this.userRepository.findUserByUsername(serviceModel.getUsername());
+    Optional<UserEntity> loggedInUserOpt =
+            this.userRepository.findByUsername(serviceModel.getUsername());
 
     if (loggedInUserOpt.isEmpty()) {
       logout();
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
       boolean success = serviceModel.getPassword().equals(loggedInUserOpt.get().getPassword());
 
       if (success) {
-        User loggedInUserEntity = loggedInUserOpt.get();
+        UserEntity loggedInUserEntity = loggedInUserOpt.get();
         currentUser.saveUserToSession(loggedInUserEntity);
       }
       return success;
@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public Optional<User> findById(Long id) {
+  public Optional<UserEntity> findById(Long id) {
     return this.userRepository.findById(id);
   }
 }

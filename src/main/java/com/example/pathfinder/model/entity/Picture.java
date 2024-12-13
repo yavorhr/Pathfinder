@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 public class Picture extends BaseEntity {
   private String title;
   private String url;
-  private User author;
+  private UserEntity author;
   private Route route;
   private String publicId;
 
@@ -22,7 +22,7 @@ public class Picture extends BaseEntity {
   }
 
   @ManyToOne
-  public User getAuthor() {
+  public UserEntity getAuthor() {
     return author;
   }
 
@@ -51,7 +51,7 @@ public class Picture extends BaseEntity {
     return this;
   }
 
-  public Picture setAuthor(User author) {
+  public Picture setAuthor(UserEntity author) {
     this.author = author;
     return this;
   }

@@ -14,7 +14,7 @@ public class Route extends BaseEntity {
   private String name;
   private String videoUrl;
   private Integer distance;
-  private User author;
+  private UserEntity author;
   private Set<Category> categories;
   private Set<Picture> pictures;
   private Set<Comment> comments;
@@ -43,7 +43,7 @@ public class Route extends BaseEntity {
   }
 
   @ManyToOne
-  public User getAuthor() {
+  public UserEntity getAuthor() {
     return author;
   }
 
@@ -107,7 +107,7 @@ public class Route extends BaseEntity {
     this.videoUrl = videoUrl;
   }
 
-  public void setAuthor(User user) {
+  public void setAuthor(UserEntity user) {
     this.author = user;
   }
 

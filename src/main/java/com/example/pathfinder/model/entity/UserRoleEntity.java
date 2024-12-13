@@ -9,7 +9,7 @@ import java.util.Set;
 @Table(name = "roles")
 public class UserRoleEntity extends BaseEntity {
   private UserRoleEnum role;
-  private Set<User> users;
+  private Set<UserEntity> users;
 
   public UserRoleEntity() {
   }
@@ -19,7 +19,7 @@ public class UserRoleEntity extends BaseEntity {
   }
 
   @ManyToMany(mappedBy = "roles")
-  public Set<User> getUsers() {
+  public Set<UserEntity> getUsers() {
     return users;
   }
 
@@ -33,7 +33,7 @@ public class UserRoleEntity extends BaseEntity {
     this.role = role;
   }
 
-  public void setUsers(Set<User> users) {
+  public void setUsers(Set<UserEntity> users) {
     this.users = users;
   }
 }
