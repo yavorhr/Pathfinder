@@ -9,17 +9,17 @@ INSERT INTO roles (id, role)
 VALUES (3, 'USER');
 
 -- some test users
-INSERT INTO users (id, age, full_name, level, password, username, email)
-VALUES (1, 28, 'Admin Adminov', 'ADVANCED', '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'admin', 'admin@abv.bg');
+INSERT INTO users (id, age, full_name, level, password, username, email, enabled)
+VALUES (1, 28, 'Admin Adminov', 'ADVANCED', '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'admin', 'admin@abv.bg', true);
 
-INSERT INTO users (id, age, full_name, level, password, username, email)
-VALUES (2, 29, 'Moderator Moderatorov', 'INTERMEDIATE', '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370','moderator', 'moderator@abv.bg');
+INSERT INTO users (id, age, full_name, level, password, username, email,enabled)
+VALUES (2, 29, 'Moderator Moderatorov', 'INTERMEDIATE', '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370','moderator', 'moderator@abv.bg', true);
 
-INSERT INTO users (id, age, full_name, level, password, username, email)
-VALUES (3, 30, 'User Userov', 'BEGINNER', '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'user', 'user@abv.bg');
+INSERT INTO users (id, age, full_name, level, password, username, email, enabled)
+VALUES (3, 30, 'User Userov', 'BEGINNER', '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'user', 'user@abv.bg', true);
 
-INSERT INTO users (id, age, full_name, level, password, username, email)
-VALUES (4, 33, 'Ivan Ivanov', 'BEGINNER', '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'ivan', 'ivan@abv.bg');
+INSERT INTO users (id, age, full_name, level, password, username, email, enabled)
+VALUES (4, 33, 'Ivan Ivanov', 'BEGINNER', '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'ivan', 'ivan@abv.bg', false);
 -- user roles
 -- admin
 INSERT INTO users_roles (`user_id`, `role_id`)
