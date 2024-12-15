@@ -18,13 +18,13 @@ public class UserProfileController {
     this.modelMapper = modelMapper;
   }
 
-  @GetMapping("/users/profile/{id}")
+  @GetMapping("/users/profile")
   public String profilePage(@PathVariable Long id, Model model) {
-
-    UserProfileViewModel userViewModel =
-            this.modelMapper.map(this.userService.findUserServiceById(id), UserProfileViewModel.class);
-
-    model.addAttribute("userViewModel", userViewModel);
+  //TODO - inject Principal
+//    UserProfileViewModel userViewModel =
+//            this.modelMapper.map(this.userService.findUserServiceById(id), UserProfileViewModel.class);
+//
+//    model.addAttribute("userViewModel", userViewModel);
 
     return "profile";
   }
