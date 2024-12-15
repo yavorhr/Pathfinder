@@ -11,19 +11,19 @@
         <div class="row g-3 align-items-center">
 
             <form
-                    th:object="${userLoginBindingModel}"
                     th:action="@{/users/login}"
                     th:method="POST">
                 <div>
                     <div class="col-auto">
-                        <label for="inputUsername" class="col-form-label ">Username</label>
+                        <label for="inputEmail" class="col-form-label ">Email</label>
                     </div>
                     <div class="col-auto">
                         <input type="text"
-                               th:field="*{username}"
-                               id="inputUsername"
+                               name="email"
+                               id="inputEmail"
                                class="form-control"
-                               aria-describedby="usernameHelpInline">
+                               placeholder="Email"
+                               aria-describedby="emailHelpInline">
                     </div>
                 </div>
                 <div>
@@ -32,8 +32,8 @@
                     </div>
                     <div class="col-auto">
                         <input
+                                name="password"
                                 type="password"
-                                th:field="*{password}"
                                 id="inputPassword" class="form-control"
                                 aria-describedby="passwordHelpInline">
                     </div>
@@ -41,16 +41,8 @@
                 <div class="d-flex justify-content-center mt-2">
                     <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
                 </div>
-                <div class="col-auto text-center mt-3 text-center"
-                     th:if="${#fields.hasGlobalErrors()}">
-                    <small class="errors alert alert-danger"
-                           th:each="error : ${#fields.globalErrors()}">
-                        <span th:text="${error}"></span>
-                    </small>
-                </div>
             </form>
         </div>
-
     </div>
 </main>
 
