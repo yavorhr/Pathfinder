@@ -1,8 +1,6 @@
-package com.example.pathfinder.service.impl;
+package com.example.pathfinder.util.cloudinary;
 
 import com.cloudinary.Cloudinary;
-import com.example.pathfinder.service.CloudinaryImage;
-import com.example.pathfinder.service.CloudinaryService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,4 +1,4 @@
-package com.example.pathfinder.service;
+package com.example.pathfinder.util.cloudinary;
 
 public class CloudinaryImage {
   private String url;

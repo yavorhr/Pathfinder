@@ -2,8 +2,8 @@ package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.binding.PictureAddBindingModel;
 import com.example.pathfinder.model.service.PictureAddServiceModel;
-import com.example.pathfinder.service.CloudinaryImage;
-import com.example.pathfinder.service.CloudinaryService;
+import com.example.pathfinder.util.cloudinary.CloudinaryImage;
+import com.example.pathfinder.util.cloudinary.CloudinaryService;
 import com.example.pathfinder.service.PictureService;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;

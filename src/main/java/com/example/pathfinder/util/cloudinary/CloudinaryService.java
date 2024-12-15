@@ -1,5 +1,6 @@
-package com.example.pathfinder.service;
+package com.example.pathfinder.util.cloudinary;
 
+import com.example.pathfinder.util.cloudinary.CloudinaryImage;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
