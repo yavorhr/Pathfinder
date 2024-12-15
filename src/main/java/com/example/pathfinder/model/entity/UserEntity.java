@@ -15,8 +15,10 @@ public class UserEntity extends BaseEntity {
   private String password;
   private String username;
   private Set<UserRoleEntity> roles;
+  private boolean enabled;
 
   public UserEntity() {
+    this.enabled = false;
   }
 
   @Column
@@ -44,11 +46,15 @@ public class UserEntity extends BaseEntity {
     return password;
   }
 
-  @Column(unique = true,nullable = false)
+  @Column(unique = true, nullable = false)
   public String getUsername() {
     return username;
   }
 
+  @Column(nullable = false, name = "enabled")
+  public boolean isEnabled() {
+    return enabled;
+  }
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
@@ -88,5 +94,8 @@ public class UserEntity extends BaseEntity {
     return this;
   }
 
-
+  public UserEntity setEnabled(boolean enabled) {
+    this.enabled = enabled;
+    return this;
+  }
 }
