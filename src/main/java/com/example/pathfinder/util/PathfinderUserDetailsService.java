@@ -1,5 +1,4 @@
 package com.example.pathfinder.util;
-
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,18 +29,21 @@ public class PathfinderUserDetailsService implements UserDetailsService {
     return mapToUserDetails(userEntity);
   }
 
-  private UserDetails mapToUserDetails(UserEntity user) {
+  private UserDetails mapToUserDetails(UserEntity userEntity) {
     Set<GrantedAuthority> grantedAuthorities =
-            user.
+            userEntity.
                     getRoles().
                     stream().
                     map(r -> new SimpleGrantedAuthority("ROLE_" + r.getRole().name())).
                     collect(Collectors.toUnmodifiableSet());
 
     return new User(
-            user.getEmail(),
-            user.getPassword(),
+            userEntity.getEmail(),
+            userEntity.getPassword(),
+            true,
+            true,
+            true,
+            userEntity.isEnabled(),
             grantedAuthorities);
   }
-
 }
