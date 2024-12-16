@@ -1,4 +1,4 @@
-package com.example.pathfinder.util;
+package com.example.pathfinder.service.impl;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
