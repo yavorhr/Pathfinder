@@ -3,10 +3,18 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="fragments/head :: head(additionalCss='/css/navigation/admin-panel.css')">
 </head>
+
+
+<!--<head th:replace="fragments/head :: head(additionalCss='/css/navigation/admin-panel.css,/css/navigation/admin-panel.css')">-->
+<!--If mulitple CSS need to be passed-->
+<!--<th:block th:if="${additionalCss != null}">-->
+<!--    <th:block th:each="css : ${#strings.split(additionalCss, ',')}">-->
+<!--        <link rel="stylesheet" th:href="@{${css.trim()}}"/>-->
+<!--    </th:block>-->
+<!--</th:block>-->
+
 <body>
 <header
         th:fragment="navbar">
@@ -17,10 +25,21 @@
                     <a href="/routes/add">Add new route</a>
                 </li>
                 <li>
-                    <a th:href="/users/profile">Profile</a>
+                    <a href="/users/profile">Profile</a>
                 </li>
-                <li sec:authorize="hasRole('ADMIN')">>
-                    <a href="/admin">Admin</a>
+                <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+                    <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+                    <div class="dropdown-menu">
+                        <div>
+                            <a class="dropdown-item" th:href="@{/admin/statistics}">Statistics</a>
+                        </div>
+                        <div>
+                            <a class="dropdown-item" th:href="@{/admin/notifications}">Notifications</a>
+                        </div>
+                    </div>
                 </li>
                 <li>
                     <a href="/users/logout">Logout</a>
@@ -45,4 +64,5 @@
     </nav>
 </header>
 </body>
+<script src="/js/navigation/toggleAdminPanel.js"></script>
 </html>
