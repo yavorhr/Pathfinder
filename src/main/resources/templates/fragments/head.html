@@ -1,12 +1,9 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+
 <body>
 
-<head th:fragment="head">
+<head th:fragment="head(additionalCss)">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Pathfinder</title>
@@ -20,7 +17,11 @@
           crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
             integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-            crossorigin=""></script>
+            crossorigin="">
+    </script>
+    <th:block th:if="${additionalCss != null}">
+        <link rel="stylesheet" th:href="@{${additionalCss}}"/>
+    </th:block>
 </head>
 
 </body>
