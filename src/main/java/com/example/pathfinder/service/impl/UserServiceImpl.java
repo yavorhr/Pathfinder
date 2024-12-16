@@ -9,7 +9,9 @@ import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.UserService;
+import com.example.pathfinder.service.events.UserRegisteredEvent;
 import org.modelmapper.ModelMapper;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,11 +22,13 @@ public class UserServiceImpl implements UserService {
   private final UserRepository userRepository;
   private final ModelMapper modelMapper;
   private final UserRolesService userRolesService;
+  private final ApplicationEventPublisher eventPublisher;
 
-  public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserRolesService userRolesService) {
+  public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserRolesService userRolesService, ApplicationEventPublisher eventPublisher) {
     this.userRepository = userRepository;
     this.modelMapper = modelMapper;
     this.userRolesService = userRolesService;
+    this.eventPublisher = eventPublisher;
   }
 
   @Override
@@ -33,7 +37,9 @@ public class UserServiceImpl implements UserService {
     user.setLevel(LevelEnum.BEGINNER);
     UserRoleEntity roleEntity = this.userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.USER);
     user.setRoles(Set.of(roleEntity));
-    //TODO: Admin will grant USER ROLE from the Admin panel
+//TODO - to add user to be able to change from Admin Controller : level and role
+    eventPublisher.publishEvent(new UserRegisteredEvent(this, user.getId(), user.getUsername(), serviceModel.getEmail()));
+
     this.userRepository.save(user);
   }
 
