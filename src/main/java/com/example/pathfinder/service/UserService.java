@@ -17,4 +17,6 @@ public interface UserService {
   boolean isUserNameAvailable(String username);
 
   boolean isEmailAvailable(String email);
+
+  void deleteUser(String email);
 }

@@ -67,4 +67,9 @@ public class UserServiceImpl implements UserService {
   public boolean isEmailAvailable(String email) {
     return this.userRepository.findByEmail(email).isEmpty();
   }
+
+  @Override
+  public void deleteUser(String email) {
+    this.userRepository.deleteByEmail(email);
+  }
 }
