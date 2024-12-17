@@ -1,7 +1,12 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/head :: head(additionalCss='/css/admin/notifications.css')">
+<head th:fragment="head(additionalCss)">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <link rel="stylesheet" href="/css/admin/notifications.css"/>
 </head>
 
 <body>
@@ -50,5 +55,5 @@
     </table>
 </div>
 </body>
-<script src="/js/admin/notifications.js" ></script>
+<script src="/js/admin/notifications.js"></script>
 </html>
