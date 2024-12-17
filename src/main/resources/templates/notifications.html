@@ -25,7 +25,7 @@
         <tbody>
         <tr th:each="n :${notifications}" th:object="${n}">
             <td th:text="*{username}">test2</td>
-            <td th:text="*{email}">test@abv.bg</td>
+            <td id="email" th:text="*{email}">test@abv.bg</td>
             <td th:text="*{registeredOn != null ? #temporals.format(registeredOn, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}">
                 formatted date
             </td>
@@ -50,4 +50,5 @@
     </table>
 </div>
 </body>
+<script src="/js/admin/notifications.js" ></script>
 </html>
