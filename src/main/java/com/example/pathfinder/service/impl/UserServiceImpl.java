@@ -14,6 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Set;
 
@@ -37,8 +38,8 @@ public class UserServiceImpl implements UserService {
     user.setLevel(LevelEnum.BEGINNER);
     UserRoleEntity roleEntity = this.userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.USER);
     user.setRoles(Set.of(roleEntity));
-//TODO - to add user to be able to change from Admin Controller : level and role
-    eventPublisher.publishEvent(new UserRegisteredEvent(this, user.getId(), user.getUsername(), serviceModel.getEmail()));
+
+    eventPublisher.publishEvent(new UserRegisteredEvent(this, LocalDateTime.now(), serviceModel.getUsername(), serviceModel.getEmail()));
 
     this.userRepository.save(user);
   }
