@@ -1,6 +1,6 @@
 package com.example.pathfinder.web;
 
-import com.example.pathfinder.service.events.AdminNotificationService;
+import com.example.pathfinder.service.AdminNotificationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
