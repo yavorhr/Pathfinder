@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head :: head(additionalCss='/css/admin/notifications.css')">
+</head>
+
+<body>
+<div class="container">
+  <h1 class="admin-header">Admin Notifications</h1>
+
+  <!-- Clear Notifications Button -->
+  <button class="clear-btn">Clear Notifications</button>
+
+  <!-- Notifications Table -->
+  <table class="notifications-table">
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>User ID</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>test2</td>
+      <td>test@abv.bg</td>
+      <td>null</td>
+      <td>
+        <!-- Action Buttons -->
+        <button class="delete-btn">Delete User</button>
+
+        <select class="role-select">
+          <option value="Admin">Admin</option>
+          <option value="Moderator" selected>Moderator</option>
+          <option value="User">User</option>
+        </select>
+
+        <button class="enable-btn">Enable User</button>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
