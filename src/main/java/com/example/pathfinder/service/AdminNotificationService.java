@@ -7,4 +7,6 @@ import java.util.Collection;
 public interface AdminNotificationService {
 
   Collection<NotificationViewModel> getNotifications();
+
+  void deleteNotification(String email);
 }

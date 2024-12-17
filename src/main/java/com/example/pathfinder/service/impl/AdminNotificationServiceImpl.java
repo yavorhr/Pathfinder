@@ -33,4 +33,9 @@ public class AdminNotificationServiceImpl implements AdminNotificationService {
             .map(n -> this.modelMapper.map(n, NotificationViewModel.class))
             .collect(Collectors.toList());
   }
+
+  @Override
+  public void deleteNotification(String email) {
+    this.notificationRepository.deleteByEmail(email);
+  }
 }
