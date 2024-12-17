@@ -1,9 +1,6 @@
 package com.example.pathfinder.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -55,5 +52,15 @@ public class Notification extends BaseEntity {
   public Notification setModified(LocalDateTime modified) {
     this.modified = modified;
     return this;
+  }
+
+  @PrePersist
+  private void preCreate() {
+    setRegisteredOn(LocalDateTime.now());
+  }
+
+  @PreUpdate
+  private void preUpdate() {
+    setModified(LocalDateTime.now());
   }
 }
