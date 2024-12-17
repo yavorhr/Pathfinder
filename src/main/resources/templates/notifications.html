@@ -1,47 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/head :: head(additionalCss='/css/admin/notifications.css')">
 </head>
 
 <body>
 <div class="container">
-  <h1 class="admin-header">Admin Notifications</h1>
+    <h1 class="admin-header">Admin Notifications</h1>
 
-  <!-- Clear Notifications Button -->
-  <button class="clear-btn">Clear Notifications</button>
+    <!-- Clear Notifications Button -->
+    <button class="clear-btn">Clear Notifications</button>
 
-  <!-- Notifications Table -->
-  <table class="notifications-table">
-    <thead>
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>User ID</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>test2</td>
-      <td>test@abv.bg</td>
-      <td>null</td>
-      <td>
-        <!-- Action Buttons -->
-        <button class="delete-btn">Delete User</button>
+    <!-- Notifications Table -->
+    <table class="notifications-table">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Created</th>
+            <th>Last modified</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="n :${notifications}" th:object="${n}">
+            <td th:text="*{username}">test2</td>
+            <td th:text="*{email}">test@abv.bg</td>
+            <td th:text="*{registeredOn != null ? #temporals.format(registeredOn, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}">
+                formatted date
+            </td>
+            <td th:text="*{modified != null ? #temporals.format(modified, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}">
+                formatted date
+            </td>
+            <td>
+                <!-- Action Buttons -->
+                <button class="delete-btn">Delete User</button>
 
-        <select class="role-select">
-          <option value="Admin">Admin</option>
-          <option value="Moderator" selected>Moderator</option>
-          <option value="User">User</option>
-        </select>
+                <select class="role-select">
+                    <option value="Admin">Admin</option>
+                    <option value="Moderator" selected>Moderator</option>
+                    <option value="User">User</option>
+                </select>
 
-        <button class="enable-btn">Enable User</button>
-      </td>
-    </tr>
+                <button class="enable-btn">Enable User</button>
+            </td>
+        </tr>
 
-    </tbody>
-  </table>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
