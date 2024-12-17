@@ -8,6 +8,8 @@ import com.example.pathfinder.service.events.UserRegisteredEvent;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -34,6 +36,7 @@ public class AdminNotificationServiceImpl implements AdminNotificationService {
             .collect(Collectors.toList());
   }
 
+  @Transactional
   @Override
   public void deleteNotification(String email) {
     this.notificationRepository.deleteByEmail(email);
