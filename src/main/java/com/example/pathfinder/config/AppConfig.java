@@ -3,9 +3,12 @@ package com.example.pathfinder.config;
 import com.cloudinary.Cloudinary;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import java.util.Map;
 
 @Configuration
+@EnableTransactionManagement
 public class AppConfig {
 
   private final CloudinaryConfig config;
