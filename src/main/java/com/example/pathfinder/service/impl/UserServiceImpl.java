@@ -45,14 +45,6 @@ public class UserServiceImpl implements UserService {
     this.userRepository.save(user);
   }
 
-  @Override
-  public UserProfileServiceModel findUserServiceById(Long id) {
-    return
-            this.userRepository
-                    .findById(id)
-                    .map(user -> this.modelMapper.map(user, UserProfileServiceModel.class))
-                    .orElse(null);
-  }
 
   @Override
   public Optional<UserEntity> findById(Long id) {
@@ -73,5 +65,10 @@ public class UserServiceImpl implements UserService {
   @Transactional
   public void deleteUser(String email) {
     this.userRepository.deleteByEmail(email);
+  }
+
+  @Override
+  public Optional<UserEntity> findByEmail(String email) {
+    return this.userRepository.findByEmail(email);
   }
 }

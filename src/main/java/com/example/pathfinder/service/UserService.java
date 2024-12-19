@@ -10,8 +10,6 @@ public interface UserService {
 
   void registerUser(UserRegisterServiceModel map);
 
-  UserProfileServiceModel findUserServiceById(Long id);
-
   Optional<UserEntity> findById(Long id);
 
   boolean isUserNameAvailable(String username);
@@ -19,4 +17,6 @@ public interface UserService {
   boolean isEmailAvailable(String email);
 
   void deleteUser(String email);
+
+ Optional<UserEntity> findByEmail(String email);
 }
