@@ -1,47 +1,37 @@
 package com.example.pathfinder.model.service;
 
 public class CommentServiceModel {
-  private boolean approved;
-  private String textContent;
-  private Long authorId;
   private Long routeId;
+  private String message;
+  private String creatorEmail;
 
   public CommentServiceModel() {
-  }
-
-  public boolean isApproved() {
-    return approved;
-  }
-
-  public CommentServiceModel setApproved(boolean approved) {
-    this.approved = approved;
-    return this;
-  }
-
-  public String getTextContent() {
-    return textContent;
-  }
-
-  public CommentServiceModel setTextContent(String textContent) {
-    this.textContent = textContent;
-    return this;
-  }
-
-  public Long getAuthorId() {
-    return authorId;
-  }
-
-  public CommentServiceModel setAuthorId(Long authorId) {
-    this.authorId = authorId;
-    return this;
   }
 
   public Long getRouteId() {
     return routeId;
   }
 
+  public String getMessage() {
+    return message;
+  }
+
+  public String getCreatorEmail() {
+    return creatorEmail;
+  }
+
   public CommentServiceModel setRouteId(Long routeId) {
     this.routeId = routeId;
+    return this;
+  }
+
+  public CommentServiceModel setMessage(String message) {
+    this.message = message;
+    return this;
+  }
+
+  public CommentServiceModel setCreatorEmail(String creatorEmail) {
+    this.creatorEmail = creatorEmail;
     return this;
   }
 }
