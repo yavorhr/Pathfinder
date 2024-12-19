@@ -5,9 +5,6 @@
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script src="/js/gpx.js"></script> <!-- Local reference -->
-<script src="/js/track.js"></script>
-<script src="/js/toggleButton.js"></script>
 
 <body>
 
@@ -128,56 +125,49 @@
         </section>
         <section class="comments">
             <h1>Comments</h1>
-
-<!--            <th:block th:if="${@currentUser.isLoggedIn()}">-->
-<!--                <div th:if="${@currentUser.getId()} != *{authorId}">-->
-                    <!-- Comments submission -->
-                    <form id="commentForm"
-                          method="POST"
-                          th:action="@{/add/comment(id=*{id})}">
-                        <div class="form-group">
-                            <h4>Leave a comment</h4>
-                            <label for="message">Message</label>
-                            <textarea
-                                    th:field="*{textContent}"
-                                    id="message"
-                                    cols="30"
-                                    rows="5"
-                                    class="form-control"
-                                    style="background-color: white;"></textarea>
-                            <small id="messageError" class="invalid-feedback">
-                                Message should be at least 10 characters.
-                            </small>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="submit"
-                                   class="btn"
-                                   id="postComment"
-                                   value="Post Comment"/>
-                        </div>
-                    </form>
-                    <!-- Comments submission -->
+            Comments submission
+            <form id="commentForm"
+                  method="POST"
+                  th:action="@{/add/comment(id=*{id})}">
+                <div class="form-group">
+                    <input type="hidden" th:id="${routeDetails.id}">
+                    <h4>Leave a comment</h4>
+                    <label for="message">Message</label>
+                    <textarea
+                            th:field="*{description}"
+                            id="message"
+                            cols="30"
+                            rows="5"
+                            class="form-control"
+                            style="background-color: white;"></textarea>
+                    <small id="messageError" class="invalid-feedback">
+                        Message should be at least 10 characters.
+                    </small>
                 </div>
-<!--            </th:block>-->
+                <div class="form-group">
+                    <input type="submit"
+                           class="btn"
+                           id="postComment"
+                           value="Post Comment"/>
+                </div>
+            </form>
+            <!-- Comments submission -->
+            <!-- All comments, filled with JS -->
+            <div id="commentCtnr">
 
-            <!-- All comments section -->
-            <div>
-
-                <span id="commentCtnr"><!-- Comments section, filled in by script --></span>
             </div>
             <!-- EO: All comments section -->
         </section>
         <p style="visibility: hidden">GPX Download: <a id="gpxDownload"></a></p>
     </div>
-
-
-    <!--    <script th:src="@{/js/comments.js}"></script>-->
-    <!--
-    -->
 </div>
 
 <footer th:replace="fragments/footer"></footer>
 
 </body>
+<script src="/js/comments.js"></script>
+<script src="/js/gpx.js"></script> <
+<script src="/js/track.js"></script>
+<script src="/js/toggleButton.js"></script>
+
 </html>
