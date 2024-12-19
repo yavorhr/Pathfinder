@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
   private final AdminNotificationService notificationService;
   private final UserService userService;
-  private final AdminNotificationService adminNotificationService;
 
-  public AdminController(AdminNotificationService notificationService, UserService userService, AdminNotificationService adminNotificationService) {
+  public AdminController(AdminNotificationService notificationService, UserService userService) {
     this.notificationService = notificationService;
     this.userService = userService;
-    this.adminNotificationService = adminNotificationService;
   }
 
   @GetMapping("/admin/notifications")
