@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,10 +46,13 @@ public class CommentServiceImpl implements CommentService {
   private CommentViewModel mapToViewComment(Comment commentEntity) {
     CommentViewModel commentViewModel = new CommentViewModel();
 
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    String formattedCreationDate = commentEntity.getCreated().format(formatter);
+
     commentViewModel.
             setCommentId(commentEntity.getId()).
             setApproved(commentEntity.isApproved()).
-            setCreated(commentEntity.getCreated()).
+            setCreated(formattedCreationDate).
             setTextContent(commentEntity.getTextContent()).
             setAuthor(commentEntity.getAuthor().getFullName());
 
