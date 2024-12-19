@@ -3,7 +3,6 @@ package com.example.pathfinder.model.view;
 import com.example.pathfinder.model.entity.Category;
 import com.example.pathfinder.model.entity.Picture;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
-
 import java.util.Set;
 
 public class RouteDetailsViewModel {
@@ -18,7 +17,6 @@ public class RouteDetailsViewModel {
   private Set<Picture> pictures;
   private String authorFullName;
   private Integer distance;
-
 
   public RouteDetailsViewModel() {
   }
