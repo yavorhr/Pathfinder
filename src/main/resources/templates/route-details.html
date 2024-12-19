@@ -1,10 +1,8 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/head"></head>
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<head th:replace="fragments/head :: head(additionalCss='/css/route-details/comments.css')">
+</head>
 
 <body>
 
@@ -128,13 +126,15 @@
             Comments submission
             <form id="commentForm"
                   method="POST"
-                  th:action="@{/add/comment(id=*{id})}">
+                  th:action="@{/api/{routeId}/comments(routeId=${routeDetails.id})}">
                 <div class="form-group">
-                    <input type="hidden" th:id="${routeDetails.id}">
+                    <input type="hidden"
+                           id="route_id"
+                           th:value="${routeDetails.id}">
                     <h4>Leave a comment</h4>
                     <label for="message">Message</label>
                     <textarea
-                            th:field="*{description}"
+                            name="message"
                             id="message"
                             cols="30"
                             rows="5"
@@ -153,9 +153,9 @@
             </form>
             <!-- Comments submission -->
             <!-- All comments, filled with JS -->
-            <div id="commentCtnr">
+            <ul id="commentCtnr">
 
-            </div>
+            </ul>
             <!-- EO: All comments section -->
         </section>
         <p style="visibility: hidden">GPX Download: <a id="gpxDownload"></a></p>
@@ -165,9 +165,9 @@
 <footer th:replace="fragments/footer"></footer>
 
 </body>
-<script src="/js/comments.js"></script>
-<script src="/js/gpx.js"></script> <
-<script src="/js/track.js"></script>
-<script src="/js/toggleButton.js"></script>
+<script src="/js/routeDetails/comments.js"></script>
+<script src="/js/routeDetails/gpx.js"></script>
+<script src="/js/routeDetails/track.js"></script>
+<script src="/js/routeDetails/toggleButton.js"></script>
 
 </html>
