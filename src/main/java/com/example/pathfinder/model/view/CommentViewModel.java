@@ -1,7 +1,5 @@
 package com.example.pathfinder.model.view;
 
-import java.time.LocalDateTime;
-
 public class CommentViewModel {
   private Long commentId;
   private String textContent;
