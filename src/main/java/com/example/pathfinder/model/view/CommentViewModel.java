@@ -6,8 +6,13 @@ public class CommentViewModel {
   private String author;
   private String created;
   private boolean approved;
+  private boolean canModify;
 
   public CommentViewModel() {
+  }
+
+  public boolean isCanModify() {
+    return canModify;
   }
 
   public Long getCommentId() {
@@ -56,4 +61,8 @@ public class CommentViewModel {
     return this;
   }
 
+  public CommentViewModel setCanModify(boolean canModify) {
+    this.canModify = canModify;
+    return this;
+  }
 }
