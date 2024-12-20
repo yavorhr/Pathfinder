@@ -32,11 +32,12 @@ public class CommentRestController {
     return ResponseEntity.ok(commentService.getAllComments(routeId));
   }
 
-  @PostMapping("/api/{routeId}/comments")
+  @PostMapping("/api/{routeId}/add-comment")
   public ResponseEntity<CommentViewModel> newComment(
           @AuthenticationPrincipal UserDetails principal,
           @PathVariable Long routeId,
           @RequestBody @Valid NewCommentBindingModel newCommentBindingModel) {
+
     CommentServiceModel serviceModel =
             modelMapper.map(newCommentBindingModel, CommentServiceModel.class);
 
