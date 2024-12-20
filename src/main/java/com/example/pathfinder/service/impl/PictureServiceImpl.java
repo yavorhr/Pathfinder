@@ -50,7 +50,7 @@ public class PictureServiceImpl implements PictureService {
     picture.setPublicId(pictureAddServiceModel.getPublicId());
     picture.setAuthor(this.userService.findById(pictureAddServiceModel.getAuthorId()).get());
     picture.setTitle(pictureAddServiceModel.getTitle());
-    picture.setRoute(this.routeService.findById(pictureAddServiceModel.getRouteId()).get());
+    picture.setRoute(this.routeService.findRouteById(pictureAddServiceModel.getRouteId()).get());
 
     return picture;
   }
