@@ -11,6 +11,7 @@ import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,7 @@ public class CommentServiceImpl implements CommentService {
   @Transactional
   public List<CommentViewModel> getAllComments(Long routeId) {
     var routeOpt = routeService.
-            findById(routeId);
+            findRouteById(routeId);
 
     if (routeOpt.isEmpty()) {
       throw new ObjectNotFoundException("Route with id " + routeId + " was not found!");
@@ -54,7 +55,7 @@ public class CommentServiceImpl implements CommentService {
     Objects.requireNonNull(serviceModel.getCreatorEmail());
 
     var route = routeService.
-            findById(serviceModel.getRouteId()).
+            findRouteById(serviceModel.getRouteId()).
             orElseThrow(() -> new ObjectNotFoundException("Route with id " + serviceModel.getRouteId() + " not found!"));
 
     var author = userService.
