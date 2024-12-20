@@ -126,7 +126,7 @@
             Comments submission
             <form id="commentForm"
                   method="POST"
-                  th:action="@{/api/{routeId}/comments(routeId=${routeDetails.id})}">
+                  th:action="@{/api/{routeId}/add-comment(routeId=${routeDetails.id})}">
                 <div class="form-group">
                     <input type="hidden"
                            id="route_id"
