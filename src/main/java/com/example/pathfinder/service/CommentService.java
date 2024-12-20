@@ -9,4 +9,5 @@ public interface CommentService {
   List<CommentViewModel> getAllComments(Long routeId);
 
   CommentViewModel createComment(CommentServiceModel serviceModel);
+
 }
