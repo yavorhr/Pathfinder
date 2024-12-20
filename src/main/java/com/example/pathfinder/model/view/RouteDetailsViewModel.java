@@ -13,12 +13,16 @@ public class RouteDetailsViewModel {
   private LevelEnum level;
   private String name;
   private String videoUrl;
-  private Set<Category> categories;
   private Set<Picture> pictures;
   private String authorFullName;
   private Integer distance;
+  private boolean canModify;
 
   public RouteDetailsViewModel() {
+  }
+
+  public boolean isCanModify() {
+    return canModify;
   }
 
   public Long getAuthorId() {
@@ -86,15 +90,6 @@ public class RouteDetailsViewModel {
     return this;
   }
 
-  public Set<Category> getCategories() {
-    return categories;
-  }
-
-  public RouteDetailsViewModel setCategories(Set<Category> categories) {
-    this.categories = categories;
-    return this;
-  }
-
   public Set<Picture> getPictures() {
     return pictures;
   }
@@ -121,6 +116,11 @@ public class RouteDetailsViewModel {
 
   public RouteDetailsViewModel setId(Long id) {
     this.id = id;
+    return this;
+  }
+
+  public RouteDetailsViewModel setCanModify(boolean canModify) {
+    this.canModify = canModify;
     return this;
   }
 }
