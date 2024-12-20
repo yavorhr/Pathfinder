@@ -7,6 +7,8 @@ import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.service.RouteService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -44,10 +46,14 @@ public class RouteController {
   }
 
   @GetMapping("/routes/details/{id}")
-  public String getRouteDetailsPage(@PathVariable Long id, Model model) {
-    RouteDetailsViewModel route = this.modelMapper.map(this.routeService.findById(id).get(), RouteDetailsViewModel.class);
-    model.addAttribute("routeDetails", route);
+  public String getRouteDetailsPage(@PathVariable Long id, Model model,
+                                    @AuthenticationPrincipal UserDetails principal) {
+    RouteDetailsViewModel route =
+            this.modelMapper.map(
+                    this.routeService.findRouteByIdWithCanModifyProperty(principal.getUsername(), id),
+                    RouteDetailsViewModel.class);
 
+    model.addAttribute("routeDetails", route);
     return "route-details";
   }
 
@@ -55,7 +61,7 @@ public class RouteController {
   @GetMapping("/routes/add")
   public String getAddRoutePage() {
 
-    //TODO
+    //TODO With @PreAuthorize
 //    if (!currentUser.isLoggedIn()) {
 //      return "redirect:/users/login";
 //    }
