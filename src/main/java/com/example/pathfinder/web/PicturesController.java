@@ -7,12 +7,13 @@ import com.example.pathfinder.util.cloudinary.CloudinaryService;
 import com.example.pathfinder.service.PictureService;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.io.IOException;
+import java.security.Principal;
 
 @Controller
 public class PicturesController {
@@ -26,8 +27,9 @@ public class PicturesController {
     this.modelMapper = modelMapper;
   }
 
+  @PreAuthorize("@routeServiceImpl.isOwner(#principal.name, #bindingModel.routeId)")
   @PostMapping("/pictures/add")
-  public String addPicture(PictureAddBindingModel bindingModel) throws IOException {
+  public String addPicture(PictureAddBindingModel bindingModel, Principal principal) throws IOException {
 
     CloudinaryImage uploaded = this.cloudinaryService.upload(bindingModel.getPicture());
 
