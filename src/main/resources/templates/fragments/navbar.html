@@ -22,27 +22,30 @@
         <ul>
             <th:block sec:authorize="isAuthenticated()">
                 <li>
-                    <a href="/routes/add">Add new route</a>
+                    <a class="btn btn-link nav-link" href="/routes/add">Add new route</a>
                 </li>
                 <li>
-                    <a href="/users/profile">Profile</a>
+                    <a class="btn btn-link nav-link" href="/users/profile ">Profile</a>
                 </li>
                 <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
+                    <a class="dropdown-toggle btn btn-link nav-link " href="/" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Admin
                     </a>
                     <div class="dropdown-menu">
                         <div>
-                            <a class="dropdown-item" th:href="@{/admin/statistics}">Statistics</a>
+                            <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/statistics}">Statistics</a>
                         </div>
                         <div>
-                            <a class="dropdown-item" th:href="@{/admin/notifications}">Notifications</a>
+                            <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/notifications}">Notifications</a>
                         </div>
                     </div>
                 </li>
                 <li>
-                    <a href="/users/logout">Logout</a>
+                    <form id="logout-form" th:action="@{/users/logout}"
+                          th:method="post">
+                        <input class="btn btn-link nav-link" type="submit" value="Logout">
+                    </form>
                 </li>
             </th:block>
 
