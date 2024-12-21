@@ -7,7 +7,7 @@ import java.util.List;
 public interface PictureService {
   List<String> findPictureUrls();
 
-  void addPicture(PictureAddServiceModel uploaded);
+  void addPicture(PictureAddServiceModel uploaded, Long id);
 
   void deletePicture(String publicId);
 }
