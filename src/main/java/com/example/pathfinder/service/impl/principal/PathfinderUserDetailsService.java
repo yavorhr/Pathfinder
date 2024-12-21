@@ -1,10 +1,9 @@
-package com.example.pathfinder.service.impl;
+package com.example.pathfinder.service.impl.principal;
 
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

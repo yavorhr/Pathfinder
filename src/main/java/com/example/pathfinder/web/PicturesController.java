@@ -2,7 +2,7 @@ package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.binding.PictureAddBindingModel;
 import com.example.pathfinder.model.service.PictureAddServiceModel;
-import com.example.pathfinder.service.impl.PathfinderUser;
+import com.example.pathfinder.service.impl.principal.PathfinderUser;
 import com.example.pathfinder.util.cloudinary.CloudinaryImage;
 import com.example.pathfinder.util.cloudinary.CloudinaryService;
 import com.example.pathfinder.service.PictureService;
@@ -10,13 +10,11 @@ import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.io.IOException;
-import java.security.Principal;
 
 @Controller
 public class PicturesController {
