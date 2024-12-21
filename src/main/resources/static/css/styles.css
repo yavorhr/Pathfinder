@@ -60,7 +60,7 @@ img {
     grid-template-columns: repeat(4, 1fr);
 }
 
-.main-nav a {
+.main-nav a, #logout-form input {
     background: var(--primary);
     display: block;
     text-decoration: none;
@@ -72,9 +72,18 @@ img {
     box-shadow: var(--shadow);
 }
 
-.main-nav a:hover {
+#logout-form input {
+    width: 100%;
+}
+
+.main-nav a:hover, #logout-form input:hover {
     background: var(--dark);
     color: var(--light);
+}
+
+.dropdown-menu {
+    top: 80%;
+    padding: 0;
 }
 
 /* Top Container */
