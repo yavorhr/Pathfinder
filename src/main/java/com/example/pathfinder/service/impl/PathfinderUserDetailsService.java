@@ -1,4 +1,5 @@
 package com.example.pathfinder.service.impl;
+
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -37,7 +39,8 @@ public class PathfinderUserDetailsService implements UserDetailsService {
                     map(r -> new SimpleGrantedAuthority("ROLE_" + r.getRole().name())).
                     collect(Collectors.toUnmodifiableSet());
 
-    return new User(
+    return new PathfinderUser(
+            userEntity.getId(),
             userEntity.getEmail(),
             userEntity.getPassword(),
             true,
