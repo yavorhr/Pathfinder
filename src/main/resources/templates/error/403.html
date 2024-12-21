@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access denied</title>
+    <link rel="stylesheet" href="/css/error/403.css">
+</head>
+
+<body>
+<div class="scene">
+    <div class="overlay"></div>
+    <div class="overlay"></div>
+    <div class="overlay"></div>
+    <div class="overlay"></div>
+    <span class="bg-403">403</span>
+    <div class="text">
+        <span class="hero-text"></span>
+        <span class="msg">you are <span>not allowed</span>to do this.</span>
+        <span class="support">
+      <a th:href="@{/}">Return to home page</a>
+    </span>
+    </div>
+    <div class="lock"></div>
+</div>
+</body>
+</html>
