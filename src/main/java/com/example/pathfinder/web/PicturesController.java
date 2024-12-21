@@ -2,12 +2,15 @@ package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.binding.PictureAddBindingModel;
 import com.example.pathfinder.model.service.PictureAddServiceModel;
+import com.example.pathfinder.service.impl.PathfinderUser;
 import com.example.pathfinder.util.cloudinary.CloudinaryImage;
 import com.example.pathfinder.util.cloudinary.CloudinaryService;
 import com.example.pathfinder.service.PictureService;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,16 +30,16 @@ public class PicturesController {
     this.modelMapper = modelMapper;
   }
 
-  @PreAuthorize("@routeServiceImpl.isOwner(#principal.name, #bindingModel.routeId)")
+  @PreAuthorize("@routeServiceImpl.isOwner(#principal.username, #bindingModel.routeId)")
   @PostMapping("/pictures/add")
-  public String addPicture(PictureAddBindingModel bindingModel, Principal principal) throws IOException {
+  public String addPicture(PictureAddBindingModel bindingModel, @AuthenticationPrincipal PathfinderUser principal) throws IOException {
 
     CloudinaryImage uploaded = this.cloudinaryService.upload(bindingModel.getPicture());
 
     PictureAddServiceModel serviceModel =
             mapToPictureServiceModel(uploaded, bindingModel);
 
-    this.pictureService.addPicture(serviceModel);
+    this.pictureService.addPicture(serviceModel, principal.getId());
 
     return "redirect:/routes/details/" + bindingModel.getRouteId();
   }
