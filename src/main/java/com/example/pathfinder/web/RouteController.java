@@ -45,12 +45,20 @@ public class RouteController {
     return "routes";
   }
 
+  @GetMapping("/routes/{category}")
+  public String getRoutesPerCategory(@PathVariable String category, Model model) {
+    List<RouteViewModel> allRoutes = this.routeService.findAllByCategory(category);
+    model.addAttribute("routes", allRoutes);
+    model.addAttribute("category", category);
+
+    return "route-category";
+  }
+
   @GetMapping("/routes/details/{id}")
   public String getRouteDetailsPage(@PathVariable Long id, Model model,
                                     @AuthenticationPrincipal UserDetails principal) {
     RouteDetailsViewModel route =
-            this.modelMapper.map(
-                    this.routeService.findRouteByIdWithCanModifyProperty(principal.getUsername(), id),
+            this.modelMapper.map(this.routeService.findRouteByIdWithCanModifyProperty(principal.getUsername(), id),
                     RouteDetailsViewModel.class);
 
     model.addAttribute("routeDetails", route);
