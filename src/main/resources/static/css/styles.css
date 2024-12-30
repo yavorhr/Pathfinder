@@ -76,6 +76,11 @@ img {
     width: 100%;
 }
 
+.rounded-circle {
+    max-width: 70%;
+    height: 300px;
+}
+
 .main-nav a:hover, #logout-form input:hover {
     background: var(--dark);
     color: var(--light);
@@ -169,6 +174,12 @@ img {
     grid-row: auto;
 }
 
+.route-card{
+    ;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+}
 
 /* Portfolio */
 .gallery {
