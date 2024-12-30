@@ -13,7 +13,9 @@
             <div class="route-card"
                  th:style="|background-image: url('${r.pictureUrl}')|">
                 <h2 th:text="*{name}" >Title</h2>
-                <p th:text="*{description}" >Very long description</p>
+                <p th:text="*{description.length() > 50
+                ? #strings.substring(description, 0, 20) + '...'
+                : description}" >Very long description</p>
                 <a th:href="@{/routes/{id}(id=*{id})}" class="btn">Learn More</a>
             </div>
         </div>
