@@ -42,13 +42,7 @@ public class RouteServiceImpl implements RouteService {
   public List<RouteViewModel> findAllRoutes() {
     return this.routeRepository.findAll()
             .stream()
-            .map(e -> {
-              RouteViewModel viewModel = this.modelMapper.map(e, RouteViewModel.class);
-
-              viewModel.setPictureUrl(e.getPictures().isEmpty() ? "/images/pic4" : e.getPictures().stream().findAny().get().getUrl());
-
-              return viewModel;
-            })
+            .map(this::mapToViewModel)
             .collect(Collectors.toList());
   }
 
@@ -105,6 +99,22 @@ public class RouteServiceImpl implements RouteService {
             route.getAuthor().getEmail().equals(authorEmail);
   }
 
+  @Override
+  public List<RouteViewModel> findAllByCategory(String category) {
+    Category categoryEntity = this.categoryService
+            .findByName(CategoryEnum.valueOf(category.toUpperCase()))
+            .orElseThrow(() -> new ObjectNotFoundException("Category with name " + category + " was not found!"));
+
+    List<Route> routes = this.routeRepository
+            .findAllByCategories(Set.of(categoryEntity))
+            .orElseThrow(() -> new ObjectNotFoundException("No routes found in category : " + category));
+
+    return routes
+            .stream()
+            .map(this::mapToViewModel)
+            .collect(Collectors.toList());
+  }
+
   private boolean isAdmin(UserEntity user) {
     return user.
             getRoles().
@@ -123,5 +133,13 @@ public class RouteServiceImpl implements RouteService {
     });
 
     return categoriesSet;
+  }
+
+  private RouteViewModel mapToViewModel(Route r) {
+    RouteViewModel viewModel = this.modelMapper.map(r, RouteViewModel.class);
+
+    viewModel.setPictureUrl(r.getPictures().isEmpty() ? "/images/pic4" : r.getPictures().stream().findAny().get().getUrl());
+
+    return viewModel;
   }
 }
