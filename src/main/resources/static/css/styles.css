@@ -169,13 +169,12 @@ img {
     box-shadow: var(--shadow);
     display: grid;
     grid-gap: 30px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     padding: 3rem;
     grid-row: auto;
 }
 
 .route-card{
-    ;
     background-size: cover;
     background-position: center;
     height: 300px;
