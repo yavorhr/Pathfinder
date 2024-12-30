@@ -19,4 +19,6 @@ public interface RouteService {
   boolean findRouteByName(String name);
 
   boolean isOwner(String authorEmail, Long routeId);
+
+  List<RouteViewModel> findAllByCategory(String category);
 }
