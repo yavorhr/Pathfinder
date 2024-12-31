@@ -4,26 +4,30 @@
 <head th:replace="fragments/head"></head>
 
 <body>
-<div class="wrapper">
+<div class="wrapper route-wrapper">
     <!-- Navigation -->
     <header th:replace="fragments/navbar"></header>
 
-    <section class="road">
-        <div th:each="r : ${routes}" th:object="${r}">
-            <div class="route-card"
-                 th:style="|background-image: url('${r.pictureUrl}')|">
-                <h2 th:text="*{name}" >Title</h2>
-                <p th:text="*{description.length() > 50
-                ? #strings.substring(description, 0, 20) + '...'
-                : description}" >Very long description</p>
-                <a th:href="@{/routes/{id}(id=*{id})}" class="btn">Learn More</a>
-            </div>
-        </div>
-    </section>
-    <section>
-        <img class="rounded-circle w-75 ml-5"
+    <section class="category-front-img" >
+        <img class="rounded-circle"
              th:src="@{'/images/route-categories/' + ${category} + '.jpg'}" alt="Title image">
     </section>
+
+    <section class="container">
+        <div class="card__container" th:each="r : ${routes}" th:object="${r}">
+            <article class="card__article">
+                <img th:src="*{pictureUrl}" alt="image" class="card__img">
+
+                <div class="card__data">
+                    <span th:text="*{description.length() > 30 ? #strings.substring(description, 0, 20) + '...': description}"
+                          class="card__description">Vancouver Mountains, Canada</span>
+                    <h2 th:text="*{name}" class="card__title">The Great Path</h2>
+                    <a th:href="@{/routes/{id}(id=*{id})}" class="card__button">Read More</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
 </div>
 
 </body>
