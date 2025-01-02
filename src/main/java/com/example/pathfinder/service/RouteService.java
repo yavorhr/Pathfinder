@@ -21,4 +21,6 @@ public interface RouteService {
   boolean isOwner(String authorEmail, Long routeId);
 
   List<RouteViewModel> findAllByCategory(String category);
+
+  RouteDetailsServiceModel findMostCommentedRoute();
 }

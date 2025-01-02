@@ -8,7 +8,6 @@ import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import com.example.pathfinder.model.service.AddRouteServiceModel;
 import com.example.pathfinder.model.service.RouteDetailsServiceModel;
-import com.example.pathfinder.model.view.RouteDetailsViewModel;
 import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.repository.RouteRepository;
 import com.example.pathfinder.service.CategoryService;
@@ -16,6 +15,8 @@ import com.example.pathfinder.service.RouteService;
 import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -113,6 +114,14 @@ public class RouteServiceImpl implements RouteService {
             .stream()
             .map(this::mapToViewModel)
             .collect(Collectors.toList());
+  }
+
+  @Override
+  public RouteDetailsServiceModel findMostCommentedRoute() {
+    Pageable topOne = PageRequest.of(0, 1); // Fetch only the first result
+    Route mostCommentedRoute = routeRepository.findMostCommentedRoute(topOne).get(0);
+    return this.modelMapper.map(mostCommentedRoute, RouteDetailsServiceModel.class);
+
   }
 
   private boolean isAdmin(UserEntity user) {
