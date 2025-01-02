@@ -9,9 +9,6 @@
     --text-color: hsl(0, 0%, 35%);
     --body-color: hsl(0, 0%, 95%);
     --container-color: hsl(0, 0%, 100%);
-
-    /*========== Font and typography ==========*/
-    /*.5rem = 8px | 1rem = 16px ...*/
     --body-font: "Poppins", sans-serif;
     --h2-font-size: 1.25rem;
     --small-font-size: .813rem;
@@ -46,17 +43,6 @@ body {
     grid-gap: 20px;
     justify-content: center;
     align-content: center;
-}
-
-/* Button class */
-.main-btn {
-    text-decoration: none;
-    color: #0b2e13;
-}
-
-.main-btn:hover {
-    text-decoration: none;
-
 }
 
 /* Navigation */
@@ -173,6 +159,41 @@ body {
     box-shadow: var(--shadow);
 }
 
+/* Routes categories buttons */
+.main-btn {
+    text-decoration: none;
+    color: #0b2e13;
+}
+
+.main-btn:hover {
+    text-decoration: none;
+}
+
+.main-btn:hover .box {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Flip effect for the image */
+.flip-img {
+    transition: transform 0.6s ease;
+}
+
+/* Flip the image on hover */
+.main-btn:hover .flip-img {
+    transform: rotateY(180deg); /* Horizontal flip */
+}
+
+/* Info */
+.road {
+    background: var(--primary);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    grid-row: auto;
+}
+
 /* ========== Route Category Page ========== */
 /* 1. Category image and quotation */
 .category-front-img {
@@ -222,7 +243,7 @@ body {
     gap: 70px;
     place-items: center;
     justify-content: center;
-    align-content: center;
+    align-content: start;
 }
 
 .card__container {
