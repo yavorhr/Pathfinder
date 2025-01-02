@@ -173,9 +173,8 @@ body {
     box-shadow: var(--shadow);
 }
 
-/*=============== CARD ===============*/
-
-/* Style the container for alignment and spacing */
+/* ========== Route Category Page ========== */
+/* 1. Category image and quotation */
 .category-front-img {
     display: flex;
     align-items: center;
@@ -214,6 +213,8 @@ body {
     line-height: 1.4;
     max-width: 600px;
 }
+
+/* 2. Card */
 
 .container {
     display: grid;
@@ -338,12 +339,9 @@ body {
     }
 }
 
-
-/*=============== BREAKPOINTS ===============*/
+/* ========== Card Responsive design ========== */
 /* For small devices */
 @media screen and (max-width: 340px) {
-
-
     .card__data {
         width: 250px;
         padding: 1rem;
@@ -375,7 +373,15 @@ body {
     }
 }
 
-/* Portfolio */
+@media screen and (min-width: 1120px) {
+    :root {
+        --h2-font-size: 1.5rem;
+        --small-font-size: .875rem;
+    }
+}
+/* ============= Route Details Page ============= */
+
+/* 1. Images gallery */
 .gallery {
     display: grid;
     grid-gap: 20px;
@@ -385,44 +391,6 @@ body {
 .gallery img {
     width: 100%;
     box-shadow: var(--shadow);
-}
-
-/* Footer */
-footer {
-    margin-top: 2rem;
-    background: var(--dark);
-    color: var(--light);
-    text-align: center;
-    padding: 1rem;
-}
-
-/* About */
-.info {
-    display: grid;
-    grid-gap: 2rem;
-    grid-template-columns: 1fr 1fr 1fr;
-    background-color: #005cbf;
-    color: white;
-    padding: 5rem;
-    border-radius: 5rem;
-}
-
-.info div {
-    text-align: center;
-}
-
-.info div:nth-child(1) {
-    background-image: url("/images/pic4.jpg");
-    background-size: cover;
-    border-bottom-right-radius: 5rem;
-    border-top-left-radius: 5rem;
-}
-
-.info div:nth-child(3) {
-    background-image: url("/images/pic1.jpg");
-    background-size: cover;
-    border-bottom-left-radius: 5rem;
-    border-top-right-radius: 5rem;
 }
 
 .details-main {
@@ -489,10 +457,38 @@ footer {
     border-radius: 10px;
 }
 
+/* ============= About Page ============= */
 
-/*
-    CSS for profile
- */
+.info {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #005cbf;
+    color: white;
+    padding: 5rem;
+    border-radius: 5rem;
+}
+
+.info div {
+    text-align: center;
+}
+
+.info div:nth-child(1) {
+    background-image: url("/images/pic4.jpg");
+    background-size: cover;
+    border-bottom-right-radius: 5rem;
+    border-top-left-radius: 5rem;
+}
+
+.info div:nth-child(3) {
+    background-image: url("/images/pic1.jpg");
+    background-size: cover;
+    border-bottom-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+}
+
+/* ============= Profile Page ============= */
+
 body {
     background-color: rgba(0, 0, 0, 6);
 }
@@ -606,10 +602,12 @@ Delete button Route details
     padding: 5px 10px;
 }
 
-/*========== Responsive typography ==========*/
-@media screen and (min-width: 1120px) {
-    :root {
-        --h2-font-size: 1.5rem;
-        --small-font-size: .875rem;
-    }
+/* Footer */
+footer {
+    margin-top: 2rem;
+    background: var(--dark);
+    color: var(--light);
+    text-align: center;
+    padding: 1rem;
 }
+
