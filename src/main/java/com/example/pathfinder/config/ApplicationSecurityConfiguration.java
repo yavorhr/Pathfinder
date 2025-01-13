@@ -31,7 +31,7 @@ public class ApplicationSecurityConfiguration {
             authz.
                     requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                     requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll().
-                    requestMatchers("/", "/about", "/users/login", "/users/register", "/logger/**", "/routes/**", "/api/*/comments").permitAll().
+                    requestMatchers("/", "/about", "/users/login", "/users/register", "/logger/**", "/routes/**", "/routes/details/**", "/api/*/comments").permitAll().
                     requestMatchers("/admin/**").hasRole(UserRoleEnum.ADMIN.name()).
                     requestMatchers("/**").authenticated())
             .formLogin(form -> form.
