@@ -400,6 +400,7 @@ body {
         --small-font-size: .875rem;
     }
 }
+
 /* ============= Route Details Page ============= */
 
 /* 1. Images gallery */
@@ -418,6 +419,13 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.details-main-single-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 20px;
     grid-auto-rows: minmax(100px, auto);
 }
 
@@ -451,7 +459,7 @@ body {
 
 .route-description {
     grid-column: 2/4;
-    grid-row: 2;
+    grid-row: inherit;
 }
 
 .comments {
@@ -628,4 +636,6 @@ footer {
     text-align: center;
     padding: 1rem;
 }
+
+
 
