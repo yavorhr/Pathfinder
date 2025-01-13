@@ -28,7 +28,7 @@ public class PicturesController {
     this.modelMapper = modelMapper;
   }
 
-  @PreAuthorize("@routeServiceImpl.isOwner(#principal.username, #bindingModel.routeId)")
+  @PreAuthorize("@routeServiceImpl.isOwnerOrIsAdmin(#principal.username, #bindingModel.routeId)")
   @PostMapping("/pictures/add")
   public String addPicture(PictureAddBindingModel bindingModel,
                            @AuthenticationPrincipal PathfinderUser principal) throws IOException {
