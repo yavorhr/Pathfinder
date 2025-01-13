@@ -30,7 +30,8 @@ public class PicturesController {
 
   @PreAuthorize("@routeServiceImpl.isOwner(#principal.username, #bindingModel.routeId)")
   @PostMapping("/pictures/add")
-  public String addPicture(PictureAddBindingModel bindingModel, @AuthenticationPrincipal PathfinderUser principal) throws IOException {
+  public String addPicture(PictureAddBindingModel bindingModel,
+                           @AuthenticationPrincipal PathfinderUser principal) throws IOException {
 
     CloudinaryImage uploaded = this.cloudinaryService.upload(bindingModel.getPicture());
 

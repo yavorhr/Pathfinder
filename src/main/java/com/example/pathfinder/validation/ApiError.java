@@ -18,10 +18,6 @@ public class ApiError {
     return status;
   }
 
-  public void addFieldWithError(String error) {
-    fieldWithErrors.add(error);
-  }
-
   public List<String> getFieldWithErrors() {
     return fieldWithErrors;
   }
@@ -29,5 +25,9 @@ public class ApiError {
   public ApiError setFieldWithErrors(List<String> fieldWithErrors) {
     this.fieldWithErrors = fieldWithErrors;
     return this;
+  }
+
+  public void addFieldWithError(String error) {
+    fieldWithErrors.add(error);
   }
 }
