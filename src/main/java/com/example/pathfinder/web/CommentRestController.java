@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -32,6 +33,7 @@ public class CommentRestController {
     return ResponseEntity.ok(commentService.getAllComments(routeId));
   }
 
+  @PreAuthorize("@routeServiceImpl.isNotOwnerOrIsAdmin(#principal.username, #routeId)")
   @PostMapping("/api/{routeId}/add-comment")
   public ResponseEntity<CommentViewModel> newComment(
           @AuthenticationPrincipal UserDetails principal,
@@ -58,7 +60,9 @@ public class CommentRestController {
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<ApiError> onValidationFailure(MethodArgumentNotValidException exc) {
     ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
-    exc.getFieldErrors().forEach(fe ->
+
+    exc.getFieldErrors()
+            .forEach(fe ->
             apiError.addFieldWithError(fe.getField()));
 
     return ResponseEntity.badRequest().body(apiError);
