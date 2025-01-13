@@ -70,10 +70,14 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
-  public Long addNewRoute(AddRouteServiceModel routeServiceModel) {
+  public Long addNewRoute(AddRouteServiceModel routeServiceModel, String email) {
     Route route = this.modelMapper.map(routeServiceModel, Route.class);
 
-    route.setAuthor(this.userService.findById(routeServiceModel.getAuthorId()).get());
+    var author = this.userService.findByEmail(email)
+            .orElseThrow(
+                    () -> new ObjectNotFoundException("Author with email " + email + " was not found!"));
+
+    route.setAuthor(author);
     route.setCategories(mapCategories(routeServiceModel.getCategories()));
 
     route = this.routeRepository.save(route);
@@ -87,18 +91,24 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
+  public boolean isOwnerOrIsAdmin(String authorEmail, Long routeId) {
+    return isOwner(authorEmail, routeId) || isAdmin(authorEmail);
+  }
+
+  @Override
+  public boolean isNotOwnerOrIsAdmin(String authorEmail, Long routeId) {
+    return !isOwner(authorEmail, routeId) || isAdmin(authorEmail);
+  }
+
+  @Override
   public boolean isOwner(String authorEmail, Long routeId) {
     var route = routeRepository.
             findById(routeId).
             orElseThrow(() -> new ObjectNotFoundException("Route with id " + routeId + " not found!"));
 
-    var author = userService.
-            findByEmail(authorEmail).
-            orElseThrow(() -> new ObjectNotFoundException("User with email " + authorEmail + " not found!"));
-
-    return isAdmin(author) ||
-            route.getAuthor().getEmail().equals(authorEmail);
+    return route.getAuthor().getEmail().equals(authorEmail);
   }
+
 
   @Override
   public List<RouteViewModel> findAllByCategory(String category) {
@@ -124,7 +134,13 @@ public class RouteServiceImpl implements RouteService {
 
   }
 
-  private boolean isAdmin(UserEntity user) {
+  // Helpers
+  private boolean isAdmin(String authorEmail) {
+    var user = userService.
+            findByEmail(authorEmail).
+            orElseThrow(() ->
+                    new ObjectNotFoundException("User with email " + authorEmail + " not found!"));
+
     return user.
             getRoles().
             stream().
@@ -132,7 +148,6 @@ public class RouteServiceImpl implements RouteService {
             anyMatch(r -> r == UserRoleEnum.ADMIN);
   }
 
-  // Helpers
   private Set<Category> mapCategories(Set<CategoryEnum> categoryEnums) {
     Set<Category> categoriesSet = new HashSet<>();
 
@@ -147,7 +162,9 @@ public class RouteServiceImpl implements RouteService {
   private RouteViewModel mapToViewModel(Route r) {
     RouteViewModel viewModel = this.modelMapper.map(r, RouteViewModel.class);
 
-    viewModel.setPictureUrl(r.getPictures().isEmpty() ? "/images/pic4" : r.getPictures().stream().findAny().get().getUrl());
+    viewModel.setPictureUrl(r.getPictures().isEmpty()
+            ? "/images/pic4"
+            : r.getPictures().stream().findAny().get().getUrl());
 
     return viewModel;
   }
