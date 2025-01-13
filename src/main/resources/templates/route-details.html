@@ -12,7 +12,9 @@
 
     <input type="hidden" name="routeId" id="routeId">
     <div
-            th:classappend="*{isVideoUrlAvailable()} ? 'details-main' : 'details-main-2-col'"
+            th:classappend="*{!isVideoUrlAvailable() && (gpxCoordinates == null || gpxCoordinates.isEmpty())}
+            ? 'details-main-single-row'
+            : 'details-main-3-col'"
             class="details-main">
         <section class="route-info text-center">
             <h4 th:text="*{name}" id="track-name"></h4>
@@ -76,8 +78,9 @@
         </section>
 
         <section
-                class="col-md-auto"
-                id="map">
+                th:if="*{gpxCoordinates != null && !gpxCoordinates.isEmpty()}"
+            class="col-md-auto"
+            id="map">
             <!-- Inject the GPX data as a global JavaScript variable -->
             <script
                     th:inline="javascript">
