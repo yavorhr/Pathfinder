@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -85,7 +86,8 @@ public class RouteController {
   }
 
   @PostMapping("/routes/add")
-  public String addRoute(@Valid RouteAddBindingModel routeAddBindingModel,
+  public String addRoute(@AuthenticationPrincipal UserDetails principal,
+                         @Valid RouteAddBindingModel routeAddBindingModel,
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes) throws IOException {
 
@@ -98,9 +100,8 @@ public class RouteController {
 
     AddRouteServiceModel routeServiceModel = this.modelMapper.map(routeAddBindingModel, AddRouteServiceModel.class);
     routeServiceModel.setGpxCoordinates(new String(routeAddBindingModel.getGpxCoordinates().getBytes()));
-//    routeServiceModel.setAuthorId(this.currentUser.getId());
 
-    Long id = routeService.addNewRoute(routeServiceModel);
+    Long id = routeService.addNewRoute(routeServiceModel, principal.getUsername());
 
     return "redirect:/routes/details/" + id;
   }
