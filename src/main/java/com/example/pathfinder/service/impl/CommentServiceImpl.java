@@ -20,7 +20,7 @@ public class CommentServiceImpl implements CommentService {
   private final CommentRepository commentRepository;
   private final RouteService routeService;
   private final UserService userService;
-  
+
   public CommentServiceImpl(CommentRepository commentRepository, RouteService routeService, UserService userService) {
     this.commentRepository = commentRepository;
     this.routeService = routeService;
