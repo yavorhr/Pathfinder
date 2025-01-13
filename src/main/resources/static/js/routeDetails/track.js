@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Load GPX data if available
         if (gpxData) {
-            var blob = new Blob([gpxData], { type: 'application/gpx+xml' });
+            var blob = new Blob([gpxData], {type: 'application/gpx+xml'});
             var url = URL.createObjectURL(blob);
 
             new L.GPX(url, {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     endIconUrl: 'https://unpkg.com/leaflet-gpx@1.6.1/images/pin-icon-end.png',
                     shadowUrl: 'https://unpkg.com/leaflet-gpx@1.6.1/images/pin-shadow.png'
                 }
-            }).on('loaded', function(e) {
+            }).on('loaded', function (e) {
                 map.fitBounds(e.target.getBounds()); // Adjust the map view to fit GPX data
             })
                 .addTo(map);
