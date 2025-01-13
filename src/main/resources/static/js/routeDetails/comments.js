@@ -99,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const errorMessage = await response.text();
             throw new Error(errorMessage);
         }
-
         return response.json();
     }
 });
