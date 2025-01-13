@@ -8,10 +8,8 @@ import com.example.pathfinder.service.CommentService;
 import com.example.pathfinder.service.RouteService;
 import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
@@ -21,14 +19,12 @@ import java.util.stream.Collectors;
 public class CommentServiceImpl implements CommentService {
   private final CommentRepository commentRepository;
   private final RouteService routeService;
-  private final ModelMapper modelMapper;
   private final UserService userService;
 
 
-  public CommentServiceImpl(CommentRepository commentRepository, RouteService routeService, ModelMapper modelMapper, UserService userService) {
+  public CommentServiceImpl(CommentRepository commentRepository, RouteService routeService, UserService userService) {
     this.commentRepository = commentRepository;
     this.routeService = routeService;
-    this.modelMapper = modelMapper;
     this.userService = userService;
   }
 
@@ -65,6 +61,7 @@ public class CommentServiceImpl implements CommentService {
     Comment newComment = new Comment();
 
     newComment.setApproved(true);
+    //TODO: Admin to approve comment
     newComment.setTextContent(serviceModel.getMessage());
     newComment.setRoute(route);
     newComment.setAuthor(author);
@@ -74,6 +71,7 @@ public class CommentServiceImpl implements CommentService {
     return mapToViewComment(savedComment);
   }
 
+  // Helpers
   private CommentViewModel mapToViewComment(Comment commentEntity) {
     CommentViewModel commentViewModel = new CommentViewModel();
 
