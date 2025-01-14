@@ -51,6 +51,8 @@ public class RouteAddBindingModel {
     return level;
   }
 
+  @Size(min = 11, max = 11)
+  @NotNull
   public String getVideoUrl() {
     return videoUrl;
   }
