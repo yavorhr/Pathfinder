@@ -7,15 +7,13 @@ import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.service.RouteService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
@@ -104,5 +102,14 @@ public class RouteController {
     Long id = routeService.addNewRoute(routeServiceModel, principal.getUsername());
 
     return "redirect:/routes/details/" + id;
+  }
+
+  @PreAuthorize("@routeServiceImpl.isOwnerOrIsAdmin(#principal.username, #routeId)")
+  @DeleteMapping("/routes/delete")
+  public String deleteRoute(@RequestParam Long routeId, @AuthenticationPrincipal UserDetails principal) {
+
+    this.routeService.deleteRouteById(routeId);
+
+    return "redirect:/routes";
   }
 }
