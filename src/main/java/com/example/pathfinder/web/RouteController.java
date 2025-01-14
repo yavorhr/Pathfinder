@@ -36,20 +36,18 @@ public class RouteController {
 
   // GET
   @GetMapping("/routes")
-  public String getRoutesPage(@AuthenticationPrincipal UserDetails principal,
-                              Model model) {
-    List<RouteViewModel> allRoutes = this.routeService.findAllRoutes(principal.getUsername());
+  public String getRoutesPage(Model model) {
+    List<RouteViewModel> allRoutes = this.routeService.findAllRoutes();
     model.addAttribute("routes", allRoutes);
 
     return "routes";
   }
 
   @GetMapping("/routes/{category}")
-  public String getRoutesPerCategory(@AuthenticationPrincipal UserDetails principal,
-                                     @PathVariable String category,
+  public String getRoutesPerCategory(@PathVariable String category,
                                      Model model) {
 
-    List<RouteViewModel> allRoutes = this.routeService.findAllByCategory(principal.getUsername(), category);
+    List<RouteViewModel> allRoutes = this.routeService.findAllByCategory(category);
 
     model.addAttribute("routes", allRoutes);
     model.addAttribute("category", category);
@@ -58,10 +56,12 @@ public class RouteController {
   }
 
   @GetMapping("/routes/details/{id}")
-  public String getRouteDetailsPage(@PathVariable Long id, Model model,
-                                    @AuthenticationPrincipal UserDetails principal) {
+  public String getRouteDetailsPage(@AuthenticationPrincipal UserDetails principal,
+                                    @PathVariable Long id,
+                                    Model model) {
     RouteDetailsViewModel route =
-            this.modelMapper.map(this.routeService.findRouteByIdWithCanModifyProperty(principal.getUsername(), id),
+            this.modelMapper.map(
+                    this.routeService.findRouteByIdWithCanModifyProperty(principal.getUsername(), id),
                     RouteDetailsViewModel.class);
 
     model.addAttribute("routeDetails", route);

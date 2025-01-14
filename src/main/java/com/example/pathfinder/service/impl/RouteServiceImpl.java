@@ -39,10 +39,10 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
-  public List<RouteViewModel> findAllRoutes(String email) {
+  public List<RouteViewModel> findAllRoutes() {
     return this.routeRepository.findAll()
             .stream()
-            .map(r -> mapToViewModel(r, email))
+            .map(this::mapToViewModel)
             .collect(Collectors.toList());
   }
 
@@ -110,7 +110,7 @@ public class RouteServiceImpl implements RouteService {
 
 
   @Override
-  public List<RouteViewModel> findAllByCategory(String email, String category) {
+  public List<RouteViewModel> findAllByCategory(String category) {
     Category categoryEntity = this.categoryService
             .findByName(CategoryEnum.valueOf(category.toUpperCase()))
             .orElseThrow(() -> new ObjectNotFoundException("Category with name " + category + " was not found!"));
@@ -121,7 +121,7 @@ public class RouteServiceImpl implements RouteService {
 
     return routes
             .stream()
-            .map(r -> mapToViewModel(r, email))
+            .map(this::mapToViewModel)
             .collect(Collectors.toList());
   }
 
@@ -168,10 +168,9 @@ public class RouteServiceImpl implements RouteService {
     return categoriesSet;
   }
 
-  private RouteViewModel mapToViewModel(Route r, String email) {
+  private RouteViewModel mapToViewModel(Route r) {
     RouteViewModel viewModel = this.modelMapper.map(r, RouteViewModel.class);
 
-    viewModel.setCanModify(isOwnerOrIsAdmin(email, r.getId()));
     viewModel.setPictureUrl(r.getPictures().isEmpty()
             ? "/images/pic4"
             : r.getPictures().stream().findAny().get().getUrl());
