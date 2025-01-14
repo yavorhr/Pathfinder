@@ -31,12 +31,12 @@ public class Route extends BaseEntity {
     return categories;
   }
 
-  @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "route", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
   public Set<Comment> getComments() {
     return comments;
   }
 
-  @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "route", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
   public Set<Picture> getPictures() {
     return pictures;
   }
