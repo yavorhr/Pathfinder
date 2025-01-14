@@ -134,6 +134,16 @@ public class RouteServiceImpl implements RouteService {
 
   }
 
+  @Override
+  public void deleteRouteById(Long routeId) {
+    Route route =
+            this.routeRepository
+                    .findById(routeId)
+                    .orElseThrow(() -> new ObjectNotFoundException("Route with id " + routeId + " was not found!"));
+
+    this.routeRepository.delete(route);
+  }
+
   // Helpers
   private boolean isAdmin(String authorEmail) {
     var user = userService.

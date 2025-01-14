@@ -28,4 +28,6 @@ public interface RouteService {
   boolean isNotOwnerOrIsAdmin(String authorEmail, Long routeId);
 
   RouteDetailsServiceModel findMostCommentedRoute();
+
+  void deleteRouteById(Long routeId);
 }
