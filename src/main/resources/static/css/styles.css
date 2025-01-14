@@ -200,6 +200,17 @@ body {
     width: 800px;
 }
 
+/* Delete Route Button position */
+.delete-route-form {
+    position: relative;
+}
+
+.delete-route-form button.btn-danger {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
 /* ========== Route Category Page ========== */
 /* 1. Category image and quotation */
 .category-front-img {
