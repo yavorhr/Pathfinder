@@ -36,16 +36,21 @@ public class RouteController {
 
   // GET
   @GetMapping("/routes")
-  public String getRoutesPage(Model model) {
-    List<RouteViewModel> allRoutes = this.routeService.findAllRoutes();
+  public String getRoutesPage(@AuthenticationPrincipal UserDetails principal,
+                              Model model) {
+    List<RouteViewModel> allRoutes = this.routeService.findAllRoutes(principal.getUsername());
     model.addAttribute("routes", allRoutes);
 
     return "routes";
   }
 
   @GetMapping("/routes/{category}")
-  public String getRoutesPerCategory(@PathVariable String category, Model model) {
-    List<RouteViewModel> allRoutes = this.routeService.findAllByCategory(category);
+  public String getRoutesPerCategory(@AuthenticationPrincipal UserDetails principal,
+                                     @PathVariable String category,
+                                     Model model) {
+
+    List<RouteViewModel> allRoutes = this.routeService.findAllByCategory(principal.getUsername(), category);
+
     model.addAttribute("routes", allRoutes);
     model.addAttribute("category", category);
 
