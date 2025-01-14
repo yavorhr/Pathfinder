@@ -10,18 +10,24 @@
      th:object="${routeDetails}">
     <header th:replace="fragments/navbar"></header>
 
-    <input type="hidden" name="routeId" id="routeId">
     <div class="details-main details-main-3-col">
         <section class="route-info text-center">
+            <form class="delete-route-form"
+                  th:method="DELETE"
+                  th:action="@{/routes/delete}">
+                <input type="hidden"
+                       name="routeId"
+                       th:value="*{id}"
+                       id="routeId">
+                <button th:if="*{canModify}" type="submit" class="btn btn-danger">Delete</button>
+            </form>
             <h4 th:text="*{name}" id="track-name"></h4>
             <p> Total distance: <span th:text="*{distance}" id="totalDistance"></span> km</p>
             <p>Author name: <span th:text="*{authorFullName}" id="authorName"></span></p>
             <h4 th:text="*{level.name()}">Difficulty Level (1-3):</h4>
             <div class="level">
-
                 <p><img class="level-img" src="/images/difficulty-level.png" alt="">
                 </p>
-
                 <p th:if="*{level.name() == 'INTERMEDIATE'}">
                     <img class="level-img" src="/images/difficulty-level.png" alt="">
                 </p>
