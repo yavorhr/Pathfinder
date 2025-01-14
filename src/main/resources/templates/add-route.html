@@ -30,14 +30,12 @@
                         id="inputName"
                         class="form-control"
                         aria-describedby="inputNameError">
-                <!--required minlength="5" maxlength="20"-->
                 <small
                         th:if="${#fields.hasErrors('name')}"
                         th:errors="*{name}"
                         id="inputNameError"
                         class="invalid-feedback errors alert alert-danger text-center">
                 </small>
-
             </div>
         </div>
 
@@ -54,9 +52,8 @@
                             aria-describedby="inputDescriptionError">
                     </textarea>
                 <small id="inputDescriptionError"
-                       class="invalid-feedback errors alert alert-danger text-center">Description length must be more
-                    than 5
-                    characters</small>
+                       class="invalid-feedback errors alert alert-danger text-center">
+                    Description length must be more than 5 characters</small>
             </div>
         </div>
 
@@ -68,6 +65,7 @@
                 <div class="d-flex justify-content-center">
                     <div class="form-group">
                         <input type="file"
+                               required
                                th:field="*{gpxCoordinates}"
                                th:errorclass="is-invalid"
                                id="inputGpx"
@@ -128,7 +126,11 @@
                         id="videoUrl"
                         type="text"
                         th:field="*{videoUrl}"
+                        th:errorclass="is-invalid"
                         class="form-control" placeholder="Video url">
+                <small id="inputVideoUrl"
+                       class="invalid-feedback errors alert alert-danger text-center">
+                    Please add the last 11 characters from youtube link</small>
             </div>
         </div>
         <div class="flex-column justify-content-center align-items-center">

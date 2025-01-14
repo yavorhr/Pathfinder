@@ -11,11 +11,7 @@
     <header th:replace="fragments/navbar"></header>
 
     <input type="hidden" name="routeId" id="routeId">
-    <div
-            th:classappend="*{!isVideoUrlAvailable() && (gpxCoordinates == null || gpxCoordinates.isEmpty())}
-            ? 'details-main-single-row'
-            : 'details-main-3-col'"
-            class="details-main">
+    <div class="details-main details-main-3-col">
         <section class="route-info text-center">
             <h4 th:text="*{name}" id="track-name"></h4>
             <p> Total distance: <span th:text="*{distance}" id="totalDistance"></span> km</p>
@@ -34,53 +30,53 @@
                     <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
                     <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
                 </th:block>
-
             </div>
-            <div>
-                <h4>Select picture</h4>
-                <form
-                        th:action="@{/pictures/add}"
-                        th:method="post"
-                        enctype="multipart/form-data">
-                    <input
-                            type="hidden"
-                            name="routeId"
-                            th:value="*{id}">
-                    <div class="form-group">
-                        <label>
-                            <input
-                                    placeholder="Picture title"
-                                    type="text"
-                                    id="title"
-                                    name="title">
-                        </label>
-                    </div>
-                    <div class="image-upload">
-                        <label for="picture">
-                            <img src="/images/add-img.png" alt=""/>
-                        </label>
+            <th:block th:if="*{canModify}">
+                <div>
+                    <h4>Select picture</h4>
+                    <form
+                            th:action="@{/pictures/add}"
+                            th:method="post"
+                            enctype="multipart/form-data">
                         <input
-                                hidden
-                                id="picture"
-                                type="file"
-                                name="picture"
-                                onchange="toggleButtonState()"/>
-                    </div>
-                    <div class="form-group">
-                        <button
-                                id="upload-btn"
-                                class="btn-primary rounded"
-                                disabled>Upload Picture
-                        </button>
-                    </div>
-                </form>
-            </div>
+                                type="hidden"
+                                name="routeId"
+                                th:value="*{id}">
+                        <div class="form-group">
+                            <label>
+                                <input
+                                        placeholder="Picture title"
+                                        type="text"
+                                        id="title"
+                                        name="title">
+                            </label>
+                        </div>
+                        <div class="image-upload">
+                            <label for="picture">
+                                <img src="/images/add-img.png" alt=""/>
+                            </label>
+                            <input
+                                    hidden
+                                    id="picture"
+                                    type="file"
+                                    name="picture"
+                                    onchange="toggleButtonState()"/>
+                        </div>
+                        <div class="form-group">
+                            <button
+                                    id="upload-btn"
+                                    class="btn-primary rounded"
+                                    disabled>Upload Picture
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </th:block>
         </section>
 
         <section
-                th:if="*{gpxCoordinates != null && !gpxCoordinates.isEmpty()}"
-            class="col-md-auto"
-            id="map">
+                class="col-md-auto"
+                id="map">
             <!-- Inject the GPX data as a global JavaScript variable -->
             <script
                     th:inline="javascript">
