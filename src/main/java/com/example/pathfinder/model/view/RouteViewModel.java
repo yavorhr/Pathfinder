@@ -5,8 +5,13 @@ public class RouteViewModel {
   private String name;
   private String description;
   private String pictureUrl;
+  private boolean canModify;
 
   public RouteViewModel() {
+  }
+
+  public boolean isCanModify() {
+    return canModify;
   }
 
   public Long getId() {
@@ -42,6 +47,11 @@ public class RouteViewModel {
 
   public RouteViewModel setPictureUrl(String pictureUrl) {
     this.pictureUrl = pictureUrl;
+    return this;
+  }
+
+  public RouteViewModel setCanModify(boolean canModify) {
+    this.canModify = canModify;
     return this;
   }
 }
