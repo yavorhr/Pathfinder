@@ -1,6 +1,5 @@
 package com.example.pathfinder.model.view;
 
-import com.example.pathfinder.model.entity.Category;
 import com.example.pathfinder.model.entity.Picture;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import java.util.Set;
