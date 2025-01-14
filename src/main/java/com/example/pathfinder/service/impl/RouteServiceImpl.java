@@ -2,7 +2,6 @@ package com.example.pathfinder.service.impl;
 
 import com.example.pathfinder.model.entity.Category;
 import com.example.pathfinder.model.entity.Route;
-import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
@@ -40,10 +39,10 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
-  public List<RouteViewModel> findAllRoutes() {
+  public List<RouteViewModel> findAllRoutes(String email) {
     return this.routeRepository.findAll()
             .stream()
-            .map(this::mapToViewModel)
+            .map(r -> mapToViewModel(r, email))
             .collect(Collectors.toList());
   }
 
@@ -111,7 +110,7 @@ public class RouteServiceImpl implements RouteService {
 
 
   @Override
-  public List<RouteViewModel> findAllByCategory(String category) {
+  public List<RouteViewModel> findAllByCategory(String email, String category) {
     Category categoryEntity = this.categoryService
             .findByName(CategoryEnum.valueOf(category.toUpperCase()))
             .orElseThrow(() -> new ObjectNotFoundException("Category with name " + category + " was not found!"));
@@ -122,7 +121,7 @@ public class RouteServiceImpl implements RouteService {
 
     return routes
             .stream()
-            .map(this::mapToViewModel)
+            .map(r -> mapToViewModel(r, email))
             .collect(Collectors.toList());
   }
 
@@ -169,9 +168,10 @@ public class RouteServiceImpl implements RouteService {
     return categoriesSet;
   }
 
-  private RouteViewModel mapToViewModel(Route r) {
+  private RouteViewModel mapToViewModel(Route r, String email) {
     RouteViewModel viewModel = this.modelMapper.map(r, RouteViewModel.class);
 
+    viewModel.setCanModify(isOwnerOrIsAdmin(email, r.getId()));
     viewModel.setPictureUrl(r.getPictures().isEmpty()
             ? "/images/pic4"
             : r.getPictures().stream().findAny().get().getUrl());

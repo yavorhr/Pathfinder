@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RouteService {
-  List<RouteViewModel> findAllRoutes();
+  List<RouteViewModel> findAllRoutes(String username);
 
   Optional<Route> findRouteById(Long id);
 
@@ -21,7 +21,7 @@ public interface RouteService {
 
   boolean isOwner(String authorEmail, Long routeId);
 
-  List<RouteViewModel> findAllByCategory(String category);
+  List<RouteViewModel> findAllByCategory(String s, String category);
 
   boolean isOwnerOrIsAdmin(String authorEmail, Long routeId);
 
