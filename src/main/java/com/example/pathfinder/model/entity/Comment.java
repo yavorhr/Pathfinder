@@ -2,6 +2,7 @@ package com.example.pathfinder.model.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "comments")
@@ -11,8 +12,21 @@ public class Comment extends BaseEntity {
   private String textContent;
   private UserEntity author;
   private Route route;
+  private Comment parentCommentId;
+  private List<Comment> replies;
 
   public Comment() {
+  }
+
+  @ManyToOne
+  @JoinColumn(name = "parent_comment_id")
+  public Comment getParentCommentId() {
+    return parentCommentId;
+  }
+
+  @OneToMany(mappedBy = "parentCommentId", cascade = CascadeType.ALL)
+  public List<Comment> getReplies() {
+    return replies;
   }
 
   @Column(nullable = false)
@@ -58,6 +72,16 @@ public class Comment extends BaseEntity {
 
   public void setRoute(Route route) {
     this.route = route;
+  }
+
+  public Comment setReplies(List<Comment> replies) {
+    this.replies = replies;
+    return this;
+  }
+
+  public Comment setParentCommentId(Comment parentCommentId) {
+    this.parentCommentId = parentCommentId;
+    return this;
   }
 
   @PrePersist
