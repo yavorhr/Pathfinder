@@ -3,10 +3,11 @@ package com.example.pathfinder.web;
 import com.example.pathfinder.model.view.UserProfileViewModel;
 import com.example.pathfinder.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class UserProfileController {
@@ -19,12 +20,14 @@ public class UserProfileController {
   }
 
   @GetMapping("/users/profile")
-  public String profilePage(@PathVariable Long id, Model model) {
-  //TODO - inject Principal
-//    UserProfileViewModel userViewModel =
-//            this.modelMapper.map(this.userService.findUserServiceById(id), UserProfileViewModel.class);
-//
-//    model.addAttribute("userViewModel", userViewModel);
+  public String profilePage(@AuthenticationPrincipal UserDetails principal,
+                            Model model) {
+
+    UserProfileViewModel userViewModel =
+            this.modelMapper.map(this.userService.findByEmail(principal.getUsername()),
+                    UserProfileViewModel.class);
+
+    model.addAttribute("userViewModel", userViewModel);
 
     return "profile";
   }
