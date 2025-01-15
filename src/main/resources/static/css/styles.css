@@ -47,16 +47,30 @@ body {
 
 /* Navigation */
 .main-nav ul {
-    display: grid;
-    grid-gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0;
+    margin: 0;
     list-style: none;
-    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
 }
 
-.main-nav a, #logout-form input {
+.main-nav ul .nav-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-nav .nav-item a, #logout-form input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     background: var(--primary);
-    display: block;
     text-decoration: none;
     padding: 0.8rem;
     text-align: center;
@@ -66,8 +80,44 @@ body {
     box-shadow: var(--shadow);
 }
 
-#logout-form input {
+/* Home button */
+.home-nav-item{
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-nav-item a{
+    background-color: transparent;
+}
+
+.navbar-icon {
+    padding: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.navbar-icon:hover{
+    width: 80px;
+    height: 80px;
+    border-color: black;
+    background-color: white;
+    transform: scale(1.1); 
+}
+
+/* Logout button */
+#logout-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .rounded-circle {
@@ -75,7 +125,7 @@ body {
     height: 300px;
 }
 
-.main-nav a:hover, #logout-form input:hover {
+.main-nav .nav-item a:hover, #logout-form input:hover {
     background: var(--dark);
     color: var(--light);
 }
@@ -454,7 +504,7 @@ body {
 .route-info {
     grid-column: 1;
     grid-row: 1/3;
-    position:relative;
+    position: relative;
 }
 
 /* Delete Route Button position */

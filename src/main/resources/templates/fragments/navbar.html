@@ -20,11 +20,18 @@
         th:fragment="navbar">
     <nav class="main-nav">
         <ul>
+            <li class="home-nav-item">
+                <a class="btn btn-link nav-link" href="/">
+                    <img src="/images/home.png"
+                         alt="home"
+                         class="navbar-icon">
+                </a>
+            </li>
             <th:block sec:authorize="isAuthenticated()">
-                <li>
+                <li class="nav-item">
                     <a class="btn btn-link nav-link" href="/routes/add">Add new route</a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a class="btn btn-link nav-link" href="/users/profile ">Profile</a>
                 </li>
                 <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
@@ -41,25 +48,23 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <form id="logout-form" th:action="@{/users/logout}"
-                          th:method="post">
+                <li class="nav-item">
+                    <form id="logout-form"
+                          th:action="@{/users/logout}"
+                          th:method="POST">
                         <input class="btn btn-link nav-link" type="submit" value="Logout">
                     </form>
                 </li>
             </th:block>
 
             <th:block sec:authorize="!isAuthenticated()">
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
+                <li class="nav-item">
                     <a href="/users/login">Login</a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a href="/users/register">Register</a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a href="/about">About</a>
                 </li>
             </th:block>
