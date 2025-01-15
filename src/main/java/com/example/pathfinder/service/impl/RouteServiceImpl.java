@@ -126,11 +126,14 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
-  public RouteDetailsServiceModel findMostCommentedRoute() {
+  public RouteDetailsServiceModel findMostCommentedRoute(String email) {
     Pageable topOne = PageRequest.of(0, 1); // Fetch only the first result
     Route mostCommentedRoute = routeRepository.findMostCommentedRoute(topOne).get(0);
-    return this.modelMapper.map(mostCommentedRoute, RouteDetailsServiceModel.class);
 
+    var routeDetailsServiceModel = this.modelMapper.map(mostCommentedRoute, RouteDetailsServiceModel.class);
+    routeDetailsServiceModel.setCanModify(isOwnerOrIsAdmin(email, mostCommentedRoute.getId()));
+
+    return routeDetailsServiceModel;
   }
 
   @Override

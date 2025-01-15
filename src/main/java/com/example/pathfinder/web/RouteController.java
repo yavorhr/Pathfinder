@@ -69,8 +69,12 @@ public class RouteController {
   }
 
   @GetMapping("/routes/most-commented")
-  public String getMostCommentedRoute(Model model) {
-    RouteDetailsViewModel viewModel = this.modelMapper.map(this.routeService.findMostCommentedRoute(), RouteDetailsViewModel.class);
+  public String getMostCommentedRoute(@AuthenticationPrincipal UserDetails principal ,
+                                      Model model) {
+    var viewModel = this.modelMapper.map(
+            this.routeService.findMostCommentedRoute(principal.getUsername()),
+            RouteDetailsViewModel.class);
+
     model.addAttribute("routeDetails", viewModel);
 
     return "route-details";
