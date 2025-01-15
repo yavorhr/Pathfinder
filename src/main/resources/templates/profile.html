@@ -7,10 +7,9 @@
 <!-- Navigation -->
 <header th:replace="fragments/navbar"></header>
 
-<main class="p-5 align-content-center bg-blur my-register-div">
-    <div class="container mt-5">
+<main class="p-5 profile-main">
+    <div class="profile-container">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-7">
                 <div class="profile-card p-3 py-4"
                      th:object="${userViewModel}">
                     <div class="text-center"><img src="/images/profile.jpg" width="100" class="rounded-circle"></div>
@@ -39,7 +38,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </main>
