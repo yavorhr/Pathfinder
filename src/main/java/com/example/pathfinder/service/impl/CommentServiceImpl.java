@@ -10,6 +10,7 @@ import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
@@ -53,9 +54,7 @@ public class CommentServiceImpl implements CommentService {
             findRouteById(serviceModel.getRouteId()).
             orElseThrow(() -> new ObjectNotFoundException("Route with id " + serviceModel.getRouteId() + " not found!"));
 
-    var author = userService.
-            findByEmail(serviceModel.getCreatorEmail()).
-            orElseThrow(() -> new ObjectNotFoundException("User with email " + serviceModel.getCreatorEmail() + " not found!"));
+    var author = userService.findByEmail(serviceModel.getCreatorEmail());
 
     Comment newComment = new Comment();
 

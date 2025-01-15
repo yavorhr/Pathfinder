@@ -18,5 +18,6 @@ public interface UserService {
 
   void deleteUser(String email);
 
- Optional<UserEntity> findByEmail(String email);
+  UserEntity findByEmail(String email);
+
 }

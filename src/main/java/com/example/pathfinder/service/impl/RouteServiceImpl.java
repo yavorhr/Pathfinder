@@ -72,9 +72,7 @@ public class RouteServiceImpl implements RouteService {
   public Long addNewRoute(AddRouteServiceModel routeServiceModel, String email) {
     Route route = this.modelMapper.map(routeServiceModel, Route.class);
 
-    var author = this.userService.findByEmail(email)
-            .orElseThrow(
-                    () -> new ObjectNotFoundException("Author with email " + email + " was not found!"));
+    var author = this.userService.findByEmail(email);
 
     route.setAuthor(author);
     route.setCategories(mapCategories(routeServiceModel.getCategories()));
@@ -148,10 +146,7 @@ public class RouteServiceImpl implements RouteService {
 
   // Helpers
   private boolean isAdmin(String authorEmail) {
-    var user = userService.
-            findByEmail(authorEmail).
-            orElseThrow(() ->
-                    new ObjectNotFoundException("User with email " + authorEmail + " not found!"));
+    var user = userService.findByEmail(authorEmail);
 
     return user.
             getRoles().

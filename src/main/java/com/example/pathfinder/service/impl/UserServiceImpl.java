@@ -10,6 +10,7 @@ import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.service.events.UserRegisteredEvent;
+import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
@@ -40,11 +41,14 @@ public class UserServiceImpl implements UserService {
     UserRoleEntity roleEntity = this.userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.USER);
     user.setRoles(Set.of(roleEntity));
 
-    eventPublisher.publishEvent(new UserRegisteredEvent(this, LocalDateTime.now(), serviceModel.getUsername(), serviceModel.getEmail()));
+    eventPublisher.publishEvent(new UserRegisteredEvent(
+            this,
+            LocalDateTime.now(),
+            serviceModel.getUsername(),
+            serviceModel.getEmail()));
 
     this.userRepository.save(user);
   }
-
 
   @Override
   public Optional<UserEntity> findById(Long id) {
@@ -68,7 +72,9 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public Optional<UserEntity> findByEmail(String email) {
-    return this.userRepository.findByEmail(email);
+  public UserEntity findByEmail(String email) {
+    return this.userRepository
+            .findByEmail(email)
+            .orElseThrow(() -> new ObjectNotFoundException("User with email: " + email + " does not exist!"));
   }
 }
