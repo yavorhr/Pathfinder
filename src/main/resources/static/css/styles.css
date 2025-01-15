@@ -436,7 +436,7 @@ body {
 /* For large devices */
 @media screen and (min-width: 1120px) {
     .container {
-        height: 1000px;
+        /*height: 1000px;*/
         grid-row-gap: 50px;
     }
 
@@ -598,9 +598,14 @@ body {
 }
 
 /* ============= Profile Page ============= */
+.profile-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-body {
-    background-color: rgba(0, 0, 0, 6);
+.profile-container{
+    width: 50%;
 }
 
 .profile-card {
@@ -609,7 +614,6 @@ body {
     overflow: hidden;
     border-radius: 8px;
     cursor: pointer;
-    min-height: 65vh;
 }
 
 .profile-card:before {
