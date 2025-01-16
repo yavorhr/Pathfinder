@@ -4,6 +4,7 @@ import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import com.example.pathfinder.repository.UserRepository;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,6 +42,9 @@ class PathfinderUserDetailsServiceTest {
     userRole.setRole(UserRoleEnum.USER);
 
     testUser = new UserEntity();
+
+    testUser.setId(1L);
+    testUser.setEnabled(true);
     testUser.setUsername("lucho");
     testUser.setEmail("lucho@lucho.com");
     testUser.setPassword("topsecret");
@@ -79,20 +83,23 @@ class PathfinderUserDetailsServiceTest {
   @Test
   void testMapToUserDetails() {
     // Arrange
-    String email = "lucho@lucho.com";
 
     Mockito.when(mockUserRepository
             .findByEmail(testUser.getEmail()))
             .thenReturn(Optional.of(testUser));
 
     // Act
-    UserDetails userDetails = serviceToTest.loadUserByUsername(email);
+    UserDetails userDetails = serviceToTest.loadUserByUsername(testUser.getEmail());
 
     // Assert
     Assertions.assertNotNull(userDetails);
-    Assertions.assertEquals(email, userDetails.getUsername());
-    Assertions.assertTrue(userDetails.isEnabled());
+    Assertions.assertEquals(1L, ((PathfinderUser) userDetails).getId());
+    Assertions.assertEquals(testUser.getEmail(), userDetails.getUsername());
+    Assertions.assertEquals(testUser.getPassword(), userDetails.getPassword());
+    Assertions.assertTrue(userDetails.isEnabled()); 
+    Assertions.assertTrue(userDetails.isAccountNonExpired());
+    Assertions.assertTrue(userDetails.isCredentialsNonExpired());
+    Assertions.assertTrue(userDetails.isAccountNonLocked());
     Assertions.assertEquals(2, userDetails.getAuthorities().size());
-
   }
 }
