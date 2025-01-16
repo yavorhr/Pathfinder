@@ -15,8 +15,15 @@
                     <div class="text-center"><img src="/images/profile.jpg" width="100" class="rounded-circle"></div>
                     <div class="text-center mt-3">
                         <span th:text="*{level.name()}" class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
-                        <h5 class="mt-4 mb-0">Full name</h5>
-                        <span th:text="*{fullName}">UI/UX Designer</span>
+
+                        <h5 class="mt-4 mb-0">Full Name</h5>
+                        <div>
+                            <span id="fullName-display">John Doe</span>
+                            <input id="fullName-input" class="form-control d-none" type="text" value="John Doe">
+                            <button class="btn btn-sm btn-outline-primary mt-1 edit-btn">Edit</button>
+                        </div>
+
+<!--                        <span th:text="*{fullName}">UI/UX Designer</span>-->
                         <h5 class="mt-2 mb-0">Username</h5>
                         <span th:text="*{username}">UI/UX Designer</span>
                         <h5 class="mt-2 mb-0">Age</h5>
@@ -33,7 +40,11 @@
                             <li><i class="fab fa-google"></i></li>
                         </ul>
                         <div class="buttons">
-                            <a href="/" class="btn btn-outline-primary px-4" >Back</a>
+                            <div class="buttons mt-4">
+                                <button id="save-button" class="btn btn-primary px-4 d-none" >Save</button>
+                                <button id="cancel-button" class="btn btn-outline-secondary px-4" >Cancel</button>
+                            </div>
+<!--                            <a href="/" class="btn btn-outline-primary px-4" >Back</a>-->
                             <!--<button class="btn btn-primary px-4 ms-3">Contact</button>-->
                         </div>
                     </div>
@@ -44,5 +55,7 @@
 </body>
 
 <footer th:replace="fragments/footer"></footer>
+
+<script src="/js/editProfile.js"></script>
 
 </html>
