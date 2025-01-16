@@ -20,7 +20,8 @@ public class Message extends BaseEntity {
     return dateTime;
   }
 
-  @Column(name = "text_content", columnDefinition = "LONGTEXT")
+  @Lob
+  @Column(name = "text_content")
   public String getTextContent() {
     return textContent;
   }

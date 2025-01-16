@@ -39,7 +39,8 @@ public class Comment extends BaseEntity {
     return created;
   }
 
-  @Column(nullable = false, columnDefinition = "LONGTEXT")
+  @Lob
+  @Column(nullable = false)
   public String getTextContent() {
     return textContent;
   }
