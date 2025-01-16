@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Optional;
@@ -44,6 +45,7 @@ class PathfinderUserDetailsServiceTest {
     testUser.setEmail("lucho@lucho.com");
     testUser.setPassword("topsecret");
     testUser.setRoles(Set.of(adminRole, userRole));
+
   }
 
   @Test
@@ -56,10 +58,11 @@ class PathfinderUserDetailsServiceTest {
 
   @Test
   void testUserFound() {
-
     // Arrange
-    Mockito.when(mockUserRepository.findByEmail(testUser.getEmail())).
-            thenReturn(Optional.of(testUser));
+
+    Mockito.when(mockUserRepository
+            .findByEmail(testUser.getEmail()))
+            .thenReturn(Optional.of(testUser));
 
     // Act
     var actual = serviceToTest.loadUserByUsername(testUser.getEmail());
@@ -71,5 +74,25 @@ class PathfinderUserDetailsServiceTest {
 
     Assertions.assertEquals(actual.getUsername(), testUser.getEmail());
     Assertions.assertEquals(expectedRoles, actualRoles);
+  }
+
+  @Test
+  void testMapToUserDetails() {
+    // Arrange
+    String email = "lucho@lucho.com";
+
+    Mockito.when(mockUserRepository
+            .findByEmail(testUser.getEmail()))
+            .thenReturn(Optional.of(testUser));
+
+    // Act
+    UserDetails userDetails = serviceToTest.loadUserByUsername(email);
+
+    // Assert
+    Assertions.assertNotNull(userDetails);
+    Assertions.assertEquals(email, userDetails.getUsername());
+    Assertions.assertTrue(userDetails.isEnabled());
+    Assertions.assertEquals(2, userDetails.getAuthorities().size());
+
   }
 }
