@@ -1,104 +1,55 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const inputFields = document.querySelectorAll("input, textarea");
-    const saveButton = document.getElementById("save-button");
-    const cancelButton = document.getElementById("cancel-button");
-    const editButtons = document.querySelectorAll(".edit-btn");
+// Select relevant elements
+const editButton = document.getElementById("edit-button");
+const saveButton = document.getElementById("save-button");
+const resetButton = document.getElementById("reset-button");
+const cancelButton = document.getElementById("cancel-button");
+const profileContainer = document.querySelector(".profile-container");
 
-    // 1. Stored initial values for comparison and resetting
-    const originalValues = {};
-    inputFields.forEach(input => {
-        originalValues[input.id] = input.value.trim();
+// Store initial values for resetting
+const initialValues = {};
 
-        // Add event listener to track changes
-        input.addEventListener("input", checkForChanges);
+// Function to enter edit mode
+function enterEditMode() {
+    // Hide all <span> and <p> elements, show <input> and <textarea> elements
+    profileContainer.querySelectorAll("span, p").forEach(el => el.classList.add("d-none"));
+    profileContainer.querySelectorAll("input, textarea").forEach(el => {
+        el.classList.remove("d-none");
+        const key = el.id;
+        if (!initialValues[key]) {
+            initialValues[key] = el.value; // Save initial values
+        }
     });
 
-    //2. Switch between display and edit mode
-    function toggleEdit(fieldId) {
-        const displayElement = document.getElementById(`${fieldId}-display`);
-        const inputElement = document.getElementById(`${fieldId}-input`);
+    // Show save and reset buttons
+    saveButton.classList.remove("d-none");
+    resetButton.classList.remove("d-none");
+    editButton.classList.add("d-none");
+}
 
-        if (inputElement.classList.contains("d-none")) {
-            // Switch to edit mode
-            inputElement.value = displayElement.textContent.trim(); // Pre-fill input with current value
-            inputElement.classList.remove("d-none");
-            displayElement.classList.add("d-none");
-        } else {
-            // Switch back to display mode
-            const newValue = inputElement.value.trim(); // Get the new value
-            if (newValue) {
-                displayElement.textContent = newValue; // Update the display element
-            }
-            inputElement.classList.add("d-none");
-            displayElement.classList.remove("d-none");
-        }
-    }
+// Function to exit edit mode
+function exitEditMode() {
+    profileContainer.querySelectorAll("span, p").forEach(el => el.classList.remove("d-none"));
+    profileContainer.querySelectorAll("input, textarea").forEach(el => el.classList.add("d-none"));
 
-    // 3. Show/hide "Save" button if any change is made
-    function checkForChanges() {
-        const hasChanges = Array.from(inputFields).some(
-            input => input.value.trim() !== originalValues[input.id]
-        );
-        saveButton.classList.toggle("d-none", !hasChanges); // Show or hide Save button
-    }
+    // Hide save and reset buttons
+    saveButton.classList.add("d-none");
+    resetButton.classList.add("d-none");
+    editButton.classList.remove("d-none");
+}
 
-    // 4. "Save" button function -> send POST request to server
-    function saveProfile() {
-        const updatedProfile = {};
-        inputFields.forEach(input => {
-            updatedProfile[input.id.replace("-input", "")] = input.value.trim();
-        });
+// Function to reset to initial values
+function resetValues() {
+    profileContainer.querySelectorAll("input, textarea").forEach(el => {
+        const key = el.id;
+        el.value = initialValues[key];
+    });
+}
 
-        fetch("/profile/update", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(updatedProfile),
-        })
-            .then(response => {
-                if (response.ok) {
-                    alert("Profile updated successfully!");
-                    inputFields.forEach(input => {
-                        originalValues[input.id] = input.value.trim(); // Update original values
-                        const displayElement = document.getElementById(input.id.replace("-input", "-display"));
-                        if (displayElement) {
-                            displayElement.textContent = input.value.trim(); // Update displayed content
-                        }
-                    });
-                    saveButton.classList.add("d-none"); // Hide the Save button
-                } else {
-                    alert("Failed to update profile.");
-                }
-            })
-            .catch(error => console.error("Error updating profile:", error));
-    }
-
-    // 4. "Cancel" button function -> reset initial values
-    function cancelChanges() {
-        inputFields.forEach(input => {
-            const originalValue = originalValues[input.id];
-            input.value = originalValue; // Reset input value
-
-            const displayElement = document.getElementById(input.id.replace("-input", "-display"));
-            if (displayElement) {
-                displayElement.textContent = originalValue; // Reset displayed content
-            }
-
-            // Switch back to display mode
-            input.classList.add("d-none");
-            if (displayElement) {
-                displayElement.classList.remove("d-none");
-            }
-        });
-
-        saveButton.classList.add("d-none"); // Hide the Save button
-        alert("Changes have been reverted.");
-    }
-
-    // Attach event listeners programmatically
-    saveButton.addEventListener("click", saveProfile);
-    cancelButton.addEventListener("click", cancelChanges);
-    editButtons.forEach(btn => btn.addEventListener("click", toggleEdit))
-
-    // Expose toggleEdit to the global scope for use in HTML
-    // window.toggleEdit = toggleEdit;
+// Event listeners
+editButton.addEventListener("click", enterEditMode);
+saveButton.addEventListener("click", () => {
+    // Add server-side validation and submission logic here
+    exitEditMode();
 });
+resetButton.addEventListener("click", resetValues);
+cancelButton.addEventListener("click", exitEditMode);
