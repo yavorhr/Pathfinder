@@ -4,6 +4,9 @@ const saveButton = document.getElementById("save-button");
 const resetButton = document.getElementById("reset-button");
 const profileContainer = document.querySelector(".profile-container");
 
+const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute("content");
+const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute("content");
+
 // Store initial values for resetting
 const initialValues = {};
 
@@ -76,6 +79,9 @@ saveButton.addEventListener("click", async (event) => {
         const response = await fetch("/users/profile/edit", {
             method: "POST",
             body: formData,
+            headers: {
+                [csrfHeader]: csrfToken
+            }
         });
 
         const result = await response.json();
