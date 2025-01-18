@@ -3,6 +3,7 @@ const editButton = document.getElementById("edit-button");
 const saveButton = document.getElementById("save-button");
 const resetButton = document.getElementById("reset-button");
 const profileContainer = document.querySelector(".profile-container");
+const email = document.getElementById('gmail-display-li');
 
 const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute("content");
 const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute("content");
@@ -103,4 +104,9 @@ saveButton.addEventListener("click", async (event) => {
     }
 });
 resetButton.addEventListener("click", resetValues);
+
+email.addEventListener("click", function () {
+    let email = document.getElementById("gmail-display").textContent.trim();
+    window.location.href = "mailto:" + email;
+})
 
