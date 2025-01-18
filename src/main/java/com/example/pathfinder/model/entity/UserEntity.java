@@ -15,6 +15,10 @@ public class UserEntity extends BaseEntity {
   private String username;
   private Set<UserRoleEntity> roles;
   private boolean enabled;
+  private String facebookLink;
+  private String instagramLink;
+  private String linkedInLink;
+  private String emailAccount;
 
   public UserEntity() {
     this.enabled = false;
@@ -64,6 +68,26 @@ public class UserEntity extends BaseEntity {
     return roles;
   }
 
+  @Column(name = "facebook_link")
+  public String getFacebookLink() {
+    return facebookLink;
+  }
+
+  @Column(name = "instagram_link")
+  public String getInstagramLink() {
+    return instagramLink;
+  }
+
+  @Column(name = "linked_in_link")
+  public String getLinkedInLink() {
+    return linkedInLink;
+  }
+
+  @Column(name = "email_account")
+  public String getEmailAccount() {
+    return emailAccount;
+  }
+
   public void setAge(Integer age) {
     this.age = age;
   }
@@ -95,6 +119,26 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setEnabled(boolean enabled) {
     this.enabled = enabled;
+    return this;
+  }
+
+  public UserEntity setFacebookLink(String facebookLink) {
+    this.facebookLink = facebookLink;
+    return this;
+  }
+
+  public UserEntity setInstagramLink(String instagramLink) {
+    this.instagramLink = instagramLink;
+    return this;
+  }
+
+  public UserEntity setLinkedInLink(String linkedInLink) {
+    this.linkedInLink = linkedInLink;
+    return this;
+  }
+
+  public UserEntity setEmailAccount(String emailAccount) {
+    this.emailAccount = emailAccount;
     return this;
   }
 }
