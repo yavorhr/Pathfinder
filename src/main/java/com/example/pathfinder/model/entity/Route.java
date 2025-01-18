@@ -56,8 +56,8 @@ public class Route extends BaseEntity {
     return description;
   }
 
-  @Column(name = "gpx_coordinates")
   @Lob
+  @Column(name = "gpx_coordinates", columnDefinition = "LONGTEXT")
   public String getGpxCoordinates() {
     return gpxCoordinates;
   }
