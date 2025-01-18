@@ -10,45 +10,62 @@
 <main class="p-5 profile-main">
     <div class="profile-container">
         <div class="row d-flex justify-content-center">
-                <div class="profile-card p-3 py-4"
-                     th:object="${userViewModel}">
-                    <div class="text-center"><img src="/images/profile.jpg" width="100" class="rounded-circle"></div>
-                    <div class="text-center mt-3">
-                        <span th:text="*{level.name()}" class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+            <div class="profile-card p-3 py-4"
+                 th:object="${userViewModel}">
+                <div class="text-center">
+                    <img alt="Profile image"
+                         src="/images/profile.jpg" width="100"
+                         class="rounded-circle">
+                </div>
+                <div class="text-center mt-3">
+                    <span th:text="*{level.name()}"
+                          class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+
+                    <form id="profile-form" th:object="${userViewModel}"
+                          th:method="post"
+                          th:action="@{/users/profile/edit}">
+                        <input type="hidden" th:value="*{id}" name="id">
+
                         <h5 class="mt-4 mb-0">Full Name</h5>
                         <div>
                             <span id="fullName-display">John Doe</span>
                             <input id="fullName-input" class="form-control d-none" type="text" value="John Doe">
                         </div>
                         <h5 class="mt-2 mb-0">Username</h5>
-                        <span id="username-display" th:text="*{username}"> >UI/UX Designer</span>
+                        <span id="username-display"
+                              th:text="*{username}">UI/UX Designer</span>
                         <input id="username-input" class="form-control d-none" type="text" value="john_doe">
                         <h5 class="mt-2 mb-0">Age</h5>
-                        <span id="age-display" th:text="*{age}">33</span>
+                        <span id="age-display"
+                              th:text="*{age}">33</span>
                         <input id="age-input" class="form-control d-none" type="number" value="33">
                         <div class="px-4 mt-5">
                             <p id="description-display"
                                class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim et nostrum
                                 optio perferendis quam quod ratione rem sit soluta ut! A dolor laborum, maiores neque
-                                nesciunt quis rerum sunt suscipit. </p>
+                                nesciunt quis rerum sunt suscipit.</p>
                         </div>
-                        <textarea id="description-input" class="form-control d-none">Lorem ipsum dolor sit amet...</textarea>
+                        <textarea id="description-input"
+                                  class="form-control d-none">Lorem ipsum dolor sit amet...</textarea>
 
                         <ul class="social-list">
                             <li>
                                 <i class="fab fa-facebook-square"></i>
                                 <span id="facebook-display"></span>
-                                <input id="facebook-input" class="form-control d-none" type="text" value="facebook.com/username">
+                                <input id="facebook-input" class="form-control d-none" type="text"
+                                       value="facebook.com/username">
                             </li>
                             <li>
                                 <i class="fab fa-instagram"></i>
                                 <span id="instagram-display"></span>
-                                <input id="instagram-input" class="form-control d-none" type="text" value="instagram.com/username">
+                                <input id="instagram-input" class="form-control d-none" type="text"
+                                       value="instagram.com/username">
                             </li>
                             <li>
                                 <i class="fab fa-linkedin"></i>
                                 <span id="linkedin-display"></span>
-                                <input id="linkedin-input" class="form-control d-none" type="text" value="linkedin.com/in/username">
+                                <input id="linkedin-input" class="form-control d-none" type="text"
+                                       value="linkedin.com/in/username">
                             </li>
                             <li>
                                 <i class="fab fa-google"></i>
@@ -56,6 +73,7 @@
                                 <input id="gmail-input" class="form-control d-none" type="email" value="user@gmail.com">
                             </li>
                         </ul>
+
                         <div class="buttons">
                             <div class="buttons mt-4">
                                 <button id="edit-button" class="btn btn-outline-primary px-4">Edit</button>
@@ -63,8 +81,9 @@
                                 <button id="reset-button" class="btn btn-outline-secondary px-4 d-none">Reset</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
+            </div>
         </div>
     </div>
 </main>
