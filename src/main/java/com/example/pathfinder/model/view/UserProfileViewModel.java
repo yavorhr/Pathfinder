@@ -8,8 +8,13 @@ public class UserProfileViewModel {
   private Integer age;
   private String username;
   private LevelEnum level;
+  private String email;
 
   public UserProfileViewModel() {
+  }
+
+  public String getEmail() {
+    return email;
   }
 
   public Long getId() {
@@ -54,6 +59,11 @@ public class UserProfileViewModel {
 
   public UserProfileViewModel setLevel(LevelEnum level) {
     this.level = level;
+    return this;
+  }
+
+  public UserProfileViewModel setEmail(String email) {
+    this.email = email;
     return this;
   }
 }
