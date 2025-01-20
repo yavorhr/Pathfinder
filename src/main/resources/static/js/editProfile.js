@@ -1,112 +1,111 @@
-// Select relevant elements
-const editButton = document.getElementById("edit-button");
-const saveButton = document.getElementById("save-button");
-const resetButton = document.getElementById("reset-button");
-const profileContainer = document.querySelector(".profile-container");
-const email = document.getElementById('gmail-display-li');
+document.addEventListener("DOMContentLoaded", function () {
+    const editButton = document.getElementById("edit-button");
+    const saveButton = document.getElementById("save-button");
+    const resetButton = document.getElementById("reset-button");
+    const inputFields = document.querySelectorAll("input, textarea");
 
-const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute("content");
-const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute("content");
+    const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute("content");
+    const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute("content");
 
-// Store initial values for resetting
-const initialValues = {};
-
-// Function to enter edit mode
-function enterEditMode() {
-    // Hide all <span> and <p> elements, show <input> and <textarea> elements
-    profileContainer.querySelectorAll("span, p").forEach(el => el.classList.add("d-none"));
-    profileContainer.querySelectorAll("input, textarea").forEach(el => {
-        el.classList.remove("d-none");
-
-        const key = el.id;
-        if (!initialValues[key]) {
-            initialValues[key] = el.value; // Save initial values
-        }
+    // Attach event listener to "Edit" button
+    editButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent form submission
+        enableEditMode();
     });
 
-    // Show save and reset buttons
-    saveButton.classList.remove("d-none");
-    resetButton.classList.remove("d-none");
-    editButton.classList.add("d-none");
-}
+    // Function to enable edit mode
+    function enableEditMode() {
+        inputFields.forEach(input => {
+            const displayElement = document.getElementById(input.id.replace("-input", "-display"));
+            if (displayElement) {
+                displayElement.classList.add("d-none"); // Hide display element
+            }
+            input.classList.remove("d-none"); // Show input field
+        });
 
-// Function to exit edit mode
-function exitEditMode() {
-    profileContainer.querySelectorAll("span, p").forEach(el => el.classList.remove("d-none"));
-    profileContainer.querySelectorAll("input, textarea").forEach(el => el.classList.add("d-none"));
+        editButton.classList.add("d-none"); // Hide Edit button
+        saveButton.classList.remove("d-none"); // Show Save button
+        resetButton.classList.remove("d-none"); // Show Reset button
+    }
 
-    // Hide save and reset buttons
-    saveButton.classList.add("d-none");
-    resetButton.classList.add("d-none");
-    editButton.classList.remove("d-none");
-}
-
-// Function to reset to initial values
-function resetValues() {
-    profileContainer.querySelectorAll("input, textarea").forEach(el => {
-        const key = el.id;
-        el.value = initialValues[key];
-    });
-}
-
-// Event listeners
-editButton.addEventListener("click", enterEditMode);
-
-saveButton.addEventListener("click", async (event) => {
-    event.preventDefault(); // Prevent default form submission
-    const formData = new FormData();
-
-    // Update <span>/<p> with new values and collect form data
-    profileContainer.querySelectorAll("input, textarea").forEach(el => {
-        const id = el.id.replace("-input", "");
-        const span = document.getElementById(`${id}-display`);
-        const errorSpan = document.getElementById(`${id}-error`);
-
-        if (span) {
-            span.textContent = el.value;
-        }
-
-        // Add the input's value to the FormData
-        formData.append(id, el.value);
-
-        // Clear previous errors
-        if (errorSpan) {
-            errorSpan.textContent = "";
-        }
+    // Attach event listener to "Save" button
+    saveButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        saveChanges();
     });
 
-    try {
-        // Send the updated profile data to the server
-        const response = await fetch("/users/profile/edit", {
-            method: "POST",
-            body: formData,
-            headers: {
-                [csrfHeader]: csrfToken
+    // Function to save changes
+    function saveChanges() {
+        const updatedData = {};
+
+        // Collect data from input fields
+        inputFields.forEach(input => {
+            const fieldName = input.id.replace("-input", ""); // Extract field name
+            updatedData[fieldName] = input.value.trim(); // Add field value to data object
+
+            // Update display elements
+            const displayElement = document.getElementById(`${fieldName}-display`);
+            if (displayElement) {
+                displayElement.textContent = input.value.trim(); // Update display element
             }
         });
 
-        const result = await response.json();
+        // Send the updated data to the server using a POST request
+        fetch("/users/profile/edit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                [csrfHeader]: csrfToken,
+            },
+            body: JSON.stringify(updatedData),
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert("Profile updated successfully!");
 
-        if (response.ok) {
-            // Success: Exit edit mode
-            exitEditMode();
-        } else {
-            // Validation errors returned from the server
-            for (const [field, errorMessage] of Object.entries(result.errors)) {
-                const errorSpan = document.getElementById(`${field}-error`);
-                if (errorSpan) {
-                    errorSpan.textContent = errorMessage;
+                    // Reset to view mode
+                    inputFields.forEach(input => {
+                        const displayElement = document.getElementById(input.id.replace("-input", "-display"));
+                        input.classList.add("d-none"); // Hide input fields
+                        if (displayElement) {
+                            displayElement.classList.remove("d-none"); // Show display elements
+                        }
+                    });
+
+                    saveButton.classList.add("d-none"); // Hide Save button
+                    resetButton.classList.add("d-none"); // Hide Reset button
+                    editButton.classList.remove("d-none"); // Show Edit button
+                } else {
+                    alert("Failed to update profile. Please try again.");
                 }
+            })
+            .catch(error => {
+                console.error("Error while updating profile:", error);
+                alert("An error occurred. Please try again.");
+            });
+    }
+
+    // Attach event listener to "Reset" button
+    resetButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default form submission
+        resetChanges();
+    });
+
+    // Function to reset changes
+    function resetChanges() {
+        inputFields.forEach(input => {
+            const displayElement = document.getElementById(input.id.replace("-input", "-display"));
+            if (displayElement) {
+                input.value = displayElement.textContent; // Reset input value to display value
             }
-        }
-    } catch (error) {
-        console.error("An error occurred:", error);
+            input.classList.add("d-none"); // Hide input fields
+            if (displayElement) {
+                displayElement.classList.remove("d-none"); // Show display elements
+            }
+        });
+
+        saveButton.classList.add("d-none"); // Hide Save button
+        resetButton.classList.add("d-none"); // Hide Reset button
+        editButton.classList.remove("d-none"); // Show Edit button
     }
 });
-resetButton.addEventListener("click", resetValues);
-
-email.addEventListener("click", function () {
-    let email = document.getElementById("gmail-display").textContent.trim();
-    window.location.href = "mailto:" + email;
-})
-
