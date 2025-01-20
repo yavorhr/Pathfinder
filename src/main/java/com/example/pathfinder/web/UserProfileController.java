@@ -1,13 +1,16 @@
 package com.example.pathfinder.web;
 
+import com.example.pathfinder.model.binding.ProfileUpdateBindingModel;
 import com.example.pathfinder.model.view.UserProfileViewModel;
 import com.example.pathfinder.service.UserService;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserProfileController {
@@ -30,6 +33,16 @@ public class UserProfileController {
     model.addAttribute("userViewModel", userViewModel);
 
     return "profile";
+  }
+
+
+  @PostMapping("/users/profile/edit")
+  public ResponseEntity<UserProfileViewModel> updateProfile(
+          @RequestBody @Valid ProfileUpdateBindingModel bindingModel) {
+
+    System.out.println(bindingModel.getId());
+    return null;
+
   }
 }
 
