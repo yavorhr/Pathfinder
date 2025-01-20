@@ -26,19 +26,45 @@
                           th:action="@{/users/profile}">
                         <input type="hidden" th:value="*{id}" name="id">
 
-                        <h5 class="mt-4 mb-0">Full Name</h5>
                         <div>
-                            <span id="fullName-display">John Doe</span>
-                            <input id="fullName-input" class="form-control d-none" type="text" value="John Doe">
+                            <label class="mt-2 mb-0" for="fullName-input">Full Name:</label>
+                            <input id="fullName-input"
+                                   class="form-control d-none"
+                                   type="text"
+                                   value="John Doe">
+                            <span
+                                    th:text="*{fullName}"
+                                    id="fullName-display">John Doe</span>
+                            <span id="fullName-error"
+                                  class="error-message text-danger"></span>
                         </div>
-                        <h5 class="mt-2 mb-0">Username</h5>
-                        <span id="username-display"
-                              th:text="*{username}">UI/UX Designer</span>
-                        <input id="username-input" class="form-control d-none" type="text" value="john_doe">
+                        <div>
+                            <label class="mt-2 mb-0" for="username-input">Username: </label>
+                            <span id="username-display"
+                                  th:text="*{username}">UI/UX Designer</span>
+                            <input id="username-input"
+                                   class="form-control d-none"
+                                   type="text"
+                                   value="john_doe">
+                            <span id="username-error"
+                                  class="error-message text-danger"></span>
+                        </div>
+
+                        <h5 class="mt-2 mb-0">Email</h5>
+                        <span id="email-display"
+                              th:text="*{email}">test@gmail.com</span>
+                        <input id="email-input"
+                               class="form-control d-none"
+                               type="text"
+                               value="john_doe">
                         <h5 class="mt-2 mb-0">Age</h5>
                         <span id="age-display"
                               th:text="*{age}">33</span>
-                        <input id="age-input" class="form-control d-none" type="number" value="33">
+                        <input
+                                id="age-input"
+                                class="form-control d-none"
+                                type="number"
+                                value="33">
                         <div class="px-4 mt-5">
                             <p id="description-display"
                                class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim et nostrum
@@ -47,30 +73,42 @@
                         </div>
                         <textarea id="description-input"
                                   class="form-control d-none">Lorem ipsum dolor sit amet...</textarea>
-
                         <ul class="social-list">
                             <li>
                                 <i class="fab fa-facebook-square"></i>
                                 <span id="facebook-display"></span>
-                                <input id="facebook-input" class="form-control d-none" type="text"
-                                       value="facebook.com/username">
+                                <input
+                                        id="facebook-input"
+                                        class="form-control d-none"
+                                        type="text"
+                                        value="facebook.com/username">
                             </li>
                             <li>
                                 <i class="fab fa-instagram"></i>
                                 <span id="instagram-display"></span>
-                                <input id="instagram-input" class="form-control d-none" type="text"
-                                       value="instagram.com/username">
+                                <input
+                                        id="instagram-input"
+                                        class="form-control d-none"
+                                        type="text"
+                                        value="instagram.com/username">
                             </li>
                             <li>
                                 <i class="fab fa-linkedin"></i>
                                 <span id="linkedin-display"></span>
-                                <input id="linkedin-input" class="form-control d-none" type="text"
-                                       value="linkedin.com/in/username">
+                                <input
+                                        id="linkedin-input"
+                                        class="form-control d-none"
+                                        type="text"
+                                        value="linkedin.com/in/username">
                             </li>
-                            <li  id="gmail-display-li">
+                            <li id="gmail-display-li">
                                 <i class="fab fa-google"></i>
                                 <span id="gmail-display">ssssssssssss</span>
-                                <input id="gmail-input" class="form-control d-none" type="email" value="user@gmail.com">
+                                <input
+                                        id="gmail-input"
+                                        class="form-control d-none"
+                                        type="email"
+                                        value="user@gmail.com">
                             </li>
                         </ul>
 
