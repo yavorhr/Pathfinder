@@ -128,6 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (displayElement) {
                 displayElement.classList.remove("d-none"); // Show display elements
             }
+
+            document.querySelectorAll(".error-message").forEach(error => error.textContent = "");
         });
 
         saveButton.classList.add("d-none"); // Hide Save button
