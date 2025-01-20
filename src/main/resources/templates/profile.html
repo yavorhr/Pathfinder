@@ -23,7 +23,7 @@
 
                     <form id="profile-form" th:object="${userViewModel}"
                           th:method="post"
-                          th:action="@{/users/profile/edit}">
+                          th:action="@{/users/profile}">
                         <input type="hidden" th:value="*{id}" name="id">
 
                         <h5 class="mt-4 mb-0">Full Name</h5>
