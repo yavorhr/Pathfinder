@@ -31,7 +31,7 @@
                             <input id="fullName-input"
                                    class="form-control d-none"
                                    type="text"
-                                   value="John Doe">
+                                   th:value="*{fullName}">
                             <span
                                     th:text="*{fullName}"
                                     id="fullName-display">John Doe</span>
@@ -45,7 +45,7 @@
                             <input id="username-input"
                                    class="form-control d-none"
                                    type="text"
-                                   value="john_doe">
+                                   th:value="*{username}">
                             <span id="username-error"
                                   class="error-message text-danger"></span>
                         </div>
@@ -53,10 +53,11 @@
                         <h5 class="mt-2 mb-0">Email</h5>
                         <span id="email-display"
                               th:text="*{email}">test@gmail.com</span>
-                        <input id="email-input"
-                               class="form-control d-none"
-                               type="text"
-                               value="john_doe">
+                        <input
+                                id="email-input"
+                                class="form-control d-none"
+                                type="text"
+                                th:value="*{email}">
                         <h5 class="mt-2 mb-0">Age</h5>
                         <span id="age-display"
                               th:text="*{age}">33</span>
