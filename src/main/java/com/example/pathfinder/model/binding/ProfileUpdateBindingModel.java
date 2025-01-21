@@ -2,7 +2,6 @@ package com.example.pathfinder.model.binding;
 
 import com.example.pathfinder.validation.register.UniqueEmail;
 import com.example.pathfinder.validation.register.UniqueUsername;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -13,11 +12,10 @@ public class ProfileUpdateBindingModel {
   private String fullName;
   private String email;
   private String username;
-  private String facebookLink;
-  private String instagramLink;
-  private String linkedInLink;
-  private String emailAccount;
-  private String description;
+  private String aboutMe;
+  private String facebookAcc;
+  private String instagramAcc;
+  private String linkedIn;
 
   public ProfileUpdateBindingModel() {
   }
@@ -32,8 +30,8 @@ public class ProfileUpdateBindingModel {
     return id;
   }
 
-  public String getDescription() {
-    return description;
+  public String getAboutMe() {
+    return aboutMe;
   }
 
   @Positive(message = "Age must be positive")
@@ -52,20 +50,9 @@ public class ProfileUpdateBindingModel {
     return email;
   }
 
-  public String getFacebookLink() {
-    return facebookLink;
-  }
-
-  public String getInstagramLink() {
-    return instagramLink;
-  }
-
-  public String getLinkedInLink() {
-    return linkedInLink;
-  }
-
-  public String getEmailAccount() {
-    return emailAccount;
+  public ProfileUpdateBindingModel setId(Long id) {
+    this.id = id;
+    return this;
   }
 
   public ProfileUpdateBindingModel setAge(Integer age) {
@@ -83,38 +70,28 @@ public class ProfileUpdateBindingModel {
     return this;
   }
 
-  public ProfileUpdateBindingModel setFacebookLink(String facebookLink) {
-    this.facebookLink = facebookLink;
-    return this;
-  }
-
-  public ProfileUpdateBindingModel setInstagramLink(String instagramLink) {
-    this.instagramLink = instagramLink;
-    return this;
-  }
-
-  public ProfileUpdateBindingModel setLinkedInLink(String linkedInLink) {
-    this.linkedInLink = linkedInLink;
-    return this;
-  }
-
-  public ProfileUpdateBindingModel setEmailAccount(String emailAccount) {
-    this.emailAccount = emailAccount;
-    return this;
-  }
-
-  public ProfileUpdateBindingModel setDescription(String description) {
-    this.description = description;
-    return this;
-  }
-
-  public ProfileUpdateBindingModel setId(Long id) {
-    this.id = id;
-    return this;
-  }
-
   public ProfileUpdateBindingModel setUsername(String username) {
     this.username = username;
+    return this;
+  }
+
+  public ProfileUpdateBindingModel setAboutMe(String aboutMe) {
+    this.aboutMe = aboutMe;
+    return this;
+  }
+
+  public ProfileUpdateBindingModel setFacebookAcc(String facebookAcc) {
+    this.facebookAcc = facebookAcc;
+    return this;
+  }
+
+  public ProfileUpdateBindingModel setInstagramAcc(String instagramAcc) {
+    this.instagramAcc = instagramAcc;
+    return this;
+  }
+
+  public ProfileUpdateBindingModel setLinkedIn(String linkedIn) {
+    this.linkedIn = linkedIn;
     return this;
   }
 }

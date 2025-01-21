@@ -9,6 +9,10 @@ public class UserProfileViewModel {
   private String username;
   private LevelEnum level;
   private String email;
+  private String aboutMe;
+  private String facebookAcc;
+  private String instagramAcc;
+  private String linkedIn;
 
   public UserProfileViewModel() {
   }
@@ -35,6 +39,22 @@ public class UserProfileViewModel {
 
   public LevelEnum getLevel() {
     return level;
+  }
+
+  public String getAboutMe() {
+    return aboutMe;
+  }
+
+  public String getFacebookAcc() {
+    return facebookAcc;
+  }
+
+  public String getInstagramAcc() {
+    return instagramAcc;
+  }
+
+  public String getLinkedIn() {
+    return linkedIn;
   }
 
   public UserProfileViewModel setId(Long id) {
@@ -64,6 +84,26 @@ public class UserProfileViewModel {
 
   public UserProfileViewModel setEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public UserProfileViewModel setAboutMe(String aboutMe) {
+    this.aboutMe = aboutMe;
+    return this;
+  }
+
+  public UserProfileViewModel setFacebookAcc(String facebookAcc) {
+    this.facebookAcc = facebookAcc;
+    return this;
+  }
+
+  public UserProfileViewModel setInstagramAcc(String instagramAcc) {
+    this.instagramAcc = instagramAcc;
+    return this;
+  }
+
+  public UserProfileViewModel setLinkedIn(String linkedIn) {
+    this.linkedIn = linkedIn;
     return this;
   }
 }
