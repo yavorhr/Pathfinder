@@ -7,21 +7,27 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
-  private Integer age;
   private String fullName;
   private String email;
+  private String username;
+  private Integer age;
   private LevelEnum level;
   private String password;
-  private String username;
+  private String aboutMe;
   private Set<UserRoleEntity> roles;
+  private String facebookAcc;
+  private String instagramAcc;
+  private String linkedIn;
   private boolean enabled;
-  private String facebookLink;
-  private String instagramLink;
-  private String linkedInLink;
-  private String emailAccount;
 
   public UserEntity() {
     this.enabled = false;
+  }
+
+  @Lob
+  @Column(name = "about_me", nullable = false)
+  public String getAboutMe() {
+    return aboutMe;
   }
 
   @Column
@@ -68,24 +74,24 @@ public class UserEntity extends BaseEntity {
     return roles;
   }
 
-  @Column(name = "facebook_link")
-  public String getFacebookLink() {
-    return facebookLink;
+  @Column(name = "facebook_account")
+  public String getFacebookAcc() {
+    return facebookAcc;
   }
 
-  @Column(name = "instagram_link")
-  public String getInstagramLink() {
-    return instagramLink;
+  @Column(name = "instagram_account")
+  public String getInstagramAcc() {
+    return instagramAcc;
   }
 
-  @Column(name = "linked_in_link")
-  public String getLinkedInLink() {
-    return linkedInLink;
+  @Column(name = "linked_in_account")
+  public String getLinkedIn() {
+    return linkedIn;
   }
 
-  @Column(name = "email_account")
-  public String getEmailAccount() {
-    return emailAccount;
+  public UserEntity setAboutMe(String aboutMe) {
+    this.aboutMe = aboutMe;
+    return this;
   }
 
   public void setAge(Integer age) {
@@ -122,23 +128,19 @@ public class UserEntity extends BaseEntity {
     return this;
   }
 
-  public UserEntity setFacebookLink(String facebookLink) {
-    this.facebookLink = facebookLink;
+  public UserEntity setFacebookAcc(String facebookLink) {
+    this.facebookAcc = facebookLink;
     return this;
   }
 
-  public UserEntity setInstagramLink(String instagramLink) {
-    this.instagramLink = instagramLink;
+  public UserEntity setInstagramAcc(String instagramLink) {
+    this.instagramAcc = instagramLink;
     return this;
   }
 
-  public UserEntity setLinkedInLink(String linkedInLink) {
-    this.linkedInLink = linkedInLink;
+  public UserEntity setLinkedIn(String linkedInLink) {
+    this.linkedIn = linkedInLink;
     return this;
   }
 
-  public UserEntity setEmailAccount(String emailAccount) {
-    this.emailAccount = emailAccount;
-    return this;
-  }
 }
