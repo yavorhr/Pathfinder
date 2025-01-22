@@ -52,19 +52,6 @@
                         </div>
 
                         <div>
-                            <label class="mt-2 mb-0" for="email-input">Email: </label>
-                            <span id="email-display"
-                                  th:text="*{email}">test@gmail.com</span>
-                            <input
-                                    id="email-input"
-                                    class="form-control d-none"
-                                    type="text"
-                                    th:value="*{email}">
-                            <span id="email-error"
-                                  class="error-message text-danger"></span>
-                        </div>
-
-                        <div>
                             <label class="mt-2 mb-0" for="age-input">Age: </label>
                             <span id="age-display"
                                   th:text="*{age}">33</span>
@@ -79,13 +66,15 @@
 
                         <div class="px-4 mt-5">
                             <p id="description-display"
+                               th:text="*{aboutMe}"
                                class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim et nostrum
                                 optio perferendis quam quod ratione rem sit soluta ut! A dolor laborum, maiores neque
                                 nesciunt quis rerum sunt suscipit.</p>
                         </div>
 
                         <textarea id="description-input"
-                                  class="form-control d-none">Lorem ipsum dolor sit amet...</textarea>
+                                  class="form-control d-none"
+                                  th:value="*{aboutMe}">Lorem ipsum dolor sit amet...</textarea>
 
                         <ul class="social-list">
                             <li>
@@ -95,7 +84,7 @@
                                         id="facebook-input"
                                         class="form-control d-none"
                                         type="text"
-                                        value="facebook.com/username">
+                                        th:value="*{facebookAcc}">
                             </li>
                             <li>
                                 <i class="fab fa-instagram"></i>
@@ -104,7 +93,7 @@
                                         id="instagram-input"
                                         class="form-control d-none"
                                         type="text"
-                                        value="instagram.com/username">
+                                        th:value="*{instagramAcc}">
                             </li>
                             <li>
                                 <i class="fab fa-linkedin"></i>
@@ -113,16 +102,17 @@
                                         id="linkedin-input"
                                         class="form-control d-none"
                                         type="text"
-                                        value="linkedin.com/in/username">
+                                        th:value="*{linkedIn}">
                             </li>
-                            <li id="gmail-display-li">
-                                <i class="fab fa-google"></i>
-                                <span id="gmail-display">ssssssssssss</span>
+                            <li >
+                                <i class="fa fa-envelope"></i>
+                                <span
+                                        id="gmail-display"></span>
                                 <input
-                                        id="gmail-input"
+                                        id="email-input"
                                         class="form-control d-none"
                                         type="email"
-                                        value="user@gmail.com">
+                                        th:value="*{email}">
                             </li>
                         </ul>
 
