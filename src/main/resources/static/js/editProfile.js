@@ -37,12 +37,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to save changes
     function saveChanges() {
         const updatedData = {
-            // id: document.getElementById("id-input").value.trim(),
+            id: document.getElementById("id-input").value.trim(),
             fullName: document.getElementById("fullName-input").value.trim(),
             username: document.getElementById("username-input").value.trim(),
-            // email: document.getElementById("email-input").value.trim(),
-            // age: parseInt(document.getElementById("age-input").value.trim(), 10),
-            // description: document.getElementById("description-input").value.trim(),
+            email: document.getElementById("email-input").value.trim(),
+            age: parseInt(document.getElementById("age-input").value.trim(), 10),
+            aboutMe: document.getElementById("description-input").value.trim(),
+            facebookAcc: document.getElementById("facebook-input").value.trim(),
+            instagramAcc: document.getElementById("instagram-input").value.trim(),
+            linkedIn: document.getElementById("linkedin-input").value.trim()
         };
 
         // Clear previous error messages
@@ -93,13 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             .keys(errors)
                             .forEach(field => {
                                 const errorMessage = errors[field];
-                                console.log(errorMessage)
                                 const errorElement = document.getElementById(`${field}-error`);
                                 if (errorElement) {
-
                                     errorElement.textContent = errorMessage;
-                                    // console.log(errorElement);
-                                    // console.log(errorMessage);
                                 }
                             });
                     });
