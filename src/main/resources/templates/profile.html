@@ -23,8 +23,11 @@
 
                     <form id="profile-form" th:object="${userViewModel}"
                           th:method="post"
-                          th:action="@{/users/profile}">
-                        <input type="hidden" th:value="*{id}" name="id">
+                          th:action="@{/users/profile/edit}">
+                        <input type="hidden"
+                               th:value="*{id}"
+                               name="id"
+                               id="id-input">
 
                         <div>
                             <label class="mt-2 mb-0" for="fullName-input">Full Name:</label>
