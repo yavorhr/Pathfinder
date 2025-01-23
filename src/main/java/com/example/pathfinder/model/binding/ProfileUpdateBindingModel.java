@@ -55,6 +55,18 @@ public class ProfileUpdateBindingModel {
     return this;
   }
 
+  public String getFacebookAcc() {
+    return facebookAcc;
+  }
+
+  public String getInstagramAcc() {
+    return instagramAcc;
+  }
+
+  public String getLinkedIn() {
+    return linkedIn;
+  }
+
   public ProfileUpdateBindingModel setAge(Integer age) {
     this.age = age;
     return this;
