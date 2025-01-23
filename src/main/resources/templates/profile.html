@@ -80,10 +80,10 @@
                                   th:value="*{aboutMe}">Lorem ipsum dolor sit amet...</textarea>
 
                         <ul class="social-list">
-                            <li th:if="*{facebookAcc}">
+                            <li>
                                 <i class="fab fa-facebook-square"></i>
                                 <span
-                                        th:text="*{facebookAcc}"
+                                        th:if="*{facebookAcc}"
                                         id="facebook-display"></span>
                                 <input
                                         id="facebook-input"
@@ -91,9 +91,9 @@
                                         type="text"
                                         th:value="*{facebookAcc}">
                             </li>
-                            <li th:if="*{instagramAcc}">
+                            <li>
                                 <i class="fab fa-instagram"></i>
-                                <span
+                                <span th:if="*{instagramAcc}"
                                         th:text="*{instagramAcc}"
                                         id="instagram-display"></span>
                                 <input
@@ -102,25 +102,29 @@
                                         type="text"
                                         th:value="*{instagramAcc}">
                             </li>
-                            <li th:if="*{linkedIn}">
+                            <li>
                                 <i class="fab fa-linkedin"></i>
-                                <span th:text="*{linkedIn}"
-                                        id="linkedin-display"></span>
+                                <span th:if="*{linkedIn}"
+                                        th:text="*{linkedIn}"
+                                      id="linkedin-display"></span>
                                 <input
                                         id="linkedin-input"
                                         class="form-control d-none"
                                         type="text"
                                         th:value="*{linkedIn}">
                             </li>
-                            <li th:if="*{email}">
+                            <li>
                                 <i class="fa fa-envelope"></i>
-                                <span th:text="*{email}"
+                                <span th:if="*{email}"
+                                      th:text="*{email}"
                                       id="email-display"></span>
                                 <input
                                         id="email-input"
                                         class="form-control d-none"
                                         type="email"
                                         th:value="*{email}">
+                                <span id="email-error"
+                                      class="error-message text-danger"></span>
                             </li>
                         </ul>
 
