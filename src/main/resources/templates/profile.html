@@ -79,7 +79,9 @@
                         <ul class="social-list">
                             <li>
                                 <i class="fab fa-facebook-square"></i>
-                                <span id="facebook-display"></span>
+                                <span
+                                        th:text="*{facebookAcc}"
+                                        id="facebook-display"></span>
                                 <input
                                         id="facebook-input"
                                         class="form-control d-none"
@@ -88,7 +90,9 @@
                             </li>
                             <li>
                                 <i class="fab fa-instagram"></i>
-                                <span id="instagram-display"></span>
+                                <span
+                                        th:text="*{instagramAcc}"
+                                        id="instagram-display"></span>
                                 <input
                                         id="instagram-input"
                                         class="form-control d-none"
@@ -97,7 +101,8 @@
                             </li>
                             <li>
                                 <i class="fab fa-linkedin"></i>
-                                <span id="linkedin-display"></span>
+                                <span th:text="*{linkedIn}"
+                                        id="linkedin-display"></span>
                                 <input
                                         id="linkedin-input"
                                         class="form-control d-none"
@@ -106,8 +111,8 @@
                             </li>
                             <li >
                                 <i class="fa fa-envelope"></i>
-                                <span
-                                        id="gmail-display"></span>
+                                <span th:text="*{email}"
+                                      id="email-display"></span>
                                 <input
                                         id="email-input"
                                         class="form-control d-none"
