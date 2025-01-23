@@ -80,7 +80,7 @@
                                   th:value="*{aboutMe}">Lorem ipsum dolor sit amet...</textarea>
 
                         <ul class="social-list">
-                            <li>
+                            <li th:if="*{facebookAcc}">
                                 <i class="fab fa-facebook-square"></i>
                                 <span
                                         th:text="*{facebookAcc}"
@@ -91,7 +91,7 @@
                                         type="text"
                                         th:value="*{facebookAcc}">
                             </li>
-                            <li>
+                            <li th:if="*{instagramAcc}">
                                 <i class="fab fa-instagram"></i>
                                 <span
                                         th:text="*{instagramAcc}"
@@ -102,7 +102,7 @@
                                         type="text"
                                         th:value="*{instagramAcc}">
                             </li>
-                            <li>
+                            <li th:if="*{linkedIn}">
                                 <i class="fab fa-linkedin"></i>
                                 <span th:text="*{linkedIn}"
                                         id="linkedin-display"></span>
@@ -112,7 +112,7 @@
                                         type="text"
                                         th:value="*{linkedIn}">
                             </li>
-                            <li >
+                            <li th:if="*{email}">
                                 <i class="fa fa-envelope"></i>
                                 <span th:text="*{email}"
                                       id="email-display"></span>
