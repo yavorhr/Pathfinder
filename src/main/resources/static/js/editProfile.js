@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const saveButton = document.getElementById("save-button");
     const resetButton = document.getElementById("reset-button");
     const inputFields = document.querySelectorAll("input, textarea");
-
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute("content");
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute("content");
 
@@ -120,10 +119,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function resetChanges() {
         inputFields.forEach(input => {
             const displayElement = document.getElementById(input.id.replace("-input", "-display"));
+
             if (displayElement) {
                 input.value = displayElement.textContent; // Reset input value to display value
             }
             input.classList.add("d-none"); // Hide input fields
+
             if (displayElement) {
                 displayElement.classList.remove("d-none"); // Show display elements
             }
