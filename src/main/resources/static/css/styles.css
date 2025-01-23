@@ -604,16 +604,17 @@ body {
     justify-content: center;
 }
 
-.profile-container {
-    width: 50%;
-}
-
 .profile-card {
     border: none;
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     cursor: pointer;
+    min-width: 80%;
+}
+
+.profile-container{
+    width: 70%;
 }
 
 .profile-card:before {
