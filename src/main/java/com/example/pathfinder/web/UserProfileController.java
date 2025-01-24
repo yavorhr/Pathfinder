@@ -13,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -44,7 +42,8 @@ public class UserProfileController {
 
   @PostMapping("/users/profile/edit")
   public ResponseEntity<?> updateProfile(
-          @RequestBody @Valid ProfileUpdateBindingModel bindingModel, BindingResult bindingResult) {
+          @RequestBody @Valid ProfileUpdateBindingModel bindingModel,
+          BindingResult bindingResult) {
 
     if (bindingResult.hasErrors()) {
 
