@@ -3,7 +3,6 @@ package com.example.pathfinder.util.cloudinary;
 import com.cloudinary.Cloudinary;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
