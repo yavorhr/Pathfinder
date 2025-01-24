@@ -3,8 +3,44 @@ document.addEventListener("DOMContentLoaded", function () {
     const saveButton = document.getElementById("save-button");
     const resetButton = document.getElementById("reset-button");
     const inputFields = document.querySelectorAll("input, textarea");
+
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute("content");
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute("content");
+
+    const uploadButton = document.getElementById("upload-button");
+    const uploadInput = document.getElementById("upload-input");
+    const profileImage = document.getElementById("profile-image");
+
+    uploadButton.addEventListener("click", () => {
+        uploadInput.click(); // Open file selection dialog
+    });
+
+    uploadInput.addEventListener("change", async (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const formData = new FormData();
+            formData.append("file", file);
+
+            try {
+                const response = await fetch("/api/profile/image-upload", {
+                    method: "POST",
+                    [csrfHeader]: csrfToken,
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    profileImage.src = data.url;
+                    alert("Profile picture updated successfully!");
+                } else {
+                    const error = await response.json();
+                    alert(error.error || "Failed to upload profile picture.");
+                }
+            } catch (error) {
+                alert("An error occurred while uploading the picture.");
+            }
+        }
+    });
 
     // Attach event listener to "Edit" button
     editButton.addEventListener("click", function (event) {
