@@ -16,6 +16,8 @@
                     <img alt="Profile image"
                          src="/images/profile.jpg" width="100"
                          class="rounded-circle">
+                    <input type="file" id="upload-input" class="d-none" accept="image/*">
+                    <button id="upload-button" class="btn btn-outline-primary mt-2">Add</button>
                 </div>
                 <div class="text-center mt-3">
                     <span th:text="*{level.name()}"
