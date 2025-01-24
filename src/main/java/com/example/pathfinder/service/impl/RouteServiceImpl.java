@@ -12,8 +12,10 @@ import com.example.pathfinder.repository.RouteRepository;
 import com.example.pathfinder.service.CategoryService;
 import com.example.pathfinder.service.RouteService;
 import com.example.pathfinder.service.UserService;
+import com.example.pathfinder.service.events.UpdateUserLevelEvent;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -30,12 +32,14 @@ public class RouteServiceImpl implements RouteService {
   private final ModelMapper modelMapper;
   private final UserService userService;
   private final CategoryService categoryService;
+  private final ApplicationEventPublisher eventPublisher;
 
-  public RouteServiceImpl(RouteRepository repository, ModelMapper modelMapper, UserService userService, CategoryService categoryService) {
+  public RouteServiceImpl(RouteRepository repository, ModelMapper modelMapper, UserService userService, CategoryService categoryService, ApplicationEventPublisher eventPublisher) {
     this.routeRepository = repository;
     this.modelMapper = modelMapper;
     this.userService = userService;
     this.categoryService = categoryService;
+    this.eventPublisher = eventPublisher;
   }
 
   @Override
@@ -78,6 +82,8 @@ public class RouteServiceImpl implements RouteService {
     route.setCategories(mapCategories(routeServiceModel.getCategories()));
 
     route = this.routeRepository.save(route);
+
+    eventPublisher.publishEvent(new UpdateUserLevelEvent(author));
 
     return route.getId();
   }
