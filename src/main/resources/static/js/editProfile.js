@@ -24,7 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
             try {
                 const response = await fetch("/api/profile/image-upload", {
                     method: "POST",
-                    [csrfHeader]: csrfToken,
+                    headers: {
+                        [csrfHeader]: csrfToken
+                    },
                     body: formData,
                 });
 
