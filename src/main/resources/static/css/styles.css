@@ -613,8 +613,8 @@ body {
     min-width: 80%;
 }
 
-.profile-container{
-    width: 70%;
+.profile-container {
+    width: 50%;
 }
 
 .profile-card:before {
@@ -649,6 +649,14 @@ body {
 
 .fonts {
     font-size: 20px
+}
+
+.profile-data-wrapper {
+    font-size: 20px;
+}
+
+.profile-data-wrapper label{
+    font-weight: bold;
 }
 
 .social-list {
@@ -690,7 +698,15 @@ body {
     background-color: #0833e3
 }
 
-.social-list li{
+.social-list {
+    margin-bottom: 4rem;
+}
+
+.social-list label {
+    font-size: 23px;
+}
+
+.social-list li {
     position: relative;
     text-align: center;
 }
@@ -709,6 +725,7 @@ body {
     transition: opacity 0.5s ease, visibility 0.5s ease;
     z-index: 10;
     color: black;
+    width: fit-content;
 }
 
 .social-list li:hover span {
@@ -718,6 +735,7 @@ body {
 
 .social-list li i {
     transition: transform 0.3s ease;
+    font-size: 30px;
 }
 
 .social-list li:hover i {
