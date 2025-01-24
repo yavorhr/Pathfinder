@@ -29,8 +29,8 @@
                                name="id"
                                id="id-input">
 
-                        <div>
-                            <label class="mt-2 mb-0" for="fullName-input">Full Name:</label>
+                        <div class="profile-data-wrapper" >
+                            <label class="mt-5 mb-0" for="fullName-input">Full Name:</label>
                             <input id="fullName-input"
                                    class="form-control d-none"
                                    type="text"
@@ -42,7 +42,7 @@
                                   class="error-message text-danger"></span>
                         </div>
 
-                        <div>
+                        <div class="profile-data-wrapper" >
                             <label class="mt-2 mb-0" for="username-input">Username: </label>
                             <span id="username-display"
                                   th:text="*{username}">UI/UX Designer</span>
@@ -54,7 +54,7 @@
                                   class="error-message text-danger"></span>
                         </div>
 
-                        <div>
+                        <div class="profile-data-wrapper" >
                             <label class="mt-2 mb-0" for="age-input">Age: </label>
                             <span id="age-display"
                                   th:text="*{age}">33</span>
@@ -67,7 +67,7 @@
                                   class="error-message text-danger"></span>
                         </div>
 
-                        <div class="px-4 mt-5">
+                        <div class="px-4 mt-4 mb-3 profile-data-wrapper">
                             <p id="description-display"
                                th:text="*{aboutMe}"
                                class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim et nostrum
@@ -77,7 +77,8 @@
 
                         <textarea id="description-input"
                                   class="form-control d-none"
-                                  th:value="*{aboutMe}">Lorem ipsum dolor sit amet...</textarea>
+                                  placeholder="Write something about you..."
+                                  th:value="*{aboutMe}"></textarea>
 
                         <ul class="social-list">
                             <li>
@@ -130,7 +131,7 @@
                         </ul>
 
                         <div class="buttons">
-                            <div class="buttons mt-4">
+                            <div class="buttons mt-8">
                                 <button id="edit-button" class="btn btn-outline-primary px-4">Edit</button>
                                 <button id="save-button" class="btn btn-primary px-4 d-none">Save</button>
                                 <button id="reset-button" class="btn btn-outline-secondary px-4 d-none">Reset</button>
