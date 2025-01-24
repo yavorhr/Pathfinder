@@ -3,8 +3,11 @@ package com.example.pathfinder.web;
 import com.example.pathfinder.model.binding.ProfileUpdateBindingModel;
 import com.example.pathfinder.model.view.UserProfileViewModel;
 import com.example.pathfinder.service.UserService;
+import com.example.pathfinder.util.cloudinary.CloudinaryImage;
+import com.example.pathfinder.util.cloudinary.CloudinaryService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -20,10 +26,12 @@ import java.util.stream.Collectors;
 public class UserProfileController {
   private final UserService userService;
   private final ModelMapper modelMapper;
+  private final CloudinaryService cloudinaryService;
 
-  public UserProfileController(UserService userService, ModelMapper modelMapper) {
+  public UserProfileController(UserService userService, ModelMapper modelMapper, CloudinaryService cloudinaryService) {
     this.userService = userService;
     this.modelMapper = modelMapper;
+    this.cloudinaryService = cloudinaryService;
   }
 
   @GetMapping("/users/profile")
@@ -63,5 +71,21 @@ public class UserProfileController {
     return null;
 
   }
+
+  @ResponseBody
+  @PostMapping("/api/profile/image-upload")
+  public ResponseEntity<Map<String, String>> uploadProfilePicture(@RequestParam("file") MultipartFile file) {
+    try {
+      CloudinaryImage uploadedImage = cloudinaryService.upload(file);
+
+      return ResponseEntity.ok(Map.of(
+              "url", uploadedImage.getUrl(),
+              "publicId", uploadedImage.getPublicId()
+      ));
+    } catch (IOException e) {
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "Upload failed"));
+    }
+  }
 }
+
 
