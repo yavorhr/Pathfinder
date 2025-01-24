@@ -2,6 +2,8 @@ package com.example.pathfinder.model.entity;
 
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,9 +21,15 @@ public class UserEntity extends BaseEntity {
   private String instagramAcc;
   private String linkedIn;
   private boolean enabled;
+  private List<Route> routes;
 
   public UserEntity() {
     this.enabled = false;
+  }
+
+  @OneToMany(mappedBy = "author")
+  public List<Route> getRoutes() {
+    return routes;
   }
 
   @Lob
@@ -91,6 +99,11 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setAboutMe(String aboutMe) {
     this.aboutMe = aboutMe;
+    return this;
+  }
+
+  public UserEntity setRoutes(List<Route> routes) {
+    this.routes = routes;
     return this;
   }
 
