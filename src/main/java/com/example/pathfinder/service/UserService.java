@@ -1,7 +1,6 @@
 package com.example.pathfinder.service;
 
 import com.example.pathfinder.model.entity.UserEntity;
-import com.example.pathfinder.model.service.UserProfileServiceModel;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
 
 import java.util.Optional;
