@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     uploadInput.addEventListener("change", async (event) => {
         const file = event.target.files[0];
+
         if (file) {
             const formData = new FormData();
             formData.append("file", file);
@@ -32,8 +33,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (response.ok) {
                     const data = await response.json();
+                    let oldPublicInputElement = document.getElementById("oldProfileImagePublicId");
+
+                    const oldPublicId = oldPublicInputElement.value;
+
+                    oldPublicInputElement.value = data.publicId;
+
                     profileImage.src = data.url;
-                    alert("Profile picture updated successfully!");
+
+                    if (oldPublicId) {
+                        await deleteOldProfilePicture(oldPublicId);
+                    }
+
                 } else {
                     const error = await response.json();
                     alert(error.error || "Failed to upload profile picture.");
@@ -43,6 +54,20 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+
+    function deleteOldProfilePicture(publicId) {
+        fetch("/api/profile/image-delete", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                [csrfHeader]: csrfToken
+            },
+            body: JSON.stringify({publicId: publicId}),
+        })
+            .then(response => response.json())
+            .then(data => console.log("Old profile picture deleted successfully."))
+            .catch(error => console.error("Error deleting image:", error));
+    }
 
     // Attach event listener to "Edit" button
     editButton.addEventListener("click", function (event) {
