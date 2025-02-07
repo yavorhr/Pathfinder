@@ -46,7 +46,6 @@ public class UserProfileController {
     return "profile";
   }
 
-
   @PostMapping("/users/profile/edit")
   public ResponseEntity<?> updateProfile(
           @RequestBody @Valid ProfileUpdateBindingModel bindingModel,
@@ -69,21 +68,6 @@ public class UserProfileController {
     System.out.println(bindingModel.getId());
     return null;
 
-  }
-
-  @ResponseBody
-  @PostMapping("/api/profile/image-upload")
-  public ResponseEntity<Map<String, String>> uploadProfilePicture(@RequestParam("file") MultipartFile file) {
-    try {
-      CloudinaryImage uploadedImage = cloudinaryService.upload(file);
-
-      return ResponseEntity.ok(Map.of(
-              "url", uploadedImage.getUrl(),
-              "publicId", uploadedImage.getPublicId()
-      ));
-    } catch (IOException e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "Upload failed"));
-    }
   }
 }
 
