@@ -52,6 +52,33 @@ VALUES (4, 2);
 INSERT INTO users_roles (`user_id`, `role_id`)
 VALUES (4, 1);
 
+
+-- profile pictures
+INSERT INTO profile_pictures (public_id_number, url, user_id)
+VALUES
+('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
+ 'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg',
+ 1);
+
+INSERT INTO profile_pictures (public_id_number, url, user_id)
+VALUES
+('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
+ 'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg',
+ 2);
+
+INSERT INTO profile_pictures (public_id_number, url, user_id)
+VALUES
+('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
+ 'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg',
+ 3);
+
+INSERT INTO profile_pictures (public_id_number, url,user_id)
+VALUES
+('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
+ 'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg',
+ 4);
+
+
 -- categories
 INSERT INTO categories (id, description, name)
 VALUES ('1', 'Tracks for pedestrians.', 'PEDESTRIAN');
