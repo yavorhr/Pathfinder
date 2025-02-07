@@ -2,7 +2,6 @@ package com.example.pathfinder.model.entity;
 
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.*;
-
 import java.util.List;
 import java.util.Set;
 
@@ -22,15 +21,15 @@ public class UserEntity extends BaseEntity {
   private String linkedIn;
   private boolean enabled;
   private List<Route> routes;
-  private String profileImage;
+  private ProfilePicture profilePicture;
 
   public UserEntity() {
     this.enabled = false;
   }
-
-  @Column(name = "profile_image")
-  public String getProfileImage() {
-    return profileImage;
+  
+  @OneToOne
+  public ProfilePicture getProfilePicture() {
+    return profilePicture;
   }
 
   @OneToMany(mappedBy = "author")
@@ -108,6 +107,11 @@ public class UserEntity extends BaseEntity {
     return this;
   }
 
+  public UserEntity setProfilePicture(ProfilePicture profilePicture) {
+    this.profilePicture = profilePicture;
+    return this;
+  }
+
   public UserEntity setRoutes(List<Route> routes) {
     this.routes = routes;
     return this;
@@ -139,11 +143,6 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setEmail(String email) {
     this.email = email;
-    return this;
-  }
-
-  public UserEntity setProfileImage(String profileImage) {
-    this.profileImage = profileImage;
     return this;
   }
 
