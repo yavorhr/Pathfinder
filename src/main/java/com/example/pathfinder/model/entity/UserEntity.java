@@ -22,9 +22,15 @@ public class UserEntity extends BaseEntity {
   private String linkedIn;
   private boolean enabled;
   private List<Route> routes;
+  private String profileImage;
 
   public UserEntity() {
     this.enabled = false;
+  }
+
+  @Column(name = "profile_image")
+  public String getProfileImage() {
+    return profileImage;
   }
 
   @OneToMany(mappedBy = "author")
@@ -133,6 +139,11 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public UserEntity setProfileImage(String profileImage) {
+    this.profileImage = profileImage;
     return this;
   }
 
