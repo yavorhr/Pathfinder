@@ -137,36 +137,36 @@ VALUES (5, 1);
 INSERT INTO routes_categories
 VALUES (5, 2);
 
-INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO routes_pictures(title, url, author_id, route_id)
 VALUES ('Kumata', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630581072/d47iy8kxv6qni8euhojk.jpg', 1, 1);
 
-INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO routes_pictures(title, url, author_id, route_id)
 VALUES ('Kumata', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630581072/d47iy8kxv6qni8euhojk.jpg', 1, 1);
 
-INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO routes_pictures(title, url, author_id, route_id)
 VALUES ('Velo Erul', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630581418/tqhjrinmsb69ev7upg0q.jpg', 1, 2);
 
-INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO routes_pictures(title, url, author_id, route_id)
 VALUES ('Velo Erul 2', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630582448/oowojgn4lagybkvv20jb.jpg', 1, 2);
 
-INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO routes_pictures(title, url, author_id, route_id)
 VALUES ('Aleko', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630582596/tclvroyrkcfbz98yklmc.jpg', 1, 3);
 
-INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO routes_pictures(title, url, author_id, route_id)
 VALUES ('Aleko 2', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630582767/ukdmkxyvlnani3hzaafi.jpg', 1, 3);
 
-INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO routes_pictures(title, url, author_id, route_id)
 VALUES ('Shipka', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630583376/en6lxhaddbvhf1ksybbu.jpg', 1, 4);
 
-INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO routes_pictures(title, url, author_id, route_id)
 VALUES ('Shipka 2', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630583467/koncyanx4gqwzt9vxgx4.jpg', 1, 4);
 
 
-INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO routes_pictures(title, url, author_id, route_id)
 VALUES ('Aladja Manastir', 'http://res.cloudinary.com/ch-cloud/image/upload/v1630583842/qabnwpgq3pp1cui19nn5.jpg', 1,
         5);
 
-INSERT INTO pictures(title, url, author_id, route_id)
+INSERT INTO routes_pictures(title, url, author_id, route_id)
 VALUES ('Aladja Manastir 2', 'https://res.cloudinary.com/ch-cloud/image/upload/v1630584095/aznlgfzoxpuvl5belukb.jpg', 1,
         5);
 
