@@ -13,8 +13,13 @@ public class UserProfileViewModel {
   private String facebookAcc;
   private String instagramAcc;
   private String linkedIn;
+  private String profileImage;
 
   public UserProfileViewModel() {
+  }
+
+  public String getProfileImage() {
+    return profileImage;
   }
 
   public String getEmail() {
@@ -64,6 +69,11 @@ public class UserProfileViewModel {
 
   public UserProfileViewModel setFullName(String fullName) {
     this.fullName = fullName;
+    return this;
+  }
+
+  public UserProfileViewModel setProfileImage(String profileImage) {
+    this.profileImage = profileImage;
     return this;
   }
 
