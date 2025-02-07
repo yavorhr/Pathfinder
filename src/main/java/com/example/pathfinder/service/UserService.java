@@ -19,4 +19,5 @@ public interface UserService {
 
   UserEntity findByEmail(String email);
 
+  void updateUsersProfilePicture(String username, String url);
 }
