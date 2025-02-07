@@ -13,10 +13,14 @@
             <div class="profile-card p-3 py-4"
                  th:object="${userViewModel}">
                 <div class="text-center">
-                    <img alt="Profile image"
-                         src="/images/profile.jpg" width="100"
-                         class="rounded-circle">
+                    <img th:src="${userViewModel.profileImage != null &&
+                    !userViewModel.profileImage.isEmpty()
+              ? userViewModel.profileImage
+              : '/images/profile.jpg'}"
+                         alt="Profile image" id="profile-image"
+                         class="rounded-circle" width="100">
                     <input type="file" id="upload-input" class="d-none" accept="image/*">
+                    <input type="hidden" id="oldProfileImagePublicId" value="">
                     <button id="upload-button" class="btn btn-outline-primary mt-2">Add</button>
                 </div>
                 <div class="text-center mt-3">
@@ -31,7 +35,7 @@
                                name="id"
                                id="id-input">
 
-                        <div class="profile-data-wrapper" >
+                        <div class="profile-data-wrapper">
                             <label class="mt-5 mb-0" for="fullName-input">Full Name:</label>
                             <input id="fullName-input"
                                    class="form-control d-none"
@@ -44,7 +48,7 @@
                                   class="error-message text-danger"></span>
                         </div>
 
-                        <div class="profile-data-wrapper" >
+                        <div class="profile-data-wrapper">
                             <label class="mt-2 mb-0" for="username-input">Username: </label>
                             <span id="username-display"
                                   th:text="*{username}">UI/UX Designer</span>
@@ -56,7 +60,7 @@
                                   class="error-message text-danger"></span>
                         </div>
 
-                        <div class="profile-data-wrapper" >
+                        <div class="profile-data-wrapper">
                             <label class="mt-2 mb-0" for="age-input">Age: </label>
                             <span id="age-display"
                                   th:text="*{age}">33</span>
@@ -98,8 +102,8 @@
                             <li>
                                 <i class="fab fa-instagram"></i>
                                 <span th:if="*{instagramAcc}"
-                                        th:text="*{instagramAcc}"
-                                        id="instagram-display"></span>
+                                      th:text="*{instagramAcc}"
+                                      id="instagram-display"></span>
                                 <input
                                         id="instagram-input"
                                         class="form-control d-none"
@@ -109,7 +113,7 @@
                             <li>
                                 <i class="fab fa-linkedin"></i>
                                 <span th:if="*{linkedIn}"
-                                        th:text="*{linkedIn}"
+                                      th:text="*{linkedIn}"
                                       id="linkedin-display"></span>
                                 <input
                                         id="linkedin-input"
