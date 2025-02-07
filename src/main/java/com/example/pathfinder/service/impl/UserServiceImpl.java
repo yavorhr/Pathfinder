@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
   public void updateUsersProfilePicture(String email, String url) {
     UserEntity userEntity = this.userRepository.findByEmail(email)
             .orElseThrow(() -> new ObjectNotFoundException("User with the email " + email + " was not found!"));
-    userEntity.setProfileImage(url);
+//    userEntity.setProfileImage(url);
 
     this.userRepository.save(userEntity);
   }
