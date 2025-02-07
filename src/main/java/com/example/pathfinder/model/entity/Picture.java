@@ -6,7 +6,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "pictures")
+@Table(name = "routes_pictures")
 public class Picture extends BaseEntity {
   private String title;
   private String url;
