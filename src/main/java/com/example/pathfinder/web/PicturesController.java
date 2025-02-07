@@ -40,7 +40,7 @@ public class PicturesController {
   public String addPicture(PictureAddBindingModel bindingModel,
                            @AuthenticationPrincipal PathfinderUser principal) throws IOException {
 
-    CloudinaryImage uploaded = this.cloudinaryService.upload(bindingModel.getPicture());
+    CloudinaryImage uploaded = this.cloudinaryService.upload(bindingModel.getPicture(), "routes");
 
     PictureAddServiceModel serviceModel =
             mapToPictureServiceModel(uploaded, bindingModel);
@@ -66,7 +66,7 @@ public class PicturesController {
   public ResponseEntity<Map<String, String>> uploadProfilePicture(@RequestParam("file") MultipartFile file,
   @AuthenticationPrincipal UserDetails principal) {
     try {
-      CloudinaryImage uploadedImage = cloudinaryService.upload(file);
+      CloudinaryImage uploadedImage = cloudinaryService.upload(file, "users-pictures");
 
       this.userService.updateUsersProfilePicture(principal.getUsername(),uploadedImage.getUrl());
 
