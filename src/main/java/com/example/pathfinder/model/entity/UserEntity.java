@@ -8,7 +8,8 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
-  private String fullName;
+  private String firstName;
+  private String lastName;
   private String email;
   private String username;
   private Integer age;
@@ -37,6 +38,16 @@ public class UserEntity extends BaseEntity {
     return routes;
   }
 
+  @Column(name = "first_name", nullable = false)
+  public String getFirstName() {
+    return firstName;
+  }
+
+  @Column(name = "last_name", nullable = false)
+  public String getLastName() {
+    return lastName;
+  }
+
   @Lob
   @Column(name = "about_me")
   public String getAboutMe() {
@@ -51,11 +62,6 @@ public class UserEntity extends BaseEntity {
   @Column(unique = true, nullable = false)
   public String getEmail() {
     return email;
-  }
-
-  @Column(name = "full_name", nullable = false)
-  public String getFullName() {
-    return fullName;
   }
 
   @Enumerated(EnumType.STRING)
@@ -112,6 +118,11 @@ public class UserEntity extends BaseEntity {
     return this;
   }
 
+  public UserEntity setLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
   public UserEntity setRoutes(List<Route> routes) {
     this.routes = routes;
     return this;
@@ -119,10 +130,6 @@ public class UserEntity extends BaseEntity {
 
   public void setAge(Integer age) {
     this.age = age;
-  }
-
-  public void setFullName(String fullName) {
-    this.fullName = fullName;
   }
 
   public void setLevel(LevelEnum level) {
@@ -158,6 +165,11 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setInstagramAcc(String instagramLink) {
     this.instagramAcc = instagramLink;
+    return this;
+  }
+
+  public UserEntity setFirstName(String firstName) {
+    this.firstName = firstName;
     return this;
   }
 
