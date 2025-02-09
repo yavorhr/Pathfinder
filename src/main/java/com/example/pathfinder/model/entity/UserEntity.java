@@ -10,6 +10,7 @@ import java.util.Set;
 public class UserEntity extends BaseEntity {
   private String firstName;
   private String lastName;
+  private String gender;
   private String email;
   private String username;
   private Integer age;
@@ -31,6 +32,11 @@ public class UserEntity extends BaseEntity {
   @OneToOne
   public ProfilePicture getProfilePicture() {
     return profilePicture;
+  }
+
+  @Column(name = "gender", nullable = false)
+  public String getGender() {
+    return gender;
   }
 
   @OneToMany(mappedBy = "author")
@@ -106,6 +112,11 @@ public class UserEntity extends BaseEntity {
   @Column(name = "linked_in_account")
   public String getLinkedIn() {
     return linkedIn;
+  }
+
+  public UserEntity setGender(String gender) {
+    this.gender = gender;
+    return this;
   }
 
   public UserEntity setAboutMe(String aboutMe) {
