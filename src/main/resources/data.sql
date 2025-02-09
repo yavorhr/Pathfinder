@@ -9,23 +9,23 @@ INSERT INTO roles (id, role)
 VALUES (3, 'USER');
 
 -- some test users
-INSERT INTO users (id, age, first_name, last_name, level, password, username, email, enabled, about_me, instagram_account, facebook_account)
-VALUES (1, 28, 'Admin', 'Adminov', 'BEGINNER',
+INSERT INTO users (id, age, first_name, last_name, gender, level, password, username, email, enabled, about_me, instagram_account, facebook_account)
+VALUES (1, 28, 'Admin', 'Adminov', 'Male', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'admin',
         'admin@abv.bg', true, "I'm very passionate about trecking!", "instagram.com/admin", "facebook.com/admin" );
 
-INSERT INTO users (id, age, first_name, last_name, level, password, username, email, enabled, about_me, instagram_account)
-VALUES (2, 29, 'Moderator', 'Moderatorov', 'BEGINNER',
+INSERT INTO users (id, age, first_name, last_name, gender,level, password, username, email, enabled, about_me, instagram_account)
+VALUES (2, 29, 'Moderator', 'Moderatorov', 'Male', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'moderator',
         'moderator@abv.bg', true, "Let's go the mountain!", "instagram.com/moderator" );
 
-INSERT INTO users (id, age, first_name, last_name, level, password, username, email, enabled, about_me, instagram_account, facebook_account, linked_in_account)
-VALUES (3, 30, 'User', 'Userov', 'BEGINNER',
+INSERT INTO users (id, age, first_name, last_name, gender, level, password, username, email, enabled, about_me, instagram_account, facebook_account, linked_in_account)
+VALUES (3, 30, 'User', 'Userov', 'Male', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'user',
         'user@abv.bg', true, "I need new adventures!", "instagram.com/user", "facebook.com/user", "www.linkedin/user");
 
-INSERT INTO users (id, age, first_name, last_name, level, password, username, email, enabled, about_me)
-VALUES (4, 33, 'Ivan' ,'Ivanov', 'BEGINNER',
+INSERT INTO users (id, age, first_name, last_name, gender, level, password, username, email, enabled, about_me)
+VALUES (4, 33, 'Ivan' ,'Ivanov', 'Male', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'ivan',
         'ivan@abv.bg', false, "Looking forward to meet new people!");
 -- user roles
