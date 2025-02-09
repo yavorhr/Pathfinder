@@ -1,5 +1,6 @@
 package com.example.pathfinder.service.impl;
 
+import com.example.pathfinder.model.entity.ProfilePicture;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
@@ -41,6 +42,9 @@ public class UserServiceImpl implements UserService {
     user.setLevel(LevelEnum.BEGINNER);
     UserRoleEntity roleEntity = this.userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.USER);
     user.setRoles(Set.of(roleEntity));
+
+    ProfilePicture profilePicture = new ProfilePicture();
+    user.setProfilePicture(profilePicture);
 
     eventPublisher.publishEvent(new UserRegisteredEvent(
             this,
