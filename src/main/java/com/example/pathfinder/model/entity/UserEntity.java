@@ -26,7 +26,7 @@ public class UserEntity extends BaseEntity {
   public UserEntity() {
     this.enabled = false;
   }
-  
+
   @OneToOne
   public ProfilePicture getProfilePicture() {
     return profilePicture;
@@ -38,7 +38,7 @@ public class UserEntity extends BaseEntity {
   }
 
   @Lob
-  @Column(name = "about_me", nullable = false)
+  @Column(name = "about_me")
   public String getAboutMe() {
     return aboutMe;
   }
