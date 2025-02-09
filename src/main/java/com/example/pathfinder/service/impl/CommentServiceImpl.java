@@ -81,7 +81,7 @@ public class CommentServiceImpl implements CommentService {
             setApproved(commentEntity.isApproved()).
             setCreated(formattedCreationDate).
             setTextContent(commentEntity.getTextContent()).
-            setAuthor(commentEntity.getAuthor().getFullName());
+            setAuthor(commentEntity.getAuthor().getFirstName() + " " + commentEntity.getAuthor().getLastName());
 
     return commentViewModel;
   }
