@@ -4,7 +4,8 @@ import com.example.pathfinder.model.entity.enums.LevelEnum;
 
 public class UserProfileViewModel {
   private Long id;
-  private String fullName;
+  private String firstName;
+  private String lastName;
   private Integer age;
   private String username;
   private LevelEnum level;
@@ -30,8 +31,12 @@ public class UserProfileViewModel {
     return id;
   }
 
-  public String getFullName() {
-    return fullName;
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
   }
 
   public Integer getAge() {
@@ -67,8 +72,13 @@ public class UserProfileViewModel {
     return this;
   }
 
-  public UserProfileViewModel setFullName(String fullName) {
-    this.fullName = fullName;
+  public UserProfileViewModel setFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public UserProfileViewModel setLastName(String lastName) {
+    this.lastName = lastName;
     return this;
   }
 
