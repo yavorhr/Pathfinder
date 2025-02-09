@@ -9,131 +9,199 @@
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
+                    class="form_container"
                     method="POST"
                     th:action="@{/users/register}"
                     th:object="${userRegisterBindingModel}">
+                <div class="columns">
+                    <div class="left_column">
+                        <div>
+                            <div class="col-auto text-center">
+                                <label for="username" class="col-form-label ">Username</label>
+                            </div>
+                            <div class="col-auto">
+                                <input
+                                        th:field="*{username}"
+                                        th:errorclass="is-invalid"
+                                        type="text"
+                                        id="username"
+                                        class="form-control"
+                                        aria-describedby="usernameHelpInline">
+                                <small th:if="${#fields.hasErrors('username')}"
+                                       th:errors="*{username}"
+                                       id="usernameUniqueError"
+                                       class="invalid-feedback errors alert alert-danger text-center">
+                                </small>
+                            </div>
+                        </div>
 
-                <div>
-                    <div class="col-auto text-center">
-                        <label for="username" class="col-form-label ">Username</label>
+                        <div>
+                            <div class="col-auto text-center">
+                                <label for="inputFirstName" class="col-form-label ">First Name</label>
+                            </div>
+                            <div class="col-auto">
+                                <input
+                                        th:field="*{firstName}"
+                                        th:errorclass="is-invalid"
+                                        type="text"
+                                        id="inputFirstName"
+                                        class="form-control"
+                                        aria-describedby="fullNameHelpInline">
+                                <small id="firstNameNameError"
+                                       class="invalid-feedback errors alert alert-danger text-center">Error from binding model
+                                </small>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="col-auto text-center">
+                                <label for="inputLastName" class="col-form-label ">Last name</label>
+                            </div>
+                            <div class="col-auto">
+                                <input
+                                        th:field="*{lastName}"
+                                        th:errorclass="is-invalid"
+                                        type="text"
+                                        id="inputLastName"
+                                        class="form-control">
+                                <small id="lastNameError"
+                                       class="invalid-feedback errors alert alert-danger text-center">Error from binding model
+                                </small>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="col-auto text-center">
+                                <label for="inputEmail" class="col-form-label ">Email</label>
+                            </div>
+                            <div class="col-auto">
+                                <input
+                                        th:field="*{email}"
+                                        th:errorclass="is-invalid"
+                                        id="inputEmail"
+                                        class="form-control"
+                                        aria-describedby="emailHelpInline">
+                                <small th:if="${#fields.hasErrors('email')}"
+                                       th:errors="*{email}"
+                                       id="emailError"
+                                       class="invalid-feedback errors alert alert-danger text-center">
+                                </small>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-auto text-center">
+                                <label for="inputAge" class="col-form-label ">Age</label>
+                            </div>
+                            <div class="col-auto">
+                                <input
+                                        th:field="*{age}"
+                                        th:errorclass="is-invalid"
+                                        type="number"
+                                        id="inputAge"
+                                        class="form-control"
+                                        min="0" max="100"
+                                        aria-describedby="ageHelpInline">
+                                <small id="ageError"
+                                       class="invalid-feedback errors alert alert-danger text-center">Please insert
+                                    valid
+                                    age</small>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-auto text-center">
+                                <label for="inputPassword" class="col-form-label ">Password</label>
+                            </div>
+                            <div class="col-auto">
+                                <input
+                                        th:field="*{password}"
+                                        th:errorclass="is-invalid"
+                                        type="password"
+                                        id="inputPassword"
+                                        class="form-control"
+                                        aria-describedby="passwordHelpInline">
+                                <small id="passwordError"
+                                       class="invalid-feedback errors alert alert-danger text-center">
+                                    Password between 5 and 20 symbols
+                                </small>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-auto text-center">
+                                <label for="inputConfirmPassword" class="col-form-label ">Confirm Password</label>
+                            </div>
+                            <div class="col-auto">
+                                <input
+                                        th:field="*{confirmPassword}"
+                                        th:errorclass="is-invalid"
+                                        type="password"
+                                        id="inputConfirmPassword"
+                                        class="form-control"
+                                        aria-describedby="confirmPasswordHelpInline">
+                                <small id="confirmPasswordError"
+                                       class="invalid-feedback errors alert alert-danger text-center">
+                                    Confirm password must be between 5 and 20 symbols
+                                </small>
+                            </div>
+
+                            <div class="col-auto text-center mt-3 text-center"
+                                 th:if="${#fields.hasGlobalErrors()}">
+                                <small class="errors alert alert-danger" th:each="error : ${#fields.globalErrors()}">
+                                    <span th:text="${error}"></span>
+                                </small>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <input
-                                th:field="*{username}"
-                                th:errorclass="is-invalid"
+                    <div class="right_column">
+                        <div>
+                            <div class="col-auto text-center">
+                                <label for="facebookAcc" class="col-form-label ">Facebook</label>
+                            </div>
+                            <div class="col-auto">
+                                <input
+                                        th:field="*{facebookAcc}"
+                                        type="text"
+                                        id="facebookAcc"
+                                        class="form-control">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-auto text-center">
+                                <label for="instagramAcc" class="col-form-label ">Instagram</label>
+                            </div>
+                            <div class="col-auto">
+                                <input
+                                        th:field="*{instagramAcc}"
+                                        type="text"
+                                        id="instagramAcc"
+                                        class="form-control">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-auto text-center">
+                                <label for="linkedIn" class="col-form-label ">LinkedIn</label>
+                            </div>
+                            <div class="col-auto">
+                                <input
+                                        th:field="*{linkedIn}"
+                                        type="text"
+                                        id="linkedIn"
+                                        class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-auto">
+                        <textarea
+                                class="form-control about-me-textarea"
+                                th:field="*{aboutMe}"
                                 type="text"
-                                id="username"
-                                class="form-control"
-                                aria-describedby="usernameHelpInline">
-                        <small th:if="${#fields.hasErrors('username')}"
-                               th:errors="*{username}"
-                               id="usernameUniqueError"
-                               class="invalid-feedback errors alert alert-danger text-center">
-                        </small>
+                                id="aboutMe"
+                                placeholder="Share something about you..."></textarea>
+                        </div>
                     </div>
                 </div>
 
-                <div>
-                    <div class="col-auto text-center">
-                        <label for="inputFullName" class="col-form-label ">Full Name</label>
-                    </div>
-                    <div class="col-auto">
-                        <input
-                                th:field="*{fullName}"
-                                th:errorclass="is-invalid"
-                                type="text"
-                                id="inputFullName"
-                                class="form-control"
-                                aria-describedby="fullNameHelpInline">
-                        <small id="fullNameError"
-                               class="invalid-feedback errors alert alert-danger text-center">Full name must be between 3 and 30
-                            symbols
-                        </small>
-                    </div>
-                </div>
 
-                <div>
-                    <div class="col-auto text-center">
-                        <label for="inputEmail" class="col-form-label ">Email</label>
-                    </div>
-                    <div class="col-auto">
-                        <input
-                                th:field="*{email}"
-                                th:errorclass="is-invalid"
-                                id="inputEmail"
-                                class="form-control"
-                                aria-describedby="emailHelpInline">
-                        <small th:if="${#fields.hasErrors('email')}"
-                               th:errors="*{email}"
-                               id="emailError"
-                               class="invalid-feedback errors alert alert-danger text-center">
-                        </small>
-                    </div>
-                </div>
-                <div>
-                    <div class="col-auto text-center">
-                        <label for="inputAge" class="col-form-label ">Age</label>
-                    </div>
-                    <div class="col-auto">
-                        <input
-                                th:field="*{age}"
-                                th:errorclass="is-invalid"
-                                type="number"
-                                id="inputAge"
-                                class="form-control"
-                                min="0" max="100"
-                                aria-describedby="ageHelpInline">
-                        <small id="ageError"
-                               class="invalid-feedback errors alert alert-danger text-center">Please insert valid age</small>
-                    </div>
-                </div>
-                <div>
-                    <div class="col-auto text-center">
-                        <label for="inputPassword" class="col-form-label ">Password</label>
-                    </div>
-                    <div class="col-auto">
-                        <input
-                                th:field="*{password}"
-                                th:errorclass="is-invalid"
-                                type="password"
-                                id="inputPassword"
-                                class="form-control"
-                                aria-describedby="passwordHelpInline">
-                        <small id="passwordError"
-                               class="invalid-feedback errors alert alert-danger text-center">
-                            Password between 5 and 20 symbols
-                        </small>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="col-auto text-center">
-                        <label for="inputConfirmPassword" class="col-form-label ">Confirm Password</label>
-                    </div>
-                    <div class="col-auto">
-                        <input
-                                th:field="*{confirmPassword}"
-                                th:errorclass="is-invalid"
-                                type="password"
-                                id="inputConfirmPassword"
-                                class="form-control"
-                                aria-describedby="confirmPasswordHelpInline">
-                        <small id="confirmPasswordError"
-                               class="invalid-feedback errors alert alert-danger text-center">
-                            Confirm password must be between 5 and 20 symbols
-                        </small>
-                    </div>
-
-                    <div class="col-auto text-center mt-3 text-center"
-                            th:if="${#fields.hasGlobalErrors()}">
-                        <small class="errors alert alert-danger" th:each="error : ${#fields.globalErrors()}">
-                            <span th:text="${error}"></span>
-                        </small>
-                    </div>
-
-                </div>
-
-                <div class="d-flex justify-content-center mt-4">
+                <div class="d-flex justify-content-center mt-4 button_container">
                     <button class="btn btn-primary btn-block w-50" type="submit">Register</button>
                 </div>
 
