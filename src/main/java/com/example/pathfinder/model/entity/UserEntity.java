@@ -2,6 +2,9 @@ package com.example.pathfinder.model.entity;
 
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +17,7 @@ public class UserEntity extends BaseEntity {
   private String email;
   private String username;
   private Integer age;
+  private LocalDate birthday;
   private LevelEnum level;
   private String password;
   private String aboutMe;
@@ -37,6 +41,11 @@ public class UserEntity extends BaseEntity {
   @Column(name = "gender", nullable = false)
   public String getGender() {
     return gender;
+  }
+
+  @NotNull
+  public LocalDate getBirthday() {
+    return birthday;
   }
 
   @OneToMany(mappedBy = "author")
@@ -116,6 +125,11 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setGender(String gender) {
     this.gender = gender;
+    return this;
+  }
+
+  public UserEntity setBirthday(LocalDate birthday) {
+    this.birthday = birthday;
     return this;
   }
 
