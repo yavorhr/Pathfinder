@@ -38,7 +38,7 @@ public class UserEntity extends BaseEntity {
     return profilePicture;
   }
 
-  @Enumerated(EnumType.ORDINAL)
+  @Enumerated(EnumType.STRING)
   @Column(name = "gender", nullable = false)
   public GenderEnum getGender() {
     return gender;
