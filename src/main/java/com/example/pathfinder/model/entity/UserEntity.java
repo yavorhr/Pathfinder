@@ -1,9 +1,9 @@
 package com.example.pathfinder.model.entity;
 
+import com.example.pathfinder.model.entity.enums.GenderEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -13,7 +13,7 @@ import java.util.Set;
 public class UserEntity extends BaseEntity {
   private String firstName;
   private String lastName;
-  private String gender;
+  private GenderEnum gender;
   private String email;
   private String username;
   private Integer age;
@@ -38,8 +38,9 @@ public class UserEntity extends BaseEntity {
     return profilePicture;
   }
 
+  @Enumerated(EnumType.ORDINAL)
   @Column(name = "gender", nullable = false)
-  public String getGender() {
+  public GenderEnum getGender() {
     return gender;
   }
 
@@ -123,7 +124,7 @@ public class UserEntity extends BaseEntity {
     return linkedIn;
   }
 
-  public UserEntity setGender(String gender) {
+  public UserEntity setGender(GenderEnum gender) {
     this.gender = gender;
     return this;
   }
