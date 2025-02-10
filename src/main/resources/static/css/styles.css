@@ -672,6 +672,22 @@ input[type="radio"]:checked + .radio_label {
     border: 2px solid #71a2e0;
 }
 
+/* Date of Birth Section */
+
+.dob_dropdowns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    width: 30%;
+}
+
 /* ============= Profile ============= */
 .profile-main {
     display: flex;
