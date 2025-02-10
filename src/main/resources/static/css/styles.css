@@ -634,6 +634,44 @@ body {
     text-align: center;
 }
 
+
+/* Gender Poll */
+.gender_poll {
+    margin-bottom: 20px;
+}
+
+.gender_options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+/* Gender poll */
+.radio_label {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+input[type="radio"] {
+    display: none; /* Hide default radio button */
+}
+
+input[type="radio"]:checked + .radio_label {
+    background-color: #007BFF;
+    color: white;
+    border: 2px solid #007BFF;
+}
+
+.radio_label:hover {
+    background-color: #71a2e0;
+    color: white;
+    border: 2px solid #71a2e0;
+}
+
 /* ============= Profile ============= */
 .profile-main {
     display: flex;
@@ -692,7 +730,7 @@ body {
     font-size: 20px;
 }
 
-.profile-data-wrapper label{
+.profile-data-wrapper label {
     font-weight: bold;
 }
 
