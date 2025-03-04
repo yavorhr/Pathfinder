@@ -9,27 +9,27 @@ INSERT INTO roles (id, role)
 VALUES (3, 'USER');
 
 -- some test users
-INSERT INTO users (id, age, first_name, last_name, gender, birthday, level, password, username, email, enabled,
+INSERT INTO users (id, first_name, last_name, gender, birthday, level, password, username, email, enabled,
                    about_me, instagram_account, facebook_account)
-VALUES (1, 28, 'Admin', 'Adminov', 'Male', '1995-08-21', 'BEGINNER',
+VALUES (1, 'Admin', 'Adminov', 'Male', '1995-08-21', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'admin',
         'admin@abv.bg', true, "I'm very passionate about trecking!", "instagram.com/admin", "facebook.com/admin");
 
-INSERT INTO users (id, age, first_name, last_name, gender, birthday, level, password, username, email, enabled,
+INSERT INTO users (id, first_name, last_name, gender, birthday, level, password, username, email, enabled,
                    about_me, instagram_account)
-VALUES (2, 29, 'Moderator', 'Moderatorov', 'Male', '1988-04-15', 'BEGINNER',
+VALUES (2,  'Moderator', 'Moderatorov', 'Male', '1988-04-15', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'moderator',
         'moderator@abv.bg', true, "Let's go the mountain!", "instagram.com/moderator");
 
-INSERT INTO users (id, age, first_name, last_name, gender, birthday, level, password, username, email, enabled,
+INSERT INTO users (id,  first_name, last_name, gender, birthday, level, password, username, email, enabled,
                    about_me, instagram_account, facebook_account, linked_in_account)
-VALUES (3, 30, 'User', 'Userov', 'Male', '2000-12-05', 'BEGINNER',
+VALUES (3,  'User', 'Userov', 'Male', '2000-12-05', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'user',
         'user@abv.bg', true, "I need new adventures!", "instagram.com/user", "facebook.com/user", "www.linkedin/user");
 
-INSERT INTO users (id, age, first_name, last_name, gender, birthday, level, password, username, email, enabled,
+INSERT INTO users (id,  first_name, last_name, gender, birthday, level, password, username, email, enabled,
                    about_me)
-VALUES (4, 33, 'Ivan', 'Ivanov', 'Male', '2000-12-05', 'BEGINNER',
+VALUES (4,  'Ivan', 'Ivanov', 'Male', '2000-12-05', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'ivan',
         'ivan@abv.bg', false, "Looking forward to meet new people!");
 -- user roles
