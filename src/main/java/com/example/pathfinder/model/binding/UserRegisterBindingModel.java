@@ -52,7 +52,6 @@ public class UserRegisterBindingModel {
 
   @UniqueEmail
   @Email(message = "PLease insert valid Email")
-  @NotNull
   public String getEmail() {
     return email;
   }
