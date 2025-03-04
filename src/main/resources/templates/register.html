@@ -43,6 +43,10 @@
                                    type="text"
                                    id="username"
                                    class="form-control">
+                            <p th:if="${#fields.hasErrors('username')}"
+                               th:errors="*{username}"
+                               class="errors alert alert-danger invalid-feedback">
+                            </p>
                         </div>
                         <div class="col">
                             <label for="inputEmail" class="col-form-label">Email</label>
@@ -107,13 +111,17 @@
                     <div class="row">
                         <div class="col social-input-container facebook-container">
                             <span class="social-icon"><i class="fab fa-facebook-square"></i></span>
-                            <input th:field="*{facebookAcc}" type="text" id="facebookAcc"
-                                   class="form-control social-input" placeholder="Facebook">
+                            <input th:field="*{facebookAcc}"
+                                   type="text" id="facebookAcc"
+                                   class="form-control social-input"
+                                   placeholder="Facebook">
                         </div>
                         <div class="col social-input-container instagram-container">
                             <span class="social-icon"><i class="fab fa-instagram"></i></span>
-                            <input th:field="*{instagramAcc}" type="text" id="instagramAcc"
-                                   class="form-control social-input" placeholder="Instagram">
+                            <input th:field="*{instagramAcc}"
+                                   type="text" id="instagramAcc"
+                                   class="form-control social-input"
+                                   placeholder="Instagram">
                         </div>
                         <div class="col social-input-container linkedin-container">
                             <span class="social-icon"><i class="fab fa-linkedin"></i></span>
