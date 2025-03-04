@@ -70,8 +70,8 @@
                         <div class="col col-background">
                             <label class="col-form-label">Date of Birth:</label>
                             <div class="dob_dropdowns">
-                                <select id="day">
-                                    <option value="" disabled selected>Day</option>
+                                <select id="year">
+                                    <option value="" disabled selected>Year</option>
                                 </select>
                                 <select id="month">
                                     <option value="" disabled selected>Month</option>
@@ -88,8 +88,9 @@
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>
-                                <select id="year">
-                                    <option value="" disabled selected>Year</option>
+
+                                <select id="day">
+                                    <option value="" disabled selected>Day</option>
                                 </select>
                             </div>
                         </div>
@@ -120,7 +121,7 @@
                         <div class="col social-input-container linkedin-container">
                             <span class="social-icon"><i class="fab fa-linkedin"></i></span>
                             <input th:field="*{linkedIn}" type="text" id="linkedIn" class="form-control social-input"
-                                   placeholder="LinkedIn Profile">
+                                   placeholder="LinkedIn">
                         </div>
                     </div>
 
