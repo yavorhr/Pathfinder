@@ -11,8 +11,10 @@ public class UserRegisterBindingModel {
   private String firstName;
   private String lastName;
   private String gender;
+  private String year;
+  private String month;
+  private String day;
   private String email;
-  private Integer age;
   private String password;
   private String confirmPassword;
   private String aboutMe;
@@ -55,12 +57,6 @@ public class UserRegisterBindingModel {
     return email;
   }
 
-  @Positive
-  @NotNull
-  public Integer getAge() {
-    return age;
-  }
-
   @NotNull
   @Size(min = 5, max = 20)
   public String getPassword() {
@@ -76,6 +72,18 @@ public class UserRegisterBindingModel {
   public UserRegisterBindingModel setUsername(String username) {
     this.username = username;
     return this;
+  }
+
+  public String getYear() {
+    return year;
+  }
+
+  public String getMonth() {
+    return month;
+  }
+
+  public String getDay() {
+    return day;
   }
 
   public UserRegisterBindingModel setGender(String gender) {
@@ -101,11 +109,6 @@ public class UserRegisterBindingModel {
 
   public UserRegisterBindingModel setEmail(String email) {
     this.email = email;
-    return this;
-  }
-
-  public UserRegisterBindingModel setAge(Integer age) {
-    this.age = age;
     return this;
   }
 
@@ -149,4 +152,18 @@ public class UserRegisterBindingModel {
     return this;
   }
 
+  public UserRegisterBindingModel setYear(String year) {
+    this.year = year;
+    return this;
+  }
+
+  public UserRegisterBindingModel setMonth(String month) {
+    this.month = month;
+    return this;
+  }
+
+  public UserRegisterBindingModel setDay(String day) {
+    this.day = day;
+    return this;
+  }
 }
