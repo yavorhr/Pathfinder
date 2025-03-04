@@ -44,14 +44,13 @@ public class UserRegisterBindingModel {
     return this.lastName;
   }
 
-  @NotNull
-  @NotEmpty
+  @NotNull(message = "Please select one of the options")
   public String getGender() {
     return gender;
   }
 
   @UniqueEmail
-  @Email(message = "Please insert valid Email")
+  @Email(message = "Please insert valid email")
   public String getEmail() {
     return email;
   }
@@ -73,14 +72,17 @@ public class UserRegisterBindingModel {
     return this;
   }
 
+  @NotNull(message = "Please select birthday")
   public String getYear() {
     return year;
   }
 
+  @NotNull(message = "Please select birthday")
   public String getMonth() {
     return month;
   }
 
+  @NotNull(message = "Please select birthday")
   public String getDay() {
     return day;
   }
