@@ -1,6 +1,7 @@
 package com.example.pathfinder.validation.register;
 
 import com.example.pathfinder.model.binding.UserRegisterBindingModel;
+import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.service.UserService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -17,7 +18,15 @@ public class PasswordsValidator implements ConstraintValidator<DoesPasswordAndCo
 
   @Override
   public boolean isValid(UserRegisterBindingModel bindingModel, ConstraintValidatorContext context) {
+    if (bindingModel.getEmail().isEmpty()) {
+      return false;
+    }
 
-    return bindingModel.getPassword().equals(bindingModel.getConfirmPassword());
+    UserEntity user = this.userService.findByEmail(bindingModel.getEmail());
+
+    boolean passwordMatch = bindingModel.getPassword().equals(bindingModel.getConfirmPassword());
+    boolean validPassword = passwordMatch && user.getPassword().equals(bindingModel.getPassword());
+
+    return passwordMatch && validPassword;
   }
 }
