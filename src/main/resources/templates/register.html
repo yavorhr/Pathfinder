@@ -105,60 +105,53 @@
                     </div>
 
                     <!-- Row 5: Social Networks -->
+
                     <div class="row">
-                        <div class="col social-input-container">
-    <span class="social-icon">
-        <i class="fab fa-facebook-square"></i>
-    </span>
-                            <input th:field="*{facebookAcc}"
-                                   type="text"
-                                   id="facebookAcc"
-                                   class="form-control social-input"
-                                   placeholder="Facebook Profile">
+                        <div class="col social-input-container facebook-container">
+                            <span class="social-icon"><i class="fab fa-facebook-square"></i></span>
+                            <input th:field="*{facebookAcc}" type="text" id="facebookAcc"
+                                   class="form-control social-input" placeholder="Facebook">
+                        </div>
+                        <div class="col social-input-container instagram-container">
+                            <span class="social-icon"><i class="fab fa-instagram"></i></span>
+                            <input th:field="*{instagramAcc}" type="text" id="instagramAcc"
+                                   class="form-control social-input" placeholder="Instagram">
+                        </div>
+                        <div class="col social-input-container linkedin-container">
+                            <span class="social-icon"><i class="fab fa-linkedin"></i></span>
+                            <input th:field="*{linkedIn}" type="text" id="linkedIn" class="form-control social-input"
+                                   placeholder="LinkedIn Profile">
                         </div>
                     </div>
-                    <div class="col">
-                        <input th:field="*{instagramAcc}"
-                               type="text"
-                               id="instagramAcc"
-                               class="form-control">
-                    </div>
-                    <div class="col">
-                        <input th:field="*{linkedIn}"
-                               type="text"
-                               id="linkedIn"
-                               class="form-control">
+
+                    <!-- Row 6: Password / Confirm Password -->
+                    <div class="row passwords">
+                        <div class="col">
+                            <label for="inputPassword" class="col-form-label">Password</label>
+                            <input th:field="*{password}"
+                                   th:errorclass="is-invalid"
+                                   type="password"
+                                   id="inputPassword"
+                                   class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="inputConfirmPassword" class="col-form-label">Confirm Password</label>
+                            <input th:field="*{confirmPassword}"
+                                   th:errorclass="is-invalid"
+                                   type="password"
+                                   id="inputConfirmPassword"
+                                   class="form-control">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Row 6: Password / Confirm Password -->
-                <div class="row">
-                    <div class="col">
-                        <label for="inputPassword" class="col-form-label">Password</label>
-                        <input th:field="*{password}"
-                               th:errorclass="is-invalid"
-                               type="password"
-                               id="inputPassword"
-                               class="form-control">
-                    </div>
-                    <div class="col">
-                        <label for="inputConfirmPassword" class="col-form-label">Confirm Password</label>
-                        <input th:field="*{confirmPassword}"
-                               th:errorclass="is-invalid"
-                               type="password"
-                               id="inputConfirmPassword"
-                               class="form-control">
-                    </div>
+                <!-- Register Button -->
+                <div class="d-flex justify-content-center mt-4 button_container">
+                    <button class="btn btn-primary btn-block" type="submit">Register</button>
                 </div>
-        </div>
 
-        <!-- Register Button -->
-        <div class="d-flex justify-content-center mt-4 button_container">
-            <button class="btn btn-primary btn-block" type="submit">Register</button>
+            </form>
         </div>
-
-        </form>
-    </div>
     </div>
 </main>
 

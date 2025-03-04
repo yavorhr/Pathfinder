@@ -609,7 +609,7 @@ body {
 .columns {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
     align-items: center;
     justify-content: center;
 }
@@ -621,8 +621,25 @@ body {
     width: 100%;
 }
 
+.columns .passwords {
+    flex-direction: column;
+}
+
 .columns .row .col {
     flex: 1;
+}
+
+.passwords .col {
+    flex: 0;
+    width: 40%;
+    margin:0 auto;
+}
+
+.columns .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
 }
 
 .about-me-textarea {
@@ -631,11 +648,78 @@ body {
     border-radius: 5px;
     min-height: 150px;
     resize: vertical;
-    width: 80%;
     margin: 0 auto;
 }
 
-/*  */
+/* Social inputs */
+
+.social-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon {
+    position: absolute;
+    left: 22px; /* Position inside input */
+    width: 30px;
+    height: 30px;
+    background: rgba(134, 130, 130, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    color: #333;
+}
+
+/* When input is hovered */
+.social-input-container:hover .social-icon {
+    transform: scale(1.2);
+}
+
+.facebook-container:hover .social-icon {
+    color: #1877F2;
+}
+
+.instagram-container:hover .social-icon {
+    color: orangered;
+}
+
+.linkedin-container:hover .social-icon {
+    color: dodgerblue;
+}
+
+/* When user is typing (input focused) */
+.social-input-container:focus-within .social-icon {
+    transform: scale(1.4);
+}
+
+/* When user is typing (input focused) */
+.facebook-container:focus-within .social-icon {
+    color: #1877F2;
+}
+
+/* When user is typing (input focused) */
+.instagram-container:focus-within .social-icon {
+    color: orangered;
+}
+
+/* When user is typing (input focused) */
+.linkedin-container:focus-within .social-icon {
+    color: dodgerblue;
+}
+
+/* Style input */
+.social-input {
+    width: 100%;
+    padding-left: 45px; /* Ensure text doesn't overlap icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 40px;
+}
 
 .button_container {
     text-align: center;
@@ -665,14 +749,13 @@ select {
 /* Gender Poll */
 
 .col-background {
-    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
-    backdrop-filter: blur(8px); /* Blurred background */
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
-    border-radius: 10px; /* Rounded edges */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
     text-align: start;
     transition: all 0.3s ease-in-out;
     margin-top: 20px;
-    padding: 10px;
 }
 
 .col-background:hover {
@@ -719,6 +802,7 @@ select {
     cursor: pointer;
     width: 30%;
 }
+
 
 /* ============= Profile ============= */
 .profile-main {
