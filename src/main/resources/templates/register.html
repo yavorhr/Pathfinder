@@ -13,9 +13,7 @@
                   method="POST"
                   th:action="@{/users/register}"
                   th:object="${userRegisterBindingModel}">
-
                 <div class="columns">
-
                     <!-- Row 1: First Name / Last Name -->
                     <div class="row">
                         <div class="col">
@@ -70,10 +68,10 @@
                         <div class="col col-background">
                             <label class="col-form-label">Date of Birth:</label>
                             <div class="dob_dropdowns">
-                                <select id="year">
+                                <select id="year" name="year">
                                     <option value="" disabled selected>Year</option>
                                 </select>
-                                <select id="month">
+                                <select id="month" name="month">
                                     <option value="" disabled selected>Month</option>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
@@ -88,13 +86,13 @@
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>
-
-                                <select id="day">
+                                <select id="day" name="day">
                                     <option value="" disabled selected>Day</option>
                                 </select>
                             </div>
                         </div>
                     </div>
+
                     <!-- Row 4: About Me (Full Width) -->
                     <div class="row">
                         <div class="col-12 about-me-container">
@@ -106,7 +104,6 @@
                     </div>
 
                     <!-- Row 5: Social Networks -->
-
                     <div class="row">
                         <div class="col social-input-container facebook-container">
                             <span class="social-icon"><i class="fab fa-facebook-square"></i></span>
