@@ -23,6 +23,10 @@
                                    type="text"
                                    id="inputFirstName"
                                    class="form-control">
+                            <p th:if="${#fields.hasErrors('firstName')}"
+                               th:errors="*{firstName}"
+                               class="errors alert alert-danger invalid-feedback">
+                            </p>
                         </div>
                         <div class="col">
                             <label for="inputLastName" class="col-form-label">Last Name</label>
@@ -31,6 +35,10 @@
                                    type="text"
                                    id="inputLastName"
                                    class="form-control">
+                            <p th:if="${#fields.hasErrors('lastName')}"
+                               th:errors="*{lastName}"
+                               class="errors alert alert-danger invalid-feedback">
+                            </p>
                         </div>
                     </div>
 
@@ -55,6 +63,10 @@
                                    type="email"
                                    id="inputEmail"
                                    class="form-control">
+                            <p th:if="${#fields.hasErrors('email')}"
+                               th:errors="*{email}"
+                               class="errors alert alert-danger invalid-feedback">
+                            </p>
                         </div>
                     </div>
 
@@ -63,19 +75,40 @@
                         <div class="col col-background">
                             <label class="col-form-label">Gender</label>
                             <div class="gender_options">
-                                <input type="radio" id="male" name="gender" value="male">
+                                <input
+                                        type="radio"
+                                        id="male"
+                                        value="male"
+                                        th:field="*{gender}">
                                 <label for="male" class="radio_label">Male</label>
-                                <input type="radio" id="female" name="gender" value="female">
+                                <input
+                                        type="radio"
+                                        id="female"
+                                        th:field="*{gender}"
+                                        value="female">
                                 <label for="female" class="radio_label">Female</label>
+                                <p th:if="${#fields.hasErrors('gender')}"
+                                   th:text="${#fields.errors('gender')[0]}"
+                                   class="errors alert alert-danger invalid-feedback">
+                                </p>
                             </div>
                         </div>
                         <div class="col col-background">
                             <label class="col-form-label">Date of Birth:</label>
                             <div class="dob_dropdowns">
-                                <select id="year" name="year">
+                                <select
+                                        id="year"
+                                        th:errorclass="is-invalid"
+                                        name="year"
+                                        th:field="*{year}">
                                     <option value="" disabled selected>Year</option>
                                 </select>
-                                <select id="month" name="month">
+                                <p th:if="${#fields.hasErrors('year')}"
+                                   th:errors="*{year}"
+                                   class="errors alert alert-danger invalid-feedback">
+                                </p>
+                                <select id="month"
+                                        name="month">
                                     <option value="" disabled selected>Month</option>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
@@ -90,9 +123,17 @@
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>
-                                <select id="day" name="day">
+                                <select id="day"
+                                        name="day"
+                                        th:errorclass="is-invalid"
+                                        th:field="*{day}">
                                     <option value="" disabled selected>Day</option>
                                 </select>
+                                <p th:if="${#fields.hasErrors('day')}"
+                                   th:errors="*{day}"
+                                   class="errors alert alert-danger invalid-feedback">
+                                </p>
+
                             </div>
                         </div>
                     </div>
