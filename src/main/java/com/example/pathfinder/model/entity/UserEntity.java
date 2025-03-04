@@ -16,7 +16,6 @@ public class UserEntity extends BaseEntity {
   private GenderEnum gender;
   private String email;
   private String username;
-  private Integer age;
   private LocalDate birthday;
   private LevelEnum level;
   private String password;
@@ -68,11 +67,6 @@ public class UserEntity extends BaseEntity {
   @Column(name = "about_me")
   public String getAboutMe() {
     return aboutMe;
-  }
-
-  @Column
-  public Integer getAge() {
-    return age;
   }
 
   @Column(unique = true, nullable = false)
@@ -152,10 +146,6 @@ public class UserEntity extends BaseEntity {
   public UserEntity setRoutes(List<Route> routes) {
     this.routes = routes;
     return this;
-  }
-
-  public void setAge(Integer age) {
-    this.age = age;
   }
 
   public void setLevel(LevelEnum level) {
