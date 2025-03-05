@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Populate Year Dropdown (from 1900 to current year)
     let currentYear = new Date().getFullYear();
+    yearSelect.innerHTML = '<option value="" disabled selected>Year</option>';
+
     for (let i = currentYear; i >= 1900; i--) {
         let option = document.createElement("option");
         option.value = i;
