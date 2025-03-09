@@ -87,11 +87,11 @@
                                         th:field="*{gender}"
                                         value="female">
                                 <label for="female" class="radio_label">Female</label>
-                                <p th:if="${#fields.hasErrors('gender')}"
-                                   th:text="${#fields.errors('gender')[0]}"
-                                   class="errors alert alert-danger">
-                                </p>
                             </div>
+                            <p th:if="${#fields.hasErrors('gender')}"
+                               th:text="${#fields.errors('gender')[0]}"
+                               class="errors alert alert-danger">
+                            </p>
                         </div>
                         <div class="col col-background">
                             <label class="col-form-label">Date of Birth:</label>
