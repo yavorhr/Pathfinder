@@ -3,6 +3,7 @@ package com.example.pathfinder.validation.register;
 import com.example.pathfinder.model.binding.UserRegisterBindingModel;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.service.UserService;
+import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.modelmapper.ModelMapper;
@@ -21,12 +22,6 @@ public class PasswordsValidator implements ConstraintValidator<DoesPasswordAndCo
     if (bindingModel.getEmail().isEmpty()) {
       return false;
     }
-
-    UserEntity user = this.userService.findByEmail(bindingModel.getEmail());
-
-    boolean passwordMatch = bindingModel.getPassword().equals(bindingModel.getConfirmPassword());
-    boolean validPassword = passwordMatch && user.getPassword().equals(bindingModel.getPassword());
-
-    return passwordMatch && validPassword;
+    return bindingModel.getPassword().equals(bindingModel.getConfirmPassword());
   }
 }
