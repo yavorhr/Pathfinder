@@ -768,6 +768,7 @@ input[type="radio"]:checked + .radio_label {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 select {
