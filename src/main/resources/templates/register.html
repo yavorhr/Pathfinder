@@ -194,9 +194,10 @@
                                    class="form-control">
                         </div>
 
-                        <div
-                                th:if="${#fields.hasGlobalErrors()}">
-                            <p class="text-danger errors alert alert-danger invalid-feedback" th:each="error : ${#fields.globalErrors()}">
+                        <div class="col"
+                             th:if="${#fields.hasGlobalErrors()}">
+                            <p class="text-danger errors alert alert-danger"
+                               th:each="error : ${#fields.globalErrors()}">
                                 <span th:text="${error}"></span>
                             </p>
                         </div>
