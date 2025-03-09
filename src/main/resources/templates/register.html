@@ -98,17 +98,11 @@
                             <div class="dob_dropdowns">
                                 <select
                                         th:field="*{year}"
-                                        th:errorclass="is-invalid"
                                         id="year">
                                     <option value="" disabled selected>Year</option>
                                 </select>
-                                <p th:if="${#fields.hasErrors('year')}"
-                                   th:errors="*{year}"
-                                   class="errors alert alert-danger invalid-feedback">
-                                </p>
                                 <select id="month"
-                                        th:field="*{month}"
-                                        th:errorclass="is-invalid">
+                                        th:field="*{month}">
                                     <option value="" disabled selected>Month</option>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
@@ -123,22 +117,17 @@
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>
-                                <p th:if="${#fields.hasErrors('month')}"
-                                   th:errors="*{month}"
-                                   class="errors alert alert-danger invalid-feedback">
-                                </p>
                                 <select id="day"
                                         name="day"
-                                        th:errorclass="is-invalid"
                                         th:field="*{day}">
                                     <option value="" disabled selected>Day</option>
                                 </select>
-                                <p th:if="${#fields.hasErrors('day')}"
-                                   th:errors="*{day}"
-                                   class="errors alert alert-danger">
-                                </p>
-
                             </div>
+                            <p th:if="${#fields.hasErrors('day') ||
+                             #fields.hasErrors('month') ||
+                             #fields.hasErrors('year')}" class="errors alert alert-danger">
+                                Please select birthday
+                            </p>
                         </div>
                     </div>
 
