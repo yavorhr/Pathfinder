@@ -50,7 +50,8 @@ public class UserRegisterBindingModel {
   }
 
   @UniqueEmail
-  @Email(message = "Please insert valid email")
+  @Email(message = "Please add valid email")
+  @NotBlank(message = "Please add email")
   public String getEmail() {
     return email;
   }
@@ -72,17 +73,20 @@ public class UserRegisterBindingModel {
     return this;
   }
 
-  @NotNull(message = "Please select birthday")
+  @NotBlank
+  @NotEmpty
   public String getYear() {
     return year;
   }
 
-  @NotNull(message = "Please select birthday")
+  @NotBlank
+  @NotEmpty
   public String getMonth() {
     return month;
   }
 
-  @NotNull(message = "Please select birthday")
+  @NotBlank
+  @NotEmpty
   public String getDay() {
     return day;
   }
