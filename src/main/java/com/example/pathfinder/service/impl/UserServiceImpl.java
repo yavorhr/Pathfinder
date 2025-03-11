@@ -17,6 +17,7 @@ import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -30,21 +31,25 @@ public class UserServiceImpl implements UserService {
   private final UserRolesService userRolesService;
   private final ApplicationEventPublisher eventPublisher;
   private final ProfilePictureRepository profilePictureRepository;
+  private final PasswordEncoder passwordEncoder;
 
-  public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserRolesService userRolesService, ApplicationEventPublisher eventPublisher, ProfilePictureRepository profilePictureRepository) {
+  public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserRolesService userRolesService, ApplicationEventPublisher eventPublisher, ProfilePictureRepository profilePictureRepository, PasswordEncoder passwordEncoder) {
     this.userRepository = userRepository;
     this.modelMapper = modelMapper;
     this.userRolesService = userRolesService;
     this.eventPublisher = eventPublisher;
     this.profilePictureRepository = profilePictureRepository;
+    this.passwordEncoder = passwordEncoder;
   }
 
   @Override
   public void registerUser(UserRegisterServiceModel serviceModel) {
     UserEntity user = this.modelMapper.map(serviceModel, UserEntity.class);
+
     user.setLevel(LevelEnum.BEGINNER);
     UserRoleEntity roleEntity = this.userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.USER);
     user.setRoles(Set.of(roleEntity));
+    user.setPassword(this.passwordEncoder.encode(serviceModel.getPassword()));
 
     user = this.userRepository.save(user);
 
