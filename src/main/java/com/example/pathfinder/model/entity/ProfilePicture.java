@@ -12,12 +12,12 @@ public class ProfilePicture extends BaseEntity {
   public ProfilePicture() {
   }
 
-  @Column(name = "public_id_number",  columnDefinition = "VARCHAR(255) DEFAULT 'pathfinder/users-pictures/xv9rvzhomv0a1yojubw3'")
+  @Column(name = "public_id_number")
   public String getPublicId() {
     return publicId;
   }
 
-  @Column(name = "url",  columnDefinition = "VARCHAR(255) DEFAULT 'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg'")
+  @Column(name = "url")
   public String getUrl() {
     return url;
   }
@@ -41,5 +41,16 @@ public class ProfilePicture extends BaseEntity {
   public ProfilePicture setUser(UserEntity userEntity) {
     this.user = userEntity;
     return this;
+  }
+
+  @PrePersist
+  public void setDefaultValues() {
+    if (this.publicId == null || this.publicId.isEmpty()) {
+      this.publicId = "pathfinder/users-pictures/xv9rvzhomv0a1yojubw3";
+    }
+
+    if (this.url == null || this.url.isEmpty()) {
+      this.url = "https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg";
+    }
   }
 }
