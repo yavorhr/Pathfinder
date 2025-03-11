@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
+
 @Controller
 @RequestMapping("/users")
 public class UserRegisterController {
@@ -39,20 +41,38 @@ public class UserRegisterController {
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes) {
 
-    if (bindingResult.hasErrors() ||
-            !userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())) {
+    if (bindingResult.hasErrors()) {
 
       redirectAttributes
               .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
               .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
 
-      return "redirect:/users/register";
+      System.out.println("Validation errors found:");
+      bindingResult.getAllErrors().forEach(error -> System.out.println(error.getDefaultMessage()));
+
+      return "redirect:register";
     }
 
-    this.userService
-            .registerUser(modelMapper
-                    .map(userRegisterBindingModel, UserRegisterServiceModel.class));
+    UserRegisterServiceModel serviceModel =
+            modelMapper.map(userRegisterBindingModel, UserRegisterServiceModel.class);
+
+    convertLocalDate(userRegisterBindingModel.getYear(),
+            userRegisterBindingModel.getMonth(),
+            userRegisterBindingModel.getDay(),
+            serviceModel);
+
+    this.userService.registerUser(serviceModel);
 
     return "redirect:login";
+  }
+
+  // Helpers
+
+  private void convertLocalDate(String year, String month, String day, UserRegisterServiceModel serviceModel) {
+    int yearInt = Integer.parseInt(year);
+    int monthInt = Integer.parseInt(month);
+    int dayInt = Integer.parseInt(day);
+
+    serviceModel.setBirthday(LocalDate.of(yearInt, monthInt, dayInt));
   }
 }
