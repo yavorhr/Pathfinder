@@ -1,5 +1,9 @@
 package com.example.pathfinder.model.service;
 
+import com.example.pathfinder.model.entity.enums.GenderEnum;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
 import java.time.LocalDate;
 
 public class UserRegisterServiceModel {
@@ -8,7 +12,7 @@ public class UserRegisterServiceModel {
   private String firstName;
   private String lastName;
   private LocalDate birthday;
-  private String gender;
+  private GenderEnum gender;
   private String password;
   private String aboutMe;
   private String facebookAcc;
@@ -22,7 +26,8 @@ public class UserRegisterServiceModel {
     return birthday;
   }
 
-  public String getGender() {
+  @Enumerated(EnumType.STRING)
+  public GenderEnum getGender() {
     return gender;
   }
 
@@ -82,11 +87,11 @@ public class UserRegisterServiceModel {
     return this;
   }
 
-  public UserRegisterServiceModel setGender(String gender) {
+  public UserRegisterServiceModel setGender(GenderEnum gender) {
     this.gender = gender;
     return this;
   }
-  
+
   public UserRegisterServiceModel setPassword(String password) {
     this.password = password;
     return this;

@@ -1,8 +1,11 @@
 package com.example.pathfinder.model.binding;
 
+import com.example.pathfinder.model.entity.enums.GenderEnum;
 import com.example.pathfinder.validation.register.DoesPasswordAndConfirmPasswordMatch;
 import com.example.pathfinder.validation.register.UniqueEmail;
 import com.example.pathfinder.validation.register.UniqueUsername;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
 
 @DoesPasswordAndConfirmPasswordMatch
@@ -10,7 +13,7 @@ public class UserRegisterBindingModel {
   private String username;
   private String firstName;
   private String lastName;
-  private String gender;
+  private GenderEnum gender;
   private String year;
   private String month;
   private String day;
@@ -45,7 +48,8 @@ public class UserRegisterBindingModel {
   }
 
   @NotNull(message = "Please select one of the options")
-  public String getGender() {
+  @Enumerated(EnumType.ORDINAL)
+  public GenderEnum getGender() {
     return gender;
   }
 
@@ -91,7 +95,7 @@ public class UserRegisterBindingModel {
     return day;
   }
 
-  public UserRegisterBindingModel setGender(String gender) {
+  public UserRegisterBindingModel setGender(GenderEnum gender) {
     this.gender = gender;
     return this;
   }
