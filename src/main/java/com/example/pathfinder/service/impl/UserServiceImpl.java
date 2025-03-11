@@ -6,6 +6,7 @@ import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
+import com.example.pathfinder.repository.ProfilePictureRepository;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.UserService;
@@ -28,12 +29,14 @@ public class UserServiceImpl implements UserService {
   private final ModelMapper modelMapper;
   private final UserRolesService userRolesService;
   private final ApplicationEventPublisher eventPublisher;
+  private final ProfilePictureRepository profilePictureRepository;
 
-  public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserRolesService userRolesService, ApplicationEventPublisher eventPublisher) {
+  public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserRolesService userRolesService, ApplicationEventPublisher eventPublisher, ProfilePictureRepository profilePictureRepository) {
     this.userRepository = userRepository;
     this.modelMapper = modelMapper;
     this.userRolesService = userRolesService;
     this.eventPublisher = eventPublisher;
+    this.profilePictureRepository = profilePictureRepository;
   }
 
   @Override
@@ -43,16 +46,17 @@ public class UserServiceImpl implements UserService {
     UserRoleEntity roleEntity = this.userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.USER);
     user.setRoles(Set.of(roleEntity));
 
+    user = this.userRepository.save(user);
+
     ProfilePicture profilePicture = new ProfilePicture();
-    user.setProfilePicture(profilePicture);
+    profilePicture.setUser(user);
+    this.profilePictureRepository.save(profilePicture);
 
     eventPublisher.publishEvent(new UserRegisteredEvent(
             this,
             LocalDateTime.now(),
             serviceModel.getUsername(),
             serviceModel.getEmail()));
-
-    this.userRepository.save(user);
   }
 
   @EventListener
