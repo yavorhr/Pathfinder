@@ -32,6 +32,7 @@ public class UserEntity extends BaseEntity {
     this.enabled = false;
   }
 
+
   @OneToOne
   public ProfilePicture getProfilePicture() {
     return profilePicture;

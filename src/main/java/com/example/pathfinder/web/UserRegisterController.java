@@ -67,7 +67,6 @@ public class UserRegisterController {
   }
 
   // Helpers
-
   private void convertLocalDate(String year, String month, String day, UserRegisterServiceModel serviceModel) {
     int yearInt = Integer.parseInt(year);
     int monthInt = Integer.parseInt(month);
