@@ -1,12 +1,14 @@
 package com.example.pathfinder.model.service;
 
+import java.time.LocalDate;
+
 public class UserRegisterServiceModel {
   private String username;
   private String email;
   private String firstName;
   private String lastName;
+  private LocalDate birthday;
   private String gender;
-  private Integer age;
   private String password;
   private String aboutMe;
   private String facebookAcc;
@@ -14,6 +16,10 @@ public class UserRegisterServiceModel {
   private String linkedIn;
 
   public UserRegisterServiceModel() {
+  }
+
+  public LocalDate getBirthday() {
+    return birthday;
   }
 
   public String getGender() {
@@ -34,10 +40,6 @@ public class UserRegisterServiceModel {
 
   public String getLastName() {
     return lastName;
-  }
-
-  public Integer getAge() {
-    return age;
   }
 
   public String getPassword() {
@@ -84,14 +86,14 @@ public class UserRegisterServiceModel {
     this.gender = gender;
     return this;
   }
-
-  public UserRegisterServiceModel setAge(Integer age) {
-    this.age = age;
+  
+  public UserRegisterServiceModel setPassword(String password) {
+    this.password = password;
     return this;
   }
 
-  public UserRegisterServiceModel setPassword(String password) {
-    this.password = password;
+  public UserRegisterServiceModel setBirthday(LocalDate birthday) {
+    this.birthday = birthday;
     return this;
   }
 
