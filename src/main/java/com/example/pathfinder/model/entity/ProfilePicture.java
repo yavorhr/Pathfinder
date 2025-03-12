@@ -22,7 +22,7 @@ public class ProfilePicture extends BaseEntity {
     return url;
   }
 
-  @OneToOne(mappedBy = "profilePicture")
+  @OneToOne(mappedBy = "profilePicture", cascade = CascadeType.ALL)
   public UserEntity getUser() {
     return user;
   }
