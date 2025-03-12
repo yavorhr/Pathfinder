@@ -4,6 +4,9 @@ import com.example.pathfinder.model.entity.enums.GenderEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -32,8 +35,8 @@ public class UserEntity extends BaseEntity {
     this.enabled = false;
   }
 
-
-  @OneToOne
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "profile_picture_id", referencedColumnName = "id")
   public ProfilePicture getProfilePicture() {
     return profilePicture;
   }
