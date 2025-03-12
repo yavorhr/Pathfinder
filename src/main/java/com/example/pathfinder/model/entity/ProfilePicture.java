@@ -22,8 +22,7 @@ public class ProfilePicture extends BaseEntity {
     return url;
   }
 
-  @OneToOne
-  @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+  @OneToOne(mappedBy = "profilePicture")
   public UserEntity getUser() {
     return user;
   }
