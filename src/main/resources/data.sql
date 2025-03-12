@@ -8,30 +8,48 @@ VALUES (2, 'MODERATOR');
 INSERT INTO roles (id, role)
 VALUES (3, 'USER');
 
+-- profile pictures
+INSERT INTO profile_pictures (public_id_number, url)
+VALUES ('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
+        'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg');
+
+INSERT INTO profile_pictures (public_id_number, url)
+VALUES ('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
+        'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg');
+
+INSERT INTO profile_pictures (public_id_number, url)
+VALUES ('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
+        'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg');
+
+INSERT INTO profile_pictures (public_id_number, url)
+VALUES ('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
+        'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg');
+
 -- some test users
 INSERT INTO users (id, first_name, last_name, gender, birthday, level, password, username, email, enabled,
-                   about_me, instagram_account, facebook_account)
+                   about_me, instagram_account, facebook_account, profile_picture_id)
 VALUES (1, 'Admin', 'Adminov', 'Male', '1995-08-21', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'admin',
-        'admin@abv.bg', true, "I'm very passionate about trecking!", "instagram.com/admin", "facebook.com/admin");
+        'admin@abv.bg', true, "I'm very passionate about trecking!", "instagram.com/admin", "facebook.com/admin",1);
 
 INSERT INTO users (id, first_name, last_name, gender, birthday, level, password, username, email, enabled,
-                   about_me, instagram_account)
+                   about_me, instagram_account, profile_picture_id)
 VALUES (2,  'Moderator', 'Moderatorov', 'Male', '1988-04-15', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'moderator',
-        'moderator@abv.bg', true, "Let's go the mountain!", "instagram.com/moderator");
+        'moderator@abv.bg', true, "Let's go the mountain!", "instagram.com/moderator",2);
 
 INSERT INTO users (id,  first_name, last_name, gender, birthday, level, password, username, email, enabled,
-                   about_me, instagram_account, facebook_account, linked_in_account)
+                   about_me, instagram_account, facebook_account, linked_in_account, profile_picture_id)
 VALUES (3,  'User', 'Userov', 'Male', '2000-12-05', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'user',
-        'user@abv.bg', true, "I need new adventures!", "instagram.com/user", "facebook.com/user", "www.linkedin/user");
+        'user@abv.bg', true, "I need new adventures!", "instagram.com/user", "facebook.com/user", "www.linkedin/user",3);
 
 INSERT INTO users (id,  first_name, last_name, gender, birthday, level, password, username, email, enabled,
-                   about_me)
+                   about_me, profile_picture_id)
 VALUES (4,  'Ivan', 'Ivanov', 'Male', '2000-12-05', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'ivan',
-        'ivan@abv.bg', false, "Looking forward to meet new people!");
+        'ivan@abv.bg', false, "Looking forward to meet new people!",4);
+
 -- user roles
 -- admin
 INSERT INTO users_roles (`user_id`, `role_id`)
@@ -55,29 +73,6 @@ INSERT INTO users_roles (`user_id`, `role_id`)
 VALUES (4, 2);
 INSERT INTO users_roles (`user_id`, `role_id`)
 VALUES (4, 1);
-
-
--- profile pictures
-INSERT INTO profile_pictures (public_id_number, url, user_id)
-VALUES ('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
-        'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg',
-        1);
-
-INSERT INTO profile_pictures (public_id_number, url, user_id)
-VALUES ('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
-        'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg',
-        2);
-
-INSERT INTO profile_pictures (public_id_number, url, user_id)
-VALUES ('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
-        'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg',
-        3);
-
-INSERT INTO profile_pictures (public_id_number, url, user_id)
-VALUES ('pathfinder/users-pictures/xv9rvzhomv0a1yojubw3',
-        'https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg',
-        4);
-
 
 -- categories
 INSERT INTO categories (id, description, name)
