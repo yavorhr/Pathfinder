@@ -5,106 +5,159 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;  /* Centers vertically */
+    flex-direction: column;
 }
 
-.container {
-    margin: 30px auto;
-    width: 80%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+/* Notifications Table */
+.notifications-table {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-/* Header Styling */
-.admin-header {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
+/* Table Headers */
+.notifications-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
     text-align: center;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+}
+
+/* Table Cells */
+.notifications-table td {
+    background-color: #ffffff;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+/* Alternating Row Colors */
+.notifications-table tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+/* Hover Effect */
+.notifications-table tr:hover td {
+    background-color: #e6f2ff;
+    transition: background-color 0.3s ease;
+}
+
+/* Actions Container */
+.actions-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 /* Buttons Styling */
 button {
     border: none;
     border-radius: 5px;
-    padding: 8px 12px;
+    padding: 10px 15px;
     margin: 5px;
     cursor: pointer;
     font-size: 1rem;
-    color: #fff;
-    transition: background-color 0.3s ease;
+    color: white;
+    transition: all 0.3s ease;
+    font-weight: bold;
 }
 
+/* Change Role Button */
+.change-role-btn {
+    background: linear-gradient(to right, #fbc02d, #ffeb3b);
+    color: #333;
+    border: 1px solid #d1a800;
+    padding: 8px 12px;
+}
+
+.change-role-btn:hover {
+    background: linear-gradient(to right, #ffeb3b, #fbc02d);
+}
+
+/* Other Buttons */
 .clear-btn {
-    background-color: #007bff;
+    background: linear-gradient(to right, #007bff, #0056b3);
 }
 
 .delete-btn {
-    background-color: #dc3545;
+    background: linear-gradient(to right, #dc3545, #b3001b);
 }
 
 .enable-btn {
-    background-color: #28a745;
+    background: linear-gradient(to right, #28a745, #1d7331);
 }
 
 button:hover {
     filter: brightness(90%);
 }
 
-/* Role Dropdown Styling */
-.role-select {
-    margin-left: 10px;
-    padding: 5px 8px;
-    border-radius: 5px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
+/* Role Selection Styling */
+.change-role-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 10px;
+}
+
+/* Header Above Roles */
+.change-role-wrapper h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Role Selection with Checkboxes */
+.role-action-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.role-checkbox {
+    transform: scale(1.2);
+    margin-right: 5px;
     cursor: pointer;
 }
 
-/* Notifications Table */
+/* Table Shadow & Smooth Corners */
 .notifications-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.notifications-table th,
-.notifications-table td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-}
-
-.notifications-table th {
-    background-color: #f4f4f4;
-    color: #333;
-    font-weight: bold;
-}
-
-.notifications-table td {
-    background-color: #fafafa;
-}
-
-.notifications-table tr:nth-child(even) td {
-    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .notifications-table th,
     .notifications-table td {
-        padding: 8px;
+        padding: 10px;
         font-size: 0.9rem;
     }
 
     .admin-header {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     button {
         font-size: 0.9rem;
-        padding: 6px 10px;
+        padding: 8px 12px;
+    }
+
+    .role-action-container {
+        flex-direction: column;
+        gap: 10px;
     }
 }
