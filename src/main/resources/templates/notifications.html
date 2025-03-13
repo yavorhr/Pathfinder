@@ -1,15 +1,12 @@
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head(additionalCss='/css/admin/notifications.css')">
 </head>
-
 <body>
-<div class="container">
-    <h1 class="admin-header">Admin Notifications</h1>
-
-    <!-- Clear Notifications Button -->
-    <button class="clear-btn">Clear Notifications</button>
+        <div>
+            <h1 class="admin-header">Admin Notifications</h1>
+            <!-- Clear Notifications Button -->
+            <button class="clear-btn">Clear Notifications</button>
+        </div>
 
     <!-- Notifications Table -->
     <table class="notifications-table">
@@ -33,22 +30,28 @@
                 formatted date
             </td>
             <td>
-                <!-- Action Buttons -->
-                <button class="delete-btn">Delete User</button>
-
-                <select class="role-select">
-                    <option value="Admin">Admin</option>
-                    <option value="Moderator" selected>Moderator</option>
-                    <option value="User">User</option>
-                </select>
-
-                <button class="enable-btn">Enable User</button>
+                <div class="actions-container">
+                    <button class="delete-btn">Delete User</button>
+                    <div class="change-role-wrapper">
+                        <h3>Role: Admin</h3>
+                        <div class="role-action-container">
+                            <select class="role-select" id="current-role">
+                                <option value="Admin">Admin</option>
+                                <option value="Moderator">Moderator</option>
+                                <option value="User">User</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="change-role-btn">Change Role</button>
+                    <button class="enable-btn">Enable User</button>
+                    <button class="send-email-btn">Send Email</button>
+                </div>
             </td>
         </tr>
-
         </tbody>
     </table>
 </div>
 </body>
 <script src="/js/admin/notifications.js"></script>
+
 </html>
