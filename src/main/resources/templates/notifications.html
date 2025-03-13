@@ -2,54 +2,58 @@
 <head th:replace="fragments/head :: head(additionalCss='/css/admin/notifications.css')">
 </head>
 <body>
-        <div>
-            <h1 class="admin-header">Admin Notifications</h1>
-            <!-- Clear Notifications Button -->
-            <button class="clear-btn">Clear Notifications</button>
-        </div>
+<div>
+    <button class="clear-btn">Clear Notifications</button>
+    <h1 class="admin-header">Admin Notifications</h1>
+</div>
 
-    <!-- Notifications Table -->
-    <table class="notifications-table">
-        <thead>
-        <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Created</th>
-            <th>Last modified</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="n :${notifications}" th:object="${n}">
-            <td th:text="*{username}">test2</td>
-            <td id="email" th:text="*{email}">test@abv.bg</td>
-            <td th:text="*{registeredOn != null ? #temporals.format(registeredOn, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}">
-                formatted date
-            </td>
-            <td th:text="*{modified != null ? #temporals.format(modified, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}">
-                formatted date
-            </td>
-            <td>
-                <div class="actions-container">
-                    <button class="delete-btn">Delete User</button>
-                    <div class="change-role-wrapper">
-                        <h3>Role: Admin</h3>
-                        <div class="role-action-container">
-                            <select class="role-select" id="current-role">
-                                <option value="Admin">Admin</option>
-                                <option value="Moderator">Moderator</option>
-                                <option value="User">User</option>
-                            </select>
-                        </div>
-                    </div>
+<!-- Notifications Table -->
+<table class="notifications-table">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Created</th>
+        <th>Modified</th>
+        <th>User Roles</th>
+        <th>Change roles</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="n :${notifications}" th:object="${n}">
+        <td th:text="*{username}">test2</td>
+        <td id="email" th:text="*{email}">test@abv.bg</td>
+        <td th:text="*{registeredOn != null ? #temporals.format(registeredOn, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}">
+            formatted date
+        </td>
+        <td th:text="*{modified != null ? #temporals.format(modified, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}">
+            formatted date
+        </td>
+        <td>Admin, User, Moderator</td>
+        <td>
+            <div class="change-role-wrapper">
+                <div class="role-action-container">
+                    <label><input type="checkbox" class="role-checkbox" value="Admin"> Admin</label>
+                    <label><input type="checkbox" class="role-checkbox" value="Moderator"> Moderator</label>
+                    <label><input type="checkbox" class="role-checkbox" value="User"> User</label>
                     <button class="change-role-btn">Change Role</button>
-                    <button class="enable-btn">Enable User</button>
-                    <button class="send-email-btn">Send Email</button>
                 </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </div>
+        </td>
+        <td>
+            <div class="actions-container">
+                <button class="delete-btn">Delete User</button>
+                <button class="enable-btn">Enable User</button>
+                <button class="send-email-btn">Send Email</button>
+            </div>
+        </td>
+    </tr>
+
+
+    </tr>
+    </tbody>
+</table>
 </div>
 </body>
 <script src="/js/admin/notifications.js"></script>
