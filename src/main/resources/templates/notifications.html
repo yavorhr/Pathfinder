@@ -1,13 +1,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head(additionalCss='/css/admin/notifications.css')">
 </head>
-<body>
-<div>
-    <button class="clear-btn">Clear Notifications</button>
-    <h1 class="admin-header">Admin Notifications</h1>
-</div>
 
-<!-- Notifications Table -->
+<body>
+
+<h1 class="admin-header">Admin Notifications</h1>
 <table class="notifications-table">
     <thead>
     <tr>
@@ -15,8 +12,7 @@
         <th>Email</th>
         <th>Created</th>
         <th>Modified</th>
-        <th>User Roles</th>
-        <th>Change roles</th>
+        <th>User roles</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -30,14 +26,13 @@
         <td th:text="*{modified != null ? #temporals.format(modified, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}">
             formatted date
         </td>
-        <td>Admin, User, Moderator</td>
         <td>
             <div class="change-role-wrapper">
                 <div class="role-action-container">
                     <label><input type="checkbox" class="role-checkbox" value="Admin"> Admin</label>
                     <label><input type="checkbox" class="role-checkbox" value="Moderator"> Moderator</label>
                     <label><input type="checkbox" class="role-checkbox" value="User"> User</label>
-                    <button class="change-role-btn">Change Role</button>
+                    <button class="change-role-btn">Change roles</button>
                 </div>
             </div>
         </td>
