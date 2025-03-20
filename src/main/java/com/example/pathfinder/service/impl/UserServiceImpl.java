@@ -1,5 +1,6 @@
 package com.example.pathfinder.service.impl;
 
+import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.entity.ProfilePicture;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
@@ -56,8 +57,7 @@ public class UserServiceImpl implements UserService {
     profilePicture.setUser(user);
     user.setProfilePicture(profilePicture);
 
-    user = this.userRepository.save(user);
-
+    this.userRepository.save(user);
 
     eventPublisher.publishEvent(new UserRegisteredEvent(
             this,
@@ -116,5 +116,23 @@ public class UserServiceImpl implements UserService {
 //    userEntity.setProfileImage(url);
 
     this.userRepository.save(userEntity);
+  }
+
+  @Override
+  public UserUpdateStatusResponse changeAccess(String username) {
+    UserEntity userEntity =
+            this.userRepository
+                    .findByUsername(username)
+                    .orElseThrow(() -> new ObjectNotFoundException("User with the username " + username + " was not found!"));
+
+    if (userEntity.isEnabled()) {
+      userEntity.setEnabled(false);
+    } else {
+      userEntity.setEnabled(true);
+    }
+
+    this.userRepository.save(userEntity);
+
+    return this.modelMapper.map(userEntity, UserUpdateStatusResponse.class);
   }
 }

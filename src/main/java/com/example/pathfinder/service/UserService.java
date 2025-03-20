@@ -1,5 +1,6 @@
 package com.example.pathfinder.service;
 
+import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
 
@@ -20,4 +21,6 @@ public interface UserService {
   UserEntity findByEmail(String email);
 
   void updateUsersProfilePicture(String username, String url);
+
+  UserUpdateStatusResponse changeAccess(String username);
 }
