@@ -94,11 +94,12 @@ public class UserEntity extends BaseEntity {
     return username;
   }
 
-  @Column(nullable = false, name = "enabled")
+  @Column(nullable = false, name = "isEnabled")
   public boolean isEnabled() {
     return enabled;
   }
 
+  @Column(name = "last_modified_time")
   public LocalDateTime getLastModifiedTime() {
     return lastModifiedTime;
   }
@@ -112,6 +113,7 @@ public class UserEntity extends BaseEntity {
     return roles;
   }
 
+  @Column(name = "registration_date", nullable = false)
   public LocalDateTime getRegistrationDate() {
     return registrationDate;
   }
