@@ -7,6 +7,7 @@ import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
+import com.example.pathfinder.model.view.UserNotificationViewModel;
 import com.example.pathfinder.repository.ProfilePictureRepository;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
@@ -22,8 +23,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -134,5 +137,28 @@ public class UserServiceImpl implements UserService {
     this.userRepository.save(userEntity);
 
     return this.modelMapper.map(userEntity, UserUpdateStatusResponse.class);
+  }
+
+  @Override
+  public List<UserNotificationViewModel> findAllUsers() {
+
+    List<UserNotificationViewModel> collect = this.userRepository
+            .findAllUsersSortedByEnabledFalseAndUsernameAsc()
+            .stream()
+            .map(u -> {
+              UserNotificationViewModel viewModel = this.modelMapper.map(u, UserNotificationViewModel.class);
+
+              Set<UserRoleEnum> roleEnums = u.getRoles().stream()
+                      .map(role -> UserRoleEnum.valueOf(role.getRole().name()))
+                      .collect(Collectors.toSet());
+
+              viewModel.setRoles(roleEnums);
+
+              return viewModel;
+            })
+            .collect(Collectors.toList());
+
+    return collect;
+
   }
 }

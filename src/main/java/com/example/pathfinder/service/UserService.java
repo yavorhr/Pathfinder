@@ -3,7 +3,9 @@ package com.example.pathfinder.service;
 import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
+import com.example.pathfinder.model.view.UserNotificationViewModel;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
@@ -23,4 +25,6 @@ public interface UserService {
   void updateUsersProfilePicture(String username, String url);
 
   UserUpdateStatusResponse changeAccess(String username);
+
+  List<UserNotificationViewModel> findAllUsers();
 }
