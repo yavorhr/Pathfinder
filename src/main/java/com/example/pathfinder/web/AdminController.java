@@ -1,23 +1,28 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.common.UserUpdateStatusResponse;
+import com.example.pathfinder.model.view.UserNotificationViewModel;
 import com.example.pathfinder.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class AdminController {
   private final UserService userService;
 
-  public AdminController( UserService userService) {
+  public AdminController(UserService userService) {
     this.userService = userService;
   }
 
   @GetMapping("/admin/notifications")
   public String viewNotifications(Model model) {
+    List<UserNotificationViewModel> users = this.userService.findAllUsers();
 
+    model.addAttribute("users", users );
     return "notifications";
   }
 
