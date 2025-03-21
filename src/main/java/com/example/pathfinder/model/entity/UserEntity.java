@@ -4,10 +4,9 @@ import com.example.pathfinder.model.entity.enums.GenderEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -30,6 +29,8 @@ public class UserEntity extends BaseEntity {
   private boolean enabled;
   private List<Route> routes;
   private ProfilePicture profilePicture;
+  private LocalDateTime registrationDate;
+  private LocalDateTime lastModifiedTime;
 
   public UserEntity() {
     this.enabled = false;
@@ -98,6 +99,10 @@ public class UserEntity extends BaseEntity {
     return enabled;
   }
 
+  public LocalDateTime getLastModifiedTime() {
+    return lastModifiedTime;
+  }
+
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
           name = "users_roles",
@@ -105,6 +110,10 @@ public class UserEntity extends BaseEntity {
           inverseJoinColumns = @JoinColumn(name = "role_id"))
   public Set<UserRoleEntity> getRoles() {
     return roles;
+  }
+
+  public LocalDateTime getRegistrationDate() {
+    return registrationDate;
   }
 
   @Column(name = "facebook_account")
@@ -152,6 +161,11 @@ public class UserEntity extends BaseEntity {
     return this;
   }
 
+  public UserEntity setRegistrationDate(LocalDateTime registeredOn) {
+    this.registrationDate = registeredOn;
+    return this;
+  }
+
   public void setLevel(LevelEnum level) {
     this.level = level;
   }
@@ -170,6 +184,11 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public UserEntity setLastModifiedTime(LocalDateTime lastModified) {
+    this.lastModifiedTime = lastModified;
     return this;
   }
 
@@ -196,6 +215,16 @@ public class UserEntity extends BaseEntity {
   public UserEntity setLinkedIn(String linkedInLink) {
     this.linkedIn = linkedInLink;
     return this;
+  }
+
+  @PrePersist
+  private void setCreationDate() {
+    this.registrationDate = LocalDateTime.now();
+  }
+
+  @PreUpdate
+  private void setUpdateDate() {
+    this.lastModifiedTime = LocalDateTime.now();
   }
 
 }
