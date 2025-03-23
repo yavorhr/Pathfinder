@@ -12,8 +12,13 @@ public class UserNotificationViewModel {
   private LocalDateTime registrationDate;
   private LocalDateTime lastModifiedTime;
   private Set<UserRoleEnum> roles;
+  private boolean isEnabled;
 
   public UserNotificationViewModel() {
+  }
+
+  public boolean isEnabled() {
+    return isEnabled;
   }
 
   public Long getId() {
@@ -62,6 +67,11 @@ public class UserNotificationViewModel {
 
   public UserNotificationViewModel setLastModifiedTime(LocalDateTime lastModifiedTime) {
     this.lastModifiedTime = lastModifiedTime;
+    return this;
+  }
+
+  public UserNotificationViewModel setEnabled(boolean enabled) {
+    isEnabled = enabled;
     return this;
   }
 
