@@ -28,7 +28,6 @@ body {
 .notifications-table th {
     padding: 12px;
     background-color: #007bff;
-
     color: white;
     font-weight: bold;
     text-align: center;
@@ -118,9 +117,13 @@ button:hover {
 .change-role-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
+    align-items: center;
+    gap: 15px;
     padding: 10px;
+}
+
+.role-wrapper{
+    display: flex;
 }
 
 /* Role Selection with Checkboxes */
@@ -128,7 +131,6 @@ button:hover {
     display: flex;
     align-items: center;
     gap: 15px;
-    flex-wrap: wrap;
 }
 
 .role-checkbox {
