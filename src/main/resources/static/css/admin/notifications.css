@@ -94,12 +94,20 @@ button {
     background: linear-gradient(to right, #dc3545, #b3001b);
 }
 
-.enable-btn {
+.disable-user-access {
+    background: linear-gradient(to right, #f66d47, #c6893d);
+}
+
+.enable-user-access{
     background: linear-gradient(to right, #28a745, #1d7331);
 }
 
 .send-email-btn {
     background: linear-gradient(to right, #1794cd, #1e84de);
+}
+
+.enable-btn{
+    background: linear-gradient(to right, #3e4040, #a8b4b4);
 }
 
 button:hover {
