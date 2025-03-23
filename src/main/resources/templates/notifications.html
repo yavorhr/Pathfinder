@@ -8,6 +8,7 @@
 <table class="notifications-table">
     <thead>
     <tr>
+        <th>Status</th>
         <th>Username</th>
         <th>Email</th>
         <th>Created</th>
@@ -18,8 +19,11 @@
     </thead>
     <tbody>
     <tr th:each="u :${users}" th:object="${u}">
-        <td th:text="*{username}">test2</td>
-        <td id="email" th:text="*{email}">test@abv.bg</td>
+        <td class="status"
+            th:classappend="${u.isEnabled} ? 'enable-user-access' : 'disable-user-access'"
+            th:text="${u.isEnabled} ?'Active' : 'Inactive'"></td>
+        <td class="username" th:text="*{username}">test2</td>
+        <td class="email" th:text="*{email}">test@abv.bg</td>
         <td th:text="*{#temporals.format(registrationDate, 'yyyy-MM-dd HH:mm:ss')}">
             formatted date
         </td>
@@ -30,21 +34,23 @@
             <div class="change-role-wrapper">
                 <div class="role-action-container">
                     <th:block th:each="role : ${T(com.example.pathfinder.model.entity.enums.UserRoleEnum).values()}">
-                        <label>
+                        <div class="role-wrapper">
                             <input type="checkbox" class="role-checkbox"
                                    th:value="${role}"
                                    th:checked="${u.roles.contains(role)}">
                             <span th:text="${role}"></span>
-                        </label>
+                        </div>
                     </th:block>
                 </div>
-                    <button class="change-role-btn">Change roles</button>
+                <button class="change-role-btn">Change roles
+                </button>
             </div>
         </td>
         <td>
             <div class="actions-container">
                 <button class="delete-btn">Delete User</button>
-                <button class="enable-btn">Enable User</button>
+                <button class="enable-btn" th:text="${u.isEnabled} ? 'Disable user' : 'Enable user'"> Enable User
+                </button>
                 <button class="send-email-btn">Send Email</button>
             </div>
         </td>
