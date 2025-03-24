@@ -1,38 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const enableButtons = document.querySelectorAll(".enable-btn");
     const checkboxes = document.querySelectorAll(".role-checkbox");
-    let initialStates = Array.from(checkboxes).map(checkbox => !!checkbox.checked);
-
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
-
-    // Change role
-    // document.querySelectorAll(".change-role-btn").forEach(button => {
-    //     button.addEventListener("click", function () {
-    //         const row = this.closest("tr");
-    //         const roleSelect = row.querySelector(".role-select");
-    //         const selectedRole = roleSelect.value;
-    //
-    //         if (!selectedRole) {
-    //             alert("Please select a role before changing.");
-    //             return;
-    //         }
-    //
-    //         fetch("/admin/change-role", {
-    //             method: "POST",
-    //             headers: {"Content-Type": "application/json"},
-    //             body: JSON.stringify({email: userEmail, role: selectedRole})
-    //         })
-    //             .then(response => response.json())
-    //             .then(data => {
-    //                 alert(data.message || "Role updated successfully!");
-    //             })
-    //             .catch(error => {
-    //                 console.error("Error updating role:", error);
-    //                 alert("Failed to update role.");
-    //             });
-    //     });
-    // });
 
     // Keep the initial state of selected checkboxes for every user
     document.querySelectorAll(".change-role-wrapper").forEach(wrapper => {
