@@ -61,9 +61,8 @@ body {
 
     border: 3px solid #fff;
     padding: 20px;
-    border-radius: 10px; /
-
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+/ box-shadow: 0 8 px 15 px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -146,28 +145,27 @@ button:focus {
     transform: scale(1.05);
 }
 
-.delete-btn:active {
-    background-color: #a93226;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
 /* Enable & Disable btn */
-.enable-btn.active{
-    background-color: #2ecc71;
+.active {
+    background-color: #2ecc71 !important;
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.enable-btn.inactive {
-    background-color: #f39c12;
+.inactive {
+    background-color: #f39c12 !important;
     color: white;
-    cursor: not-allowed;
 }
 
-/*.enable-btn:hover {*/
-/*    background-color: #27ae60;*/
-/*    transform: scale(1.05);*/
-/*}*/
+.enable-btn.active:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+}
+
+.enable-btn.inactive:hover {
+    background-color: #bd7f0e;
+    transform: scale(1.05);
+}
 
 /*.enable-btn:active {*/
 /*    background-color: #1e8449;*/
@@ -252,6 +250,7 @@ button:focus {
         padding: 10px;
         font-size: 0.9rem;
     }
+
     button {
         font-size: 0.9rem;
         padding: 8px 12px;
