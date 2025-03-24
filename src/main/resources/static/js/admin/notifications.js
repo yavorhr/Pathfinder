@@ -27,12 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (hasChanges) {
                 changeRoleBtn.disabled = false;
-                changeRoleBtn.classList.add("btn-enabled");
-                changeRoleBtn.classList.remove("btn-disabled");
+                changeRoleBtn.classList.add("change-role-enabled");
+                changeRoleBtn.classList.remove("change-role-disabled");
             } else {
                 changeRoleBtn.disabled = true;
-                changeRoleBtn.classList.add("btn-disabled");
-                changeRoleBtn.classList.remove("btn-enabled");
+                changeRoleBtn.classList.remove("change-role-enabled");
+                changeRoleBtn.classList.add("change-role-disabled");
             }
         }
 
@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Lock button again
                     changeRoleBtn.disabled = true;
-                    changeRoleBtn.classList.add("btn-disabled");
-                    changeRoleBtn.classList.remove("btn-enabled");
+                    changeRoleBtn.classList.add("change-role-disabled");
+                    changeRoleBtn.classList.remove("change-role-enabled");
                 } else {
                     console.error("Failed to update roles");
                 }
