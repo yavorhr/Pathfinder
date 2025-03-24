@@ -23,9 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -160,5 +158,23 @@ public class UserServiceImpl implements UserService {
 
     return collect;
 
+  }
+
+  @Override
+  public void updateUserRoles(String username, String[] roles) {
+    UserEntity userEntity =
+            this.userRepository
+                    .findByUsername(username)
+                    .orElseThrow(() -> new ObjectNotFoundException("User with the username " + username + " was not found!"));
+
+    Set<UserRoleEntity> userRoles = new HashSet<>();
+
+    Arrays.stream(roles).forEach(r -> {
+      UserRoleEntity roleEntity = this.userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.valueOf(r));
+      userRoles.add(roleEntity);
+    });
+
+    userEntity.setRoles(userRoles);
+    this.userRepository.save(userEntity);
   }
 }

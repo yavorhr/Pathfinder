@@ -1,5 +1,6 @@
 package com.example.pathfinder.web;
 
+import com.example.pathfinder.model.binding.RoleUpdateRequest;
 import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.view.UserNotificationViewModel;
 import com.example.pathfinder.service.UserService;
@@ -42,5 +43,14 @@ public class AdminController {
     System.out.println(statusResponse.isEnabled());
 
     return ResponseEntity.ok(statusResponse);
+  }
+
+  @PatchMapping("/admin/api/update-roles")
+  @ResponseBody
+  public ResponseEntity<?> updateRoles(@RequestBody RoleUpdateRequest request) {
+
+    this.userService.updateUserRoles(request.getUsername(), request.getRoles());
+
+    return ResponseEntity.ok("Roles updated successfully");
   }
 }

@@ -27,4 +27,6 @@ public interface UserService {
   UserUpdateStatusResponse changeAccess(String username);
 
   List<UserNotificationViewModel> findAllUsers();
+
+  void updateUserRoles(String username, String[] roles);
 }
