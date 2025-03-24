@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const changeRoleBtn = wrapper.querySelector(".change-role-btn");
 
         const tr = wrapper.closest("tr");
+        const username = tr.querySelector(".username").textContent;
 
         tr.dataset.initialStates = JSON.stringify(Array.from(checkboxes).map(checkbox => !!checkbox.checked));
 
@@ -72,16 +73,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
             tr.dataset.initialStates = JSON.stringify(Array.from(checkboxes).map(checkbox => !!checkbox.checked));
 
-            // Lock button again
-            changeRoleBtn.disabled = true;
-            changeRoleBtn.classList.add("btn-disabled");
-            changeRoleBtn.classList.remove("btn-enabled");
+            const selectedRoles = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            updateRoles(username, selectedRoles, checkboxes, changeRoleBtn, tr);
+
         });
 
-        // Ensure button is disabled initially
         changeRoleBtn.disabled = true;
     });
 
+
+    function updateRoles(username, selectedRoles, checkboxes, changeRoleBtn, tr) {
+
+        fetch("/api/update-roles", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: username,
+                roles: selectedRoles,  // Pass the selected roles
+            }),
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Roles updated successfully");
+
+                    tr.dataset.initialStates = JSON.stringify(Array.from(checkboxes).map(checkbox => !!checkbox.checked));
+
+                    // Lock button again
+                    changeRoleBtn.disabled = true;
+                    changeRoleBtn.classList.add("btn-disabled");
+                    changeRoleBtn.classList.remove("btn-enabled");
+                } else {
+                    console.error("Failed to update roles");
+                }
+            })
+            .catch(error => {
+                console.error("Error updating roles:", error);
+            });
+    }
 
     // Delete user by email
     // deleteButtons.forEach(button => {
