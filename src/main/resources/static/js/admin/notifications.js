@@ -142,15 +142,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         const status = tr.querySelector(".status");
 
                         if (isEnabled) {
-                            status.classList.add("enable-user-access");
-                            status.classList.remove("disable-user-access");
+                            status.classList.add("active");
+                            status.classList.remove("inactive");
                             status.textContent = "Active"
                             clickedButton.classList.add("inactive")
                             clickedButton.classList.remove("active")
                             clickedButton.textContent = "Disable user"
                         } else {
-                            status.classList.remove("enable-user-access");
-                            status.classList.add("disable-user-access");
+                            status.classList.add("inactive");
+                            status.classList.remove("active");
                             status.textContent = "Not active"
                             clickedButton.classList.add("active")
                             clickedButton.classList.remove("inactive")
