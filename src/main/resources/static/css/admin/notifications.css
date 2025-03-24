@@ -167,10 +167,22 @@ button:focus {
     transform: scale(1.05);
 }
 
-/*.enable-btn:active {*/
-/*    background-color: #1e8449;*/
-/*    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);*/
-/*}*/
+/* Email btn  */
+.send-email-btn {
+    background-color: #3498db;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.send-email-btn:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.send-email-btn:active {
+    background-color: #1f639b;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
 
 /* Change Role Button */
 .change-role-btn {
