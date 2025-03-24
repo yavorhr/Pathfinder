@@ -60,7 +60,10 @@
             <td>
                 <div class="actions-container">
                     <button class="delete-btn">Delete User</button>
-                    <button class="enable-btn" th:text="${u.isEnabled} ? 'Disable user' : 'Enable user'"> Enable User
+                    <button
+                            class="enable-btn"
+                            th:text="${u.isEnabled} ? 'Disable user' : 'Enable user'"
+                            th:classappend="${u.isEnabled} ? 'inactive' : 'active'"> Enable/Disable User
                     </button>
                     <button class="send-email-btn">Send Email</button>
                 </div>
