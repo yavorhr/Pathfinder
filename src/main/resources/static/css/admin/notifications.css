@@ -79,10 +79,18 @@ button {
 .change-role-btn {
     padding: 8px 12px;
     margin: 0 auto;
-    border: 1px solid #d1a800;
-    background: linear-gradient(to right, #fbc02d, #ffeb3b);
 
     color: #333;
+}
+
+.btn-enabled {
+    border: 1px solid #d1a800;
+    background: linear-gradient(to right, #fbc02d, #ffeb3b);
+}
+
+.btn-disabled {
+    border: 1px solid #5f5f5f;
+    background: linear-gradient(to right, #3e4040, #a8b4b4);
 }
 
 .change-role-btn:hover {
@@ -97,7 +105,7 @@ button {
     background: linear-gradient(to right, #f66d47, #c6893d);
 }
 
-.enable-user-access{
+.enable-user-access {
     background: linear-gradient(to right, #28a745, #1d7331);
 }
 
@@ -105,7 +113,7 @@ button {
     background: linear-gradient(to right, #1794cd, #1e84de);
 }
 
-.enable-btn{
+.enable-btn {
     background: linear-gradient(to right, #3e4040, #a8b4b4);
 }
 
@@ -122,7 +130,7 @@ button:hover {
     padding: 10px;
 }
 
-.role-wrapper{
+.role-wrapper {
     display: flex;
 }
 
