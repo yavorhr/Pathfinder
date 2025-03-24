@@ -3,65 +3,76 @@
 </head>
 
 <body>
+<section class="first-section">
+    <h1 class="admin-header">Admin Notifications</h1>
+    <div class="home-nav-item">
+        <a class="btn btn-link nav-link" href="/">
+            <img src="/images/home.png"
+                 alt="home"
+                 class="navbar-icon">
+        </a>
+    </div>
+</section>
 
-<h1 class="admin-header">Admin Notifications</h1>
-<table class="notifications-table">
-    <thead>
-    <tr>
-        <th>Status</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Created</th>
-        <th>Modified</th>
-        <th>User roles</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="u :${users}" th:object="${u}">
-        <td class="status"
-            th:classappend="${u.isEnabled} ? 'enable-user-access' : 'disable-user-access'"
-            th:text="${u.isEnabled} ?'Active' : 'Inactive'"></td>
-        <td class="username" th:text="*{username}">test2</td>
-        <td class="email" th:text="*{email}">test@abv.bg</td>
-        <td th:text="*{#temporals.format(registrationDate, 'yyyy-MM-dd HH:mm:ss')}">
-            formatted date
-        </td>
-        <td th:text="*{lastModifiedTime != null ? #temporals.format(lastModifiedTime, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}">
-            formatted date
-        </td>
-        <td>
-            <div class="change-role-wrapper">
-                <div class="role-action-container">
-                    <th:block th:each="role : ${T(com.example.pathfinder.model.entity.enums.UserRoleEnum).values()}">
-                        <div class="role-wrapper">
-                            <input type="checkbox" class="role-checkbox"
-                                   th:value="${role}"
-                                   th:checked="${u.roles.contains(role)}">
-                            <span th:text="${role}"></span>
-                        </div>
-                    </th:block>
+<section>
+    <table class="notifications-table">
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Created</th>
+            <th>Modified</th>
+            <th>User roles</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="u :${users}" th:object="${u}">
+            <td class="status"
+                th:classappend="${u.isEnabled} ? 'enable-user-access' : 'disable-user-access'"
+                th:text="${u.isEnabled} ?'Active' : 'Inactive'"></td>
+            <td class="username" th:text="*{username}">test2</td>
+            <td class="email" th:text="*{email}">test@abv.bg</td>
+            <td th:text="*{#temporals.format(registrationDate, 'yyyy-MM-dd HH:mm:ss')}">
+                formatted date
+            </td>
+            <td th:text="*{lastModifiedTime != null ? #temporals.format(lastModifiedTime, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}">
+                formatted date
+            </td>
+            <td>
+                <div class="change-role-wrapper">
+                    <div class="role-action-container">
+                        <th:block
+                                th:each="role : ${T(com.example.pathfinder.model.entity.enums.UserRoleEnum).values()}">
+                            <div class="role-wrapper">
+                                <input type="checkbox" class="role-checkbox"
+                                       th:value="${role}"
+                                       th:checked="${u.roles.contains(role)}">
+                                <span th:text="${role}"></span>
+                            </div>
+                        </th:block>
+                    </div>
+                    <button class="change-role-btn btn-disabled disabled">Change roles
+                    </button>
                 </div>
-                <button class="change-role-btn btn-disabled disabled">Change roles
-                </button>
-            </div>
-        </td>
-        <td>
-            <div class="actions-container">
-                <button class="delete-btn">Delete User</button>
-                <button class="enable-btn" th:text="${u.isEnabled} ? 'Disable user' : 'Enable user'"> Enable User
-                </button>
-                <button class="send-email-btn">Send Email</button>
-            </div>
-        </td>
-    </tr>
+            </td>
+            <td>
+                <div class="actions-container">
+                    <button class="delete-btn">Delete User</button>
+                    <button class="enable-btn" th:text="${u.isEnabled} ? 'Disable user' : 'Enable user'"> Enable User
+                    </button>
+                    <button class="send-email-btn">Send Email</button>
+                </div>
+            </td>
+        </tr>
 
 
-    </tr>
-    </tbody>
-</table>
-</div>
+        </tr>
+        </tbody>
+    </table>
+</section>
 </body>
-<script src="/js/admin/notifications.js"></script>
 
+<script src="/js/admin/notifications.js"></script>
 </html>
