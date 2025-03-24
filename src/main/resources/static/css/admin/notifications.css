@@ -133,6 +133,47 @@ button:focus {
     outline: none; /* Removes the default focus outline */
 }
 
+
+/* Delete button */
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+.delete-btn:active {
+    background-color: #a93226;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Enable & Disable btn */
+.enable-btn.active{
+    background-color: #2ecc71;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.enable-btn.inactive {
+    background-color: #f39c12;
+    color: white;
+    cursor: not-allowed;
+}
+
+/*.enable-btn:hover {*/
+/*    background-color: #27ae60;*/
+/*    transform: scale(1.05);*/
+/*}*/
+
+/*.enable-btn:active {*/
+/*    background-color: #1e8449;*/
+/*    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);*/
+/*}*/
+
 /* Change Role Button */
 .change-role-btn {
     padding: 8px 12px;
@@ -151,45 +192,25 @@ button:focus {
     background: linear-gradient(to right, #3e4040, #a8b4b4);
 }
 
-/*.delete-btn {*/
-/*    background: linear-gradient(to right, #dc3545, #b3001b);*/
+/*.disable-user-access {*/
+/*    background: linear-gradient(to right, #f66d47, #c6893d);*/
 /*}*/
 
-.delete-btn {
-    background-color: #e74c3c; /* Red */
-    color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.delete-btn:hover {
-    background-color: #c0392b; /* Darker red on hover */
-    transform: scale(1.05); /* Slight zoom effect */
-}
-
-.delete-btn:active {
-    background-color: #a93226; /* Even darker red on click */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow when clicked */
-}
-
-.disable-user-access {
-    background: linear-gradient(to right, #f66d47, #c6893d);
-}
-
-.enable-user-access {
-    background: linear-gradient(to right, #28a745, #1d7331);
-}
+/*.enable-user-access {*/
+/*    background: linear-gradient(to right, #28a745, #1d7331);*/
+/*}*/
 
 .send-email-btn {
     background: linear-gradient(to right, #1794cd, #1e84de);
 }
 
-.enable-btn {
-    background: linear-gradient(to right, #eeee0a, #e86f16);
-}
+/*.enable-btn {*/
+/*    background: linear-gradient(to right, #eeee0a, #e86f16);*/
+/*}*/
 
-button:hover {
-    filter: brightness(90%);
-}
+/*button:hover {*/
+/*    filter: brightness(90%);*/
+/*}*/
 
 /* Role Selection Styling */
 .change-role-wrapper {
