@@ -53,4 +53,12 @@ public class AdminController {
 
     return ResponseEntity.ok("Roles updated successfully");
   }
+
+  @DeleteMapping("/admin/api/remove-user/{email}")
+  @ResponseBody
+  public ResponseEntity<?> deleteUser(@PathVariable String email){
+    this.userService.deleteUser(email);
+
+    return ResponseEntity.ok("User deleted successfully!");
+  }
 }

@@ -31,9 +31,15 @@ public class UserEntity extends BaseEntity {
   private ProfilePicture profilePicture;
   private LocalDateTime registrationDate;
   private LocalDateTime lastModifiedTime;
+  private List<Comment> comments;
 
   public UserEntity() {
     this.enabled = false;
+  }
+
+  @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
+  public List<Comment> getComments() {
+    return comments;
   }
 
   @OneToOne(cascade = CascadeType.ALL)
@@ -53,7 +59,7 @@ public class UserEntity extends BaseEntity {
     return birthday;
   }
 
-  @OneToMany(mappedBy = "author")
+  @OneToMany(mappedBy = "author",  cascade = CascadeType.REMOVE)
   public List<Route> getRoutes() {
     return routes;
   }
@@ -131,6 +137,11 @@ public class UserEntity extends BaseEntity {
   @Column(name = "linked_in_account")
   public String getLinkedIn() {
     return linkedIn;
+  }
+
+  public UserEntity setComments(List<Comment> comments) {
+    this.comments = comments;
+    return this;
   }
 
   public UserEntity setGender(GenderEnum gender) {

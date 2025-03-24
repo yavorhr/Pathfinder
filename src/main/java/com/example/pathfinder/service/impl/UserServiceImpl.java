@@ -100,6 +100,13 @@ public class UserServiceImpl implements UserService {
   @Override
   @Transactional
   public void deleteUser(String email) {
+    UserEntity userEntity = this.userRepository
+            .findByEmail(email)
+            .orElseThrow(() -> new ObjectNotFoundException("User with email: " + email + " does not exist!"));
+
+    userEntity.getRoles().clear();
+    this.userRepository.save(userEntity);
+
     this.userRepository.deleteByEmail(email);
   }
 
