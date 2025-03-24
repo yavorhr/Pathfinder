@@ -145,11 +145,15 @@ document.addEventListener("DOMContentLoaded", function () {
                             status.classList.add("enable-user-access");
                             status.classList.remove("disable-user-access");
                             status.textContent = "Active"
+                            clickedButton.classList.add("inactive")
+                            clickedButton.classList.remove("active")
                             clickedButton.textContent = "Disable user"
                         } else {
                             status.classList.remove("enable-user-access");
                             status.classList.add("disable-user-access");
                             status.textContent = "Not active"
+                            clickedButton.classList.add("active")
+                            clickedButton.classList.remove("inactive")
                             clickedButton.textContent = "Enable user"
                         }
                     }
@@ -159,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     // Sent email to user
-    document.querySelectorAll(".send-email-btn").forEach(button => {
+  emailButtons.forEach(button => {
         button.addEventListener("click", function () {
             const tr = this.closest("tr");
             const email = tr.querySelector(".email").textContent.trim();
