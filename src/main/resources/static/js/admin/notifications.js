@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const deleteButtons = document.querySelectorAll(".delete-btn");
     const enableButtons = document.querySelectorAll(".enable-btn");
-    const userEmail = document.querySelector(".email").textContent.trim();
+    const checkboxes = document.querySelectorAll(".role-checkbox");
+    let initialStates = Array.from(checkboxes).map(checkbox => !!checkbox.checked);
 
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
@@ -33,6 +33,55 @@ document.addEventListener("DOMContentLoaded", function () {
     //             });
     //     });
     // });
+
+    // Keep the initial state of selected checkboxes for every user
+    document.querySelectorAll(".change-role-wrapper").forEach(wrapper => {
+        const checkboxes = wrapper.querySelectorAll(".role-checkbox");
+        const changeRoleBtn = wrapper.querySelector(".change-role-btn");
+
+        const tr = wrapper.closest("tr");
+
+        tr.dataset.initialStates = JSON.stringify(Array.from(checkboxes).map(checkbox => !!checkbox.checked));
+
+        // Check for changes in roles
+        function checkForChanges(e) {
+            const tr = e.currentTarget.closest("tr"); // Find the user's row
+            const checkboxes = tr.querySelectorAll(".role-checkbox");
+
+            const initialStates = JSON.parse(tr.dataset.initialStates); // Get the initial state as Array
+            const currentStates = Array.from(checkboxes).map(checkbox => !!checkbox.checked);
+
+            const hasChanges = currentStates.some((state, index) => state !== initialStates[index]);
+
+            if (hasChanges) {
+                changeRoleBtn.disabled = false;
+                changeRoleBtn.classList.add("btn-enabled");
+                changeRoleBtn.classList.remove("btn-disabled");
+            } else {
+                changeRoleBtn.disabled = true;
+                changeRoleBtn.classList.add("btn-disabled");
+                changeRoleBtn.classList.remove("btn-enabled");
+            }
+        }
+
+        // Add Event Listener to all checkboxes
+        checkboxes.forEach(checkbox => checkbox.addEventListener("change", checkForChanges));
+
+        changeRoleBtn.addEventListener("click", function () {
+            if (changeRoleBtn.disabled) return;
+
+            tr.dataset.initialStates = JSON.stringify(Array.from(checkboxes).map(checkbox => !!checkbox.checked));
+
+            // Lock button again
+            changeRoleBtn.disabled = true;
+            changeRoleBtn.classList.add("btn-disabled");
+            changeRoleBtn.classList.remove("btn-enabled");
+        });
+
+        // Ensure button is disabled initially
+        changeRoleBtn.disabled = true;
+    });
+
 
     // Delete user by email
     // deleteButtons.forEach(button => {
@@ -84,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
                 .then(data => {
-                        console.log(data)
                         const isEnabled = data.enabled;
                         const status = tr.querySelector(".status");
 
