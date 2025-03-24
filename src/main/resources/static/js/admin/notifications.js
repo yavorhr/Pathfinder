@@ -87,10 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateRoles(username, selectedRoles, checkboxes, changeRoleBtn, tr) {
 
-        fetch("/api/update-roles", {
-            method: "POST",
+        fetch("/admin/api/update-roles", {
+            method: "PATCH",
             headers: {
+                [csrfHeader]: csrfToken,
                 "Content-Type": "application/json",
+
             },
             body: JSON.stringify({
                 username: username,
