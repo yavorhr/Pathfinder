@@ -167,7 +167,7 @@ button:focus {
     transform: scale(1.05);
 }
 
-/* Email btn  */
+/* Email btn */
 .send-email-btn {
     background-color: #3498db;
     color: white;
@@ -184,43 +184,28 @@ button:focus {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Change Role Button */
+/* Change role btn */
 .change-role-btn {
-    padding: 8px 12px;
-    margin: 0 auto;
-
-    color: #333;
+    background-color: #bdc3c7; /* Gray (disabled state) */
+    color: white;
+    cursor: not-allowed;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.btn-enabled {
-    border: 1px solid #d1a800;
-    background: linear-gradient(to right, #fbc02d, #ffeb3b);
+.change-role-enabled {
+    background-color: #2ecc71;
+    color: white;
+    cursor: pointer;
 }
 
-.btn-disabled {
-    border: 1px solid #5f5f5f;
-    background: linear-gradient(to right, #3e4040, #a8b4b4);
+.change-role-enabled:hover{
+    background-color: #27ae60;
+    transform: scale(1.05);
 }
 
-/*.disable-user-access {*/
-/*    background: linear-gradient(to right, #f66d47, #c6893d);*/
-/*}*/
-
-/*.enable-user-access {*/
-/*    background: linear-gradient(to right, #28a745, #1d7331);*/
-/*}*/
-
-.send-email-btn {
-    background: linear-gradient(to right, #1794cd, #1e84de);
+.change-role-disabled {
+    background-color: #bdc3c7; /* Gray when disabled */
 }
-
-/*.enable-btn {*/
-/*    background: linear-gradient(to right, #eeee0a, #e86f16);*/
-/*}*/
-
-/*button:hover {*/
-/*    filter: brightness(90%);*/
-/*}*/
 
 /* Role Selection Styling */
 .change-role-wrapper {
