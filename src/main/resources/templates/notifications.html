@@ -30,7 +30,7 @@
         <tbody>
         <tr th:each="u :${users}" th:object="${u}">
             <td class="status"
-                th:classappend="${u.isEnabled} ? 'enable-user-access' : 'disable-user-access'"
+                th:classappend="${u.isEnabled} ? 'active' : 'inactive'"
                 th:text="${u.isEnabled} ?'Active' : 'Inactive'"></td>
             <td class="username" th:text="*{username}">test2</td>
             <td class="email" th:text="*{email}">test@abv.bg</td>
