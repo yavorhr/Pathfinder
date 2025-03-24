@@ -7,7 +7,7 @@ body {
     align-items: center;
     flex-direction: column;
 
-    background: linear-gradient(to bottom, #1e90ff, #ffffff);
+    background: linear-gradient(to bottom, #8d8a8e, #ffffff);
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -55,8 +55,7 @@ body {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
-
-    background: linear-gradient(145deg, #5c4c8a, #3e2a5d);
+    background: linear-gradient(145deg, #807f86, #4c4b4e);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 0, 0, 0.2), 0 0 50px rgba(0, 0, 0, 0.1);
 
     border: 3px solid #fff;
@@ -64,7 +63,6 @@ body {
     border-radius: 10px;
 / box-shadow: 0 8 px 15 px rgba(0, 0, 0, 0.2);
 }
-
 
 /* Notifications Table */
 .notifications-table {
@@ -77,14 +75,16 @@ body {
     overflow: hidden;
 }
 
-/* Table Headers */
-.notifications-table th {
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
+th {
+    background: linear-gradient(145deg, #4a494e, #342f39);
+    color: #ffffff; /* White text */
     font-weight: bold;
+    text-transform: uppercase;
+    padding: 12px 16px;
     text-align: center;
-    font-size: 1rem;
+    border-bottom: 3px solid #ff6b6b; /* A striking red border */
+    letter-spacing: 1px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for a 3D effect */\
 }
 
 /* Table Cells */
@@ -93,7 +93,7 @@ body {
     background-color: #ffffff;
 
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid #414045;
     font-size: 1rem;
 }
 
@@ -103,7 +103,7 @@ body {
 
 /* Hover Effect */
 .notifications-table tr:hover td {
-    background-color: #e6f2ff;
+    background-color: #e8e8ec;
     transition: background-color 0.3s ease;
 }
 
@@ -186,7 +186,7 @@ button:focus {
 
 /* Change role btn */
 .change-role-btn {
-    background-color: #bdc3c7; /* Gray (disabled state) */
+    background-color: #aeb4b8; /* Gray (disabled state) */
     color: white;
     cursor: not-allowed;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -239,6 +239,9 @@ button:focus {
     border-radius: 10px;
     overflow: hidden;
 }
+
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
