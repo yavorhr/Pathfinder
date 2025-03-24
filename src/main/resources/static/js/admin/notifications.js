@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const enableButtons = document.querySelectorAll(".enable-btn");
-    const checkboxes = document.querySelectorAll(".role-checkbox");
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
+    const deleteButtons = document.querySelectorAll(".delete-btn");
+    const emailButtons = document.querySelectorAll(".email-btn");
 
     // Keep the initial state of selected checkboxes for every user
     document.querySelectorAll(".change-role-wrapper").forEach(wrapper => {
@@ -56,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function updateRoles(username, selectedRoles, checkboxes, changeRoleBtn, tr) {
-
         fetch("/admin/api/update-roles", {
             method: "PATCH",
             headers: {
@@ -89,33 +89,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Delete user by email
-    // deleteButtons.forEach(button => {
-    //     button.addEventListener("click", (event) => {
-    //
-    //         const emailElement = event.target.closest("tr").querySelector("#email");
-    //         const email = emailElement.textContent;
-    //
-    //         fetch(`/admin/remove-user/${encodeURIComponent(email)}`, {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 [csrfHeader]: csrfToken
-    //             }
-    //         })
-    //             .then(response => {
-    //                 if (response.ok) {
-    //                     alert("User deleted successfully.");
-    //                     window.location.reload(); // Optionally refresh the page
-    //                 } else {
-    //                     alert("Error deleting user.");
-    //                 }
-    //             })
-    //             .catch(error => {
-    //                 console.error("Error:", error);
-    //                 alert("An unexpected error occurred.");
-    //             });
-    //     });
-    // });
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", (event) => {
+
+            const emailElement = event.target.closest("tr").querySelector(".email");
+            const email = emailElement.textContent;
+
+            fetch(`/admin/api/remove-user/${encodeURIComponent(email)}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    [csrfHeader]: csrfToken
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("User deleted successfully.");
+                        window.location.reload();
+                    } else {
+                        alert("Error deleting user.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("An unexpected error occurred.");
+                });
+        });
+    });
 
     // Enable user
     enableButtons.forEach(b => {
@@ -158,4 +158,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     })
 
+    // Sent email to user
+    document.querySelectorAll(".send-email-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const tr = this.closest("tr");
+            const email = tr.querySelector(".email").textContent.trim();
+
+            const subject = "Subject of the Email"; // Customize the subject
+            const body = "Hello, \n\n........... ."; // Customize the body
+
+            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+    });
 });
