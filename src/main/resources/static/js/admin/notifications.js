@@ -11,7 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const changeRoleBtn = wrapper.querySelector(".change-role-btn");
 
         const tr = wrapper.closest("tr");
-        const username = tr.querySelector(".username").textContent;
+        const email = tr.querySelector(".email").textContent;
+
+        // if (email === loggedInUserEmail) {
+        //     checkboxes.forEach(checkbox => checkbox.disabled = true);
+        //     changeRoleBtn.disabled = true;
+        //     changeRoleBtn.classList.add("btn-disabled");
+        //     return;
+        // }
 
         tr.dataset.initialStates = JSON.stringify(Array.from(checkboxes).map(checkbox => !!checkbox.checked));
 
@@ -48,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .filter(checkbox => checkbox.checked)
                 .map(checkbox => checkbox.value);
 
-            updateRoles(username, selectedRoles, checkboxes, changeRoleBtn, tr);
+            updateRoles(email, selectedRoles, checkboxes, changeRoleBtn, tr);
 
         });
 
@@ -56,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    function updateRoles(username, selectedRoles, checkboxes, changeRoleBtn, tr) {
+    function updateRoles(email, selectedRoles, checkboxes, changeRoleBtn, tr) {
         fetch("/admin/api/update-roles", {
             method: "PATCH",
             headers: {
@@ -65,8 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             },
             body: JSON.stringify({
-                username: username,
-                roles: selectedRoles,  // Pass the selected roles
+                email: email,
+                roles: selectedRoles,
             }),
         })
             .then(response => {
