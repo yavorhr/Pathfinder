@@ -43,7 +43,8 @@ public class AdminController {
 
   @PutMapping("/admin/change-user-access/{username}")
   @ResponseBody
-  public ResponseEntity<UserUpdateStatusResponse> changeUserAccess(@PathVariable String username, @AuthenticationPrincipal UserDetails principal ) {
+  public ResponseEntity<UserUpdateStatusResponse> changeUserAccess(@PathVariable String username,
+                                                                   @AuthenticationPrincipal UserDetails principal ) {
     UserUpdateStatusResponse statusResponse = this.userService.changeAccess(username);
 
     return ResponseEntity.ok(statusResponse);
@@ -60,9 +61,11 @@ public class AdminController {
     return ResponseEntity.ok("Roles updated successfully");
   }
 
+  @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#email, #principal.username)")
   @DeleteMapping("/admin/api/remove-user/{email}")
   @ResponseBody
-  public ResponseEntity<?> deleteUser(@PathVariable String email) {
+  public ResponseEntity<?> deleteUser(@PathVariable String email,
+                                      @AuthenticationPrincipal UserDetails principal) {
     this.userService.deleteUser(email);
 
     return ResponseEntity.ok("User deleted successfully!");
