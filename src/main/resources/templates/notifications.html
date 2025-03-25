@@ -2,7 +2,7 @@
 <head th:replace="fragments/head :: head(additionalCss='/css/admin/notifications.css')">
 </head>
 
-<body>
+<body data-logged-in-user-email="${loggedInUserEmail}">
 <section class="first-section">
     <h1 class="admin-header">Admin Notifications</h1>
     <div class="home-nav-item">
@@ -64,7 +64,8 @@
                     <button
                             th:disabled="${u.email == loggedInUserEmail}"
                             th:classappend="${u.email == loggedInUserEmail} ? 'btn-disabled' : ''"
-                            class="delete-btn">Delete User</button>
+                            class="delete-btn">Delete User
+                    </button>
                     <button
                             class="enable-btn"
                             th:text="${u.isEnabled} ? 'Disable user' : 'Enable user'"
@@ -80,5 +81,12 @@
 </section>
 </body>
 
-<script src="/js/admin/notifications.js"></script>
+<script th:inline="javascript">
+    const loggedInUserEmail = /*[[${loggedInUserEmail}]]*/ "default@example.com";
+</script>
+
+
+<script src="/js/admin/notifications.js">
+</script>
+
 </html>
