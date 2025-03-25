@@ -5,13 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const deleteButtons = document.querySelectorAll(".delete-btn");
     const emailButtons = document.querySelectorAll(".email-btn");
 
+    // Style and disable buttons for logged in user - no permission to enable/disable, delete, send email or change roles
+    //not finished
     document.querySelectorAll("tr").forEach(tr => {
-
         if (tr.contains(tr.querySelector(".email"))) {
             const userEmail = tr.querySelector(".email").textContent.trim();
             const button = tr.querySelector(".enable-btn");
-            console.log(button);
-            console.log(userEmail);
 
             if (userEmail === loggedInUserEmail) {
 
