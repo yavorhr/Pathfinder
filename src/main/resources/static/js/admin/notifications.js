@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (hasChanges) {
                 changeRoleBtn.disabled = false;
                 changeRoleBtn.classList.add("change-role-enabled");
-                changeRoleBtn.classList.remove("change-role-disabled");
+                changeRoleBtn.classList.remove("btn-disabled");
             } else {
                 changeRoleBtn.disabled = true;
                 changeRoleBtn.classList.remove("change-role-enabled");
-                changeRoleBtn.classList.add("change-role-disabled");
+                changeRoleBtn.classList.add("btn-disabled");
             }
         }
 

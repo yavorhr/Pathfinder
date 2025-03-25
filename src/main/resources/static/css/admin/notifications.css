@@ -84,7 +84,7 @@ th {
     text-align: center;
     border-bottom: 3px solid #ff6b6b; /* A striking red border */
     letter-spacing: 1px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for a 3D effect */\
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for a 3D effect */
 }
 
 /* Table Cells */
@@ -131,7 +131,6 @@ button {
 button:focus {
     outline: none; /* Removes the default focus outline */
 }
-
 
 /* Delete button */
 .delete-btn {
@@ -198,13 +197,19 @@ button:focus {
     cursor: pointer;
 }
 
-.change-role-enabled:hover{
+.change-role-enabled:hover {
     background-color: #27ae60;
     transform: scale(1.05);
 }
 
-.change-role-disabled {
-    background-color: #bdc3c7; /* Gray when disabled */
+.btn-disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.delete-btn.btn-disabled:hover {
+    background-color: #969b9c;
+    transform: scale(1.05);
 }
 
 /* Role Selection Styling */
@@ -239,8 +244,6 @@ button:focus {
     border-radius: 10px;
     overflow: hidden;
 }
-
-
 
 
 /* Responsive Design */

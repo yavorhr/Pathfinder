@@ -5,6 +5,8 @@ import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.view.UserNotificationViewModel;
 import com.example.pathfinder.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +22,12 @@ public class AdminController {
   }
 
   @GetMapping("/admin/notifications")
-  public String viewNotifications(Model model) {
+  public String viewNotifications(Model model, @AuthenticationPrincipal UserDetails principal) {
     List<UserNotificationViewModel> users = this.userService.findAllUsers();
+    String loggedInUserEmail = principal.getUsername();
 
-    model.addAttribute("users", users );
+    model.addAttribute("users", users);
+    model.addAttribute("loggedInUserEmail", loggedInUserEmail);
     return "notifications";
   }
 
@@ -56,7 +60,7 @@ public class AdminController {
 
   @DeleteMapping("/admin/api/remove-user/{email}")
   @ResponseBody
-  public ResponseEntity<?> deleteUser(@PathVariable String email){
+  public ResponseEntity<?> deleteUser(@PathVariable String email) {
     this.userService.deleteUser(email);
 
     return ResponseEntity.ok("User deleted successfully!");

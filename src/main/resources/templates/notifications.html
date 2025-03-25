@@ -53,13 +53,18 @@
                             </div>
                         </th:block>
                     </div>
-                    <button class="change-role-btn disabled">Update Roles
+                    <button
+                            th:disabled="${u.email == loggedInUserEmail}"
+                            class="change-role-btn disabled">Update Roles
                     </button>
                 </div>
             </td>
             <td>
                 <div class="actions-container">
-                    <button class="delete-btn">Delete User</button>
+                    <button
+                            th:disabled="${u.email == loggedInUserEmail}"
+                            th:classappend="${u.email == loggedInUserEmail} ? 'btn-disabled' : ''"
+                            class="delete-btn">Delete User</button>
                     <button
                             class="enable-btn"
                             th:text="${u.isEnabled} ? 'Disable user' : 'Enable user'"
@@ -69,8 +74,6 @@
                 </div>
             </td>
         </tr>
-
-
         </tr>
         </tbody>
     </table>
