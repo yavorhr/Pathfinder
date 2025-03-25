@@ -5,15 +5,15 @@ import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import java.util.Set;
 
 public class UserUpdateStatusResponse {
-  private String username;
+  private String email;
   private boolean isEnabled;
   private Set<UserRoleEnum> roles;
 
   public UserUpdateStatusResponse() {
   }
 
-  public String getUsername() {
-    return username;
+  public String getEmail() {
+    return email;
   }
 
   public boolean isEnabled() {
@@ -24,8 +24,8 @@ public class UserUpdateStatusResponse {
     return roles;
   }
 
-  public UserUpdateStatusResponse setUsername(String username) {
-    this.username = username;
+  public UserUpdateStatusResponse setEmail(String email) {
+    this.email = email;
     return this;
   }
 

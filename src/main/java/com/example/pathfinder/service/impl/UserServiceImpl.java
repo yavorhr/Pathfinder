@@ -126,11 +126,11 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public UserUpdateStatusResponse changeAccess(String username) {
+  public UserUpdateStatusResponse changeAccess(String email) {
     UserEntity userEntity =
             this.userRepository
-                    .findByUsername(username)
-                    .orElseThrow(() -> new ObjectNotFoundException("User with the username " + username + " was not found!"));
+                    .findByEmail(email)
+                    .orElseThrow(() -> new ObjectNotFoundException("User with the email " + email + " was not found!"));
 
     if (userEntity.isEnabled()) {
       userEntity.setEnabled(false);

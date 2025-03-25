@@ -41,11 +41,13 @@ public class AdminController {
     return ResponseEntity.ok("User with email" + email + " has been deleted.");
   }
 
-  @PutMapping("/admin/change-user-access/{username}")
+  @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #email)")
+  @PutMapping("/admin/change-user-access/{email}")
   @ResponseBody
-  public ResponseEntity<UserUpdateStatusResponse> changeUserAccess(@PathVariable String username,
+  public ResponseEntity<UserUpdateStatusResponse> changeUserAccess(@PathVariable String email,
                                                                    @AuthenticationPrincipal UserDetails principal ) {
-    UserUpdateStatusResponse statusResponse = this.userService.changeAccess(username);
+
+    UserUpdateStatusResponse statusResponse = this.userService.changeAccess(email);
 
     return ResponseEntity.ok(statusResponse);
   }
