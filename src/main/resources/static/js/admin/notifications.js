@@ -5,6 +5,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const deleteButtons = document.querySelectorAll(".delete-btn");
     const emailButtons = document.querySelectorAll(".email-btn");
 
+    document.querySelectorAll("tr").forEach(tr => {
+
+        if (tr.contains(tr.querySelector(".email"))) {
+            const userEmail = tr.querySelector(".email").textContent.trim();
+            const button = tr.querySelector(".enable-btn");
+            console.log(button);
+            console.log(userEmail);
+
+            if (userEmail === loggedInUserEmail) {
+
+                button.disabled = true;
+                button.classList.add("btn-disabled");
+                button.classList.remove("active", "inactive");
+            }
+        }
+    });
+
+
     // Keep the initial state of selected checkboxes for every user
     document.querySelectorAll(".change-role-wrapper").forEach(wrapper => {
         const checkboxes = wrapper.querySelectorAll(".role-checkbox");
@@ -130,9 +148,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const clickedButton = e.currentTarget;
 
             const tr = clickedButton.closest("tr");
-            const username = tr.querySelector('.username').textContent.trim();
+            const email = tr.querySelector('.email').textContent.trim();
 
-            fetch(`/admin/change-user-access/${username}`, {
+            fetch(`/admin/change-user-access/${email}`, {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',
@@ -170,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     // Sent email to user
-  emailButtons.forEach(button => {
+    emailButtons.forEach(button => {
         button.addEventListener("click", function () {
             const tr = this.closest("tr");
             const email = tr.querySelector(".email").textContent.trim();
