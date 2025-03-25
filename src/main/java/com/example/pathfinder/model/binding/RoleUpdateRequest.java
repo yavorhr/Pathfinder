@@ -1,22 +1,22 @@
 package com.example.pathfinder.model.binding;
 
 public class RoleUpdateRequest {
-  private String username;
+  private String email;
   private String[] roles;
 
   public RoleUpdateRequest() {
   }
 
-  public String getUsername() {
-    return username;
+  public String getEmail() {
+    return email;
   }
 
   public String[] getRoles() {
     return roles;
   }
 
-  public RoleUpdateRequest setUsername(String username) {
-    this.username = username;
+  public RoleUpdateRequest setEmail(String email) {
+    this.email = email;
     return this;
   }
 
