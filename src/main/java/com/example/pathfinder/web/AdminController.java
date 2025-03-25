@@ -5,6 +5,7 @@ import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.view.UserNotificationViewModel;
 import com.example.pathfinder.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ public class AdminController {
 
     model.addAttribute("users", users);
     model.addAttribute("loggedInUserEmail", loggedInUserEmail);
+
     return "notifications";
   }
 
@@ -41,19 +43,19 @@ public class AdminController {
 
   @PutMapping("/admin/change-user-access/{username}")
   @ResponseBody
-  public ResponseEntity<UserUpdateStatusResponse> changeUserAccess(@PathVariable String username) {
+  public ResponseEntity<UserUpdateStatusResponse> changeUserAccess(@PathVariable String username, @AuthenticationPrincipal UserDetails principal ) {
     UserUpdateStatusResponse statusResponse = this.userService.changeAccess(username);
-
-    System.out.println(statusResponse.isEnabled());
 
     return ResponseEntity.ok(statusResponse);
   }
 
+  @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #request.email)")
   @PatchMapping("/admin/api/update-roles")
   @ResponseBody
-  public ResponseEntity<?> updateRoles(@RequestBody RoleUpdateRequest request) {
+  public ResponseEntity<?> updateRoles(@RequestBody RoleUpdateRequest request,
+                                       @AuthenticationPrincipal UserDetails principal) {
 
-    this.userService.updateUserRoles(request.getUsername(), request.getRoles());
+    this.userService.updateUserRoles(request.getEmail(), request.getRoles());
 
     return ResponseEntity.ok("Roles updated successfully");
   }

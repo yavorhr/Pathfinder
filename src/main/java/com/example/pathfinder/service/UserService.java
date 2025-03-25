@@ -29,4 +29,6 @@ public interface UserService {
   List<UserNotificationViewModel> findAllUsers();
 
   void updateUserRoles(String username, String[] roles);
+
+  boolean isNotModifyingOwnProfile(String loggedInUser, String targetUser);
 }

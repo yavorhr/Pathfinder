@@ -21,7 +21,6 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -168,11 +167,11 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void updateUserRoles(String username, String[] roles) {
+  public void updateUserRoles(String email, String[] roles) {
     UserEntity userEntity =
             this.userRepository
-                    .findByUsername(username)
-                    .orElseThrow(() -> new ObjectNotFoundException("User with the username " + username + " was not found!"));
+                    .findByEmail(email)
+                    .orElseThrow(() -> new ObjectNotFoundException("User with the email " + email + " was not found!"));
 
     Set<UserRoleEntity> userRoles = new HashSet<>();
 
@@ -183,5 +182,12 @@ public class UserServiceImpl implements UserService {
 
     userEntity.setRoles(userRoles);
     this.userRepository.save(userEntity);
+  }
+
+  @Override
+  public boolean isNotModifyingOwnProfile(String loggedInUser, String targetUser) {
+
+    return !loggedInUser.equals(targetUser);
+
   }
 }
