@@ -126,6 +126,7 @@ button {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: white;
 }
 
 button:focus {
@@ -135,7 +136,6 @@ button:focus {
 /* Delete button */
 .delete-btn {
     background-color: #e74c3c;
-    color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -147,13 +147,11 @@ button:focus {
 /* Enable & Disable btn */
 .active {
     background-color: #2ecc71 !important;
-    color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .inactive {
     background-color: #f39c12 !important;
-    color: white;
 }
 
 .enable-btn.active:hover {
@@ -169,7 +167,6 @@ button:focus {
 /* Email btn */
 .send-email-btn {
     background-color: #3498db;
-    color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -202,7 +199,7 @@ button:focus {
     transform: scale(1.05);
 }
 
-.btn-disabled {
+.btn-disabled  {
     background-color: #bdc3c7;
     cursor: not-allowed;
 }
