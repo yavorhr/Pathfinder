@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const deleteButtons = document.querySelectorAll(".delete-btn");
     const emailButtons = document.querySelectorAll(".email-btn");
 
-    // Disable buttons for Admin
+    // Disable buttons for logged in user
     document.querySelectorAll("tr").forEach(tr => {
         if (tr.contains(tr.querySelector(".email"))) {
             const userEmail = tr.querySelector(".email").textContent.trim();
