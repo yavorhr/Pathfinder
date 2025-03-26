@@ -2,10 +2,14 @@ package com.example.pathfinder.model.view;
 
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 public class UserProfileViewModel {
   private Long id;
   private String firstName;
   private String lastName;
+  private LocalDate birthday;
   private Integer age;
   private String username;
   private LevelEnum level;
@@ -17,6 +21,10 @@ public class UserProfileViewModel {
   private String profileImage;
 
   public UserProfileViewModel() {
+  }
+
+  public LocalDate getBirthday() {
+    return birthday;
   }
 
   public String getProfileImage() {
@@ -69,6 +77,12 @@ public class UserProfileViewModel {
 
   public UserProfileViewModel setId(Long id) {
     this.id = id;
+    return this;
+  }
+
+  public UserProfileViewModel setBirthday(LocalDate birthday) {
+    this.birthday = birthday;
+    this.age = calculateAge(birthday);
     return this;
   }
 
@@ -125,5 +139,9 @@ public class UserProfileViewModel {
   public UserProfileViewModel setLinkedIn(String linkedIn) {
     this.linkedIn = linkedIn;
     return this;
+  }
+
+  private int calculateAge(LocalDate birthday) {
+    return (birthday != null) ? Period.between(birthday, LocalDate.now()).getYears() : 0;
   }
 }
