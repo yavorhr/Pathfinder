@@ -107,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
             fullName: document.getElementById("fullName-input").value.trim(),
             username: document.getElementById("username-input").value.trim(),
             email: document.getElementById("email-input").value.trim(),
-            age: parseInt(document.getElementById("age-input").value.trim(), 10),
             aboutMe: document.getElementById("description-input").value.trim(),
             facebookAcc: document.getElementById("facebook-input").value.trim(),
             instagramAcc: document.getElementById("instagram-input").value.trim(),
