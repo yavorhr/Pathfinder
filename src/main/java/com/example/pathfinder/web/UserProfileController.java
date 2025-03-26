@@ -1,6 +1,7 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.binding.ProfileUpdateBindingModel;
+import com.example.pathfinder.model.service.UserProfileServiceModel;
 import com.example.pathfinder.model.view.UserProfileViewModel;
 import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.util.cloudinary.CloudinaryImage;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -44,7 +46,7 @@ public class UserProfileController {
     return "profile";
   }
 
-  @PostMapping("/users/profile/edit")
+  @PatchMapping("/users/profile/edit")
   public ResponseEntity<?> updateProfile(
           @RequestBody @Valid ProfileUpdateBindingModel bindingModel,
           BindingResult bindingResult) {
@@ -61,11 +63,16 @@ public class UserProfileController {
       return ResponseEntity.badRequest().body(errors);
     }
 
-    //update profile
-//    return ResponseEntity.ok(UserProfileViewModel)
-    System.out.println(bindingModel.getId());
-    return null;
+    UserProfileServiceModel serviceModel = modelMapper.map(bindingModel, UserProfileServiceModel.class);
 
+    if (!bindingModel.getFullName().trim().isEmpty()) {
+      serviceModel.setFirstName(bindingModel.getFullName().split(" ")[0]);
+      serviceModel.setLastName(bindingModel.getFullName().split(" ")[1]);
+    }
+
+    this.userService.updateUserData(serviceModel);
+
+    return ResponseEntity.ok("user updated");
   }
 }
 
