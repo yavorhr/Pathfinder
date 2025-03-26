@@ -1,49 +1,57 @@
 package com.example.pathfinder.model.service;
 
-import com.example.pathfinder.model.entity.enums.LevelEnum;
-
 public class UserProfileServiceModel {
   private Long id;
-  private String fullName;
-  private Integer age;
+  private String firstName;
+  private String lastName;
+  private String email;
   private String username;
-  private LevelEnum level;
+  private String aboutMe;
+  private String facebookAcc;
+  private String instagramAcc;
+  private String linkedIn;
 
   public UserProfileServiceModel() {
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String getAboutMe() {
+    return aboutMe;
+  }
+
+  public String getFacebookAcc() {
+    return facebookAcc;
+  }
+
+  public String getInstagramAcc() {
+    return instagramAcc;
+  }
+
+  public String getLinkedIn() {
+    return linkedIn;
   }
 
   public Long getId() {
     return id;
   }
 
-  public String getFullName() {
-    return fullName;
-  }
-
-  public Integer getAge() {
-    return age;
-  }
-
   public String getUsername() {
     return username;
   }
 
-  public LevelEnum getLevel() {
-    return level;
-  }
-
   public UserProfileServiceModel setId(Long id) {
     this.id = id;
-    return this;
-  }
-
-  public UserProfileServiceModel setFullName(String fullName) {
-    this.fullName = fullName;
-    return this;
-  }
-
-  public UserProfileServiceModel setAge(Integer age) {
-    this.age = age;
     return this;
   }
 
@@ -52,8 +60,38 @@ public class UserProfileServiceModel {
     return this;
   }
 
-  public UserProfileServiceModel setLevel(LevelEnum level) {
-    this.level = level;
+  public UserProfileServiceModel setFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public UserProfileServiceModel setLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public UserProfileServiceModel setEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public UserProfileServiceModel setAboutMe(String aboutMe) {
+    this.aboutMe = aboutMe;
+    return this;
+  }
+
+  public UserProfileServiceModel setFacebookAcc(String facebookAcc) {
+    this.facebookAcc = facebookAcc;
+    return this;
+  }
+
+  public UserProfileServiceModel setInstagramAcc(String instagramAcc) {
+    this.instagramAcc = instagramAcc;
+    return this;
+  }
+
+  public UserProfileServiceModel setLinkedIn(String linkedIn) {
+    this.linkedIn = linkedIn;
     return this;
   }
 }
