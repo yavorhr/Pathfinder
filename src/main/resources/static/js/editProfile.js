@@ -79,6 +79,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function enableEditMode() {
         inputFields.forEach(input => {
             const displayElement = document.getElementById(input.id.replace("-input", "-display"));
+
+            // Hide age
+            document.getElementById('age-wrapper').classList.add("d-none");
+
             if (displayElement) {
                 displayElement.classList.add("d-none"); // Hide display element
             }
@@ -127,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Send the updated data to the server using a POST request
         fetch("/users/profile/edit", {
-            method: "POST",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 [csrfHeader]: csrfToken,
