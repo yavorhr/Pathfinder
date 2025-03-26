@@ -5,22 +5,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const deleteButtons = document.querySelectorAll(".delete-btn");
     const emailButtons = document.querySelectorAll(".email-btn");
 
-    // Style and disable buttons for logged in user - no permission to enable/disable, delete, send email or change roles
-    //not finished
+    // Disable buttons for Admin
     document.querySelectorAll("tr").forEach(tr => {
         if (tr.contains(tr.querySelector(".email"))) {
             const userEmail = tr.querySelector(".email").textContent.trim();
-            const button = tr.querySelector(".enable-btn");
+
+            const enableBtn = tr.querySelector(".enable-btn");
+            const deleteBtn = tr.querySelector(".delete-btn");
+            const emailBtn = tr.querySelector(".send-email-btn");
+            const changeRolesBtn = tr.querySelector(".change-role-btn");
 
             if (userEmail === loggedInUserEmail) {
+                enableBtn.disabled = true;
+                enableBtn.classList.add("btn-disabled");
+                enableBtn.classList.remove("active", "inactive");
 
-                button.disabled = true;
-                button.classList.add("btn-disabled");
-                button.classList.remove("active", "inactive");
+                deleteBtn.disabled = true;
+                deleteBtn.classList.add("btn-disabled");
+                deleteBtn.classList.remove("active", "inactive");
+
+                emailBtn.disabled = true;
+                emailBtn.classList.add("btn-disabled");
+                emailBtn.classList.remove("active", "inactive");
+
+                changeRolesBtn.disabled = true;
+                changeRolesBtn.classList.add("btn-disabled");
+                changeRolesBtn.classList.remove("active", "inactive");
             }
         }
     });
-
 
     // Keep the initial state of selected checkboxes for every user
     document.querySelectorAll(".change-role-wrapper").forEach(wrapper => {
@@ -30,12 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const tr = wrapper.closest("tr");
         const email = tr.querySelector(".email").textContent;
 
-        // if (email === loggedInUserEmail) {
-        //     checkboxes.forEach(checkbox => checkbox.disabled = true);
-        //     changeRoleBtn.disabled = true;
-        //     changeRoleBtn.classList.add("btn-disabled");
-        //     return;
-        // }
+        if (email === loggedInUserEmail) {
+            checkboxes.forEach(checkbox => checkbox.disabled = true);
+            changeRoleBtn.disabled = true;
+            changeRoleBtn.classList.add("btn-disabled");
+            return;
+        }
 
         tr.dataset.initialStates = JSON.stringify(Array.from(checkboxes).map(checkbox => !!checkbox.checked));
 
