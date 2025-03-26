@@ -60,17 +60,10 @@
                                   class="error-message text-danger"></span>
                         </div>
 
-                        <div class="profile-data-wrapper">
-                            <label class="mt-2 mb-0" for="age-input">Age: </label>
+                        <div id="age-wrapper" class="profile-data-wrapper">
+                            <label class="mt-2 mb-0">Age: </label>
                             <span id="age-display"
                                   th:text="*{age}">33</span>
-                            <input
-                                    id="age-input"
-                                    class="form-control d-none"
-                                    type="number"
-                                    th:value="*{age}">
-                            <span id="age-error"
-                                  class="error-message text-danger"></span>
                         </div>
 
                         <div class="px-4 mt-4 mb-3 profile-data-wrapper">
