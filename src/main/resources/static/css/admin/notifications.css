@@ -180,6 +180,7 @@ button:focus {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Change role btn */
 .change-role-btn {
     background-color: #aeb4b8; /* Gray (disabled state) */
@@ -199,14 +200,15 @@ button:focus {
     transform: scale(1.05);
 }
 
-.btn-disabled  {
+.btn-disabled {
     background-color: #bdc3c7;
     cursor: not-allowed;
 }
 
-.delete-btn.btn-disabled:hover {
-    background-color: #969b9c;
-    transform: scale(1.05);
+.btn-disabled:hover {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
 }
 
 /* Role Selection Styling */
