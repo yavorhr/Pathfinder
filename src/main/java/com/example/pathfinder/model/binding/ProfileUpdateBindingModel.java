@@ -3,12 +3,10 @@ package com.example.pathfinder.model.binding;
 import com.example.pathfinder.validation.register.UniqueEmail;
 import com.example.pathfinder.validation.register.UniqueUsername;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 public class ProfileUpdateBindingModel {
   private Long id;
-  private Integer age;
   private String fullName;
   private String email;
   private String username;
@@ -32,11 +30,6 @@ public class ProfileUpdateBindingModel {
 
   public String getAboutMe() {
     return aboutMe;
-  }
-
-  @Positive(message = "Age must be positive")
-  public Integer getAge() {
-    return age;
   }
 
   @Size(min = 3, max = 30, message = "Full name must be between 3 and 30 symbols")
@@ -65,11 +58,6 @@ public class ProfileUpdateBindingModel {
 
   public String getLinkedIn() {
     return linkedIn;
-  }
-
-  public ProfileUpdateBindingModel setAge(Integer age) {
-    this.age = age;
-    return this;
   }
 
   public ProfileUpdateBindingModel setFullName(String fullName) {
@@ -106,4 +94,5 @@ public class ProfileUpdateBindingModel {
     this.linkedIn = linkedIn;
     return this;
   }
+
 }
