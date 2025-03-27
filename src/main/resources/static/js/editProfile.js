@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Hide age
             document.getElementById('age-wrapper').classList.add("d-none");
+            document.getElementById('email-wrapper').classList.add("d-none");
 
             if (displayElement) {
                 displayElement.classList.add("d-none"); // Hide display element
@@ -106,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
             id: document.getElementById("id-input").value.trim(),
             fullName: document.getElementById("fullName-input").value.trim(),
             username: document.getElementById("username-input").value.trim(),
-            email: document.getElementById("email-input").value.trim(),
             aboutMe: document.getElementById("description-input").value.trim(),
             facebookAcc: document.getElementById("facebook-input").value.trim(),
             instagramAcc: document.getElementById("instagram-input").value.trim(),
@@ -137,41 +137,49 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(updatedData),
         })
-            .then(response => {
-                if (response.ok) {
-                    alert("Profile updated successfully!");
+            .then(async response => {
+                const data = await response.json();
 
-                    // Reset to view mode
-                    inputFields.forEach(input => {
-                        const displayElement = document.getElementById(input.id.replace("-input", "-display"));
-                        input.classList.add("d-none"); // Hide input fields
-                        if (displayElement) {
-                            displayElement.classList.remove("d-none"); // Show display elements
+                if (!response.ok) {
+                    // Validation errors received
+                    console.log(data);
+                    Object.keys(data).forEach(field => {
+                        const errorMessage = data[field];
+                        const errorElement = document.getElementById(`${field}-error`);
+                        if (errorElement) {
+                            errorElement.textContent = errorMessage;
                         }
                     });
-
-                    saveButton.classList.add("d-none"); // Hide Save button
-                    resetButton.classList.add("d-none"); // Hide Reset button
-                    editButton.classList.remove("d-none"); // Show Edit button
-                } else {
-                    return response.json().then(errors => {
-                        console.log(errors)
-                        // Render validation errors under the corresponding input fields
-                        Object
-                            .keys(errors)
-                            .forEach(field => {
-                                const errorMessage = errors[field];
-                                const errorElement = document.getElementById(`${field}-error`);
-                                if (errorElement) {
-                                    errorElement.textContent = errorMessage;
-                                }
-                            });
-                    });
+                    throw new Error("Validation failed");
                 }
+
+                alert("Profile updated successfully!");
+
+                document.getElementById("fullName-display").textContent = data.firstName + " " + data.lastName;
+                document.getElementById("username-display").textContent = data.username;
+                document.getElementById("description-display").textContent = data.aboutMe;
+                document.getElementById("facebook-display").textContent = data.facebookAcc;
+                document.getElementById("instagram-display").textContent = data.instagramAcc;
+                document.getElementById("linkedin-display").textContent = data.linkedIn;
+
+                inputFields.forEach(input => {
+                    const displayElement = document.getElementById(input.id.replace("-input", "-display"));
+                    input.classList.add("d-none");
+                    if (displayElement) {
+                        displayElement.classList.remove("d-none");
+                    }
+                });
+
+                saveButton.classList.add("d-none");
+                resetButton.classList.add("d-none");
+                editButton.classList.remove("d-none");
             })
             .catch(error => {
                 console.error("Error while updating profile:", error);
-                alert("An error occurred. Please try again.");
+
+                if (error.message !== "Validation failed") {
+                    alert("An unexpected error occurred. Please try again.");
+                }
             });
     }
 
