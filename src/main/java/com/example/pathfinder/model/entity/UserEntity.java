@@ -187,8 +187,9 @@ public class UserEntity extends BaseEntity {
     this.password = password;
   }
 
-  public void setUsername(String username) {
+  public UserEntity setUsername(String username) {
     this.username = username;
+    return this;
   }
 
   public void setRoles(Set<UserRoleEntity> roles) {
