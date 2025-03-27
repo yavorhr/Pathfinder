@@ -1,14 +1,13 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.binding.ProfileUpdateBindingModel;
+import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.service.UserProfileServiceModel;
 import com.example.pathfinder.model.view.UserProfileViewModel;
 import com.example.pathfinder.service.UserService;
-import com.example.pathfinder.util.cloudinary.CloudinaryImage;
 import com.example.pathfinder.util.cloudinary.CloudinaryService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -37,10 +36,12 @@ public class UserProfileController {
   public String profilePage(@AuthenticationPrincipal UserDetails principal,
                             Model model) {
 
-    UserProfileViewModel userViewModel =
-            this.modelMapper.map(this.userService.findByEmail(principal.getUsername()),
-                    UserProfileViewModel.class);
+    UserEntity userEntity = this.userService.findByEmail(principal.getUsername());
 
+    UserProfileViewModel userViewModel =
+            this.modelMapper.map(userEntity, UserProfileViewModel.class);
+
+    userViewModel.setProfileImage(userEntity.getProfilePicture().getUrl());
     model.addAttribute("userViewModel", userViewModel);
 
     return "profile";
