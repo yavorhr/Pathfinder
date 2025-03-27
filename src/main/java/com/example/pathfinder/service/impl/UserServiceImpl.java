@@ -6,8 +6,10 @@ import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
+import com.example.pathfinder.model.service.UserProfileServiceModel;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.model.view.UserNotificationViewModel;
+import com.example.pathfinder.model.view.UserProfileViewModel;
 import com.example.pathfinder.repository.ProfilePictureRepository;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
@@ -21,6 +23,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -77,7 +80,6 @@ public class UserServiceImpl implements UserService {
     } else {
       user.setLevel(LevelEnum.ADVANCED);
     }
-
     this.userRepository.save(user);
   }
 
@@ -186,8 +188,29 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public boolean isNotModifyingOwnProfile(String loggedInUser, String targetUser) {
-
     return !loggedInUser.equals(targetUser);
 
+  }
+
+  @Override
+  public UserProfileViewModel updateUserData(UserProfileServiceModel serviceModel) {
+    UserEntity userEntity = this.userRepository.findById(serviceModel.getId())
+            .orElseThrow(() -> new ObjectNotFoundException("User with id: " + serviceModel.getId() + " does not exist!"));
+
+    userEntity = updateUserEntity(serviceModel, userEntity);
+
+    this.userRepository.save(userEntity);
+    return this.modelMapper.map(userEntity, UserProfileViewModel.class);
+  }
+
+  private UserEntity updateUserEntity(UserProfileServiceModel serviceModel, UserEntity userEntity) {
+    return userEntity
+            .setFirstName(serviceModel.getFirstName())
+            .setLastName(serviceModel.getLastName())
+            .setAboutMe(serviceModel.getAboutMe())
+            .setFacebookAcc(serviceModel.getFacebookAcc())
+            .setInstagramAcc(serviceModel.getInstagramAcc())
+            .setLinkedIn(serviceModel.getLinkedIn())
+            .setUsername(serviceModel.getUsername());
   }
 }

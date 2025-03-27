@@ -2,8 +2,10 @@ package com.example.pathfinder.service;
 
 import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.entity.UserEntity;
+import com.example.pathfinder.model.service.UserProfileServiceModel;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.model.view.UserNotificationViewModel;
+import com.example.pathfinder.model.view.UserProfileViewModel;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,4 +33,6 @@ public interface UserService {
   void updateUserRoles(String username, String[] roles);
 
   boolean isNotModifyingOwnProfile(String loggedInUser, String targetUser);
+
+  UserProfileViewModel updateUserData(UserProfileServiceModel map);
 }
