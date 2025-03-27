@@ -114,18 +114,11 @@
                                         type="text"
                                         th:value="*{linkedIn}">
                             </li>
-                            <li>
+                            <li id="email-wrapper">
                                 <i class="fa fa-envelope"></i>
                                 <span th:if="*{email}"
                                       th:text="*{email}"
                                       id="email-display"></span>
-                                <input
-                                        id="email-input"
-                                        class="form-control d-none"
-                                        type="email"
-                                        th:value="*{email}">
-                                <span id="email-error"
-                                      class="error-message text-danger"></span>
                             </li>
                         </ul>
 
