@@ -119,11 +119,16 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void updateUsersProfilePicture(String email, String url) {
+  public void updateUsersProfilePicture(String email, String url, String publicId) {
     UserEntity userEntity = this.userRepository.findByEmail(email)
             .orElseThrow(() -> new ObjectNotFoundException("User with the email " + email + " was not found!"));
-//    userEntity.setProfileImage(url);
 
+    ProfilePicture profilePicture = new ProfilePicture(url, publicId);
+    profilePicture.setUser(userEntity);
+
+    this.profilePictureRepository.save(profilePicture);
+
+    userEntity.setProfilePicture(profilePicture);
     this.userRepository.save(userEntity);
   }
 

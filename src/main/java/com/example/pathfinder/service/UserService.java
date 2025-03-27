@@ -24,7 +24,7 @@ public interface UserService {
 
   UserEntity findByEmail(String email);
 
-  void updateUsersProfilePicture(String username, String url);
+  void updateUsersProfilePicture(String email, String url, String publicId);
 
   UserUpdateStatusResponse changeAccess(String username);
 

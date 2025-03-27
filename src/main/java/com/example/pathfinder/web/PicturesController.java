@@ -68,7 +68,7 @@ public class PicturesController {
     try {
       CloudinaryImage uploadedImage = cloudinaryService.upload(file, "users-pictures");
 
-      this.userService.updateUsersProfilePicture(principal.getUsername(),uploadedImage.getUrl());
+      this.userService.updateUsersProfilePicture(principal.getUsername(),uploadedImage.getUrl(), uploadedImage.getPublicId());
 
       return ResponseEntity.ok(Map.of(
               "url", uploadedImage.getUrl(),
