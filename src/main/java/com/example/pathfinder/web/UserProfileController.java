@@ -70,9 +70,9 @@ public class UserProfileController {
       serviceModel.setLastName(bindingModel.getFullName().split(" ")[1]);
     }
 
-    this.userService.updateUserData(serviceModel);
+    UserProfileViewModel userProfileViewModel = this.userService.updateUserData(serviceModel);
 
-    return ResponseEntity.ok("user updated");
+    return ResponseEntity.ok(userProfileViewModel);
   }
 }
 
