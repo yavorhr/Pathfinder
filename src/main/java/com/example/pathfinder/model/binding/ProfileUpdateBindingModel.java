@@ -8,7 +8,6 @@ import jakarta.validation.constraints.Size;
 public class ProfileUpdateBindingModel {
   private Long id;
   private String fullName;
-  private String email;
   private String username;
   private String aboutMe;
   private String facebookAcc;
@@ -37,12 +36,6 @@ public class ProfileUpdateBindingModel {
     return fullName;
   }
 
-  @NotNull(message = "Email is required")
-  @UniqueEmail
-  public String getEmail() {
-    return email;
-  }
-
   public ProfileUpdateBindingModel setId(Long id) {
     this.id = id;
     return this;
@@ -62,11 +55,6 @@ public class ProfileUpdateBindingModel {
 
   public ProfileUpdateBindingModel setFullName(String fullName) {
     this.fullName = fullName;
-    return this;
-  }
-
-  public ProfileUpdateBindingModel setEmail(String email) {
-    this.email = email;
     return this;
   }
 

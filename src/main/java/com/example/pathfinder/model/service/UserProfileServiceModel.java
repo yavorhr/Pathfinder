@@ -4,7 +4,6 @@ public class UserProfileServiceModel {
   private Long id;
   private String firstName;
   private String lastName;
-  private String email;
   private String username;
   private String aboutMe;
   private String facebookAcc;
@@ -20,10 +19,6 @@ public class UserProfileServiceModel {
 
   public String getLastName() {
     return lastName;
-  }
-
-  public String getEmail() {
-    return email;
   }
 
   public String getAboutMe() {
@@ -67,11 +62,6 @@ public class UserProfileServiceModel {
 
   public UserProfileServiceModel setLastName(String lastName) {
     this.lastName = lastName;
-    return this;
-  }
-
-  public UserProfileServiceModel setEmail(String email) {
-    this.email = email;
     return this;
   }
 
