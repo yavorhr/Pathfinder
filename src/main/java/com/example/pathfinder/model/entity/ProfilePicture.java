@@ -12,6 +12,11 @@ public class ProfilePicture extends BaseEntity {
   public ProfilePicture() {
   }
 
+  public ProfilePicture(String url, String publicId) {
+    this.publicId = publicId;
+    this.url = url;
+  }
+
   @Column(name = "public_id_number")
   public String getPublicId() {
     return publicId;
