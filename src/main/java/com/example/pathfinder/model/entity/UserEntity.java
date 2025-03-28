@@ -242,6 +242,8 @@ public class UserEntity extends BaseEntity {
   @PrePersist
   private void setCreationDate() {
     this.registrationDate = LocalDateTime.now();
+    this.publicId = "pathfinder/users-pictures/xv9rvzhomv0a1yojubw3";
+    this.url = "https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg";
   }
 
   @PreUpdate
