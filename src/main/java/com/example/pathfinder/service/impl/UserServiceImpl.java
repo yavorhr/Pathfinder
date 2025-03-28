@@ -1,7 +1,6 @@
 package com.example.pathfinder.service.impl;
 
 import com.example.pathfinder.model.common.UserUpdateStatusResponse;
-import com.example.pathfinder.model.entity.ProfilePicture;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
@@ -10,7 +9,6 @@ import com.example.pathfinder.model.service.UserProfileServiceModel;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.model.view.UserNotificationViewModel;
 import com.example.pathfinder.model.view.UserProfileViewModel;
-import com.example.pathfinder.repository.ProfilePictureRepository;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.UserService;
