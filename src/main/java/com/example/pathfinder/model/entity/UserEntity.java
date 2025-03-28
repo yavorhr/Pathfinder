@@ -28,24 +28,27 @@ public class UserEntity extends BaseEntity {
   private String linkedIn;
   private boolean enabled;
   private List<Route> routes;
-  private ProfilePicture profilePicture;
   private LocalDateTime registrationDate;
   private LocalDateTime lastModifiedTime;
   private List<Comment> comments;
+  private String url;
+  private String publicId;
 
   public UserEntity() {
     this.enabled = false;
   }
 
+  public String getUrl() {
+    return url;
+  }
+
+  public String getPublicId() {
+    return publicId;
+  }
+
   @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
   public List<Comment> getComments() {
     return comments;
-  }
-
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "profile_picture_id", referencedColumnName = "id")
-  public ProfilePicture getProfilePicture() {
-    return profilePicture;
   }
 
   @Enumerated(EnumType.STRING)
@@ -110,6 +113,16 @@ public class UserEntity extends BaseEntity {
     return lastModifiedTime;
   }
 
+  public UserEntity setUrl(String url) {
+    this.url = url;
+    return this;
+  }
+
+  public UserEntity setPublicId(String publicId) {
+    this.publicId = publicId;
+    return this;
+  }
+
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
           name = "users_roles",
@@ -156,11 +169,6 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setAboutMe(String aboutMe) {
     this.aboutMe = aboutMe;
-    return this;
-  }
-
-  public UserEntity setProfilePicture(ProfilePicture profilePicture) {
-    this.profilePicture = profilePicture;
     return this;
   }
 
