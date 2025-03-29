@@ -18,7 +18,8 @@ public class UserProfileViewModel {
   private String facebookAcc;
   private String instagramAcc;
   private String linkedIn;
-  private String profileImage;
+  private String profileImageUrl;
+  private String profileImagePublicId;
 
   public UserProfileViewModel() {
   }
@@ -27,8 +28,12 @@ public class UserProfileViewModel {
     return birthday;
   }
 
-  public String getProfileImage() {
-    return profileImage;
+  public String getProfileImagePublicId() {
+    return profileImagePublicId;
+  }
+
+  public String getProfileImageUrl() {
+    return profileImageUrl;
   }
 
   public String getEmail() {
@@ -96,8 +101,8 @@ public class UserProfileViewModel {
     return this;
   }
 
-  public UserProfileViewModel setProfileImage(String profileImage) {
-    this.profileImage = profileImage;
+  public UserProfileViewModel setProfileImageUrl(String profileImageUrl) {
+    this.profileImageUrl = profileImageUrl;
     return this;
   }
 
@@ -108,6 +113,11 @@ public class UserProfileViewModel {
 
   public UserProfileViewModel setUsername(String username) {
     this.username = username;
+    return this;
+  }
+
+  public UserProfileViewModel setProfileImagePublicId(String profileImagePublicId) {
+    this.profileImagePublicId = profileImagePublicId;
     return this;
   }
 

@@ -9,8 +9,18 @@ public class UserProfileServiceModel {
   private String facebookAcc;
   private String instagramAcc;
   private String linkedIn;
+  private String profileImageUrl;
+  private String profileImagePublicId;
 
   public UserProfileServiceModel() {
+  }
+
+  public String getProfileImageUrl() {
+    return profileImageUrl;
+  }
+
+  public String getProfileImagePublicId() {
+    return profileImagePublicId;
   }
 
   public String getFirstName() {
@@ -62,6 +72,16 @@ public class UserProfileServiceModel {
 
   public UserProfileServiceModel setLastName(String lastName) {
     this.lastName = lastName;
+    return this;
+  }
+
+  public UserProfileServiceModel setProfileImageUrl(String profileImageUrl) {
+    this.profileImageUrl = profileImageUrl;
+    return this;
+  }
+
+  public UserProfileServiceModel setProfileImagePublicId(String profileImagePublicId) {
+    this.profileImagePublicId = profileImagePublicId;
     return this;
   }
 
