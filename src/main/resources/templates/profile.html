@@ -87,7 +87,7 @@
                             <li>
                                 <i class="fab fa-facebook-square"></i>
                                 <span
-                                        th:if="*{facebookAcc}"
+                                        th:unless="*{facebookAcc}"
                                         th:text="*{facebookAcc}"
                                         id="facebook-display"></span>
                                 <input
@@ -98,7 +98,7 @@
                             </li>
                             <li>
                                 <i class="fab fa-instagram"></i>
-                                <span th:if="*{instagramAcc}"
+                                <span th:unless="*{instagramAcc}"
                                       th:text="*{instagramAcc}"
                                       id="instagram-display"></span>
                                 <input
