@@ -32,15 +32,13 @@ public class UserServiceImpl implements UserService {
   private final ModelMapper modelMapper;
   private final UserRolesService userRolesService;
   private final ApplicationEventPublisher eventPublisher;
-  private final ProfilePictureRepository profilePictureRepository;
   private final PasswordEncoder passwordEncoder;
 
-  public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserRolesService userRolesService, ApplicationEventPublisher eventPublisher, ProfilePictureRepository profilePictureRepository, PasswordEncoder passwordEncoder) {
+  public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserRolesService userRolesService, ApplicationEventPublisher eventPublisher, PasswordEncoder passwordEncoder) {
     this.userRepository = userRepository;
     this.modelMapper = modelMapper;
     this.userRolesService = userRolesService;
     this.eventPublisher = eventPublisher;
-    this.profilePictureRepository = profilePictureRepository;
     this.passwordEncoder = passwordEncoder;
   }
 
@@ -53,10 +51,10 @@ public class UserServiceImpl implements UserService {
     user.setRoles(Set.of(roleEntity));
     user.setPassword(this.passwordEncoder.encode(serviceModel.getPassword()));
 
-    ProfilePicture profilePicture = new ProfilePicture();
-
-    profilePicture.setUser(user);
-    user.setProfilePicture(profilePicture);
+//    ProfilePicture profilePicture = new ProfilePicture();
+//
+//    profilePicture.setUser(user);
+//    user.setProfilePicture(profilePicture);
 
     this.userRepository.save(user);
 
@@ -121,12 +119,7 @@ public class UserServiceImpl implements UserService {
     UserEntity userEntity = this.userRepository.findByEmail(email)
             .orElseThrow(() -> new ObjectNotFoundException("User with the email " + email + " was not found!"));
 
-    ProfilePicture profilePicture = new ProfilePicture(url, publicId);
-    profilePicture.setUser(userEntity);
-
-    this.profilePictureRepository.save(profilePicture);
-
-    userEntity.setProfilePicture(profilePicture);
+    userEntity.setProfileImageUrl(url).setProfileImagePublicId(publicId);
     this.userRepository.save(userEntity);
   }
 
