@@ -41,7 +41,6 @@ public class UserProfileController {
     UserProfileViewModel userViewModel =
             this.modelMapper.map(userEntity, UserProfileViewModel.class);
 
-    userViewModel.setProfileImage(userEntity.getProfilePicture().getUrl());
     model.addAttribute("userViewModel", userViewModel);
 
     return "profile";
