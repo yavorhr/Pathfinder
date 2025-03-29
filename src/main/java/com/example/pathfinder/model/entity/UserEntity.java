@@ -31,19 +31,21 @@ public class UserEntity extends BaseEntity {
   private LocalDateTime registrationDate;
   private LocalDateTime lastModifiedTime;
   private List<Comment> comments;
-  private String url;
-  private String publicId;
+  private String profileImageUrl;
+  private String profileImagPublicId;
 
   public UserEntity() {
     this.enabled = false;
   }
 
-  public String getUrl() {
-    return url;
+  @Column(name = "profile_image_url")
+  public String getProfileImageUrl() {
+    return profileImageUrl;
   }
 
-  public String getPublicId() {
-    return publicId;
+  @Column(name = "profile_image_public_id")
+  public String getProfileImagPublicId() {
+    return profileImagPublicId;
   }
 
   @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
@@ -113,13 +115,13 @@ public class UserEntity extends BaseEntity {
     return lastModifiedTime;
   }
 
-  public UserEntity setUrl(String url) {
-    this.url = url;
+  public UserEntity setProfileImageUrl(String url) {
+    this.profileImageUrl = url;
     return this;
   }
 
-  public UserEntity setPublicId(String publicId) {
-    this.publicId = publicId;
+  public UserEntity setProfileImagPublicId(String publicId) {
+    this.profileImagPublicId = publicId;
     return this;
   }
 
@@ -240,15 +242,14 @@ public class UserEntity extends BaseEntity {
   }
 
   @PrePersist
-  private void setCreationDate() {
+  private void setInitialValues() {
     this.registrationDate = LocalDateTime.now();
-    this.publicId = "pathfinder/users-pictures/xv9rvzhomv0a1yojubw3";
-    this.url = "https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg";
+    this.profileImagPublicId = "pathfinder/users-pictures/xv9rvzhomv0a1yojubw3";
+    this.profileImageUrl = "https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg";
   }
 
   @PreUpdate
   private void setUpdateDate() {
     this.lastModifiedTime = LocalDateTime.now();
   }
-
 }
