@@ -32,7 +32,7 @@ public class UserEntity extends BaseEntity {
   private LocalDateTime lastModifiedTime;
   private List<Comment> comments;
   private String profileImageUrl;
-  private String profileImagPublicId;
+  private String profileImagePublicId;
 
   public UserEntity() {
     this.enabled = false;
@@ -44,8 +44,8 @@ public class UserEntity extends BaseEntity {
   }
 
   @Column(name = "profile_image_public_id")
-  public String getProfileImagPublicId() {
-    return profileImagPublicId;
+  public String getProfileImagePublicId() {
+    return profileImagePublicId;
   }
 
   @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
@@ -120,8 +120,8 @@ public class UserEntity extends BaseEntity {
     return this;
   }
 
-  public UserEntity setProfileImagPublicId(String publicId) {
-    this.profileImagPublicId = publicId;
+  public UserEntity setProfileImagePublicId(String publicId) {
+    this.profileImagePublicId = publicId;
     return this;
   }
 
@@ -244,7 +244,7 @@ public class UserEntity extends BaseEntity {
   @PrePersist
   private void setInitialValues() {
     this.registrationDate = LocalDateTime.now();
-    this.profileImagPublicId = "pathfinder/users-pictures/xv9rvzhomv0a1yojubw3";
+    this.profileImagePublicId = "pathfinder/users-pictures/xv9rvzhomv0a1yojubw3";
     this.profileImageUrl = "https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg";
   }
 
