@@ -109,7 +109,7 @@
                             </li>
                             <li>
                                 <i class="fab fa-linkedin"></i>
-                                <span th:if="*{linkedIn}"
+                                <span th:unless="*{linkedIn.isEmpty()}"
                                       th:text="*{linkedIn}"
                                       id="linkedin-display"></span>
                                 <input
