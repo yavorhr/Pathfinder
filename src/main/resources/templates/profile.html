@@ -13,14 +13,17 @@
             <div class="profile-card p-3 py-4"
                  th:object="${userViewModel}">
                 <div class="text-center">
-                    <img th:src="${userViewModel.profileImage != null &&
-                    !userViewModel.profileImage.isEmpty()
-              ? userViewModel.profileImage
+                    <img th:src="${userViewModel.profileImageUrl != null
+              ? userViewModel.profileImageUrl
               : '/images/profile.jpg'}"
                          alt="Profile image" id="profile-image"
                          class="rounded-circle" width="100">
                     <input type="file" id="upload-input" class="d-none" accept="image/*">
-                    <input type="hidden" id="oldProfileImagePublicId" value="">
+                    <input type="hidden"
+                           id="oldProfileImagePublicId"
+                           th:value="${userViewModel.profileImagePublicId == null
+                           ? 'pathfinder/users-pictures/xv9rvzhomv0a1yojubw3'
+                           : userViewModel.profileImagePublicId}">
                     <button id="upload-button" class="btn btn-outline-primary mt-2">Add</button>
                 </div>
                 <div class="text-center mt-3">
