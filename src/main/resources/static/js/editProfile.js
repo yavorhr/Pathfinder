@@ -33,9 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (response.ok) {
                     const data = await response.json();
-                    let oldPublicInputElement = document.getElementById("oldProfileImagePublicId");
 
-                    const oldPublicId = oldPublicInputElement.value;
+                    let oldPublicInputElement = document.getElementById("oldProfileImagePublicId");
+                    let oldPublicId = oldPublicInputElement.value;
 
                     oldPublicInputElement.value = data.publicId;
 
