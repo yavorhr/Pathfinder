@@ -8,12 +8,9 @@ VALUES (2, 'MODERATOR');
 INSERT INTO roles (id, role)
 VALUES (3, 'USER');
 
--- profile pictures
-
-
 -- some test users
 INSERT INTO users (id, first_name, last_name, gender, birthday, registration_date, level, password, username, email, is_enabled,
-                   about_me, instagram_account, facebook_account)
+                   about_me, instagram_account, facebook_account )
 VALUES (1, 'Admin', 'Adminov', 'Male', '1995-08-21', '2023-03-03', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'admin',
         'admin@abv.bg', true, "I'm very passionate about trecking!", "instagram.com/admin", "facebook.com/admin");
