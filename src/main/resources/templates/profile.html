@@ -14,6 +14,7 @@
                  th:object="${userViewModel}">
                 <div class="text-center">
                     <img th:src="${userViewModel.profileImageUrl != null
+                    && !userViewModel.profileImageUrl.isEmpty()
               ? userViewModel.profileImageUrl
               : '/images/profile.jpg'}"
                          alt="Profile image" id="profile-image"
@@ -22,7 +23,7 @@
                     <input type="hidden"
                            id="oldProfileImagePublicId"
                            th:value="${userViewModel.profileImagePublicId == null
-                           ? 'pathfinder/users-pictures/xv9rvzhomv0a1yojubw3'
+                           ? ''
                            : userViewModel.profileImagePublicId}">
                     <button id="upload-button" class="btn btn-outline-primary mt-2">Add</button>
                 </div>
