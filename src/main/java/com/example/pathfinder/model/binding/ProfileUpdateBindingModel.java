@@ -1,14 +1,14 @@
 package com.example.pathfinder.model.binding;
 
-import com.example.pathfinder.validation.register.UniqueEmail;
-import com.example.pathfinder.validation.register.UniqueUsername;
-import jakarta.validation.constraints.NotNull;
+import com.example.pathfinder.validation.update.UniqueUsernameByUserUpdate;
 import jakarta.validation.constraints.Size;
 
+@UniqueUsernameByUserUpdate
 public class ProfileUpdateBindingModel {
   private Long id;
   private String fullName;
   private String username;
+  private String originalUsername;
   private String aboutMe;
   private String facebookAcc;
   private String instagramAcc;
@@ -17,7 +17,10 @@ public class ProfileUpdateBindingModel {
   public ProfileUpdateBindingModel() {
   }
 
-  @UniqueUsername
+  public String getOriginalUsername() {
+    return originalUsername;
+  }
+
   @Size(min = 4,max = 20, message = "Username must be between 4 and 20 symbols")
   public String getUsername() {
     return username;
@@ -38,6 +41,11 @@ public class ProfileUpdateBindingModel {
 
   public ProfileUpdateBindingModel setId(Long id) {
     this.id = id;
+    return this;
+  }
+
+  public ProfileUpdateBindingModel setOriginalUsername(String originalUsername) {
+    this.originalUsername = originalUsername;
     return this;
   }
 
