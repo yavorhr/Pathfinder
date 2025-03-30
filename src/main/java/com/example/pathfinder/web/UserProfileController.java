@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -53,12 +54,13 @@ public class UserProfileController {
 
     if (bindingResult.hasErrors()) {
 
-      Map<String, String> errors = bindingResult.getFieldErrors()
+      Map<String, String> errors = new HashMap<>(bindingResult.getFieldErrors()
               .stream()
-              .collect(Collectors.toMap(
-                      FieldError::getField,
-                      FieldError::getDefaultMessage
-              ));
+              .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage)));
+
+      bindingResult
+              .getGlobalErrors()
+              .forEach(e -> errors.put("username", e.getDefaultMessage()));
 
       return ResponseEntity.badRequest().body(errors);
     }
