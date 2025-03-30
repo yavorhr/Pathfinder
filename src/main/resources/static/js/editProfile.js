@@ -103,10 +103,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to save changes
     function saveChanges() {
+        const usernameInput = document.getElementById("username-input");
+
         const updatedData = {
             id: document.getElementById("id-input").value.trim(),
             fullName: document.getElementById("fullName-input").value.trim(),
-            username: document.getElementById("username-input").value.trim(),
+            username: usernameInput.value.trim(),
+            originalUsername: usernameInput.getAttribute("data-original"),
             aboutMe: document.getElementById("description-input").value.trim(),
             facebookAcc: document.getElementById("facebook-input").value.trim(),
             instagramAcc: document.getElementById("instagram-input").value.trim(),
@@ -142,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (!response.ok) {
                     // Validation errors received
-                    console.log(data);
+
                     Object.keys(data).forEach(field => {
                         const errorMessage = data[field];
                         const errorElement = document.getElementById(`${field}-error`);
