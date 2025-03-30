@@ -35,4 +35,6 @@ public interface UserService {
   boolean isNotModifyingOwnProfile(String loggedInUser, String targetUser);
 
   UserProfileViewModel updateUserData(UserProfileServiceModel map);
+
+  boolean isUsernameAvailable(String username);
 }

@@ -199,6 +199,11 @@ public class UserServiceImpl implements UserService {
     return this.modelMapper.map(userEntity, UserProfileViewModel.class);
   }
 
+  @Override
+  public boolean isUsernameAvailable(String username) {
+    return this.userRepository.findByUsername(username).isEmpty();
+  }
+
   private UserEntity updateUserEntity(UserProfileServiceModel serviceModel, UserEntity userEntity) {
     return userEntity
             .setFirstName(serviceModel.getFirstName())
