@@ -85,7 +85,7 @@ public class PicturesController {
     try {
       String publicId = request.get("publicId");
       cloudinaryService.delete(publicId);
- 
+
       return ResponseEntity.ok(Map.of("message", "Image deleted successfully"));
     } catch (Exception e) {
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "Failed to delete image"));
