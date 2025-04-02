@@ -13,7 +13,7 @@
             <div class="profile-card p-3 py-4"
                  th:object="${userViewModel}">
                  <span th:text="*{level.name()}"
-                       class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                       class="level-badge">Pro</span>
                 <div class="add-image-wrapper">
                     <img th:src="${userViewModel.profileImageUrl != null
                     && !userViewModel.profileImageUrl.isEmpty()
