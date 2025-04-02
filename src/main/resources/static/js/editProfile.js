@@ -77,6 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to enable edit mode
     function enableEditMode() {
+        document.querySelector('.full-name-title').classList.add('d-none');
+        document.querySelector('.last-name-label').classList.remove('d-none');
+        document.querySelector('.first-name-label').classList.remove('d-none');
+        document.querySelectorAll('.name-wrapper').forEach(e => e.classList.add('dynamic-width'))
+
         inputFields.forEach(input => {
             const displayElement = document.getElementById(input.id.replace("-input", "-display"));
 
@@ -107,7 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const updatedData = {
             id: document.getElementById("id-input").value.trim(),
-            fullName: document.getElementById("fullName-input").value.trim(),
+            firstName: document.getElementById("firstName-input").value.trim(),
+            lastName: document.getElementById("lastName-input").value.trim(),
             username: usernameInput.value.trim(),
             originalUsername: usernameInput.getAttribute("data-original"),
             aboutMe: document.getElementById("description-input").value.trim(),
@@ -158,7 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 alert("Profile updated successfully!");
 
-                document.getElementById("fullName-display").textContent = data.firstName + " " + data.lastName;
+                document.getElementById("firstName-display").textContent = data.firstName;
+                document.getElementById("lastName-display").textContent = data.lastName;
                 document.getElementById("username-display").textContent = data.username;
                 document.getElementById("description-display").textContent = data.aboutMe;
                 document.getElementById("facebook-display").textContent = data.facebookAcc;
@@ -172,6 +179,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         displayElement.classList.remove("d-none");
                     }
                 });
+
+                document.querySelector('.full-name-title').classList.remove('d-none');
+                document.querySelector('.last-name-label').classList.add('d-none');
+                document.querySelector('.first-name-label').classList.add('d-none');
+                document.querySelectorAll('.name-wrapper').forEach(e => e.classList.remove('dynamic-width'))
 
                 saveButton.classList.add("d-none");
                 resetButton.classList.add("d-none");
@@ -194,6 +206,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to reset changes
     function resetChanges() {
+        document.querySelector('.full-name-title').classList.remove('d-none');
+        document.querySelector('.last-name-label').classList.add('d-none');
+        document.querySelector('.first-name-label').classList.add('d-none');
+        document.querySelectorAll('.name-wrapper').forEach(e => e.classList.remove('dynamic-width'))
+
         inputFields.forEach(input => {
             const displayElement = document.getElementById(input.id.replace("-input", "-display"));
 
