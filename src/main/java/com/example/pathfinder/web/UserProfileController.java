@@ -67,11 +67,6 @@ public class UserProfileController {
 
     UserProfileServiceModel serviceModel = modelMapper.map(bindingModel, UserProfileServiceModel.class);
 
-    if (!bindingModel.getFullName().trim().isEmpty()) {
-      serviceModel.setFirstName(bindingModel.getFullName().split(" ")[0]);
-      serviceModel.setLastName(bindingModel.getFullName().split(" ")[1]);
-    }
-
     UserProfileViewModel userProfileViewModel = this.userService.updateUserData(serviceModel);
 
     return ResponseEntity.ok(userProfileViewModel);

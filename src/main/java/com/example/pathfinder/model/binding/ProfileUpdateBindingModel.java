@@ -6,7 +6,8 @@ import jakarta.validation.constraints.Size;
 @UniqueUsernameByUserUpdate
 public class ProfileUpdateBindingModel {
   private Long id;
-  private String fullName;
+  private String firstName;
+  private String lastName;
   private String username;
   private String originalUsername;
   private String aboutMe;
@@ -21,7 +22,7 @@ public class ProfileUpdateBindingModel {
     return originalUsername;
   }
 
-  @Size(min = 4,max = 20, message = "Username must be between 4 and 20 symbols")
+  @Size(min = 4, max = 20, message = "Username must be between 4 and 20 symbols")
   public String getUsername() {
     return username;
   }
@@ -34,9 +35,14 @@ public class ProfileUpdateBindingModel {
     return aboutMe;
   }
 
-  @Size(min = 3, max = 30, message = "Full name must be between 3 and 30 symbols")
-  public String getFullName() {
-    return fullName;
+  @Size(min = 3, max = 30, message = "Length be between 2 and 20 symbols")
+  public String getFirstName() {
+    return firstName;
+  }
+
+  @Size(min = 3, max = 30, message = "Length be between 2 and 20 symbols")
+  public String getLastName() {
+    return lastName;
   }
 
   public ProfileUpdateBindingModel setId(Long id) {
@@ -61,10 +67,6 @@ public class ProfileUpdateBindingModel {
     return linkedIn;
   }
 
-  public ProfileUpdateBindingModel setFullName(String fullName) {
-    this.fullName = fullName;
-    return this;
-  }
 
   public ProfileUpdateBindingModel setUsername(String username) {
     this.username = username;
@@ -78,6 +80,16 @@ public class ProfileUpdateBindingModel {
 
   public ProfileUpdateBindingModel setFacebookAcc(String facebookAcc) {
     this.facebookAcc = facebookAcc;
+    return this;
+  }
+
+  public ProfileUpdateBindingModel setFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public ProfileUpdateBindingModel setLastName(String lastName) {
+    this.lastName = lastName;
     return this;
   }
 
