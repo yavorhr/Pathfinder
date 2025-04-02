@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const editButton = document.getElementById("edit-button");
     const saveButton = document.getElementById("save-button");
     const resetButton = document.getElementById("reset-button");
-    const inputFields = document.querySelectorAll("input, textarea");
+    const inputFields = document.querySelectorAll("input:not(#upload-input), textarea");
 
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute("content");
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute("content");
