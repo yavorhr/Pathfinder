@@ -12,7 +12,9 @@
         <div class="row d-flex justify-content-center">
             <div class="profile-card p-3 py-4"
                  th:object="${userViewModel}">
-                <div class="text-center">
+                 <span th:text="*{level.name()}"
+                       class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                <div class="add-image-wrapper">
                     <img th:src="${userViewModel.profileImageUrl != null
                     && !userViewModel.profileImageUrl.isEmpty()
               ? userViewModel.profileImageUrl
@@ -28,9 +30,6 @@
                     <button id="upload-button" class="btn btn-outline-primary mt-2">Add</button>
                 </div>
                 <div class="text-center mt-3">
-                    <span th:text="*{level.name()}"
-                          class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
-
                     <form id="profile-form" th:object="${userViewModel}"
                           th:method="post"
                           th:action="@{/users/profile/edit}">
@@ -39,8 +38,9 @@
                                name="id"
                                id="id-input">
                         <div id="full-name-wrapper">
-                            <div class="profile-data-wrapper">
-                                <label class="mt-2 mb-0" for="username-input">First name: </label>
+                            <p class="full-name-title">Full name: </p>
+                            <div class="profile-data-wrapper name-wrapper">
+                                <label class="mt-2 mb-0 first-name-label d-none" for="firstName-input">First name: </label>
                                 <span id="firstName-display"
                                       th:text="*{firstName}">Test</span>
                                 <input id="firstName-input"
@@ -50,8 +50,8 @@
                                 <span id="firstName-error" class="error-message text-danger"></span>
                             </div>
 
-                            <div class="profile-data-wrapper">
-                                <label class="mt-2 mb-0" for="username-input">Last name: </label>
+                            <div class="profile-data-wrapper name-wrapper">
+                                <label class="mt-2 mb-0 last-name-label  d-none" for="lastName-input">Last name: </label>
                                 <span id="lastName-display"
                                       th:text="*{lastName}">Testov</span>
                                 <input id="lastName-input"
@@ -96,7 +96,7 @@
                             <li>
                                 <i class="fab fa-facebook-square"></i>
                                 <span
-                                        th:unless="*{facebookAcc}"
+                                        th:unless="*{facebookAcc.isEmpty()}"
                                         th:text="*{facebookAcc}"
                                         id="facebook-display"></span>
                                 <input
@@ -107,7 +107,7 @@
                             </li>
                             <li>
                                 <i class="fab fa-instagram"></i>
-                                <span th:unless="*{instagramAcc}"
+                                <span th:unless="*{instagramAcc.isEmpty()}"
                                       th:text="*{instagramAcc}"
                                       id="instagram-display"></span>
                                 <input
