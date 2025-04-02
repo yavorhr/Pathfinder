@@ -125,6 +125,17 @@ body {
     height: 250px;
     width: 250px;
 }
+.level-badge{
+    background-color: #6c757d; /* Default grey, you can adjust as needed */
+    padding: 0.5rem 1rem;
+    border-radius: 1rem; /* Creates rounded corners */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase; /* Optional: capitalizes the text */
+    display: inline-block;
+    font-size: 1rem;
+    width: 15%;
+}
 
 .main-nav .nav-item a:hover, #logout-form input:hover {
     background: var(--dark);
