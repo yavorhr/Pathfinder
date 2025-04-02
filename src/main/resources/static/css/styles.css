@@ -121,8 +121,9 @@ body {
 }
 
 .rounded-circle {
-    max-width: 70%;
-    height: 300px;
+    max-width: 100%;
+    height: 250px;
+    width: 250px;
 }
 
 .main-nav .nav-item a:hover, #logout-form input:hover {
@@ -647,7 +648,6 @@ body {
 }
 
 /* Social inputs */
-
 .social-input-container {
     position: relative;
     display: flex;
@@ -781,6 +781,14 @@ select {
 }
 
 /* ============= Profile ============= */
+
+.add-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
 .profile-main {
     display: flex;
     align-items: center;
@@ -935,13 +943,13 @@ select {
     margin-top: 20px;
 }
 
-.full-name-title{
+.full-name-title {
     font-weight: bold;
     font-size: 20px;
     text-align: center;
 }
 
-.dynamic-width{
+.dynamic-width {
     width: 50%
 }
 
