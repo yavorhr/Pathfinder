@@ -33,9 +33,33 @@ public class UserEntity extends BaseEntity {
   private List<Comment> comments;
   private String profileImageUrl;
   private String profileImagePublicId;
+  private boolean accountLocked = false;
+  private int failedLoginAttempts = 0;
+  private LocalDateTime lastFailedLogin;
+  private LocalDateTime lockTime;
 
   public UserEntity() {
     this.enabled = false;
+  }
+
+  @Column(name = "is_account_locked")
+  public boolean isAccountLocked() {
+    return accountLocked;
+  }
+
+  @Column(name = "failed_login_attempts")
+  public int getFailedLoginAttempts() {
+    return failedLoginAttempts;
+  }
+
+  @Column(name = "last_failed_login")
+  public LocalDateTime getLastFailedLogin() {
+    return lastFailedLogin;
+  }
+
+  @Column(name = "lock_time")
+  public LocalDateTime getLockTime() {
+    return lockTime;
   }
 
   @Column(name = "profile_image_url")
@@ -117,6 +141,26 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setProfileImageUrl(String url) {
     this.profileImageUrl = url;
+    return this;
+  }
+
+  public UserEntity setAccountLocked(boolean accountLocked) {
+    this.accountLocked = accountLocked;
+    return this;
+  }
+
+  public UserEntity setFailedLoginAttempts(int failedLoginAttempts) {
+    this.failedLoginAttempts = failedLoginAttempts;
+    return this;
+  }
+
+  public UserEntity setLastFailedLogin(LocalDateTime lastFailedLogin) {
+    this.lastFailedLogin = lastFailedLogin;
+    return this;
+  }
+
+  public UserEntity setLockTime(LocalDateTime lockTime) {
+    this.lockTime = lockTime;
     return this;
   }
 
@@ -239,6 +283,20 @@ public class UserEntity extends BaseEntity {
   public UserEntity setLinkedIn(String linkedInLink) {
     this.linkedIn = linkedInLink;
     return this;
+  }
+
+  public void increaseFailedAttempts() {
+    this.failedLoginAttempts++;
+    this.lastFailedLogin = LocalDateTime.now();
+  }
+
+  public void resetFailedAttempts() {
+    this.failedLoginAttempts = 0;
+  }
+
+  public void lockAccount() {
+    this.accountLocked = true;
+    this.lockTime = LocalDateTime.now().plusMinutes(15); 
   }
 
   @PrePersist
