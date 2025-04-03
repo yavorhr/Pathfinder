@@ -204,6 +204,15 @@ public class UserServiceImpl implements UserService {
     return this.userRepository.findByUsername(username).isEmpty();
   }
 
+  @Override
+  public void increaseUserFailedLoginAttempts(UserEntity user) {
+    user.increaseFailedAttempts();
+    if (user.getFailedLoginAttempts() >= 5) {
+      user.lockAccount();
+    }
+    this.userRepository.save(user);
+  }
+
   private UserEntity updateUserEntity(UserProfileServiceModel serviceModel, UserEntity userEntity) {
     return userEntity
             .setFirstName(serviceModel.getFirstName())

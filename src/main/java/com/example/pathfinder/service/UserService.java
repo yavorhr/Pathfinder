@@ -37,4 +37,7 @@ public interface UserService {
   UserProfileViewModel updateUserData(UserProfileServiceModel map);
 
   boolean isUsernameAvailable(String username);
+
+  void increaseUserFailedLoginAttempts(UserEntity user);
+
 }
