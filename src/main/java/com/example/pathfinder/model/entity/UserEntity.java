@@ -33,13 +33,15 @@ public class UserEntity extends BaseEntity {
   private List<Comment> comments;
   private String profileImageUrl;
   private String profileImagePublicId;
-  private boolean accountLocked = false;
-  private int failedLoginAttempts = 0;
+  private boolean accountLocked;
+  private int failedLoginAttempts;
   private LocalDateTime lastFailedLogin;
   private LocalDateTime lockTime;
 
   public UserEntity() {
     this.enabled = false;
+    this.accountLocked = false;
+    this.failedLoginAttempts = 0;
   }
 
   @Column(name = "is_account_locked")
@@ -88,7 +90,7 @@ public class UserEntity extends BaseEntity {
     return birthday;
   }
 
-  @OneToMany(mappedBy = "author",  cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
   public List<Route> getRoutes() {
     return routes;
   }
@@ -296,7 +298,7 @@ public class UserEntity extends BaseEntity {
 
   public void lockAccount() {
     this.accountLocked = true;
-    this.lockTime = LocalDateTime.now().plusMinutes(15); 
+    this.lockTime = LocalDateTime.now().plusMinutes(15);
   }
 
   @PrePersist
