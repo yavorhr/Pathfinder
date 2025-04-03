@@ -10,28 +10,28 @@ VALUES (3, 'USER');
 
 -- some test users
 INSERT INTO users (id, first_name, last_name, gender, birthday, registration_date, level, password, username, email, is_enabled,
-                   about_me, instagram_account, facebook_account )
+                   about_me, instagram_account, facebook_account, is_account_locked, failed_login_attempts,last_failed_login, lock_time)
 VALUES (1, 'Admin', 'Adminov', 'Male', '1995-08-21', '2023-03-03', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'admin',
-        'admin@abv.bg', true, "I'm very passionate about trecking!", "instagram.com/admin", "facebook.com/admin");
+        'admin@abv.bg', true, "I'm very passionate about trecking!", "instagram.com/admin", "facebook.com/admin", false, 0, null, null);
 
 INSERT INTO users (id, first_name, last_name, gender, birthday, registration_date , level, password, username, email, is_enabled,
-                   about_me, instagram_account)
+                   about_me, instagram_account,is_account_locked, failed_login_attempts,last_failed_login, lock_time)
 VALUES (2,  'Moderator', 'Moderatorov', 'Male', '1988-04-15', '2024-05-05', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'moderator',
-        'moderator@abv.bg', true, "Let's go the mountain!", "instagram.com/moderator");
+        'moderator@abv.bg', true, "Let's go the mountain!", "instagram.com/moderator", false,0,null, null);
 
 INSERT INTO users (id,  first_name, last_name, gender, birthday, registration_date, level, password, username, email, is_enabled,
-                   about_me, instagram_account, facebook_account, linked_in_account)
+                   about_me, instagram_account, facebook_account, linked_in_account, is_account_locked, failed_login_attempts,last_failed_login, lock_time)
 VALUES (3,  'User', 'Userov', 'Male', '2000-12-05', '2022-02-02', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'user',
-        'user@abv.bg', true, "I need new adventures!", "instagram.com/user", "facebook.com/user", "www.linkedin/user");
+        'user@abv.bg', true, "I need new adventures!", "instagram.com/user", "facebook.com/user", "www.linkedin/user", false,0,null, null);
 
 INSERT INTO users (id,  first_name, last_name, gender, birthday, registration_date, level, password, username, email, is_enabled,
-                   about_me)
+                   about_me, is_account_locked, failed_login_attempts,last_failed_login, lock_time)
 VALUES (4,  'Ivan', 'Ivanov', 'Male', '2000-12-05', '2022-01-01', 'BEGINNER',
         '516f7637f77f490c61913b9d239cb65abbd799ad16b58ea7ce5c0c10cbfa4500a47dc727d758ee354aa174bac59b7370', 'ivan',
-        'ivan@abv.bg', false, "Looking forward to meet new people!");
+        'ivan@abv.bg', false, "Looking forward to meet new people!", false,0,null, null);
 
 -- user roles
 -- admin
