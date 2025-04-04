@@ -19,11 +19,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class ApplicationSecurityConfiguration {
   private final UserDetailsService userDetailsService;
   private final CustomLoginFailureHandler failureHandler;
+  private final CustomLoginSuccessHandler successHandler;
   private final PasswordEncoder passwordEncoder;
 
-  public ApplicationSecurityConfiguration(UserDetailsService userDetailsService, CustomLoginFailureHandler failureHandler, PasswordEncoder passwordEncoder) {
+  public ApplicationSecurityConfiguration(UserDetailsService userDetailsService, CustomLoginFailureHandler failureHandler, CustomLoginSuccessHandler successHandler, PasswordEncoder passwordEncoder) {
     this.userDetailsService = userDetailsService;
     this.failureHandler = failureHandler;
+    this.successHandler = successHandler;
     this.passwordEncoder = passwordEncoder;
   }
 
@@ -41,7 +43,7 @@ public class ApplicationSecurityConfiguration {
                     usernameParameter("email").
                     passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                     .failureHandler(failureHandler)
-                    .defaultSuccessUrl("/", true))
+                    .successHandler(successHandler))
             .logout(logout -> logout.
                     logoutUrl("/users/logout").
                     logoutSuccessUrl("/").
