@@ -19,4 +19,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
   @Query("SELECT u FROM UserEntity u ORDER BY u.enabled ASC, u.username ASC")
   List<UserEntity> findAllUsersSortedByEnabledFalseAndUsernameAsc();
+
+  @Query("SELECT u FROM UserEntity u Where u.accountLocked")
+  List<UserEntity> findAllLockedUsers();
 }
