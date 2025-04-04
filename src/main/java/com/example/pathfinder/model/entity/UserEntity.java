@@ -287,20 +287,6 @@ public class UserEntity extends BaseEntity {
     return this;
   }
 
-  public void increaseFailedAttempts() {
-    this.failedLoginAttempts++;
-    this.lastFailedLogin = LocalDateTime.now();
-  }
-
-  public void resetFailedAttempts() {
-    this.failedLoginAttempts = 0;
-  }
-
-  public void lockAccount() {
-    this.accountLocked = true;
-    this.lockTime = LocalDateTime.now().plusMinutes(15);
-  }
-
   @PrePersist
   private void setInitialValues() {
     this.registrationDate = LocalDateTime.now();
