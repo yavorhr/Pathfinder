@@ -206,11 +206,39 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void increaseUserFailedLoginAttempts(UserEntity user) {
-    user.increaseFailedAttempts();
-    if (user.getFailedLoginAttempts() >= 5) {
-      user.lockAccount();
-    }
+      user.setFailedLoginAttempts(user.getFailedLoginAttempts() + 1);
+      if (user.getFailedLoginAttempts() >= 5) {
+        this.lockAccount(user);
+      } else {
+        userRepository.save(user);
+      }
+  }
+
+  @Override
+  public void lockAccount(UserEntity user) {
+    user.setAccountLocked(true);
+    user.setLockTime(LocalDateTime.now().plusMinutes(15));
+    userRepository.save(user);
+  }
+
+  @Override
+  public void resetFailedAttempts(UserEntity user) {
+    user.setFailedLoginAttempts(0);
     this.userRepository.save(user);
+  }
+
+  @Override
+  public boolean isAccountLocked(UserEntity user) {
+    if (user.isAccountLocked() && user.getLockTime().isAfter(LocalDateTime.now())) {
+      return true;
+    } else if (user.isAccountLocked() && user.getLockTime().isBefore(LocalDateTime.now())) {
+      user.setAccountLocked(false);
+      user.setFailedLoginAttempts(0);
+      userRepository.save(user);
+      return false;
+    } else {
+      return false;
+    }
   }
 
   private UserEntity updateUserEntity(UserProfileServiceModel serviceModel, UserEntity userEntity) {
