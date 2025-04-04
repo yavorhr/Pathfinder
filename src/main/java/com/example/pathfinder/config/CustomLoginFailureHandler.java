@@ -22,14 +22,16 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
   public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
     String email = request.getParameter("email");
 
-    System.out.println(email);
     UserEntity user = userService.findByEmail(email);
 
     if (user != null) {
-      if (!user.isAccountLocked()) {
+      if (userService.isAccountLocked(user)) {
+        response.sendRedirect("/users/login?locked=true");
+        return;
+      } else {
         userService.increaseUserFailedLoginAttempts(user);
       }
     }
-    response.sendRedirect("/users/login-error");
+    response.sendRedirect("/users/login/error");
   }
 }
