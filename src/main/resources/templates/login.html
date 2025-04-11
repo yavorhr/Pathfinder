@@ -43,6 +43,9 @@
                 <div th:if="${locked}">
                     <p style="color: red;">Your account is locked. Please try again later.</p>
                 </div>
+                <div th:if="${error_message}">
+                    <p th:text="${error_message}" style="color: red;">Username or password don't match</p>
+                </div>
             </form>
         </div>
     </div>
