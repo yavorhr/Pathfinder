@@ -45,4 +45,8 @@ public interface UserService {
   boolean isAccountLocked(UserEntity user);
 
   void lockAccount(UserEntity user);
+
+  List<UserEntity> findLockedUsers();
+
+  void updateUser(UserEntity user);
 }

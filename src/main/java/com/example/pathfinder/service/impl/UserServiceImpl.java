@@ -207,6 +207,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public void increaseUserFailedLoginAttempts(UserEntity user) {
       user.setFailedLoginAttempts(user.getFailedLoginAttempts() + 1);
+
       if (user.getFailedLoginAttempts() >= 5) {
         this.lockAccount(user);
       } else {
@@ -222,6 +223,16 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public List<UserEntity> findLockedUsers() {
+    return this.userRepository.findAllLockedUsers();
+  }
+
+  @Override
+  public void updateUser(UserEntity user) {
+    this.userRepository.save(user);
+  }
+
+  @Override
   public void resetFailedAttempts(UserEntity user) {
     user.setFailedLoginAttempts(0);
     this.userRepository.save(user);
@@ -229,6 +240,11 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public boolean isAccountLocked(UserEntity user) {
+    System.out.println("Checking account lock for: " + user.getEmail());
+    System.out.println("Account Locked: " + user.isAccountLocked());
+    System.out.println("Lock Time: " + user.getLockTime());
+    System.out.println("Current Time: " + LocalDateTime.now());
+
     if (user.isAccountLocked() && user.getLockTime().isAfter(LocalDateTime.now())) {
       return true;
     } else if (user.isAccountLocked() && user.getLockTime().isBefore(LocalDateTime.now())) {
