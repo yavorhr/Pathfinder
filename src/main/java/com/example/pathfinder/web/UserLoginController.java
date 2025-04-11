@@ -1,30 +1,45 @@
 package com.example.pathfinder.web;
 
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/users")
 public class UserLoginController {
 
   @GetMapping("/login")
-  public String login(@RequestParam(value = "locked", required = false) String locked, Model model) {
-    if (locked != null && locked.equals("true")){
+  public String login(@RequestParam(value = "locked", required = false) String locked,
+                      @RequestParam(value = "error", required = false) String error,
+                      HttpServletRequest request,
+                      Model model) {
+
+    if ("true".equals(locked)) {
       model.addAttribute("locked", true);
     }
+
+    if ("true".equals(error)) {
+
+      HttpSession session = request.getSession(false);
+
+      if (session != null) {
+        String errorMessage = (String) session.getAttribute("login_error_message");
+        if (errorMessage != null) {
+          model.addAttribute("error_message", errorMessage);
+          session.removeAttribute("login_error_message");
+        }
+      }
+
+      String email = request.getParameter("email");
+
+      if (email != null) {
+        model.addAttribute("email", email);
+      }
+    }
+
     return "login";
   }
-
-  @PostMapping("/users/login-error")
-  public String failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
-                            RedirectAttributes attributes) {
-
-    attributes.addFlashAttribute("bad_credentials", true);
-    attributes.addFlashAttribute("username", username);
-
-    return "redirect:/users/login";
-  }
 }
+
