@@ -37,14 +37,7 @@ public class PathfinderUserDetailsService implements UserDetailsService {
                     map(r -> new SimpleGrantedAuthority("ROLE_" + r.getRole().name())).
                     collect(Collectors.toUnmodifiableSet());
 
-    return new PathfinderUser(
-            userEntity.getId(),
-            userEntity.getEmail(),
-            userEntity.getPassword(),
-            true,
-            true,
-            true,
-            userEntity.isEnabled(),
-            grantedAuthorities);
+    return new PathfinderUser(userEntity, grantedAuthorities);
+
   }
 }
