@@ -13,10 +13,11 @@ public class UserLoginController {
   @GetMapping("/login")
   public String login(@RequestParam(value = "locked", required = false) String locked,
                       @RequestParam(value = "error", required = false) String error,
+                      @RequestParam(value = "disabled", required = false) String disabled,
                       HttpServletRequest request,
                       Model model) {
 
-    if ("true".equals(error) || "true".equals(locked)) {
+    if ("true".equals(error) || "true".equals(locked) || "true".equals(disabled)) {
 
       HttpSession session = request.getSession(false);
 
