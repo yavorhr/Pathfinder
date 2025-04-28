@@ -125,7 +125,8 @@ body {
     height: 250px;
     width: 250px;
 }
-.level-badge{
+
+.level-badge {
     background-color: #6c757d;
     padding: 0.5rem 1rem;
     border-radius: 1rem;
@@ -978,4 +979,9 @@ footer {
     grid-template-columns: 1fr 1fr; /* Two equal columns */
     gap: 20px;
     grid-auto-rows: minmax(100px, auto);
+}
+
+/* Login page */
+.login-error {
+    margin-top: 20px;
 }
