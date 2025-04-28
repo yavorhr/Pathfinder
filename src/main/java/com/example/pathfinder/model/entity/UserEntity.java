@@ -34,10 +34,10 @@ public class UserEntity extends BaseEntity {
   private String profileImageUrl;
   private String profileImagePublicId;
   private boolean accountLocked;
-  private int failedLoginAttempts;
+  private Integer failedLoginAttempts;
   private LocalDateTime lastFailedLogin;
   private LocalDateTime lockTime;
-  private int lockedAccountCounter;
+  private Integer lockedAccountCounter;
 
   public UserEntity() {
     this.enabled = false;
@@ -52,12 +52,12 @@ public class UserEntity extends BaseEntity {
   }
 
   @Column(name = "locked_account_counter")
-  public int getLockedAccountCounter() {
+  public Integer getLockedAccountCounter() {
     return lockedAccountCounter;
   }
 
   @Column(name = "failed_login_attempts")
-  public int getFailedLoginAttempts() {
+  public Integer getFailedLoginAttempts() {
     return failedLoginAttempts;
   }
 
