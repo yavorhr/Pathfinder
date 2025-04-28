@@ -15,7 +15,7 @@ public class UserLoginController {
                       @RequestParam(value = "error", required = false) String error,
                       HttpServletRequest request,
                       Model model) {
-    
+
     if ("true".equals(error) || "true".equals(locked)) {
 
       HttpSession session = request.getSession(false);
