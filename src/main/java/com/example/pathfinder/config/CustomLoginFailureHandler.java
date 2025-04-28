@@ -29,10 +29,19 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
     System.out.println("Login failure handler triggered for: " + email);
     String errorMessage = "Invalid credentials. Please try again.";
 
-    if (exception instanceof LockedException) {
-      request.getSession().setAttribute("login_error_message", "Your account is locked. Please try again in 15 minutes.");
-      response.sendRedirect("/users/login?locked=true");
-      return;
+    try {
+      UserEntity user = userService.findByEmail(email);
+
+      if (!user.isEnabled()) {
+        request.getSession().setAttribute("login_error_message", "Your account is disabled. Admin will contact you further.");
+        response.sendRedirect("/users/login?disabled=true");
+        return;
+      }
+
+      userService.increaseUserFailedLoginAttempts(user);
+
+    } catch (ObjectNotFoundException e) {
+      errorMessage = "User with this email does not exist.";
     }
 
     if (exception instanceof DisabledException) {
@@ -41,12 +50,10 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
       return;
     }
 
-    try {
-      UserEntity user = userService.findByEmail(email);
-      userService.increaseUserFailedLoginAttempts(user);
-
-    } catch (ObjectNotFoundException e) {
-      errorMessage = "User with this email does not exist.";
+    if (exception instanceof LockedException) {
+      request.getSession().setAttribute("login_error_message", "Your account is locked. Please try again in 15 minutes.");
+      response.sendRedirect("/users/login?locked=true");
+      return;
     }
 
     // Store the error in the session (mimicking flash attribute)
