@@ -206,6 +206,11 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void increaseUserFailedLoginAttempts(UserEntity user) {
+    Integer failedAttempts = user.getFailedLoginAttempts();
+    if (failedAttempts == null) {
+      failedAttempts = 0;
+    }
+
     user.setFailedLoginAttempts(user.getFailedLoginAttempts() + 1);
 
     if (user.getFailedLoginAttempts() == 5) {
