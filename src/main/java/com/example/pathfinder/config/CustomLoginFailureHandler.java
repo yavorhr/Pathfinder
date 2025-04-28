@@ -31,16 +31,15 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
 
     if (exception instanceof LockedException) {
       request.getSession().setAttribute("login_error_message", "Your account is locked. Please try again in 15 minutes.");
-      response.sendRedirect("/users/login?error=true");
+      response.sendRedirect("/users/login?locked=true");
       return;
     }
 
     if (exception instanceof DisabledException) {
       request.getSession().setAttribute("login_error_message", "Your account is disabled. Admin will contact you further.");
-      response.sendRedirect("/users/login?error=true");
+      response.sendRedirect("/users/login?disabled=true");
       return;
     }
-
 
     try {
       UserEntity user = userService.findByEmail(email);
