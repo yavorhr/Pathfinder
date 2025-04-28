@@ -37,16 +37,23 @@ public class UserEntity extends BaseEntity {
   private int failedLoginAttempts;
   private LocalDateTime lastFailedLogin;
   private LocalDateTime lockTime;
+  private int lockedAccountCounter;
 
   public UserEntity() {
     this.enabled = false;
     this.accountLocked = false;
     this.failedLoginAttempts = 0;
+    this.lockedAccountCounter = 0;
   }
 
   @Column(name = "is_account_locked")
   public boolean isAccountLocked() {
     return accountLocked;
+  }
+
+  @Column(name = "locked_account_counter")
+  public int getLockedAccountCounter() {
+    return lockedAccountCounter;
   }
 
   @Column(name = "failed_login_attempts")
@@ -124,6 +131,11 @@ public class UserEntity extends BaseEntity {
   @Column(nullable = false)
   public String getPassword() {
     return password;
+  }
+
+  public UserEntity setLockedAccountCounter(int lockedAccountCounts) {
+    this.lockedAccountCounter = lockedAccountCounts;
+    return this;
   }
 
   @Column(unique = true, nullable = false)
