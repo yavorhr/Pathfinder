@@ -980,8 +980,3 @@ footer {
     gap: 20px;
     grid-auto-rows: minmax(100px, auto);
 }
-
-/* Login page */
-.login-error {
-    margin-top: 20px;
-}
