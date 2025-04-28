@@ -206,17 +206,28 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void increaseUserFailedLoginAttempts(UserEntity user) {
-      user.setFailedLoginAttempts(user.getFailedLoginAttempts() + 1);
+    user.setFailedLoginAttempts(user.getFailedLoginAttempts() + 1);
 
-      if (user.getFailedLoginAttempts() >= 5) {
-        this.lockAccount(user);
-      } else {
-        userRepository.save(user);
+    if (user.getFailedLoginAttempts() == 5) {
+      this.lockAccount(user);
+
+      if (user.getLockedAccountCounter() == 3) {
+        this.disableUser(user);
       }
+
+    } else {
+      userRepository.save(user);
+    }
+  }
+
+  private void disableUser(UserEntity user) {
+    user.setEnabled(false);
+    userRepository.save(user);
   }
 
   @Override
   public void lockAccount(UserEntity user) {
+    user.setLockedAccountCounter(+1);
     user.setAccountLocked(true);
     user.setLockTime(LocalDateTime.now().plusMinutes(15));
     userRepository.save(user);
