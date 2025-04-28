@@ -8,7 +8,7 @@
     <h1 class="    border-bottom mb-5">Login</h1>
     <div class="d-flex justify-content-center">
 
-        <div class="row g-3 align-items-center">
+        <div class="row g-3 align-items-center d-flex flex-column">
 
             <form
                     th:action="@{/users/login}"
@@ -40,12 +40,11 @@
                 <div class="d-flex justify-content-center mt-2">
                     <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
                 </div>
-                <div th:if="${error_message}">
-                    <p th:text="${error_message}"
-                       class="text-danger errors alert alert-danger login-error">Error passed by model</p>
-                </div>
             </form>
-
+            <div th:if="${error_message}">
+                <p th:text="${error_message}"
+                   class="text-danger errors alert alert-danger login-error">Error passed by model</p>
+            </div>
         </div>
     </div>
 </main>
