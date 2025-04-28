@@ -23,6 +23,11 @@ public class PathfinderUser extends User {
     this.userEntity = userEntity;
   }
 
+  @Override
+  public boolean isEnabled() {
+    return userEntity.isEnabled();
+  }
+
   public Long getId() {
     return id;
   }
