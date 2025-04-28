@@ -40,11 +40,10 @@
                 <div class="d-flex justify-content-center mt-2">
                     <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
                 </div>
-                <div th:if="${locked}">
-                    <p style="color: red;">Your account is locked. Please try again later.</p>
-                </div>
+
                 <div th:if="${error_message}">
-                    <p th:text="${error_message}" style="color: red;">Username or password don't match</p>
+                    <p th:text="${error_message}"
+                       class="text-danger errors alert alert-danger login-error">Error passed by model</p>
                 </div>
             </form>
         </div>
