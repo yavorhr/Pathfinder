@@ -17,7 +17,7 @@ public class AccountUnlockScheduler {
   }
 
   //every 15 minutes
-  @Scheduled(fixedRate = 100000 )
+  @Scheduled(fixedRate = 900000 )
   public void unlockExpiredAccounts() {
     List<UserEntity> lockedUsers = userService.findLockedUsers();
 
