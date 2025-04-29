@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Enable user
+    // Enable/Disable user
     enableButtons.forEach(b => {
         b.addEventListener("click", (e) => {
             const clickedButton = e.currentTarget;
@@ -177,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(data => {
                         const isEnabled = data.enabled;
                         const status = tr.querySelector(".status");
+                        const disabledTime = tr.querySelector(".disabled_time");
 
                         if (isEnabled) {
                             status.classList.add("active");
@@ -185,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             clickedButton.classList.add("inactive")
                             clickedButton.classList.remove("active")
                             clickedButton.textContent = "Disable user"
+                            disabledTime.textContent = "N/A";
                         } else {
                             status.classList.add("inactive");
                             status.classList.remove("active");
@@ -192,6 +194,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             clickedButton.classList.add("active")
                             clickedButton.classList.remove("inactive")
                             clickedButton.textContent = "Enable user"
+
+                            const disabledDate = new Date(data.disabledTime);
+                            disabledTime.textContent = disabledDate.toLocaleString();
                         }
                     }
                 )
