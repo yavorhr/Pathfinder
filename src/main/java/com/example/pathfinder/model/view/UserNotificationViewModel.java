@@ -20,6 +20,8 @@ public class UserNotificationViewModel {
   public UserNotificationViewModel() {
   }
 
+
+
   public boolean isAccountLocked() {
     return accountLocked;
   }
