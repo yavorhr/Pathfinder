@@ -1,7 +1,6 @@
 package com.example.pathfinder.model.common;
 
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
-
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -10,12 +9,17 @@ public class UserUpdateStatusResponse {
   private boolean isEnabled;
   private Set<UserRoleEnum> roles;
   private LocalDateTime disabledTime;
+  private boolean accountLocked;
 
   public UserUpdateStatusResponse() {
   }
 
   public LocalDateTime getDisabledTime() {
     return disabledTime;
+  }
+
+  public boolean isAccountLocked() {
+    return accountLocked;
   }
 
   public String getEmail() {
@@ -47,6 +51,11 @@ public class UserUpdateStatusResponse {
 
   public UserUpdateStatusResponse setDisabledTime(LocalDateTime disabledTime) {
     this.disabledTime = disabledTime;
+    return this;
+  }
+
+  public UserUpdateStatusResponse setAccountLocked(boolean accountLocked) {
+    this.accountLocked = accountLocked;
     return this;
   }
 }
