@@ -26,38 +26,25 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
   @Override
   public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
     String email = request.getParameter("email");
+    String errorType = LoginErrorType.INVALID_CREDENTIALS.name(); // default
+
     System.out.println("Login failure handler triggered for: " + email);
 
     try {
       UserEntity user = userService.findByEmail(email);
 
       if (!user.isEnabled()) {
-        request.getSession().setAttribute("LOGIN_ERROR_TYPE", LoginErrorType.ACCOUNT_DISABLED);
-        response.sendRedirect("/users/login");
-        return;
+        errorType = LoginErrorType.ACCOUNT_DISABLED.name();
+      } else if (exception instanceof LockedException) {
+        errorType = LoginErrorType.ACCOUNT_LOCKED.name();
       }
+
       userService.increaseUserFailedLoginAttempts(user);
 
     } catch (ObjectNotFoundException e) {
-      request.getSession().setAttribute("LOGIN_ERROR_TYPE", LoginErrorType.USER_NOT_FOUND);
-      response.sendRedirect("/users/login");
+      errorType = LoginErrorType.USER_NOT_FOUND.name();
     }
 
-    if (exception instanceof DisabledException) {
-      request.getSession().setAttribute("LOGIN_ERROR_TYPE", LoginErrorType.ACCOUNT_DISABLED);
-      response.sendRedirect("/users/login");
-      return;
-    }
-
-    if (exception instanceof LockedException) {
-      request.getSession().setAttribute("LOGIN_ERROR_TYPE", LoginErrorType.ACCOUNT_LOCKED);
-      response.sendRedirect("/users/login");
-      return;
-    }
-
-    // Store the error in the session (mimicking flash attribute)
-    request.getSession().setAttribute("LOGIN_ERROR_TYPE", LoginErrorType.INVALID_CREDENTIALS);
-
-    response.sendRedirect("/users/login");
+    response.sendRedirect("/users/login?errorType=" + errorType);
   }
 }
