@@ -11,10 +11,25 @@ public class UserNotificationViewModel {
   private String email;
   private LocalDateTime registrationDate;
   private LocalDateTime lastModifiedTime;
+  private boolean accountLocked;
+  private LocalDateTime disabledTime;
+  private Integer timesLocked;
   private Set<UserRoleEnum> roles;
   private boolean isEnabled;
 
   public UserNotificationViewModel() {
+  }
+
+  public boolean isAccountLocked() {
+    return accountLocked;
+  }
+
+  public LocalDateTime getDisabledTime() {
+    return disabledTime;
+  }
+
+  public Integer getTimesLocked() {
+    return timesLocked;
   }
 
   public boolean isEnabled() {
@@ -77,6 +92,21 @@ public class UserNotificationViewModel {
 
   public UserNotificationViewModel setRoles(Set<UserRoleEnum> roles) {
     this.roles = roles;
+    return this;
+  }
+
+  public UserNotificationViewModel setAccountLocked(boolean accountLocked) {
+    this.accountLocked = accountLocked;
+    return this;
+  }
+
+  public UserNotificationViewModel setDisabledTime(LocalDateTime disabledTime) {
+    this.disabledTime = disabledTime;
+    return this;
+  }
+
+  public UserNotificationViewModel setTimesLocked(Integer timesLocked) {
+    this.timesLocked = timesLocked;
     return this;
   }
 }
