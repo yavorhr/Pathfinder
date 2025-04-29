@@ -26,6 +26,7 @@ public class UserEntity extends BaseEntity {
   private String facebookAcc;
   private String instagramAcc;
   private String linkedIn;
+  //lockedAccountsCounter == 3 ?  = enabled = false
   private boolean enabled;
   private List<Route> routes;
   private LocalDateTime registrationDate;
@@ -37,13 +38,20 @@ public class UserEntity extends BaseEntity {
   private Integer failedLoginAttempts;
   private LocalDateTime lastFailedLogin;
   private LocalDateTime lockTime;
-  private Integer lockedAccountCounter;
+  private LocalDateTime disabledTime;
+  //failedLoginAttempts ==5 ? lockedAccountsCounter = 1
+  private Integer timesLocked;
 
   public UserEntity() {
     this.enabled = false;
     this.accountLocked = false;
     this.failedLoginAttempts = 0;
-    this.lockedAccountCounter = 0;
+    this.timesLocked = 0;
+  }
+
+  @Column(name = "disabled_time")
+  public LocalDateTime getDisabledTime() {
+    return disabledTime;
   }
 
   @Column(name = "is_account_locked")
@@ -51,9 +59,9 @@ public class UserEntity extends BaseEntity {
     return accountLocked;
   }
 
-  @Column(name = "locked_account_counter")
-  public Integer getLockedAccountCounter() {
-    return lockedAccountCounter;
+  @Column(name = "times_locked")
+  public Integer getTimesLocked() {
+    return timesLocked;
   }
 
   @Column(name = "failed_login_attempts")
@@ -133,8 +141,23 @@ public class UserEntity extends BaseEntity {
     return password;
   }
 
+  public UserEntity setDisabledTime(LocalDateTime disabledTime) {
+    this.disabledTime = disabledTime;
+    return this;
+  }
+
+  public UserEntity setFailedLoginAttempts(Integer failedLoginAttempts) {
+    this.failedLoginAttempts = failedLoginAttempts;
+    return this;
+  }
+
+  public UserEntity setTimesLocked(Integer lockedAccountCounter) {
+    this.timesLocked = lockedAccountCounter;
+    return this;
+  }
+
   public UserEntity setLockedAccountCounter(int lockedAccountCounts) {
-    this.lockedAccountCounter = lockedAccountCounts;
+    this.timesLocked = lockedAccountCounts;
     return this;
   }
 
