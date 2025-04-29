@@ -35,7 +35,7 @@
             <td class="status"
                 th:classappend="${u.isEnabled} ? 'active' : 'inactive'"
                 th:text="${u.isEnabled} ?'Active' : 'Inactive'"></td>
-            <td class="status"
+            <td class="locked-status"
                 th:classappend="${u.accountLocked} ? 'inactive' : 'active'"
                 th:text="${u.accountLocked} ?'Locked' : 'Not locked'"></td>
             <td th:text="*{timesLocked}"></td>
@@ -73,6 +73,11 @@
                             class="enable-btn"
                             th:text="${u.isEnabled} ? 'Disable user' : 'Enable user'"
                             th:classappend="${u.isEnabled} ? 'inactive' : 'active'"> Enable/Disable User
+                    </button>
+                    <button
+                            class="lock-btn"
+                            th:text="${u.isAccountLocked} ? 'Unlock user' : 'Lock user'"
+                            th:classappend="${u.isAccountLocked} ? 'active' : 'inactive'"> Lock/Unlock User
                     </button>
                     <button class="send-email-btn">Send Email</button>
                 </div>
