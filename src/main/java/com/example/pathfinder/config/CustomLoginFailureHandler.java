@@ -1,6 +1,7 @@
 package com.example.pathfinder.config;
 
 import com.example.pathfinder.model.entity.UserEntity;
+import com.example.pathfinder.model.entity.enums.LoginErrorType;
 import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import jakarta.servlet.ServletException;
@@ -25,41 +26,38 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
   @Override
   public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
     String email = request.getParameter("email");
-
     System.out.println("Login failure handler triggered for: " + email);
-    String errorMessage = "Invalid credentials. Please try again.";
 
     try {
       UserEntity user = userService.findByEmail(email);
 
       if (!user.isEnabled()) {
-        request.getSession().setAttribute("login_error_message", "Your account is disabled. Admin will contact you further.");
-        response.sendRedirect("/users/login?disabled=true");
+        request.getSession().setAttribute("LOGIN_ERROR_TYPE", LoginErrorType.ACCOUNT_DISABLED);
+        response.sendRedirect("/users/login");
         return;
       }
-
       userService.increaseUserFailedLoginAttempts(user);
 
     } catch (ObjectNotFoundException e) {
-      errorMessage = "User with this email does not exist.";
+      request.getSession().setAttribute("LOGIN_ERROR_TYPE", LoginErrorType.USER_NOT_FOUND);
+      response.sendRedirect("/users/login");
     }
 
     if (exception instanceof DisabledException) {
-      request.getSession().setAttribute("login_error_message", "Your account is disabled. Admin will contact you further.");
-      response.sendRedirect("/users/login?disabled=true");
+      request.getSession().setAttribute("LOGIN_ERROR_TYPE", LoginErrorType.ACCOUNT_DISABLED);
+      response.sendRedirect("/users/login");
       return;
     }
 
     if (exception instanceof LockedException) {
-      request.getSession().setAttribute("login_error_message", "Your account is locked. Please try again in 15 minutes.");
-      response.sendRedirect("/users/login?locked=true");
+      request.getSession().setAttribute("LOGIN_ERROR_TYPE", LoginErrorType.ACCOUNT_LOCKED);
+      response.sendRedirect("/users/login");
       return;
     }
 
     // Store the error in the session (mimicking flash attribute)
-    request.getSession().setAttribute("login_error_message", errorMessage);
+    request.getSession().setAttribute("LOGIN_ERROR_TYPE", LoginErrorType.INVALID_CREDENTIALS);
 
-    // Always redirect to login page with error=true
-    response.sendRedirect("/users/login?error=true");
+    response.sendRedirect("/users/login");
   }
 }
