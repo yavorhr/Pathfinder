@@ -17,11 +17,14 @@ public class AccountUnlockScheduler {
   }
 
   //every 15 minutes
-  @Scheduled(fixedRate = 900000)
+  @Scheduled(fixedRate = 100000 )
   public void unlockExpiredAccounts() {
     List<UserEntity> lockedUsers = userService.findLockedUsers();
+
     LocalDateTime now = LocalDateTime.now();
+
     System.out.println("yes");
+
     for (UserEntity user : lockedUsers) {
       if (user.getLockTime().isBefore(now)) {
         user.setAccountLocked(false);
@@ -29,5 +32,6 @@ public class AccountUnlockScheduler {
         userService.updateUser(user);
       }
     }
+
   }
 }
