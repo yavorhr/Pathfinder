@@ -72,4 +72,15 @@ public class AdminController {
 
     return ResponseEntity.ok("User deleted successfully!");
   }
+
+  @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #email)")
+  @PutMapping("/admin/change-user-lock-status/{email}")
+  @ResponseBody
+  public ResponseEntity<UserUpdateStatusResponse> changeUserLockStatus(@PathVariable String email,
+                                                                   @AuthenticationPrincipal UserDetails principal ) {
+
+    UserUpdateStatusResponse statusResponse = this.userService.modifyLockStatus(email);
+
+    return ResponseEntity.ok(statusResponse);
+  }
 }

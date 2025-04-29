@@ -49,4 +49,6 @@ public interface UserService {
   List<UserEntity> findLockedUsers();
 
   void updateUser(UserEntity user);
+
+  UserUpdateStatusResponse modifyLockStatus(String email);
 }
