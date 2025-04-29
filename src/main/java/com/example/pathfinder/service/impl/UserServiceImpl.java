@@ -132,8 +132,10 @@ public class UserServiceImpl implements UserService {
 
     if (userEntity.isEnabled()) {
       userEntity.setEnabled(false);
+      userEntity.setDisabledTime(LocalDateTime.now());
     } else {
       userEntity.setEnabled(true);
+      userEntity.setDisabledTime(null);
     }
 
     this.userRepository.save(userEntity);
@@ -207,6 +209,7 @@ public class UserServiceImpl implements UserService {
   @Override
   public void increaseUserFailedLoginAttempts(UserEntity user) {
     Integer failedAttempts = user.getFailedLoginAttempts();
+
     if (failedAttempts == null) {
       failedAttempts = 0;
     }
@@ -216,7 +219,7 @@ public class UserServiceImpl implements UserService {
     if (user.getFailedLoginAttempts() == 5) {
       this.lockAccount(user);
 
-      if (user.getLockedAccountCounter() == 3) {
+      if (user.getTimesLocked() == 3) {
         this.disableUser(user);
       }
 
@@ -227,6 +230,7 @@ public class UserServiceImpl implements UserService {
 
   private void disableUser(UserEntity user) {
     user.setEnabled(false);
+    user.setDisabledTime(LocalDateTime.now());
     userRepository.save(user);
   }
 
