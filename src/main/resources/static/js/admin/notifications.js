@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const enableButtons = document.querySelectorAll(".enable-btn");
+    const lockButtons = document.querySelectorAll(".lock-btn");
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
     const deleteButtons = document.querySelectorAll(".delete-btn");
@@ -197,6 +198,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             const disabledDate = new Date(data.disabledTime);
                             disabledTime.textContent = disabledDate.toLocaleString();
+                        }
+                    }
+                )
+                .catch(error => console.error("Error:", error));
+        });
+    })
+
+    lockButtons.forEach(b => {
+        b.addEventListener("click", (e) => {
+            const clickedButton = e.currentTarget;
+
+            const tr = clickedButton.closest("tr");
+            const email = tr.querySelector('.email').textContent.trim();
+
+            fetch(`/admin/change-user-lock-status/${email}`, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                    [csrfHeader]: csrfToken
+                }
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+                .then(data => {
+                        const isLocked = data.accountLocked;
+                        const status = tr.querySelector(".locked-status");
+
+                        if (isLocked) {
+                            status.classList.add("inactive");
+                            status.classList.remove("active");
+                            status.textContent = "Locked"
+                            clickedButton.classList.add("active")
+                            clickedButton.classList.remove("inactive")
+                            clickedButton.textContent = "Unlock user"
+                        } else {
+                            status.classList.add("active");
+                            status.classList.remove("inactive");
+                            status.textContent = "Unlocked"
+                            clickedButton.classList.add("inactive")
+                            clickedButton.classList.remove("active")
+                            clickedButton.textContent = "Lock user"
                         }
                     }
                 )
