@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (tr.contains(tr.querySelector(".email"))) {
             const userEmail = tr.querySelector(".email").textContent.trim();
 
+            const lockBtn = tr.querySelector(".lock-btn");
             const enableBtn = tr.querySelector(".enable-btn");
             const deleteBtn = tr.querySelector(".delete-btn");
             const emailBtn = tr.querySelector(".send-email-btn");
@@ -20,6 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 enableBtn.disabled = true;
                 enableBtn.classList.add("btn-disabled");
                 enableBtn.classList.remove("active", "inactive");
+
+                lockBtn.disabled = true;
+                lockBtn.classList.add("btn-disabled");
+                lockBtn.classList.remove("active", "inactive");
 
                 deleteBtn.disabled = true;
                 deleteBtn.classList.add("btn-disabled");
