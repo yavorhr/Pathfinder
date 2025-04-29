@@ -41,8 +41,8 @@
                     <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
                 </div>
             </form>
-            <div th:if="${error_message}">
-                <p th:text="${error_message}"
+            <div th:if="${login_error_message}">
+                <p th:text="${login_error_message}"
                    class="text-danger errors alert alert-danger login-error">Error passed by model</p>
             </div>
         </div>
