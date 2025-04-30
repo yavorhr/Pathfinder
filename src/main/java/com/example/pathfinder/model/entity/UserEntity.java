@@ -41,12 +41,18 @@ public class UserEntity extends BaseEntity {
   private LocalDateTime disabledTime;
   //failedLoginAttempts ==5 ? lockedAccountsCounter = 1
   private Integer timesLocked;
+  private LocalDateTime lastLoginTime;
 
   public UserEntity() {
     this.enabled = false;
     this.accountLocked = false;
     this.failedLoginAttempts = 0;
     this.timesLocked = 0;
+  }
+
+  @Column(name = "last_login_time")
+  public LocalDateTime getLastLoginTime() {
+    return lastLoginTime;
   }
 
   @Column(name = "disabled_time")
@@ -178,6 +184,11 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setProfileImageUrl(String url) {
     this.profileImageUrl = url;
+    return this;
+  }
+
+  public UserEntity setLastLoginTime(LocalDateTime lastLoginTime) {
+    this.lastLoginTime = lastLoginTime;
     return this;
   }
 
