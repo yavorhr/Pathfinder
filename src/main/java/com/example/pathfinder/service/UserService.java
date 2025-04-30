@@ -7,6 +7,7 @@ import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.model.view.UserNotificationViewModel;
 import com.example.pathfinder.model.view.UserProfileViewModel;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,4 +52,10 @@ public interface UserService {
   void updateUser(UserEntity user);
 
   UserUpdateStatusResponse modifyLockStatus(String email);
+
+  void updateLastLoginTime(UserEntity user);
+
+  List<UserEntity> findInactiveUsersSince(LocalDateTime oneYearAgo);
+
+  void saveUpdatedUser(UserEntity user);
 }

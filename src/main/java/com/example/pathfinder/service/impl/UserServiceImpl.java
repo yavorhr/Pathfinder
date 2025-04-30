@@ -271,6 +271,22 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public void updateLastLoginTime(UserEntity user) {
+    user.setLastLoginTime(LocalDateTime.now());
+    userRepository.save(user);
+  }
+
+  @Override
+  public List<UserEntity> findInactiveUsersSince(LocalDateTime oneYearAgo) {
+    return this.userRepository.findInactiveUsersSinceOneYear(oneYearAgo);
+  }
+
+  @Override
+  public void saveUpdatedUser(UserEntity user) {
+    this.userRepository.save(user);
+  }
+
+  @Override
   public void resetFailedAttempts(UserEntity user) {
     user.setFailedLoginAttempts(0);
     this.userRepository.save(user);
