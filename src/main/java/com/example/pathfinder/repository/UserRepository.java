@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,4 +23,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
   @Query("SELECT u FROM UserEntity u Where u.accountLocked")
   List<UserEntity> findAllLockedUsers();
+
+  @Query("SELECT u FROM UserEntity u WHERE u.lastLoginTime IS NOT NULL AND u.lastLoginTime < :oneYearAgo AND u.accountExpired = false")
+  List<UserEntity> findInactiveUsersSinceOneYear(LocalDateTime oneYearAgo);
 }
