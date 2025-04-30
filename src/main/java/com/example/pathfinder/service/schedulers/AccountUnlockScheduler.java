@@ -26,7 +26,7 @@ public class AccountUnlockScheduler {
     System.out.println("yes");
 
     for (UserEntity user : lockedUsers) {
-      if (user.getLockTime().isBefore(now)) {
+      if (user.getLockTime() != null && user.getLockTime().isBefore(now)) {
         user.setAccountLocked(false);
         user.setFailedLoginAttempts(0);
         userService.updateUser(user);
