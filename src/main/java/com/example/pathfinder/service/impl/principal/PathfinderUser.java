@@ -4,6 +4,7 @@ import com.example.pathfinder.model.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 public class PathfinderUser extends User {
@@ -26,6 +27,16 @@ public class PathfinderUser extends User {
   @Override
   public boolean isEnabled() {
     return userEntity.isEnabled();
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    LocalDateTime lastLogin = userEntity.getLastLoginTime();
+    if (lastLogin == null) {
+      // Never logged in users expire after registration + 1 year
+      return userEntity.getRegistrationDate().isAfter(LocalDateTime.now().minusYears(1));
+    }
+    return lastLogin.isAfter(LocalDateTime.now().minusYears(1));
   }
 
   public Long getId() {
