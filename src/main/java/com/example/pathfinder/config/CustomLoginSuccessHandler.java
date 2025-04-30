@@ -26,6 +26,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
     if (user != null) {
       userService.resetFailedAttempts(user);
+      userService.updateLastLoginTime(user);
     }
 
     response.sendRedirect("/");
