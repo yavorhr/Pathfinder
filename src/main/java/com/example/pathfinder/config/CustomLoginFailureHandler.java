@@ -7,6 +7,7 @@ import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.AuthenticationException;
@@ -37,6 +38,8 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
         errorType = LoginErrorType.ACCOUNT_DISABLED.name();
       } else if (exception instanceof LockedException) {
         errorType = LoginErrorType.ACCOUNT_LOCKED.name();
+      } else if (exception instanceof AccountExpiredException) {
+        errorType = LoginErrorType.ACCOUNT_EXPIRED.name();
       }
 
       userService.increaseUserFailedLoginAttempts(user);
