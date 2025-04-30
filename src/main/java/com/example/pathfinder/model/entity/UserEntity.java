@@ -42,12 +42,18 @@ public class UserEntity extends BaseEntity {
   //failedLoginAttempts ==5 ? lockedAccountsCounter = 1
   private Integer timesLocked;
   private LocalDateTime lastLoginTime;
+  private boolean isAccountExpired;
 
   public UserEntity() {
     this.enabled = false;
     this.accountLocked = false;
     this.failedLoginAttempts = 0;
     this.timesLocked = 0;
+  }
+
+  @Column(name ="is_account_expired")
+  public boolean isAccountExpired() {
+    return isAccountExpired;
   }
 
   @Column(name = "last_login_time")
@@ -149,6 +155,11 @@ public class UserEntity extends BaseEntity {
 
   public UserEntity setDisabledTime(LocalDateTime disabledTime) {
     this.disabledTime = disabledTime;
+    return this;
+  }
+
+  public UserEntity setAccountExpired(boolean accountExpired) {
+    isAccountExpired = accountExpired;
     return this;
   }
 
