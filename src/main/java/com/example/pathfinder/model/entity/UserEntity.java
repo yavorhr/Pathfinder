@@ -30,7 +30,6 @@ public class UserEntity extends BaseEntity {
   private boolean enabled;
   private List<Route> routes;
   private LocalDateTime registrationDate;
-  private LocalDateTime lastModifiedTime;
   private List<Comment> comments;
   private String profileImageUrl;
   private String profileImagePublicId;
@@ -188,11 +187,6 @@ public class UserEntity extends BaseEntity {
     return enabled;
   }
 
-  @Column(name = "last_modified_time")
-  public LocalDateTime getLastModifiedTime() {
-    return lastModifiedTime;
-  }
-
   public UserEntity setProfileImageUrl(String url) {
     this.profileImageUrl = url;
     return this;
@@ -313,12 +307,7 @@ public class UserEntity extends BaseEntity {
     this.email = email;
     return this;
   }
-
-  public UserEntity setLastModifiedTime(LocalDateTime lastModified) {
-    this.lastModifiedTime = lastModified;
-    return this;
-  }
-
+  
   public UserEntity setEnabled(boolean enabled) {
     this.enabled = enabled;
     return this;
