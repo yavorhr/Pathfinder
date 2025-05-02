@@ -1,7 +1,6 @@
 package com.example.pathfinder.model.view;
 
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
-
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -10,7 +9,6 @@ public class UserNotificationViewModel {
   private String username;
   private String email;
   private LocalDateTime registrationDate;
-  private LocalDateTime lastModifiedTime;
   private boolean accountLocked;
   private LocalDateTime disabledTime;
   private Integer timesLocked;
@@ -19,8 +17,6 @@ public class UserNotificationViewModel {
 
   public UserNotificationViewModel() {
   }
-
-
 
   public boolean isAccountLocked() {
     return accountLocked;
@@ -54,10 +50,6 @@ public class UserNotificationViewModel {
     return registrationDate;
   }
 
-  public LocalDateTime getLastModifiedTime() {
-    return lastModifiedTime;
-  }
-
   public Set<UserRoleEnum> getRoles() {
     return roles;
   }
@@ -79,11 +71,6 @@ public class UserNotificationViewModel {
 
   public UserNotificationViewModel setRegistrationDate(LocalDateTime registrationDate) {
     this.registrationDate = registrationDate;
-    return this;
-  }
-
-  public UserNotificationViewModel setLastModifiedTime(LocalDateTime lastModifiedTime) {
-    this.lastModifiedTime = lastModifiedTime;
     return this;
   }
 
