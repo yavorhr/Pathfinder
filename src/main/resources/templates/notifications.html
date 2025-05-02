@@ -19,13 +19,12 @@
         <thead>
         <tr>
             <th>Status</th>
-            <th>Is Locked</th>
+            <th>Locked status</th>
             <th>Times Locked</th>
-            <th>Disabled time</th>
+            <th>Disabled date</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Created</th>
-            <th>Modified</th>
+            <th>Creation date</th>
             <th>User roles</th>
             <th>Actions</th>
         </tr>
@@ -45,7 +44,6 @@
             <td th:text="*{#temporals.format(registrationDate, 'yyyy-MM-dd HH:mm:ss')}">
                 formatted date
             </td>
-            <td th:text="*{lastModifiedTime != null ? #temporals.format(lastModifiedTime, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}"></td>
             <td>
                 <div class="change-role-wrapper">
                     <div class="role-action-container">
