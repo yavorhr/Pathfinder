@@ -47,6 +47,7 @@ VALUES (4, 'Ivan', 'Ivanov', 'Male', '2000-12-05', '2022-01-01', 'BEGINNER',
         'ivan@abv.bg', false, "Looking forward to meet new people!", false, 0, null, null, 0, null, null, false);
 
 -- user roles
+
 -- admin
 INSERT INTO users_roles (`user_id`, `role_id`)
 VALUES (1, 1);
