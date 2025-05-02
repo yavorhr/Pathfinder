@@ -4,7 +4,6 @@ import com.example.pathfinder.model.entity.enums.GenderEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -307,7 +306,7 @@ public class UserEntity extends BaseEntity {
     this.email = email;
     return this;
   }
-  
+
   public UserEntity setEnabled(boolean enabled) {
     this.enabled = enabled;
     return this;
@@ -340,8 +339,4 @@ public class UserEntity extends BaseEntity {
     this.profileImageUrl = "https://res.cloudinary.com/yavorhr/image/upload/v1738929875/pathfinder/users-pictures/profile_m3npdq.jpg";
   }
 
-  @PreUpdate
-  private void setUpdateDate() {
-    this.lastModifiedTime = LocalDateTime.now();
-  }
 }
