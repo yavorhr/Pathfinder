@@ -15,6 +15,20 @@
 </section>
 
 <section>
+    <form
+            th:method="GET"
+            class="search-container"
+            action="/admin/notifications">
+        <input type="text" id="searchInput"
+               name="query"
+               placeholder="Search users..."
+               th:value="${query}">
+        <input type="hidden"
+               name="size"
+               th:value="${usersPage.size}">
+        <button type="submit">Search</button>
+    </form>
+
     <table class="notifications-table">
         <thead>
         <tr>
@@ -29,7 +43,8 @@
             <th>Actions</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="users-tbody">
+
         <tr th:each="u :${users}" th:object="${u}">
             <td class="status"
                 th:classappend="${u.isEnabled} ? 'active' : 'inactive'"
@@ -84,6 +99,17 @@
         </tr>
         </tbody>
     </table>
+
+    <div id="pagination">
+        <div th:if="${totalPages > 1}">
+        <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+            <a th:href="@{/admin/notifications(page=${i}, query=${query}, size=${usersPage.size})}"
+               th:text="${i + 1}"
+               th:class="${currentPage == i} ? 'active-page' : ''"></a>
+        </span>
+        </div>
+    </div>
+
 </section>
 </body>
 
@@ -91,8 +117,5 @@
     const loggedInUserEmail = /*[[${loggedInUserEmail}]]*/ "default@example.com";
 </script>
 
-
-<script src="/js/admin/notifications.js">
-</script>
-
+<script src="/js/admin/notifications.js"></script>
 </html>
