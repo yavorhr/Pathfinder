@@ -4,6 +4,8 @@ import com.example.pathfinder.model.binding.RoleUpdateRequest;
 import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.view.UserNotificationViewModel;
 import com.example.pathfinder.service.UserService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,8 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 public class AdminController {
@@ -23,12 +23,21 @@ public class AdminController {
   }
 
   @GetMapping("/admin/notifications")
-  public String viewNotifications(Model model, @AuthenticationPrincipal UserDetails principal) {
-    List<UserNotificationViewModel> users = this.userService.findAllUsers();
-    String loggedInUserEmail = principal.getUsername();
+  public String viewNotifications(
+          @RequestParam(defaultValue = "") String query,
+          @RequestParam(defaultValue = "0") int page,
+          @RequestParam(defaultValue = "2") int size,
+          Model model,
+          @AuthenticationPrincipal UserDetails principal) {
 
-    model.addAttribute("users", users);
-    model.addAttribute("loggedInUserEmail", loggedInUserEmail);
+    Page<UserNotificationViewModel> usersPage = this.userService.searchPaginatedUsersPerEmail(query, PageRequest.of(page, size));
+
+    model.addAttribute("usersPage", usersPage);
+    model.addAttribute("users", usersPage.getContent());
+    model.addAttribute("loggedInUserEmail", principal.getUsername());
+    model.addAttribute("query", query);
+    model.addAttribute("currentPage", page);
+    model.addAttribute("totalPages", usersPage.getTotalPages());
 
     return "notifications";
   }
@@ -45,7 +54,7 @@ public class AdminController {
   @PutMapping("/admin/change-user-access/{email}")
   @ResponseBody
   public ResponseEntity<UserUpdateStatusResponse> changeUserAccess(@PathVariable String email,
-                                                                   @AuthenticationPrincipal UserDetails principal ) {
+                                                                   @AuthenticationPrincipal UserDetails principal) {
 
     UserUpdateStatusResponse statusResponse = this.userService.changeAccess(email);
 
@@ -77,7 +86,7 @@ public class AdminController {
   @PutMapping("/admin/change-user-lock-status/{email}")
   @ResponseBody
   public ResponseEntity<UserUpdateStatusResponse> changeUserLockStatus(@PathVariable String email,
-                                                                   @AuthenticationPrincipal UserDetails principal ) {
+                                                                       @AuthenticationPrincipal UserDetails principal) {
 
     UserUpdateStatusResponse statusResponse = this.userService.modifyLockStatus(email);
 
