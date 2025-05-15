@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Most Viewed Pages</title>
+    <link rel="stylesheet" th:href="@{/css/admin/notifications.css}">
+</head>
+<body>
+<section class="most-viewed">
+    <h2>Top 10 Most Viewed Pages</h2>
+    <table>
+        <thead>
+        <tr><th>Page URI</th><th>Views</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="pv : ${topPages}">
+            <td th:text="${pv.path}">/example</td>
+            <td th:text="${pv.views}">123</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>
