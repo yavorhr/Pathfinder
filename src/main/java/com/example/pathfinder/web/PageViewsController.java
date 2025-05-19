@@ -22,7 +22,6 @@ public class PageViewsController {
 
   @GetMapping("/admin/statistics")
   public String mostViewed(Model model) {
-
     Set<ZSetOperations.TypedTuple<String>> entries =
             zset.reverseRangeWithScores("views:sorted", 0, 9);
 
@@ -30,7 +29,18 @@ public class PageViewsController {
             .map(e -> new PageViewDto(e.getValue(), e.getScore().longValue()))
             .toList();
 
+    // Prepare raw lists for the chart
+    List<String> pageLabels = topPages.stream()
+            .map(PageViewDto::getPath)
+            .toList();
+
+    List<Long> pageViews = topPages.stream()
+            .map(PageViewDto::getViews)
+            .toList();
+
     model.addAttribute("topPages", topPages);
+    model.addAttribute("chartLabels", pageLabels);
+    model.addAttribute("chartData", pageViews);
 
     return "most-viewed";
   }
