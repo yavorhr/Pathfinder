@@ -3,6 +3,7 @@ package com.example.pathfinder.model.view;
 public class PageViewDto {
   private String path;
   private Long views;
+  private double percentage;
 
   public PageViewDto() {
   }
@@ -10,6 +11,10 @@ public class PageViewDto {
   public PageViewDto(String value, long longValue) {
     this.path = value;
     this.views = longValue;
+  }
+
+  public double getPercentage() {
+    return percentage;
   }
 
   public String getPath() {
@@ -27,6 +32,11 @@ public class PageViewDto {
 
   public PageViewDto setViews(Long views) {
     this.views = views;
+    return this;
+  }
+
+  public PageViewDto setPercentage(double percentage) {
+    this.percentage = percentage;
     return this;
   }
 }

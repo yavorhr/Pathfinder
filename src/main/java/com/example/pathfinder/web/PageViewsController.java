@@ -29,7 +29,17 @@ public class PageViewsController {
             .map(e -> new PageViewDto(e.getValue(), e.getScore().longValue()))
             .toList();
 
-    // Table Data
+    // Calculate total views for percentage
+    long totalViews = topPages.stream()
+            .mapToLong(PageViewDto::getViews)
+            .sum();
+
+    // Set percentage on each DTO
+    topPages.forEach(pv -> {
+      double percentage = totalViews == 0 ? 0.0 : (pv.getViews() * 100.0 / totalViews);
+      pv.setPercentage(Math.round(percentage * 100.0) / 100.0); // round to 2 decimals
+    });
+
     List<String> pageLabels = topPages.stream()
             .map(PageViewDto::getPath)
             .toList();
