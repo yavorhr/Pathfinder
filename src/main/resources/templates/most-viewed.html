@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Most Viewed Pages</title>
-    <link rel="stylesheet" th:href="@{/css/admin/notifications.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/most-viewed.css}">
 </head>
+
 <body>
-<section class="most-viewed">
-    <h2>Top 10 Most Viewed Pages</h2>
-    <table>
-        <form method="post" th:action="@{/admin/statistics/reset}" style="margin-bottom: 1rem;">
-            <button type="submit">Reset Statistics</button>
+<div class="container">
+    <section class="most-viewed">
+        <h2>📊 Top 10 Most Viewed Pages</h2>
+
+        <form method="post" th:action="@{/admin/statistics/reset}" class="reset-form">
+            <button type="submit" class="reset-button">🔄 Reset Statistics</button>
         </form>
-        <thead>
-        <tr><th>Page URI</th><th>Views</th></tr>
-        </thead>
-        <tbody>
-        <tr th:each="pv : ${topPages}">
-            <td th:text="${pv.path}">/example</td>
-            <td th:text="${pv.views}">123</td>
-        </tr>
-        </tbody>
-    </table>
 
-    <canvas id="viewsChart" width="600" height="300"></canvas>
+        <table class="stats-table">
+            <thead>
+            <tr><th>Page URI</th><th>Views</th></tr>
+            </thead>
+            <tbody>
+            <tr th:each="pv : ${topPages}">
+                <td th:text="${pv.path}">/example</td>
+                <td th:text="${pv.views}">123</td>
+            </tr>
+            </tbody>
+        </table>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script th:inline="javascript">
-        /*<![CDATA[*/
-        const labels = [[${chartLabels}]];
-        const data = [[${chartData}]];
+        <div class="chart-container">
+            <canvas id="viewsChart" width="600" height="300"></canvas>
+        </div>
+    </section>
+</div>
 
-        new Chart(document.getElementById('viewsChart'), {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Page Views',
-                    data: data,
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        precision: 0
-                    }
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const labels = [[${chartLabels}]];
+    const data = [[${chartData}]];
+
+    new Chart(document.getElementById('viewsChart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Page Views',
+                data: data,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    precision: 0
                 }
             }
-        });
-        /*]]>*/
-    </script>
-</section>
+        }
+    });
+    /*]]>*/
+</script>
 </body>
 </html>
