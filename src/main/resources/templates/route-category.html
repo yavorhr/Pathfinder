@@ -25,7 +25,7 @@
                     <span th:text="*{description.length() > 30 ? #strings.substring(description, 0, 20) + '...': description}"
                           class="card__description">Vancouver Mountains, Canada</span>
                     <h2 th:text="*{name}" class="card__title">The Great Path</h2>
-                    <a th:href="@{/routes/{id}(id=*{id})}" class="card__button">Read More</a>
+                    <a th:href="@{/routes/details/{id}(id=*{id})}" class="card__button">Read More</a>
                 </div>
             </article>
         </div>
