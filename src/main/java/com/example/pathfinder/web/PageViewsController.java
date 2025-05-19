@@ -29,7 +29,7 @@ public class PageViewsController {
             .map(e -> new PageViewDto(e.getValue(), e.getScore().longValue()))
             .toList();
 
-    // Prepare raw lists for the chart
+    // Table Data
     List<String> pageLabels = topPages.stream()
             .map(PageViewDto::getPath)
             .toList();
