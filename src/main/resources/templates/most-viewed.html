@@ -9,6 +9,9 @@
 <section class="most-viewed">
     <h2>Top 10 Most Viewed Pages</h2>
     <table>
+        <form method="post" th:action="@{/admin/statistics/reset}" style="margin-bottom: 1rem;">
+            <button type="submit">Reset Statistics</button>
+        </form>
         <thead>
         <tr><th>Page URI</th><th>Views</th></tr>
         </thead>

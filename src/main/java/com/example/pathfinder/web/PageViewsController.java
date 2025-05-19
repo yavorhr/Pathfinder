@@ -6,16 +6,18 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 import java.util.Set;
 
 @Controller
 public class PageViewsController {
   private final ZSetOperations<String, String> zset;
+  private final StringRedisTemplate redis;
 
-  public PageViewsController(StringRedisTemplate redis) {
+  public PageViewsController(StringRedisTemplate redis, StringRedisTemplate redis1) {
     this.zset = redis.opsForZSet();
+    this.redis = redis1;
   }
 
   @GetMapping("/admin/statistics")
@@ -28,10 +30,20 @@ public class PageViewsController {
             .map(e -> new PageViewDto(e.getValue(), e.getScore().longValue()))
             .toList();
 
-    System.out.println(topPages);
-
     model.addAttribute("topPages", topPages);
 
     return "most-viewed";
+  }
+
+  @PostMapping("/admin/statistics/reset")
+  public String resetStats() {
+    redis.delete("views:sorted");
+
+    Set<String> keys = redis.keys("views:*");
+    if (keys != null) {
+      redis.delete(keys);
+    }
+
+    return "redirect:/admin/statistics";
   }
 }
