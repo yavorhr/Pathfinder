@@ -21,7 +21,7 @@ public class PageViewInterceptor implements HandlerInterceptor {
     String key = "views:" + uri;
 
     // Skip static resources
-    if (uri.matches(".*\\.(css|js|png|jpg|jpeg|gif|svg|ico)$")) {
+    if (uri.matches(".*\\.(css|js|png|jpg|jpeg|gif|svg|ico|map)$")) {
       return true;
     }
 
