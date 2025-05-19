@@ -22,6 +22,39 @@
         </tr>
         </tbody>
     </table>
+
+    <canvas id="viewsChart" width="600" height="300"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        const labels = [[${chartLabels}]];
+        const data = [[${chartData}]];
+
+        new Chart(document.getElementById('viewsChart'), {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Page Views',
+                    data: data,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        precision: 0
+                    }
+                }
+            }
+        });
+        /*]]>*/
+    </script>
 </section>
 </body>
 </html>
