@@ -1,7 +1,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/head :: head(additionalCss='/css/route-details/comments.css')">
+<head th:replace="fragments/head :: head(additionalCss='/css/route-details/route-details.css')">
 </head>
 
 <body>
@@ -21,53 +21,51 @@
                        id="routeId">
                 <button th:if="*{canModify}" type="submit" class="btn btn-danger">Delete</button>
             </form>
-            <h4 th:text="*{name}" id="track-name"></h4>
-            <p> Total distance: <span th:text="*{distance}" id="totalDistance"></span> km</p>
-            <p>Author name: <span th:text="*{authorFullName}" id="authorName"></span></p>
-            <h4 th:text="*{level.name()}">Difficulty Level (1-3):</h4>
-            <div class="level">
-                <p><img class="level-img" src="/images/difficulty-level.png" alt="">
-                </p>
-                <p th:if="*{level.name() == 'INTERMEDIATE'}">
-                    <img class="level-img" src="/images/difficulty-level.png" alt="">
-                </p>
+            <div class="track-info">
+                <h2 id="track-name" th:text="*{name}">Track Name</h2>
 
-                <th:block th:if="*{level.name()=='ADVANCED'}">
-                    <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
-                    <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
-                </th:block>
+                <div class="meta">
+                    <p>Total distance: <span id="totalDistance" th:text="*{distance}">9999999999</span> km</p>
+                    <p>Author name: <span id="authorName" th:text="*{authorFullName}">John Doe</span></p>
+                </div>
+
+                <div class="difficulty-label" th:text="*{level.name()}">BEGINNER</div>
+
+                <div class="difficulty-icons">
+                    <img class="level-img" src="/images/difficulty-level.png" alt="Level 1"/>
+                    <img class="level-img" th:if="*{level.name() == 'INTERMEDIATE'}" src="/images/difficulty-level.png"
+                         alt="Level 2"/>
+                    <th:block th:if="*{level.name() == 'ADVANCED'}">
+                        <img class="level-img" src="/images/difficulty-level.png" alt="Level 2"/>
+                        <img class="level-img" src="/images/difficulty-level.png" alt="Level 3"/>
+                    </th:block>
+                </div>
             </div>
             <th:block th:if="*{canModify}">
-                <div>
-                    <form id="picture-upload-form"
-                          th:action="@{/pictures/add}"
-                          th:method="post"
-                          enctype="multipart/form-data">
-                        <input
-                                type="hidden"
-                                name="routeId"
-                                th:value="*{id}">
-                        <div class="form-group">
-                            <input
-                                    placeholder="Picture title"
-                                    type="text"
-                                    id="title"
-                                    name="title"
-                                    hidden>
-                        </div>
-                        <div class="image-upload">
-                            <label for="picture-upload">Add picture
-                                <img src="/images/add-img.png" alt=""/>
-                            </label>
-                            <input
-                                    hidden
-                                    id="picture-upload"
-                                    type="file"
-                                    name="picture"/>
-                        </div>
+                <form id="picture-upload-form"
+                      th:action="@{/pictures/add}"
+                      th:method="post"
+                      enctype="multipart/form-data">
 
-                    </form>
-                </div>
+                    <input type="hidden" name="routeId" th:value="*{id}"/>
+
+                    <div class="form-group">
+                        <label for="title"></label>
+                        <input hidden type="text" id="title" name="title"/>
+                    </div>
+
+                    <!-- ✅ This is the updated section -->
+                    <div class="upload-container">
+                        <label for="picture-upload">
+                            <img src="/images/add-img.png" alt="Add picture" class="upload-img"/>
+                            <div class="hover-overlay">Add picture</div>
+                            <div id="uploadSuccess" class="upload-success">Picture added</div>
+                        </label>
+                        <input hidden id="picture-upload" type="file" name="picture"/>
+                    </div>
+
+                </form>
+
             </th:block>
         </section>
 
