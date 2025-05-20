@@ -39,42 +39,33 @@
             </div>
             <th:block th:if="*{canModify}">
                 <div>
-                    <h4>Select picture</h4>
-                    <form
-                            th:action="@{/pictures/add}"
-                            th:method="post"
-                            enctype="multipart/form-data">
+                    <form id="picture-upload-form"
+                          th:action="@{/pictures/add}"
+                          th:method="post"
+                          enctype="multipart/form-data">
                         <input
                                 type="hidden"
                                 name="routeId"
                                 th:value="*{id}">
                         <div class="form-group">
-                            <label>
-                                <input
-                                        placeholder="Picture title"
-                                        type="text"
-                                        id="title"
-                                        name="title">
-                            </label>
+                            <input
+                                    placeholder="Picture title"
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    hidden>
                         </div>
                         <div class="image-upload">
-                            <label for="picture">
+                            <label for="picture-upload">Add picture
                                 <img src="/images/add-img.png" alt=""/>
                             </label>
                             <input
                                     hidden
-                                    id="picture"
+                                    id="picture-upload"
                                     type="file"
-                                    name="picture"
-                                    onchange="toggleButtonState()"/>
+                                    name="picture"/>
                         </div>
-                        <div class="form-group">
-                            <button
-                                    id="upload-btn"
-                                    class="btn-primary rounded"
-                                    disabled>Upload Picture
-                            </button>
-                        </div>
+
                     </form>
                 </div>
             </th:block>
@@ -170,9 +161,12 @@
 <footer th:replace="fragments/footer"></footer>
 
 </body>
+
+
 <script src="/js/routeDetails/comments.js"></script>
 <script src="/js/routeDetails/gpx.js"></script>
 <script src="/js/routeDetails/track.js"></script>
-<script src="/js/routeDetails/toggleButton.js"></script>
+<script src="/js/routeDetails/uploadImage.js"></script>
+
 
 </html>
