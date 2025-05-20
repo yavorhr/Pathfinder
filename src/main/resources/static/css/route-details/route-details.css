@@ -1,0 +1,35 @@
+
+
+
+
+
+
+
+/* ====== Comments Section ====== */
+#commentCtnr {
+    list-style: none; /* Remove dots */
+    padding: 0; /* Remove padding from the list */
+}
+
+#commentCtnr li {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.author {
+    font-weight: bold;
+    color: #333;
+}
+
+.timestamp {
+    font-weight: normal;
+    color: #777;
+}
+
+#commentCtnr li p {
+    margin-top: 5px;
+    font-size: 1rem;
+}
