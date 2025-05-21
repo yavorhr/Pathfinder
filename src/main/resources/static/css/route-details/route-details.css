@@ -247,3 +247,82 @@
 .upload-success {
     background-color: rgba(40, 167, 69, 0.9); /* Bootstrap green-ish */
 }
+
+/* Modal gallery */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.nav-btn {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+.modal .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    background: none;
+    border: none;
+}
+
+.modal .close:hover {
+    color: #ff4d4d;
+}
+
+.btn-danger {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
