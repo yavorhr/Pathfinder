@@ -95,26 +95,26 @@
 
         <!-- Gallery -->
         <section class="gallery">
-            <div th:each="p : ${routeDetails.pictures}"
+            <div th:each="p, iterStat : ${routeDetails.pictures}"
                  th:object="${p}"
                  class="routes-image-container">
-                <img class="rounded" th:src="*{url}" alt="Image"/>
+
+                <img class="gallery-img rounded"
+                     th:src="*{url}"
+                     th:attr="data-index=${iterStat.index}, data-public-id=*{publicId}, data-url=*{url}"
+                     alt="Image"/>
+
                 <form th:if="*{publicId}"
                       th:action="@{/pictures/delete}"
                       th:method="DELETE"
                       class="delete-form">
-                    <input
-                            type="hidden"
-                            th:value="*{publicId}"
-                            name="public_id">
-                    <input
-                            type="hidden"
-                            th:value="${routeDetails.id}"
-                            name="routeId">
+                    <input type="hidden" th:value="*{publicId}" name="public_id"/>
+                    <input type="hidden" th:value="${routeDetails.id}" name="routeId"/>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>
         </section>
+
         <section class="comments">
             <h1>Comments</h1>
             Comments submission
@@ -158,6 +158,22 @@
 
 <footer th:replace="fragments/footer"></footer>
 
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <button id="prevBtn" class="nav-btn">&lt;</button>
+        <img id="modalImage" src="" alt="Image preview"/>
+        <button id="nextBtn" class="nav-btn">&gt;</button>
+
+        <form id="deleteForm" th:action="@{/pictures/delete}" method="post">
+            <input type="hidden" name="public_id" id="modalPublicId"/>
+            <input type="hidden" name="routeId" th:value="${routeDetails.id}"/>
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</div>
+
 </body>
 
 
@@ -165,6 +181,7 @@
 <script src="/js/routeDetails/gpx.js"></script>
 <script src="/js/routeDetails/track.js"></script>
 <script src="/js/routeDetails/uploadImage.js"></script>
+<script src="/js/routeDetails/gallery.js"></script>
 
 
 </html>
