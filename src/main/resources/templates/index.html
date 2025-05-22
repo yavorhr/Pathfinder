@@ -43,7 +43,7 @@
                 <p>When you want to be one with nature!</p>
             </div>
         </a>
-        <a th:href="@{/routes/{category}(category='motorcycle')}"  class="main-btn">
+        <a th:href="@{/routes/{category}(category='motorcycle')}" class="main-btn">
             <div class="box">
                 <img class="flip-img" src="/images/motorcycle.png" height="150px" alt="">
                 <h3>Motorcycle</h3>
@@ -72,10 +72,24 @@
 
     <!-- Portfolio -->
     <section class="gallery">
-        <img th:each="p : ${pictures}" th:src="${p}" alt="Image" class="gallery-item">
+        <img th:each="p : ${pictures}"
+             th:src="${p}"
+             alt="Image"
+             class="gallery-item">
     </section>
 
-     <script th:src="@{/js/weather.js}"></script>
+
+    <script th:src="@{/js/weather.js}"></script>
+    <script th:src="@{/js/index/galleryIndexPage.js}"></script>
+</div>
+
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <button id="prevBtn" class="nav-btn">&lt;</button>
+        <img id="modalImage" class="gallery-item" src="" alt="Image preview"/>
+        <button id="nextBtn" class="nav-btn ">&gt;</button>
+    </div>
 </div>
 
 <footer th:replace="fragments/footer"></footer>
