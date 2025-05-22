@@ -6,15 +6,6 @@
 <head th:replace="fragments/head :: head(additionalCss='/css/navigation/admin-panel.css')">
 </head>
 
-
-<!--<head th:replace="fragments/head :: head(additionalCss='/css/navigation/admin-panel.css,/css/navigation/admin-panel.css')">-->
-<!--If mulitple CSS need to be passed-->
-<!--<th:block th:if="${additionalCss != null}">-->
-<!--    <th:block th:each="css : ${#strings.split(additionalCss, ',')}">-->
-<!--        <link rel="stylesheet" th:href="@{${css.trim()}}"/>-->
-<!--    </th:block>-->
-<!--</th:block>-->
-
 <body>
 <header
         th:fragment="navbar">
@@ -41,10 +32,10 @@
                     </a>
                     <div class="dropdown-menu">
                         <div>
-                            <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/statistics}">Statistics</a>
+                            <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/statistics}">Most viewed</a>
                         </div>
                         <div>
-                            <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/notifications}">Notifications</a>
+                            <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/notifications}">Users panel</a>
                         </div>
                     </div>
                 </li>
