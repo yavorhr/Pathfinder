@@ -98,10 +98,9 @@
         <!-- Gallery -->
         <section class="gallery">
             <div th:each="p, iterStat : ${routeDetails.pictures}"
-                 th:object="${p}"
-                 class="routes-image-container">
+                 th:object="${p}">
 
-                <img class="gallery-img rounded"
+                <img class="gallery-item rounded"
                      th:src="*{url}"
                      th:attr="data-index=${iterStat.index}, data-public-id=*{publicId}, data-url=*{url}"
                      alt="Image"/>
@@ -153,7 +152,7 @@
 
 <div id="imageModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close-btn">&times;</span>
 
         <button id="prevBtn" class="nav-btn">&lt;</button>
         <img id="modalImage" src="" alt="Image preview"/>
