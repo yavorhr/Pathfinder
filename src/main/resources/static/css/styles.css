@@ -872,3 +872,21 @@ footer {
     gap: 20px;
     grid-auto-rows: minmax(100px, auto);
 }
+
+/* Gallery */
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
