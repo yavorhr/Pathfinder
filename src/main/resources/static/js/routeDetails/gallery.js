@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function openModal(imageElement) {
         modalImg.src = imageElement.src;
         publicIdInput.value = imageElement.dataset.publicId;
+
+        console.log(publicIdInput.value);
         modal.style.display = "flex";
     }
 
@@ -42,11 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex = (currentIndex + 1) % images.length;
         showImage(currentIndex);
     });
-
-    // Close modal on background click
+    
     modal.addEventListener("click", (e) => {
         if (e.target === modal) {
             closeModal();
         }
     });
 });
+
+
