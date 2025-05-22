@@ -19,7 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
         modalImg.src = imageElement.src;
         publicIdInput.value = imageElement.dataset.publicId;
 
-        console.log(publicIdInput.value);
+        const deletePictureBtn = document.querySelector(".deletePictureBtn");
+        console.log(deletePictureBtn);
+        console.log("public_id raw value:", publicIdInput.value);
+
+
+        if (publicIdInput.value && publicIdInput.value !== "undefined" && publicIdInput.value.trim() !== "") {
+            deletePictureBtn.style.display = "block";
+        } else {
+            deletePictureBtn.style.display = "none";
+        }
+
         modal.style.display = "flex";
     }
 
@@ -44,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex = (currentIndex + 1) % images.length;
         showImage(currentIndex);
     });
-    
+
     modal.addEventListener("click", (e) => {
         if (e.target === modal) {
             closeModal();
