@@ -49,9 +49,11 @@ public class PicturesController {
     return "redirect:/routes/details/" + bindingModel.getRouteId();
   }
 
+  @PreAuthorize("@routeServiceImpl.isOwnerOrIsAdmin(#principal.username, #routeId)")
   @Transactional
   @DeleteMapping("/pictures/delete")
-  public String delete(@RequestParam("public_id") String publicId, @RequestParam("routeId") String routeId) {
+  public String delete(@RequestParam("public_id") String publicId, @RequestParam("routeId") String routeId,
+                       @AuthenticationPrincipal PathfinderUser principal) {
     if (cloudinaryService.delete(publicId)) {
       pictureService.deletePicture(publicId);
     }
