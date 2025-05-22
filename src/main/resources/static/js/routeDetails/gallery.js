@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImage");
     const publicIdInput = document.getElementById("modalPublicId");
-    const images = Array.from(document.querySelectorAll(".gallery-img"));
+    const images = Array.from(document.querySelectorAll(".gallery-item"));
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
+    const closeBtn = document.querySelector(".close-btn");
 
     let currentIndex = 0;
 
@@ -20,16 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
         publicIdInput.value = imageElement.dataset.publicId;
 
         const deletePictureBtn = document.querySelector(".deletePictureBtn");
-        console.log(deletePictureBtn);
-        console.log("public_id raw value:", publicIdInput.value);
-
 
         if (publicIdInput.value && publicIdInput.value !== "undefined" && publicIdInput.value.trim() !== "") {
             deletePictureBtn.style.display = "block";
         } else {
             deletePictureBtn.style.display = "none";
         }
-
         modal.style.display = "flex";
     }
 
@@ -60,6 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
             closeModal();
         }
     });
+
+    closeBtn.addEventListener("click", closeModal);
 });
 
 
