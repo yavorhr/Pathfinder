@@ -19,7 +19,10 @@
                        name="routeId"
                        th:value="*{id}"
                        id="routeId">
-                <button th:if="*{canModify}" type="submit" class="btn btn-danger">Delete</button>
+                <button th:if="*{canModify}"
+                        type="submit"
+                        class="btn btn-danger">Delete
+                </button>
             </form>
             <div class="track-info">
                 <h2 id="track-name" th:text="*{name}">Track Name</h2>
@@ -54,7 +57,6 @@
                         <input hidden type="text" id="title" name="title"/>
                     </div>
 
-                    <!-- ✅ This is the updated section -->
                     <div class="upload-container">
                         <label for="picture-upload">
                             <img src="/images/add-img.png" alt="Add picture" class="upload-img"/>
@@ -103,15 +105,6 @@
                      th:src="*{url}"
                      th:attr="data-index=${iterStat.index}, data-public-id=*{publicId}, data-url=*{url}"
                      alt="Image"/>
-
-                <form th:if="*{publicId}"
-                      th:action="@{/pictures/delete}"
-                      th:method="DELETE"
-                      class="delete-form">
-                    <input type="hidden" th:value="*{publicId}" name="public_id"/>
-                    <input type="hidden" th:value="${routeDetails.id}" name="routeId"/>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
             </div>
         </section>
 
@@ -166,9 +159,12 @@
         <img id="modalImage" src="" alt="Image preview"/>
         <button id="nextBtn" class="nav-btn">&gt;</button>
 
-        <form id="deleteForm" th:action="@{/pictures/delete}" method="post">
+        <form id="deleteForm"
+              th:action="@{/pictures/delete}"
+              th:method="DELETE">
             <input type="hidden" name="public_id" id="modalPublicId"/>
-            <input type="hidden" name="routeId" th:value="${routeDetails.id}"/>
+            <input type="hidden" name="routeId"
+                   th:value="${routeDetails.id}"/>
             <button type="submit" class="btn btn-danger">Delete</button>
         </form>
     </div>
