@@ -471,7 +471,6 @@ body {
 }
 
 
-
 /* ============= About Page ============= */
 
 .info {
@@ -875,10 +874,11 @@ footer {
 
 /* Gallery */
 
-.gallery{
+.gallery {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 15px;
+
     padding: 20px;
     margin: 0 auto;
 }
@@ -889,4 +889,97 @@ footer {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
+
+/* Hover state */
+.gallery-item:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Modal pop up */
+/* hidden by default, flex-center when shown */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;  height: 100vh;
+    background: rgba(0,0,0,0.6);
+    display: none;         /* keep it hidden */
+    align-items: center;   /* vertical centering */
+    justify-content: center;/* horizontal centering */
+    z-index: 10000;
+}
+
+/* show it as a flex container */
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.modal-content img {
+    max-width: 60vw;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+
+.modal .close-btn:hover {
+    color: #ff4d4d;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+
+    padding: 0.7rem 1rem;
+    margin: 0 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #1a1a1c;
+
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 1001;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+    background-color: #929799;
+    transform: scale(1.05);
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
