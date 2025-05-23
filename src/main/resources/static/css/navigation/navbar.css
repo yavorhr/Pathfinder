@@ -1,0 +1,98 @@
+.main-nav {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+    gap: 2rem;
+    padding: 0.5rem 1rem;
+}
+
+
+.main-nav ul .nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    width: 200px;
+    height: 50px;
+}
+
+.main-nav .nav-item a, #logout-form input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    text-decoration: none;
+
+    text-align: center;
+    color: var(--dark);
+    text-transform: uppercase;
+
+    box-shadow: var(--shadow);
+
+    padding: 0.4rem 0.8rem; /* smaller padding */
+    font-size: 0.9rem; /* slightly smaller text */
+    border-radius: 4px;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main-nav .nav-item a:hover,
+#logout-form input:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1); /* grow 10% */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Home button */
+.home-nav-item {
+    position: absolute;
+    top: -15px;
+    left: 0;
+
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-nav-item a {
+    background-color: transparent;
+}
+
+.navbar-icon {
+    padding: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.navbar-icon:hover {
+    width: 80px;
+    height: 80px;
+    border-color: black;
+    background-color: white;
+    transform: scale(1.1);
+}
+
+/* Logout button */
+#logout-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
