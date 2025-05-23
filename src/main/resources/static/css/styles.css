@@ -66,15 +66,7 @@ body {
     width: 20%;
 }
 
-.main-nav .nav-item a:hover, #logout-form input:hover {
-    background: var(--dark);
-    color: var(--light);
-}
 
-.dropdown-menu {
-    top: 80%;
-    padding: 0;
-}
 
 /* INDEX PAGE */
 /* Top Container */
