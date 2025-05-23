@@ -65,13 +65,6 @@
 .comments {
     grid-column: 1/4;
     grid-row: 4;
-
-}
-
-#add-route-form {
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 2rem;
 }
 
 #map {
@@ -86,8 +79,7 @@
     border-radius: 10px;
 }
 
-
-/* ====== Comments Section ====== */
+/* ====== Comments  ====== */
 #commentCtnr {
     list-style: none; /* Remove dots */
     padding: 0; /* Remove padding from the list */
@@ -223,9 +215,6 @@
 .upload-success {
     background-color: rgba(40, 167, 69, 0.9); /* Bootstrap green-ish */
 }
-
-/* Modal gallery */
-
 
 .modal .close:hover {
     color: #ff4d4d;
