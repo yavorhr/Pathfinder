@@ -1,164 +1,111 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/head"></head>
+<head th:replace="fragments/head :: head(additionalCss='/css/route/addRoute.css')">
+</head>
+
 <script src="/js/categories.js"></script>
 
 <body>
-
-<!-- Navigation -->
 <header th:replace="fragments/navbar"></header>
 
-<!-- Top Container -->
-<div class="row justify-content-center ">
-    <form id="add-route-form" class="w-50 rounded text-white mt-5"
-          th:action="@{/routes/add}"
-          th:object="${routeAddBindingModel}"
-          th:method="POST"
-          enctype="multipart/form-data">
+<div class="route-card-backdrop">
+    <form id="add-route-form" class="route-card"
+          th:action="@{/routes/add}" th:object="${routeAddBindingModel}"
+          method="post" enctype="multipart/form-data">
 
-        <h3 class="border-left border-light pl-2 text-center">Add a new route</h3>
-        <div>
-            <div class="form-group">
-                <label for="inputName" class="col-form-label ">Name</label>
-            </div>
-            <div class="form-group">
-                <input
-                        th:field="*{name}"
-                        th:errorclass="is-invalid"
-                        type="text"
-                        id="inputName"
-                        class="form-control"
-                        aria-describedby="inputNameError">
-                <small
-                        th:if="${#fields.hasErrors('name')}"
-                        th:errors="*{name}"
-                        id="inputNameError"
-                        class="invalid-feedback errors alert alert-danger text-center">
-                </small>
-            </div>
-        </div>
+        <h3 class="route-card__header">Add a New Route</h3>
 
-        <div>
+        <div class="route-card__body">
+            <!-- Name -->
             <div class="form-group">
-                <label for="inputDescription" class="col-form-label ">Description</label>
+                <label for="inputName">Name</label>
+                <input th:field="*{name}" type="text" id="inputName"
+                       class="form-control" placeholder="Enter route name">
+                <small th:if="${#fields.hasErrors('name')}"
+                       th:errors="*{name}" class="error-text"></small>
             </div>
-            <div class="form-group">
-                    <textarea
-                            th:field="*{description}"
-                            th:errorclass="is-invalid"
-                            id="inputDescription"
-                            class="form-control"
-                            aria-describedby="inputDescriptionError">
-                    </textarea>
-                <small id="inputDescriptionError"
-                       class="invalid-feedback errors alert alert-danger text-center">
-                    Description length must be more than 5 characters</small>
-            </div>
-        </div>
 
-        <div class="row align-items-center justify-content-center">
-            <div class="col-md-6 flex-column align-items-center align-items-center text-center">
-                <div class="form-group">
-                    <label for="inputGpx" class="col-form-label ">GPX Coordinates</label>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <div class="form-group">
-                        <input type="file"
-                               required
-                               th:field="*{gpxCoordinates}"
-                               th:errorclass="is-invalid"
-                               id="inputGpx"
-                               class="form-control-file"
-                               aria-describedby="inputGpxError">
-                    </div>
-                    <small id="inputGpxError"
-                           class="invalid-feedback errors alert alert-danger text-center">
-                        Must be valid GPX Coordinates</small>
-                </div>
-            </div>
-            <div class="col-md-3 flex-column align-items-center justify-content-between text-center">
-                <div class="form-group">
-                    <label for="distance" class="col-form-label ">Distance km</label>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <div class="form-group">
-                        <input
-                                type="number"
-                                th:field="*{distance}"
-                                th:errorclass="is-invalid"
-                                required
-                                id="distance"
-                                aria-describedby="distanceError"
-                                class="input-group">
-                    </div>
-                    <small id="distanceError"
-                           class="invalid-feedback errors alert alert-danger text-center">
-                        Please add distance</small>
-                </div>
-            </div>
-        </div>
-        <div>
+            <!-- Description (large, auto-resizing) -->
             <div class="form-group">
-                <label for="level">Level</label>
-                <select
-                        id="level"
-                        class="custom-select"
-                        th:field="*{level}"
-                        th:errorclass="is-invalid">
-                    <option value="" selected>Select level</option>
+                <label for="inputDescription">Description</label>
+                <textarea th:field="*{description}" id="inputDescription"
+                          class="form-control textarea-lg"
+                          placeholder="Describe your route (at least 5 characters)"></textarea>
+                <small th:if="${#fields.hasErrors('description')}"
+                       th:errors="*{description}" class="error-text"></small>
+            </div>
+
+            <div class="form-row">
+                <!-- GPX -->
+                <div class="form-group col-6">
+                    <label for="inputGpx">GPX File</label>
+                    <input type="file" th:field="*{gpxCoordinates}"
+                           id="inputGpx" class="form-control-file">
+                    <small th:if="${#fields.hasErrors('gpxCoordinates')}"
+                           th:errors="*{gpxCoordinates}" class="error-text"></small>
+                </div>
+                
+                <!-- Distance -->
+                <div class="form-group col-6">
+                    <label for="distance">Distance (km)</label>
+                    <input type="number" th:field="*{distance}"
+                           id="distance" class="form-control" placeholder="e.g. 12.3">
+                    <small th:if="${#fields.hasErrors('distance')}"
+                           th:errors="*{distance}" class="error-text"></small>
+                </div>
+            </div>
+
+            <!-- Level -->
+            <div class="form-group">
+                <label for="level">Difficulty Level</label>
+                <select id="level" th:field="*{level}" class="form-control">
+                    <option value="" disabled>Select level</option>
                     <option th:each="l : ${T(com.example.pathfinder.model.entity.enums.LevelEnum).values()}"
-                            th:value="${l}"
-                            th:text="${l}">Select level
-                    </option>
+                            th:value="${l}" th:text="${l}"></option>
                 </select>
-                <small
-                        id="levelError"
-                        class="invalid-feedback errors alert alert-danger text-center">
-                    Please select level
-                </small>
+                <small th:if="${#fields.hasErrors('level')}"
+                       th:errors="*{level}" class="error-text"></small>
             </div>
-        </div>
-        <div>
+
+            <!-- YouTube ID -->
             <div class="form-group">
-                <label for="videoUrl">Video Url (only last eleven characters from Youtube)</label>
-                <input
-                        id="videoUrl"
-                        type="text"
-                        th:field="*{videoUrl}"
-                        th:errorclass="is-invalid"
-                        class="form-control" placeholder="Video url">
-                <small id="inputVideoUrl"
-                       class="invalid-feedback errors alert alert-danger text-center">
-                    Please add the last 11 characters from youtube link</small>
+                <label for="videoUrl">YouTube Video ID</label>
+                <input id="videoUrl" type="text" th:field="*{videoUrl}"
+                       class="form-control " placeholder="Last 11 characters">
+                <small th:if="${#fields.hasErrors('videoUrl')}"
+                       th:errors="*{videoUrl}" class="error-text"></small>
             </div>
-        </div>
-        <div class="flex-column justify-content-center align-items-center">
-            <label
-                    class="p-2 text-center"
-                    style="width: 100%"
-                    for="categories">Categories:</label>
-            <div class="container mt-3">
-                <div class="row justify-content-center">
-                    <div class="d-flex align-items-center"
-                         th:each="c : ${T(com.example.pathfinder.model.entity.enums.CategoryEnum).values()}">
-                        <input
 
-                                th:text="${c}"
-                                th:value="${c}"
-                                th:field="*{categories}"
-                                class="m-3 category-checkbox"
-                                type="checkbox"
-                                id="categories"
-                                value="1">
-                    </div>
+            <!-- Categories -->
+            <div class="form-group">
+                <label>Categories</label>
+                <div class="categories">
+                    <label class="category-pill">
+                        <input type="checkbox" th:field="*{categories}" th:value="PEDESTRIAN"/>
+                        <span>🚶‍♂️ Pedestrian</span>
+                    </label>
+                    <label class="category-pill">
+                        <input type="checkbox" th:field="*{categories}" th:value="BICYCLE"/>
+                        <span>🚴‍♀️ Bicycle</span>
+                    </label>
+                    <label class="category-pill">
+                        <input type="checkbox" th:field="*{categories}" th:value="CAR"/>
+                        <span>🚗 Car</span>
+                    </label>
+                    <label class="category-pill">
+                        <input type="checkbox" th:field="*{categories}" th:value="MOTORCYCLE"/>
+                        <span>🏍️ Motorcycle</span>
+                    </label>
                 </div>
+                <small th:if="${#fields.hasErrors('categories')}"
+                       th:errors="*{categories}" class="error-text"></small>
             </div>
         </div>
-        <div class="d-flex justify-content-center mt-4">
-            <button id="addRouteButton" class="btn btn-primary btn-block w-50 " type="submit">Add Route</button>
-        </div>
 
+        <div class="route-card__footer">
+            <button type="submit" class="btn-primary">Add Route</button>
+        </div>
     </form>
 </div>
 
