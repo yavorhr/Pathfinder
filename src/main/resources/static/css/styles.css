@@ -978,3 +978,17 @@ footer {
     padding: 1rem;
 }
 
+/* Error text */
+.error-text,
+.invalid-feedback {
+    display: block;              /* make sure it’s on its own line */
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(231, 76, 60, 0.1);
+    border-left: 4px solid #e74c3c;
+    border-radius: 4px;
+    color: #e74c3c;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
