@@ -82,12 +82,6 @@ public class RouteController {
   // ADD
   @GetMapping("/routes/add")
   public String getAddRoutePage() {
-
-    //TODO With @PreAuthorize
-//    if (!currentUser.isLoggedIn()) {
-//      return "redirect:/users/login";
-//    }
-
     return "add-route";
   }
 
@@ -101,6 +95,7 @@ public class RouteController {
       redirectAttributes
               .addFlashAttribute("routeAddBindingModel", routeAddBindingModel)
               .addFlashAttribute("org.springframework.validation.BindingResult.routeAddBindingModel", bindingResult);
+      
       return "redirect:add";
     }
 
