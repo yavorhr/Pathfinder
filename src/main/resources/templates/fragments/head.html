@@ -22,7 +22,7 @@
             crossorigin="">
     </script>
     <th:block th:if="${additionalCss != null}">
-        <link rel="stylesheet" th:href="@{${additionalCss}}"/>
+        <link rel="stylesheet" th:each="css : ${additionalCss}" th:href="@{${css}}" />
     </th:block>
 </head>
 
