@@ -45,80 +45,8 @@ body {
     align-content: center;
 }
 
-/* Navigation */
-.main-nav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    gap: 15px;
-}
 
-.main-nav ul .nav-item {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.main-nav .nav-item a, #logout-form input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background: var(--primary);
-    text-decoration: none;
-    padding: 0.8rem;
-    text-align: center;
-    color: var(--dark);
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    box-shadow: var(--shadow);
-}
-
-/* Home button */
-.home-nav-item {
-    background: transparent;
-    justify-content: center;
-    align-items: center;
-}
-
-.home-nav-item a {
-    background-color: transparent;
-}
-
-.navbar-icon {
-    padding: 10px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--primary);
-    transition: all 0.3s ease;
-}
-
-.navbar-icon:hover {
-    width: 80px;
-    height: 80px;
-    border-color: black;
-    background-color: white;
-    transform: scale(1.1);
-}
-
-/* Logout button */
-#logout-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+/* */
 
 .rounded-circle {
     max-width: 100%;
@@ -886,18 +814,20 @@ select {
 .gallery-item:hover {
     transform: scale(1.05);
     filter: brightness(1.1);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Modal pop up */
 .modal {
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw;  height: 100vh;
-    background: rgba(0,0,0,0.6);
-    display: none;         /* keep it hidden */
-    align-items: center;   /* vertical centering */
-    justify-content: center;/* horizontal centering */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: none; /* keep it hidden */
+    align-items: center; /* vertical centering */
+    justify-content: center; /* horizontal centering */
     z-index: 10000;
 }
 
@@ -914,7 +844,7 @@ select {
     display: flex;
     align-items: center;
     gap: 1rem;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .modal-content img {
@@ -981,7 +911,7 @@ footer {
 /* Error text */
 .error-text,
 .invalid-feedback {
-    display: block;              /* make sure it’s on its own line */
+    display: block;
     margin-top: 0.5rem;
     padding: 0.5rem 0.75rem;
     background: rgba(231, 76, 60, 0.1);
