@@ -1,12 +1,13 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/head"></head>
+<head th:replace="fragments/head :: head(additionalCss='/css/route/routes-by-category.css')">
+
 
 <body>
+<header th:replace="fragments/navbar"></header>
 <div class="wrapper route-wrapper">
     <!-- Navigation -->
-    <header th:replace="fragments/navbar"></header>
 
     <section class="category-front-img">
         <img class="rounded-circle category-image"
