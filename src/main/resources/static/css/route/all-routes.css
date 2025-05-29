@@ -1,0 +1,15 @@
+.road {
+    background: var(--primary);
+    max-width: 1800px;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    grid-row: auto;
+}
+
+.road img {
+    height: auto;
+    width: 800px;
+}
