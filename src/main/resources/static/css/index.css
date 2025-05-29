@@ -1,0 +1,114 @@
+
+/* Top Container */
+.top-container {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+    'showcase showcase top-box-a'
+    'showcase showcase top-box-b';
+}
+
+/* Find amazing routes section */
+.showcase {
+    grid-area: showcase;
+    min-height: 400px;
+    background: url('/images/amazing-routes.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.showcase h1 {
+    font-size: 4rem;
+    margin-bottom: 0;
+    color: var(--light);
+}
+
+.showcase p {
+    font-size: 1.3rem;
+    margin-top: 0;
+    color: var(--light);
+}
+
+/* The weather section */
+/* Top Box */
+.top-box {
+    background: var(--primary);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.top-box .price {
+    font-size: 2.5rem;
+}
+
+.top-box-a {
+    grid-area: top-box-a;
+}
+
+.top-box-b {
+    grid-area: top-box-b;
+}
+
+/* Boxes */
+.boxes {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.box {
+    background: var(--primary);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow);
+}
+
+/* Routes categories buttons */
+.main-btn {
+    text-decoration: none;
+    color: #0b2e13;
+}
+
+.main-btn:hover {
+    text-decoration: none;
+}
+
+.main-btn:hover .box {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Flip effect for the image */
+.flip-img {
+    transition: transform 0.6s ease;
+}
+
+/* Flip the image on hover */
+.main-btn:hover .flip-img {
+    transform: rotateY(180deg); /* Horizontal flip */
+}
+
+/* Info */
+.road {
+    background: var(--primary);
+    max-width: 1800px;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    grid-row: auto;
+}
+
+.road img {
+    height: auto;
+    width: 800px;
+}
