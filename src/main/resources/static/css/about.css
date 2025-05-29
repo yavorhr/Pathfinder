@@ -1,0 +1,27 @@
+.info {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #005cbf;
+    color: white;
+    padding: 5rem;
+    border-radius: 5rem;
+}
+
+.info div {
+    text-align: center;
+}
+
+.info div:nth-child(1) {
+    background-image: url("/images/pic4.jpg");
+    background-size: cover;
+    border-bottom-right-radius: 5rem;
+    border-top-left-radius: 5rem;
+}
+
+.info div:nth-child(3) {
+    background-image: url("/images/pic1.jpg");
+    background-size: cover;
+    border-bottom-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+}
