@@ -1,4 +1,3 @@
-
 /* Top Container */
 .top-container {
     display: grid;
@@ -95,3 +94,34 @@
 .main-btn:hover .flip-img {
     transform: rotateY(180deg); /* Horizontal flip */
 }
+
+/* The most commented  */
+
+.most-commented {
+    background: var(--primary);
+    max-width: 1800px;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    grid-row: auto;
+}
+
+.most-commented div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 20px
+}
+
+.most-commented div h2 {
+    text-align: center;
+}
+
+.most-commented div .btn {
+    width: 250px;
+    margin: 0 auto;
+}
+
