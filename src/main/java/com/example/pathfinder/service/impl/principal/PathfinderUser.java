@@ -16,7 +16,7 @@ public class PathfinderUser extends User {
             userEntity.getEmail(),
             userEntity.getPassword(),
             userEntity.isEnabled(),
-            true,
+            !userEntity.isAccountExpired(),
             true,
             !userEntity.isAccountLocked(),
             authorities);
