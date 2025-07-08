@@ -3,8 +3,8 @@
 
 <head th:replace="fragments/head :: head(additionalCss='/css/login.css')">
 
-<body>
-<main class="p-5 align-content-center bg-blur my-register-div">
+<body class="page-wrapper">
+<main class="align-content-center bg-blur content">
     <div class="home-nav-item">
         <a class="btn btn-link nav-link" href="/">
             <img src="/images/home.png"
@@ -15,7 +15,7 @@
     <div class="d-flex justify-content-center">
         <div class="row g-3 align-items-center d-flex flex-column login-parent">
             <h1 class="mb-5 login-title">Login</h1>
-            <form
+            <form class="login-form"
                     th:action="@{/users/login}"
                     th:method="POST">
                 <div>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-4">
-                    <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
+                    <button class="btn btn-primary btn-block w-50 mt-3" type="submit">Login</button>
                 </div>
             </form>
             <div th:if="${login_error_message}">

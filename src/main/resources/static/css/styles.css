@@ -364,12 +364,10 @@ footer {
 }
 
 /* Home button */
-
 .home-nav-item {
     position: absolute;
     top: -15px;
     left: 0;
-
     background: transparent;
 }
 
