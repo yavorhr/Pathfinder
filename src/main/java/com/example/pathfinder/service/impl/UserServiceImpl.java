@@ -295,7 +295,6 @@ public class UserServiceImpl implements UserService {
             .map(u -> this.modelMapper.map(u, UserNotificationViewModel.class));
   }
 
-
   @Override
   public void resetFailedAttempts(UserEntity user) {
     user.setFailedLoginAttempts(0);
@@ -304,10 +303,6 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public boolean isAccountLocked(UserEntity user) {
-    System.out.println("Checking account lock for: " + user.getEmail());
-    System.out.println("Account Locked: " + user.isAccountLocked());
-    System.out.println("Lock Time: " + user.getLockTime());
-    System.out.println("Current Time: " + LocalDateTime.now());
 
     if (user.isAccountLocked() && user.getLockTime().isAfter(LocalDateTime.now())) {
       return true;
