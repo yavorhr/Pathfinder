@@ -21,16 +21,6 @@
     align-items: center;
 }
 
-.title {
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1rem;
-    margin-bottom: 3rem;
-
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--white);
-}
 
 .login-form {
     display: flex;
