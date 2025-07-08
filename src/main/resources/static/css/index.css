@@ -11,9 +11,8 @@
 .showcase {
     grid-area: showcase;
     min-height: 400px;
-    background: url('/images/amazing-routes.jpg');
     background-size: cover;
-    background-position: center;
+    background: url('/images/amazing-routes.jpg') center;
     padding: 3rem;
     display: flex;
     flex-direction: column;
