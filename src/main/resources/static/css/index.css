@@ -33,7 +33,8 @@
     color: var(--light);
 }
 
-/* The weather section */
+/* The weather section *
+/
 /* Top Box */
 .top-box {
     background: var(--primary);
@@ -94,7 +95,7 @@
     transform: rotateY(180deg); /* Horizontal flip */
 }
 
-/* The most commented  */
+/* The most commented route */
 
 .most-commented {
     background: var(--primary);
