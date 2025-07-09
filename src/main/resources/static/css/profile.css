@@ -196,6 +196,7 @@
     grid-auto-rows: minmax(100px, auto);
 }
 
+/* Username in edit mode - not allowed to change */
 .read-only-input {
     background-color: #f0f0f0;
     color: #6c757d;

@@ -77,8 +77,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to enable edit mode
     function enableEditMode() {
-        const usernameInput = document.getElementById("username-input");
+
         const usernameDisplay = document.getElementById("username-display");
+        const usernameInput = document.getElementById("username-input");
 
         if (usernameDisplay && usernameInput) {
             usernameDisplay.classList.add("d-none");

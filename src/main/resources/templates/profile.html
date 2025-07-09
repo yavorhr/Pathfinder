@@ -65,12 +65,18 @@
                         </div>
                         <div class="profile-data-wrapper">
                             <label class="mt-2 mb-0" for="username-input">Username: </label>
-                            <span id="username-display"
-                                  th:text="*{username}">UI/UX Designer</span>
+
+                            <!-- Display mode -->
+                            <span id="username-display" th:text="*{username}">Username</span>
+
+                            <!-- Edit mode -->
                             <input id="username-input"
                                    class="form-control read-only-input d-none"
                                    type="text"
-                                   th:value="*{username}" readonly>
+                                   th:value="*{username}"
+                                   readonly
+                                   disabled>
+
                             <span id="username-error" class="error-message text-danger"></span>
                         </div>
 
