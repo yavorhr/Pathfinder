@@ -77,6 +77,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to enable edit mode
     function enableEditMode() {
+        const usernameInput = document.getElementById("username-input");
+        const usernameDisplay = document.getElementById("username-display");
+
+        if (usernameDisplay && usernameInput) {
+            usernameDisplay.classList.add("d-none");
+            usernameInput.classList.remove("d-none");
+        }
+
         document.querySelector('.full-name-title').classList.add('d-none');
         document.querySelector('.last-name-label').classList.remove('d-none');
         document.querySelector('.first-name-label').classList.remove('d-none');

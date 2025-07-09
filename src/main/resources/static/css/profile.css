@@ -194,3 +194,14 @@
     gap: 20px;
     grid-auto-rows: minmax(100px, auto);
 }
+
+.read-only-input {
+    background-color: #f0f0f0;
+    color: #6c757d;
+    cursor: not-allowed;
+    border: 1px solid #ccc;
+}
+.read-only-input:focus {
+    outline: none;
+    box-shadow: none;
+}
