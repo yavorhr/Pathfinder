@@ -57,10 +57,6 @@ public class UserProfileController {
               .stream()
               .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage)));
 
-      bindingResult
-              .getGlobalErrors()
-              .forEach(e -> errors.put("username", e.getDefaultMessage()));
-
       return ResponseEntity.badRequest().body(errors);
     }
 
