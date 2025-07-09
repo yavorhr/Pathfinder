@@ -46,27 +46,24 @@ public class UserRegisterController {
               .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
               .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
 
-      System.out.println("Validation errors found:");
-      bindingResult.getAllErrors().forEach(error -> System.out.println(error.getDefaultMessage()));
-
       return "redirect:register";
-    }
+}
 
-    UserRegisterServiceModel serviceModel =
-            modelMapper.map(userRegisterBindingModel, UserRegisterServiceModel.class);
+  UserRegisterServiceModel serviceModel =
+          modelMapper.map(userRegisterBindingModel, UserRegisterServiceModel.class);
 
-    convertLocalDate(userRegisterBindingModel.getYear(),
+  convertLocalDate(userRegisterBindingModel.getYear(),
             userRegisterBindingModel.getMonth(),
-            userRegisterBindingModel.getDay(),
-            serviceModel);
+                    userRegisterBindingModel.getDay(),
+                    serviceModel);
 
-    this.userService.registerUser(serviceModel);
+                    this.userService.registerUser(serviceModel);
 
-    return "redirect:login";
-  }
+                    return "redirect:login";
+                    }
 
-  // Helpers
-  private void convertLocalDate(String year, String month, String day, UserRegisterServiceModel serviceModel) {
+// Helpers
+private void convertLocalDate(String year, String month, String day, UserRegisterServiceModel serviceModel) {
     int yearInt = Integer.parseInt(year);
     int monthInt = Integer.parseInt(month);
     int dayInt = Integer.parseInt(day);
