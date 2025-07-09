@@ -5,17 +5,12 @@ public class ProfileUpdateBindingModel {
   private Long id;
   private String firstName;
   private String lastName;
-  private String username;
   private String aboutMe;
   private String facebookAcc;
   private String instagramAcc;
   private String linkedIn;
 
   public ProfileUpdateBindingModel() {
-  }
-
-  public String getUsername() {
-    return username;
   }
 
   public Long getId() {
@@ -51,12 +46,6 @@ public class ProfileUpdateBindingModel {
 
   public String getLinkedIn() {
     return linkedIn;
-  }
-
-
-  public ProfileUpdateBindingModel setUsername(String username) {
-    this.username = username;
-    return this;
   }
 
   public ProfileUpdateBindingModel setAboutMe(String aboutMe) {
