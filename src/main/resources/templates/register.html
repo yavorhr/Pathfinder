@@ -97,7 +97,7 @@
                             </div>
                             <p th:if="${#fields.hasErrors('gender')}"
                                th:text="${#fields.errors('gender')[0]}"
-                               class="errors alert alert-danger">
+                               class="errors alert alert-danger invalid-feedback">
                             </p>
                         </div>
                         <div class="col col-background">
@@ -164,7 +164,12 @@
                                    type="password"
                                    id="inputPassword"
                                    class="form-control">
+                            <p th:if="${#fields.hasErrors('password')}"
+                               th:errors="*{password}"
+                               class="errors alert alert-danger invalid-feedback">
+                            </p>
                         </div>
+
                         <div class="col">
                             <label for="inputConfirmPassword" class="col-form-label">Confirm Password</label>
                             <input th:field="*{confirmPassword}"
@@ -172,13 +177,18 @@
                                    type="password"
                                    id="inputConfirmPassword"
                                    class="form-control">
+                            <p th:if="${#fields.hasErrors('confirmPassword')}"
+                               th:errors="*{confirmPassword}"
+                               class="errors alert alert-danger invalid-feedback">
+                            </p>
+
                         </div>
 
                         <div class="col"
                              th:if="${#fields.hasGlobalErrors()}">
-                            <p class="text-danger errors alert alert-danger"
+                            <p class="errors alert alert-danger invalid-feedback"
                                th:each="error : ${#fields.globalErrors()}">
-                                <span th:text="${error}"></span>
+                                <span  th:text="${error}"></span>
                             </p>
                         </div>
                     </div>
