@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const editButton = document.getElementById("edit-button");
     const saveButton = document.getElementById("save-button");
     const resetButton = document.getElementById("reset-button");
-    const inputFields = document.querySelectorAll("input:not(#upload-input), textarea");
+    const inputFields = document.querySelectorAll("input:not(#upload-input):not(#username-input), textarea");
 
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute("content");
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute("content");
@@ -108,14 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to save changes
     function saveChanges() {
-        const usernameInput = document.getElementById("username-input");
 
         const updatedData = {
             id: document.getElementById("id-input").value.trim(),
             firstName: document.getElementById("firstName-input").value.trim(),
             lastName: document.getElementById("lastName-input").value.trim(),
-            username: usernameInput.value.trim(),
-            originalUsername: usernameInput.getAttribute("data-original"),
             aboutMe: document.getElementById("description-input").value.trim(),
             facebookAcc: document.getElementById("facebook-input").value.trim(),
             instagramAcc: document.getElementById("instagram-input").value.trim(),
