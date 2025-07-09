@@ -206,3 +206,25 @@
     outline: none;
     box-shadow: none;
 }
+
+/* Hide "Change" button initially */
+.add-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#upload-button {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    pointer-events: none;
+}
+
+.add-image-wrapper:hover #upload-button {
+    opacity: 1;
+    pointer-events: auto;
+}
