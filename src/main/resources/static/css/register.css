@@ -1,6 +1,5 @@
 
-
-.div-wrapper{
+.div-wrapper {
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     padding: 20px;
@@ -187,3 +186,8 @@ select {
     cursor: pointer;
     width: 30%;
 }
+
+.invalid-feedback {
+    background: #fbeaea!important;
+}
+
