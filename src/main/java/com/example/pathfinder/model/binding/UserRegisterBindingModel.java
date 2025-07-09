@@ -61,13 +61,13 @@ public class UserRegisterBindingModel {
   }
 
   @NotNull
-  @Size(min = 5, max = 20)
+  @Size(min = 5, max = 20, message = "Min length is 5 symbols")
   public String getPassword() {
     return password;
   }
 
   @NotNull
-  @Size(min = 5, max = 20)
+  @Size(min = 5, max = 20, message = "Min length is 5 symbols")
   public String getConfirmPassword() {
     return confirmPassword;
   }
