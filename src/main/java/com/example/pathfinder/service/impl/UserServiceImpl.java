@@ -323,7 +323,6 @@ public class UserServiceImpl implements UserService {
             .setAboutMe(serviceModel.getAboutMe())
             .setFacebookAcc(serviceModel.getFacebookAcc())
             .setInstagramAcc(serviceModel.getInstagramAcc())
-            .setLinkedIn(serviceModel.getLinkedIn())
-            .setUsername(serviceModel.getUsername());
+            .setLinkedIn(serviceModel.getLinkedIn());
   }
 }
