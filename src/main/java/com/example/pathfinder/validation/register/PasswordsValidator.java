@@ -11,10 +11,27 @@ public class PasswordsValidator implements ConstraintValidator<DoesPasswordAndCo
 
   @Override
   public boolean isValid(UserRegisterBindingModel bindingModel, ConstraintValidatorContext context) {
-    if (bindingModel.getEmail().isEmpty()) {
-      return false;
+    String password = bindingModel.getPassword();
+    String confirmPassword = bindingModel.getConfirmPassword();
+
+    if (password == null || confirmPassword == null || password.isBlank() || confirmPassword.isBlank()) {
+      return true;
     }
 
-    return bindingModel.getPassword().equals(bindingModel.getConfirmPassword());
+    if (password.length() < 5 || password.length() > 20
+            || confirmPassword.length() < 5 || confirmPassword.length() > 20) {
+      return true;
+    }
+
+    boolean matches = password.equals(confirmPassword);
+
+    if (!matches) {
+      context.disableDefaultConstraintViolation();
+      context.buildConstraintViolationWithTemplate("Passwords do not match")
+              .addPropertyNode("confirmPassword")
+              .addConstraintViolation();
+    }
+
+    return matches;
   }
 }
