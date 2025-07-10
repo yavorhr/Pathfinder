@@ -67,6 +67,12 @@ public class RouteServiceImpl implements RouteService {
     RouteDetailsServiceModel serviceModel =
             this.modelMapper.map(route, RouteDetailsServiceModel.class);
 
+    Set<CategoryEnum> categoryEnums = route.getCategories()
+            .stream()
+            .map(Category::getName)
+            .collect(Collectors.toSet());
+
+    serviceModel.setCategories(categoryEnums);
     serviceModel.setCanModify(isOwnerOrIsAdmin(email, id));
     serviceModel.setAuthorFullName(route.getAuthor().getFirstName() + " " + route.getAuthor().getLastName());
 

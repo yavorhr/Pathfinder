@@ -210,5 +210,22 @@
     background-color: rgba(40, 167, 69, 0.9);
 }
 
+.categories {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.category-pill {
+    background-color: #f0f0f0;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.95rem;
+}
 
 

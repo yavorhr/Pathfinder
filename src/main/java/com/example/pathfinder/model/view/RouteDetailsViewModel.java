@@ -1,6 +1,8 @@
 package com.example.pathfinder.model.view;
 
+import com.example.pathfinder.model.entity.Category;
 import com.example.pathfinder.model.entity.Picture;
+import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import java.util.Set;
 
@@ -16,9 +18,11 @@ public class RouteDetailsViewModel {
   private String authorFullName;
   private Integer distance;
   private boolean canModify;
+  private Set<CategoryEnum> categories;
 
   public RouteDetailsViewModel() {
   }
+
 
   public boolean isCanModify() {
     return canModify;
@@ -47,6 +51,10 @@ public class RouteDetailsViewModel {
   public RouteDetailsViewModel setDescription(String description) {
     this.description = description;
     return this;
+  }
+
+  public Set<CategoryEnum> getCategories() {
+    return categories;
   }
 
   public String getGpxCoordinates() {
@@ -86,6 +94,11 @@ public class RouteDetailsViewModel {
 
   public RouteDetailsViewModel setVideoUrl(String videoUrl) {
     this.videoUrl = videoUrl;
+    return this;
+  }
+
+  public RouteDetailsViewModel setCategories(Set<CategoryEnum> categories) {
+    this.categories = categories;
     return this;
   }
 

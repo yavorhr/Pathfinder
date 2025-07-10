@@ -2,6 +2,7 @@ package com.example.pathfinder.model.service;
 
 import com.example.pathfinder.model.entity.Category;
 import com.example.pathfinder.model.entity.Picture;
+import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 
 import java.util.Set;
@@ -18,8 +19,13 @@ public class RouteDetailsServiceModel {
   private Set<Picture> pictures;
   private String authorFullName;
   private boolean canModify;
+  private Set<CategoryEnum> categories;
 
   public RouteDetailsServiceModel() {
+  }
+
+  public Set<CategoryEnum> getCategories() {
+    return categories;
   }
 
   public Long getId() {
@@ -103,6 +109,11 @@ public class RouteDetailsServiceModel {
 
   public RouteDetailsServiceModel setDistance(Integer distance) {
     this.distance = distance;
+    return this;
+  }
+
+  public RouteDetailsServiceModel setCategories(Set<CategoryEnum> categories) {
+    this.categories = categories;
     return this;
   }
 

@@ -43,6 +43,19 @@
                         <img class="level-img" src="/images/difficulty-level.png" alt="Level 3"/>
                     </th:block>
                 </div>
+
+                <div class="categories">
+                    <ul th:each="category : *{categories}" class="category-pill">
+                        <li th:switch="${category}">
+                            <span th:case="'PEDESTRIAN'">🚶‍♂️ Pedestrian</span>
+                            <span th:case="'BICYCLE'">🚴‍♀️ Bicycle</span>
+                            <span th:case="'CAR'">🚗 Car</span>
+                            <span th:case="'MOTORCYCLE'">🏍️ Motorcycle</span>
+                            <span th:case="*">❓ Unknown</span>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
             <th:block th:if="*{canModify}">
                 <form id="picture-upload-form"
