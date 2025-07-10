@@ -68,6 +68,7 @@ public class RouteServiceImpl implements RouteService {
             this.modelMapper.map(route, RouteDetailsServiceModel.class);
 
     serviceModel.setCanModify(isOwnerOrIsAdmin(email, id));
+    serviceModel.setAuthorFullName(route.getAuthor().getFirstName() + " " + route.getAuthor().getLastName());
 
     return serviceModel;
   }
