@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const csrfHeaderName = document.head.querySelector('[name="_csrf_header"]').content;
     const csrfHeaderValue = document.head.querySelector('[name="_csrf"]').content;
 
-    // Fetch all comments
+    // 1. Fetch all comments
     const allComments = []
 
     fetch(`http://localhost:8080/api/${routeId}/comments`)
@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
             for (let comment of data) {
                 allComments.push(comment)
             }
-
-            console.log(allComments)
             displayComments(allComments)
         });
 
@@ -59,10 +57,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (messageElement && messageElement.classList.contains("is-invalid")) {
                 messageElement.classList.remove("is-invalid");
+
+                const messageError = document.getElementById("messageError");
+                if (messageError) {
+                    messageError.classList.add("d-none");                }
             }
 
             form.reset();
         } catch (error) {
+            console.log(error)
             let errorObj = JSON.parse(error.message);
 
             if (errorObj.fieldWithErrors) {
@@ -71,8 +74,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         let elementWithError = document.getElementById(e);
                         if (elementWithError) {
                             elementWithError.classList.add("is-invalid");
-                        }
-                    });
+
+                            if (e === "message") {
+                                const messageError = document.getElementById("messageError");
+                                if (messageError) {
+                                    messageError.classList.remove("d-none");                                }
+                            }
+                        }}
+                    );
             }
         }
         console.log('going to submit a comment!')
