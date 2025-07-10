@@ -3,6 +3,7 @@ package com.example.pathfinder.model.binding;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.validation.route.UniqueRouteName;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -43,6 +44,7 @@ public class RouteAddBindingModel {
     return gpxCoordinates;
   }
 
+  @NotEmpty(message = "At least one category must be selected.")
   public Set<CategoryEnum> getCategories() {
     return categories;
   }
