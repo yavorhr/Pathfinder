@@ -1,3 +1,4 @@
+/* ====== Layout positioning  ====== */
 
 .details-main {
     display: grid;
@@ -83,6 +84,11 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.gallery img {
+    width: 100%;
+    box-shadow: var(--shadow);
+}
+
 /* Modal pop up */
 .modal {
     position: fixed;
@@ -118,6 +124,9 @@
     max-height: 80vh;
     object-fit: contain;
 }
+
+
+/* Modal buttons styling */
 
 .close-btn {
     position: absolute;
@@ -165,9 +174,11 @@
     right: 10px;
 }
 
-.gallery img {
-    width: 100%;
-    box-shadow: var(--shadow);
+.btn-danger {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
 }
 
 /* Delete Route Button position */
@@ -212,6 +223,7 @@
     font-size: 1rem;
 }
 
+/* Track info */
 .track-info {
     margin-top: 2rem;
     text-align: center;
@@ -250,7 +262,7 @@
     height: 70px;
 }
 
-/* Image upload message effect */
+/* Image upload effect */
 
 .add-picture-text {
     display: block;
@@ -283,6 +295,25 @@
     transition: transform 0.2s ease-in-out;
 }
 
+/* Keyframes for horizontal shake of the image uppload */
+@keyframes shakeX {
+    0% {
+        transform: scale(1.1) translateX(0);
+    }
+    25% {
+        transform: scale(1.1) translateX(-5px);
+    }
+    50% {
+        transform: scale(1.1) translateX(5px);
+    }
+    75% {
+        transform: scale(1.1) translateX(-5px);
+    }
+    100% {
+        transform: scale(1.1) translateX(0);
+    }
+}
+
 .upload-success {
     position: absolute;
     top: -30px;
@@ -303,32 +334,5 @@
     background-color: rgba(40, 167, 69, 0.9);
 }
 
-.modal .close:hover {
-    color: #ff4d4d;
-}
 
-.btn-danger {
-    margin-top: 10px;
-    font-size: 16px;
-    padding: 8px 12px;
-    border-radius: 4px;
-}
 
-/* Keyframes for horizontal shake */
-@keyframes shakeX {
-    0% {
-        transform: scale(1.1) translateX(0);
-    }
-    25% {
-        transform: scale(1.1) translateX(-5px);
-    }
-    50% {
-        transform: scale(1.1) translateX(5px);
-    }
-    75% {
-        transform: scale(1.1) translateX(-5px);
-    }
-    100% {
-        transform: scale(1.1) translateX(0);
-    }
-}
