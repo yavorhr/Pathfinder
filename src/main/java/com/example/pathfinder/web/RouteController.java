@@ -15,8 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 @Controller
 public class RouteController {
@@ -50,6 +53,7 @@ public class RouteController {
 
     model.addAttribute("routes", allRoutes);
     model.addAttribute("category", category);
+    model.addAttribute("quote", getQuoteForCategory(category));
 
     return "route-category";
   }
@@ -68,7 +72,7 @@ public class RouteController {
   }
 
   @GetMapping("/routes/most-commented")
-  public String getMostCommentedRoute(@AuthenticationPrincipal UserDetails principal ,
+  public String getMostCommentedRoute(@AuthenticationPrincipal UserDetails principal,
                                       Model model) {
     var viewModel = this.modelMapper.map(
             this.routeService.findMostCommentedRoute(principal.getUsername()),
@@ -95,7 +99,7 @@ public class RouteController {
       redirectAttributes
               .addFlashAttribute("routeAddBindingModel", routeAddBindingModel)
               .addFlashAttribute("org.springframework.validation.BindingResult.routeAddBindingModel", bindingResult);
-      
+
       return "redirect:add";
     }
 
@@ -115,4 +119,43 @@ public class RouteController {
 
     return "redirect:/routes";
   }
+
+  // Helpers
+  private String getQuoteForCategory(String category) {
+
+    Map<String, List<String>> quotesMap = Map.of(
+            "bicycle", List.of(
+                    "Life is like riding a bicycle – to keep your balance, you must keep moving.",
+                    "Two wheels move the soul.",
+                    "Ride as much or as little, as long or as short as you feel. But ride."
+            ),
+            "pedestrian", List.of(
+                    "All truly great thoughts are conceived while walking.",
+                    "An early-morning walk is a blessing for the whole day.",
+                    "The journey of a thousand miles begins with a single step."
+            ),
+            "car", List.of(
+                    "It's not just a car, it's a way of life.",
+                    "Driving isn't just about going from A to B — it's about the ride.",
+                    "Fuel your soul with horsepower."
+            ),
+            "motorcycle", List.of(
+                    "It's not just a motorcycle, it's a way of life.",
+                    "Driving isn't just about going from A to B — it's about the ride.",
+                    "Fuel your soul with horsepower."
+            )
+    );
+
+    List<String> quotes = quotesMap.getOrDefault(category.toLowerCase(), List.of(
+            "Adventure is out there.",
+            "Every journey begins with curiosity."
+    ));
+
+    return quotes.get(new Random().nextInt(quotes.size()));
+  }
+
 }
+
+
+
+

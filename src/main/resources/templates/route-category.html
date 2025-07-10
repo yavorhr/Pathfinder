@@ -13,7 +13,7 @@
         <img class="rounded-circle category-image"
              th:src="@{'/images/route-categories/' + ${category} + '.jpg'}" alt="Title image">
         <h3 class="category-title">
-            <q>10 Inspirational Walking Quotes to Help You Go The Extra Mile</q>
+            <q th:text="${quote}" >10 Inspirational Walking Quotes to Help You Go The Extra Mile</q>
         </h3>
     </section>
 
