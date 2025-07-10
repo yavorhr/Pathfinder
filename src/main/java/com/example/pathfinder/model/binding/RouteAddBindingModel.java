@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Set;
 
 public class RouteAddBindingModel {
@@ -21,19 +22,19 @@ public class RouteAddBindingModel {
   public RouteAddBindingModel() {
   }
 
-  @NotNull
-  @Positive
+  @NotNull(message = "Please insert distance")
+  @Positive(message = "Distance must be positive")
   public Integer getDistance() {
     return distance;
   }
 
   @UniqueRouteName
-  @Size(min = 3, max = 20, message = "Name must be between 3 and 20 charters")
+  @Size(min = 3, max = 20, message = "Name must be between 3 and 20 symbols")
   public String getName() {
     return name;
   }
 
-  @Size(min = 3)
+  @Size(min = 3, message = "Description must beat least 5 symbols long")
   public String getDescription() {
     return description;
   }
@@ -51,7 +52,7 @@ public class RouteAddBindingModel {
     return level;
   }
 
-  @Size(min = 11, max = 11)
+  @Size(min = 11, max = 11, message = "Must be exact 11 symbols")
   @NotNull
   public String getVideoUrl() {
     return videoUrl;
