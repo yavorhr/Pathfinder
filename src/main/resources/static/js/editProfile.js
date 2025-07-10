@@ -81,6 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const usernameDisplay = document.getElementById("username-display");
         const usernameInput = document.getElementById("username-input");
 
+        document.querySelector(".social-list").classList.add("max-width")
+
         if (usernameDisplay && usernameInput) {
             usernameDisplay.classList.add("d-none");
             usernameInput.classList.remove("d-none");
@@ -131,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Clear previous error messages
         document.querySelectorAll(".error-message").forEach(error => error.textContent = "");
 
+        document.querySelector(".social-list").classList.remove("max-width")
         // Collect data from input fields
         inputFields.forEach(input => {
             const fieldName = input.id.replace("-input", ""); // Extract field name
@@ -216,6 +219,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.last-name-label').classList.add('d-none');
         document.querySelector('.first-name-label').classList.add('d-none');
         document.querySelectorAll('.name-wrapper').forEach(e => e.classList.remove('dynamic-width'))
+
+        document.querySelector(".social-list").classList.remove("max-width")
 
         inputFields.forEach(input => {
             const displayElement = document.getElementById(input.id.replace("-input", "-display"));

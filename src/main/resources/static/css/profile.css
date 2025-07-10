@@ -96,7 +96,15 @@
     padding: 0
 }
 
+.social-list.max-width {
+    width: 100%;
+}
+
 .social-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
     padding: 10px;
     color: #0833e3;
     font-size: 19px
@@ -155,8 +163,10 @@
     transition: opacity 0.5s ease, visibility 0.5s ease;
     z-index: 10;
     color: black;
-    width: fit-content;
+    width: max-content;
 }
+
+
 
 .social-list li:hover span {
     opacity: 1;
