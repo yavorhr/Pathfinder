@@ -46,7 +46,7 @@
 
                 <div class="categories">
                     <ul th:each="category : *{categories}" class="category-pill">
-                        <li th:switch="${category}">
+                        <li th:switch="${category.name()}">
                             <span th:case="'PEDESTRIAN'">🚶‍♂️ Pedestrian</span>
                             <span th:case="'BICYCLE'">🚴‍♀️ Bicycle</span>
                             <span th:case="'CAR'">🚗 Car</span>
