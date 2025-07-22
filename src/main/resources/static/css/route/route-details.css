@@ -15,6 +15,7 @@
 }
 
 .details-main .gallery {
+    min-width: 1800px;
     grid-column: 1/4;
     grid-row: 3;
 }
