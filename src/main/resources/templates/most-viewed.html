@@ -10,6 +10,13 @@
 <body>
 <div class="container">
     <section class="most-viewed">
+        <div class="home-nav-item">
+            <a class="btn btn-link nav-link" href="/">
+                <img src="/images/home.png"
+                     alt="home"
+                     class="navbar-icon">
+            </a>
+        </div>
         <h2>📊 Top 10 Most Viewed Pages</h2>
 
         <form method="post" th:action="@{/admin/statistics/reset}" class="reset-form">
