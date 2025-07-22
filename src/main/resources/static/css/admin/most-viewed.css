@@ -6,6 +6,7 @@ body {
     color: #333;
 }
 
+
 .container {
     max-width: 1000px;
     padding: 2rem;
@@ -71,3 +72,34 @@ body {
     height: 400px;
     position: relative;
 }
+
+/* Home button */
+.home-nav-item {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    background: transparent;
+    width: 300px;
+}
+
+.home-nav-item a {
+    background-color: transparent;
+}
+
+.navbar-icon {
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid black;
+    transition: all 0.3s ease;
+}
+
+.navbar-icon:hover {
+    width: 60px;
+    height: 60px;
+    background-color: #767070;
+    transform: scale(1.1);
+}
+
