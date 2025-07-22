@@ -64,19 +64,7 @@ public class RouteServiceImpl implements RouteService {
                     .orElseThrow(() ->
                             new ObjectNotFoundException("Route with Id: " + id + " is not found!"));
 
-    RouteDetailsServiceModel serviceModel =
-            this.modelMapper.map(route, RouteDetailsServiceModel.class);
-
-    Set<CategoryEnum> categoryEnums = route.getCategories()
-            .stream()
-            .map(Category::getName)
-            .collect(Collectors.toSet());
-
-    serviceModel.setCategories(categoryEnums);
-    serviceModel.setCanModify(isOwnerOrIsAdmin(email, id));
-    serviceModel.setAuthorFullName(route.getAuthor().getFirstName() + " " + route.getAuthor().getLastName());
-
-    return serviceModel;
+    return this.mapToRouteServiceModel(email, route);
   }
 
   @Override
@@ -139,12 +127,9 @@ public class RouteServiceImpl implements RouteService {
   @Override
   public RouteDetailsServiceModel findMostCommentedRoute(String email) {
     Pageable topOne = PageRequest.of(0, 1); // Fetch only the first result
-    Route mostCommentedRoute = routeRepository.findMostCommentedRoute(topOne).get(0);
+    Route route = routeRepository.findMostCommentedRoute(topOne).get(0);
 
-    var routeDetailsServiceModel = this.modelMapper.map(mostCommentedRoute, RouteDetailsServiceModel.class);
-    routeDetailsServiceModel.setCanModify(isOwnerOrIsAdmin(email, mostCommentedRoute.getId()));
-
-    return routeDetailsServiceModel;
+    return mapToRouteServiceModel(email, route);
   }
 
   @Override
@@ -187,5 +172,20 @@ public class RouteServiceImpl implements RouteService {
             : r.getPictures().stream().findAny().get().getUrl());
 
     return viewModel;
+  }
+
+  private RouteDetailsServiceModel mapToRouteServiceModel(String email, Route route) {
+    var serviceModel = this.modelMapper.map(route, RouteDetailsServiceModel.class);
+    serviceModel.setCanModify(isOwnerOrIsAdmin(email, route.getId()));
+    serviceModel.setAuthorFullName(route.getAuthor().getFirstName() + " " + route.getAuthor().getLastName());
+
+    Set<CategoryEnum> categoryEnums = route.getCategories()
+            .stream()
+            .map(Category::getName)
+            .collect(Collectors.toSet());
+
+    serviceModel.setCategories(categoryEnums);
+    
+    return serviceModel;
   }
 }
