@@ -185,7 +185,7 @@ public class RouteServiceImpl implements RouteService {
             .collect(Collectors.toSet());
 
     serviceModel.setCategories(categoryEnums);
-    
+
     return serviceModel;
   }
 }
