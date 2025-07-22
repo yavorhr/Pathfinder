@@ -26,7 +26,7 @@ public class AdminController {
   public String viewNotifications(
           @RequestParam(defaultValue = "") String query,
           @RequestParam(defaultValue = "0") int page,
-          @RequestParam(defaultValue = "2") int size,
+          @RequestParam(defaultValue = "5") int size,
           Model model,
           @AuthenticationPrincipal UserDetails principal) {
 
