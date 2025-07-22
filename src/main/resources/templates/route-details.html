@@ -27,6 +27,18 @@
             <div class="track-info">
                 <h2 id="track-name" th:text="*{name}">Track Name</h2>
 
+                <div class="categories">
+                    <ul th:each="category : *{categories}" class="category-pill">
+                        <li th:switch="${category.name()}">
+                            <span th:case="'PEDESTRIAN'">🚶‍♂️ Pedestrian</span>
+                            <span th:case="'BICYCLE'">🚴‍♀️ Bicycle</span>
+                            <span th:case="'CAR'">🚗 Car</span>
+                            <span th:case="'MOTORCYCLE'">🏍️ Motorcycle</span>
+                            <span th:case="*">❓ Unknown</span>
+                        </li>
+                    </ul>
+                </div>
+
                 <div class="meta">
                     <p>Total distance: <span id="totalDistance" th:text="*{distance}">9999999999</span> km</p>
                     <p>Author name: <span id="authorName" th:text="*{authorFullName}">John Doe</span></p>
@@ -44,17 +56,6 @@
                     </th:block>
                 </div>
 
-                <div class="categories">
-                    <ul th:each="category : *{categories}" class="category-pill">
-                        <li th:switch="${category.name()}">
-                            <span th:case="'PEDESTRIAN'">🚶‍♂️ Pedestrian</span>
-                            <span th:case="'BICYCLE'">🚴‍♀️ Bicycle</span>
-                            <span th:case="'CAR'">🚗 Car</span>
-                            <span th:case="'MOTORCYCLE'">🏍️ Motorcycle</span>
-                            <span th:case="*">❓ Unknown</span>
-                        </li>
-                    </ul>
-                </div>
 
             </div>
             <th:block th:if="*{canModify}">
