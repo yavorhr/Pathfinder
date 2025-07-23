@@ -28,6 +28,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
   @Query("SELECT u FROM UserEntity u WHERE u.lastLoginTime IS NOT NULL AND u.lastLoginTime < :oneYearAgo AND u.accountExpired = false")
   List<UserEntity> findInactiveUsersSinceOneYear(LocalDateTime oneYearAgo);
 
-  Page<UserEntity> findByEmailContainingIgnoreCase(String email, Pageable pageable);
+  List<UserEntity> findAllByEmailContainingIgnoreCase(String email);
 
 }

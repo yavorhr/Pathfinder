@@ -20,9 +20,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -289,10 +291,28 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public Page<UserNotificationViewModel> searchPaginatedUsersPerEmail(String emailQuery, Pageable pageable) {
-    return userRepository
-            .findByEmailContainingIgnoreCase(emailQuery, pageable)
-            .map(u -> this.modelMapper.map(u, UserNotificationViewModel.class));
+  public Page<UserNotificationViewModel> searchPaginatedUsersPerEmail(String email, Pageable pageable) {
+    List<UserEntity> users = userRepository.findAllByEmailContainingIgnoreCase(email);
+
+    int start = Math.toIntExact(pageable.getOffset());
+    int end = Math.min(start + pageable.getPageSize(), users.size());
+
+    List<UserEntity> pagedUsers = users.subList(start, end);
+    List<UserNotificationViewModel> viewModels =
+            pagedUsers.stream()
+                    .map(u -> {
+                      UserNotificationViewModel vm = modelMapper.map(u, UserNotificationViewModel.class);
+
+                      Set<UserRoleEnum> roleEnums = u.getRoles().stream()
+                              .map(UserRoleEntity::getRole)
+                              .collect(Collectors.toSet());
+
+                      vm.setRoles(roleEnums);
+                      return vm;
+                    })
+                    .toList();
+
+    return new PageImpl<>(viewModels, pageable, users.size());
   }
 
   @Override
@@ -316,6 +336,8 @@ public class UserServiceImpl implements UserService {
     }
   }
 
+
+  // Helpers
   private UserEntity updateUserEntity(UserProfileServiceModel serviceModel, UserEntity userEntity) {
     return userEntity
             .setFirstName(serviceModel.getFirstName())
