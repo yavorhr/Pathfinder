@@ -11,59 +11,72 @@
 <header
         th:fragment="navbar">
     <nav class="main-nav">
-        <ul>
-            <li class="home-nav-item">
-                <a class="btn btn-link nav-link" href="/">
-                    <img src="/images/home.png"
-                         alt="home"
-                         class="navbar-icon">
-                </a>
-            </li>
-            <th:block sec:authorize="isAuthenticated()">
-                <li class="nav-item">
-                    <a class="btn btn-link nav-link" href="/routes/add">Add new route</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-link nav-link" href="/users/profile ">Profile</a>
-                </li>
-                <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
-                    <a class="dropdown-toggle btn btn-link nav-link " href="/" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin
+        <div class="nav-container">
+            <button class="nav-toggle" onclick="toggleNav()">☰</button>
+            <ul class="nav-list">
+                <li class="home-nav-item">
+                    <a class="btn btn-link nav-link" href="/">
+                        <img src="/images/home.png"
+                             alt="home"
+                             class="navbar-icon">
                     </a>
-                    <div class="dropdown-menu">
-                        <div>
-                            <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/statistics}">Most viewed</a>
-                        </div>
-                        <div>
-                            <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/notifications}">Users panel</a>
-                        </div>
-                    </div>
                 </li>
-                <li class="nav-item">
-                    <form id="logout-form"
-                          th:action="@{/users/logout}"
-                          th:method="POST">
-                        <input class="btn btn-link nav-link" type="submit" value="Logout">
-                    </form>
-                </li>
-            </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="btn btn-link nav-link" href="/routes/add">Add new route</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-link nav-link" href="/users/profile ">Profile</a>
+                    </li>
+                    <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+                        <a class="dropdown-toggle btn btn-link nav-link " href="/" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Admin
+                        </a>
+                        <div class="dropdown-menu">
+                            <div>
+                                <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/statistics}">Most
+                                    viewed</a>
+                            </div>
+                            <div>
+                                <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/notifications}">Users
+                                    panel</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <form id="logout-form"
+                              th:action="@{/users/logout}"
+                              th:method="POST">
+                            <input class="btn btn-link nav-link" type="submit" value="Logout">
+                        </form>
+                    </li>
+                </th:block>
 
-            <th:block sec:authorize="!isAuthenticated()">
+                <th:block sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a href="/users/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/users/register">Register</a>
+                    </li>
+                </th:block>
                 <li class="nav-item">
-                    <a href="/users/login">Login</a>
+                    <a href="/about">About</a>
                 </li>
-                <li class="nav-item">
-                    <a href="/users/register">Register</a>
-                </li>
-            </th:block>
-            <li class="nav-item">
-                <a href="/about">About</a>
-            </li>
-        </ul>
+            </ul>
+        </div>
     </nav>
 </header>
 </body>
+
+
+<script>
+    function toggleNav() {
+        const navList = document.querySelector('.nav-list');
+        navList.classList.toggle('active');
+    }
+</script>
 
 <script src="/js/navigation/toggleAdminPanel.js"></script>
 
