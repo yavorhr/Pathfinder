@@ -15,6 +15,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
@@ -22,10 +24,9 @@ import java.util.stream.Collectors;
 
 @ExtendWith(MockitoExtension.class)
 class PathfinderUserDetailsServiceTest {
-  private UserEntity testUser;
-  private UserRoleEntity adminRole, userRole;
-
   private PathfinderUserDetailsService serviceToTest;
+  private UserRoleEntity adminRole, userRole;
+  private UserEntity testUser;
 
   @Mock
   private UserRepository mockUserRepository;
@@ -48,6 +49,7 @@ class PathfinderUserDetailsServiceTest {
     testUser.setEmail("lucho@lucho.com");
     testUser.setPassword("topsecret");
     testUser.setRoles(Set.of(adminRole, userRole));
+    testUser.setRegistrationDate(LocalDateTime.now());
   }
 
   @Test
@@ -71,7 +73,9 @@ class PathfinderUserDetailsServiceTest {
 
     // Assert
     String expectedRoles = "ROLE_ADMIN, ROLE_USER";
-    String actualRoles = actual.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(
+    String actualRoles = actual.getAuthorities()
+            .stream()
+            .map(GrantedAuthority::getAuthority).collect(
             Collectors.joining(", "));
 
     Assertions.assertEquals(actual.getUsername(), testUser.getEmail());
@@ -101,7 +105,7 @@ class PathfinderUserDetailsServiceTest {
     Assertions.assertEquals(2, userDetails.getAuthorities().size());
   }
 
-  // test on first ctor of PathfinderUser
+  // test on first constructor of PathfinderUser
   @Test
   void testPathfinderUserFistConstructor() {
     // Arrange
