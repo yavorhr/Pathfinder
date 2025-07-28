@@ -17,7 +17,8 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   public Category findByName(CategoryEnum categoryEnum) {
-    return this.categoryRepository.findByName(categoryEnum)
+    return this.categoryRepository
+            .findByName(categoryEnum)
             .orElseThrow(() -> new ObjectNotFoundException("Category with name " + categoryEnum + " was not found!"));
   }
 }
