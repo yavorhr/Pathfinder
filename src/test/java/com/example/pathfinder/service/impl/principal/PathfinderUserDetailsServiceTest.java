@@ -115,6 +115,17 @@ class PathfinderUserDetailsServiceTest {
     Assertions.assertEquals(testUser, ((PathfinderUser) userDetails).getUserEntity());
   }
 
+  @Test
+  void testAccountNonExpired_WhenLastLoginLessThanOneYearAgo() {
+    testUser.setLastLoginTime(LocalDateTime.now().minusMonths(6));
+    Mockito.when(mockUserRepository.findByEmail(testUser.getEmail()))
+            .thenReturn(Optional.of(testUser));
+
+    UserDetails userDetails = serviceToTest.loadUserByUsername(testUser.getEmail());
+
+    Assertions.assertTrue(userDetails.isAccountNonExpired());
+  }
+
   // test on first constructor of PathfinderUser
   @Test
   void testPathfinderUserFistConstructor() {
