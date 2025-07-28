@@ -76,7 +76,7 @@ class PathfinderUserDetailsServiceTest {
     String actualRoles = actual.getAuthorities()
             .stream()
             .map(GrantedAuthority::getAuthority).collect(
-            Collectors.joining(", "));
+                    Collectors.joining(", "));
 
     Assertions.assertEquals(actual.getUsername(), testUser.getEmail());
     Assertions.assertEquals(expectedRoles, actualRoles);
@@ -103,6 +103,16 @@ class PathfinderUserDetailsServiceTest {
     Assertions.assertTrue(userDetails.isCredentialsNonExpired());
     Assertions.assertTrue(userDetails.isAccountNonLocked());
     Assertions.assertEquals(2, userDetails.getAuthorities().size());
+  }
+
+  @Test
+  void testGetUserEntity() {
+    Mockito.when(mockUserRepository
+            .findByEmail(testUser.getEmail()))
+            .thenReturn(Optional.of(testUser));
+
+    UserDetails userDetails = serviceToTest.loadUserByUsername(testUser.getEmail());
+    Assertions.assertEquals(testUser, ((PathfinderUser) userDetails).getUserEntity());
   }
 
   // test on first constructor of PathfinderUser
