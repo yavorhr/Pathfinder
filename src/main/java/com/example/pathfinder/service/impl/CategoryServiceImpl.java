@@ -6,7 +6,7 @@ import com.example.pathfinder.repository.CategoryRepository;
 import com.example.pathfinder.service.CategoryService;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -17,7 +17,8 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Optional<Category> findByName(CategoryEnum categoryEnum) {
-    return this.categoryRepository.findByName(categoryEnum);
+  public Category findByName(CategoryEnum categoryEnum) {
+    return this.categoryRepository.findByName(categoryEnum)
+            .orElseThrow(() -> new NoSuchElementException("Category with name " + categoryEnum + " was not found!"));
   }
 }

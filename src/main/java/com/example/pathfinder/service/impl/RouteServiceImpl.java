@@ -111,8 +111,7 @@ public class RouteServiceImpl implements RouteService {
   @Override
   public List<RouteViewModel> findAllByCategory(String category) {
     Category categoryEntity = this.categoryService
-            .findByName(CategoryEnum.valueOf(category.toUpperCase()))
-            .orElseThrow(() -> new ObjectNotFoundException("Category with name " + category + " was not found!"));
+            .findByName(CategoryEnum.valueOf(category.toUpperCase()));
 
     List<Route> routes = this.routeRepository
             .findAllByCategories(Set.of(categoryEntity))
@@ -157,7 +156,7 @@ public class RouteServiceImpl implements RouteService {
     Set<Category> categoriesSet = new HashSet<>();
 
     categoryEnums.forEach(catEnum -> {
-      Category entity = this.categoryService.findByName(catEnum).get();
+      Category entity = this.categoryService.findByName(catEnum);
       categoriesSet.add(entity);
     });
 
