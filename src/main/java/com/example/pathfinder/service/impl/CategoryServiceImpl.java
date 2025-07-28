@@ -4,9 +4,8 @@ import com.example.pathfinder.model.entity.Category;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.repository.CategoryRepository;
 import com.example.pathfinder.service.CategoryService;
+import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.NoSuchElementException;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -19,6 +18,6 @@ public class CategoryServiceImpl implements CategoryService {
   @Override
   public Category findByName(CategoryEnum categoryEnum) {
     return this.categoryRepository.findByName(categoryEnum)
-            .orElseThrow(() -> new NoSuchElementException("Category with name " + categoryEnum + " was not found!"));
+            .orElseThrow(() -> new ObjectNotFoundException("Category with name " + categoryEnum + " was not found!"));
   }
 }
