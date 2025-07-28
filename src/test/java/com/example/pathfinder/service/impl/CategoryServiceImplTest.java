@@ -33,7 +33,10 @@ public class CategoryServiceImplTest {
 
   @Test
   void categoryNotExist() {
-    Assertions.assertThrows(NoSuchElementException.class, () -> serviceToTest.findByName(CategoryEnum.BICYCLE).get().getName());
+    Mockito.when(mockRepository.findByName(CategoryEnum.BICYCLE))
+            .thenReturn(Optional.empty());
+
+    Assertions.assertThrows(NoSuchElementException.class, () -> serviceToTest.findByName(CategoryEnum.BICYCLE));
   }
 
   @Test
@@ -43,7 +46,7 @@ public class CategoryServiceImplTest {
             .findByName(testCategory.getName()))
             .thenReturn(Optional.of(testCategory));
 
-    Category actualCategory = this.serviceToTest.findByName(CategoryEnum.CAR).get();
+    Category actualCategory = this.serviceToTest.findByName(CategoryEnum.CAR);
 
     Assertions.assertEquals(actualCategory.getName(), testCategory.getName());
     Assertions.assertEquals(actualCategory.getDescription(), testCategory.getDescription());
