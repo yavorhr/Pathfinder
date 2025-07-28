@@ -3,6 +3,7 @@ package com.example.pathfinder.service.impl;
 import com.example.pathfinder.model.entity.Category;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.repository.CategoryRepository;
+import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,7 +37,7 @@ public class CategoryServiceImplTest {
     Mockito.when(mockRepository.findByName(CategoryEnum.BICYCLE))
             .thenReturn(Optional.empty());
 
-    Assertions.assertThrows(NoSuchElementException.class, () -> serviceToTest.findByName(CategoryEnum.BICYCLE));
+    Assertions.assertThrows(ObjectNotFoundException.class, () -> serviceToTest.findByName(CategoryEnum.BICYCLE));
   }
 
   @Test
