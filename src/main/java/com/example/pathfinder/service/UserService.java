@@ -18,8 +18,6 @@ public interface UserService {
 
   Optional<UserEntity> findById(Long id);
 
-  boolean isUserNameAvailable(String username);
-
   boolean isEmailAvailable(String email);
 
   void deleteUser(String email);

@@ -24,7 +24,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -53,7 +52,7 @@ public class UserServiceImpl implements UserService {
     UserRoleEntity roleEntity = this.userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.USER);
     user.setRoles(Set.of(roleEntity));
     user.setPassword(this.passwordEncoder.encode(serviceModel.getPassword()));
-    
+
     this.userRepository.save(user);
 
     eventPublisher.publishEvent(new UserRegisteredEvent(
@@ -80,11 +79,6 @@ public class UserServiceImpl implements UserService {
   @Override
   public Optional<UserEntity> findById(Long id) {
     return this.userRepository.findById(id);
-  }
-
-  @Override
-  public boolean isUserNameAvailable(String username) {
-    return this.userRepository.findByUsername(username).isEmpty();
   }
 
   @Override

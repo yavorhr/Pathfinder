@@ -22,7 +22,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -162,7 +161,7 @@ public class UserServiceImplTest {
     Mockito.when(mockedUserRepository.findByUsername("testUser"))
             .thenReturn(Optional.of(testUser));
 
-    boolean result = serviceToTest.isUserNameAvailable("testUser");
+    boolean result = serviceToTest.isUsernameAvailable("testUser");
 
     Assertions.assertFalse(result);
   }
@@ -172,7 +171,7 @@ public class UserServiceImplTest {
     Mockito.when(mockedUserRepository.findByUsername("available"))
             .thenReturn(Optional.empty());
 
-    boolean result = serviceToTest.isUserNameAvailable("available");
+    boolean result = serviceToTest.isUsernameAvailable("available");
 
     Assertions.assertTrue(result);
   }
@@ -211,5 +210,8 @@ public class UserServiceImplTest {
   void findUserByEmailShouldThrowObjectNotFoundException() {
 
     Assertions.assertThrows(ObjectNotFoundException.class,
-            () -> serviceToTest.findByEmail("invalidEmail"));  }
+            () -> serviceToTest.findByEmail("invalidEmail"));
+  }
+
+
 }
