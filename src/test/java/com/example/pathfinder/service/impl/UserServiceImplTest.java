@@ -103,4 +103,16 @@ public class UserServiceImplTest {
     Assertions.assertEquals(LevelEnum.BEGINNER, testUser.getLevel());
     Mockito.verify(mockedUserRepository).save(testUser);
   }
+
+  @Test
+  void testIntermediateLevel_whenUserHas6OrMoreRoutes() {
+    testUser.setRoutes(List.of(
+            new Route(), new Route(), new Route(),
+            new Route(), new Route(), new Route())); // 6 routes
+
+    serviceToTest.updateUserLevelByNumberOfAddedRoutes(new UpdateUserLevelEvent(testUser));
+
+    Assertions.assertEquals(LevelEnum.INTERMEDIATE, testUser.getLevel());
+    Mockito.verify(mockedUserRepository).save(testUser);
+  }
 }
