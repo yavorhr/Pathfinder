@@ -6,8 +6,10 @@ import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
+import com.example.pathfinder.model.service.UserProfileServiceModel;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.model.view.UserNotificationViewModel;
+import com.example.pathfinder.model.view.UserProfileViewModel;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.events.UpdateUserLevelEvent;
@@ -387,8 +389,60 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void userIsNotAbleToModifyOwnProfile(){
+  void userIsNotAbleToModifyOwnProfile() {
     Assertions.assertTrue(serviceToTest.isNotModifyingOwnProfile("loggedInUser", "invalidUser"));
+  }
+
+  @Test
+  void updateUserDataShouldThrowObjNotFoundExc() {
+    Long userId = 99L;
+
+    UserProfileServiceModel serviceModel = new UserProfileServiceModel();
+    serviceModel.setId(userId);
+
+    Mockito.when(mockedUserRepository.findById(userId)).thenReturn(Optional.empty());
+
+    Assertions.assertThrows(ObjectNotFoundException.class, () -> {
+      serviceToTest.updateUserData(serviceModel);
+    });
+
+    Mockito.verify(mockedUserRepository).findById(userId);
+    Mockito.verifyNoMoreInteractions(mockedUserRepository);
+  }
+
+  @Test
+  void testUpdateUserData_successfullyUpdatesUser() {
+    // Arrange
+    Long userId = 1L;
+
+    UserProfileServiceModel serviceModel = new UserProfileServiceModel();
+    serviceModel.setId(userId);
+    serviceModel.setFirstName("UpdatedName");
+
+    testUser.setFirstName("OldName");
+
+    UserEntity updatedUser = new UserEntity();
+    updatedUser.setId(userId);
+    updatedUser.setFirstName("UpdatedName");
+
+    UserProfileViewModel expectedViewModel = new UserProfileViewModel();
+    expectedViewModel.setFirstName("UpdatedName");
+
+    Mockito.when(mockedUserRepository.findById(userId)).thenReturn(Optional.of(testUser));
+    Mockito.when(mockedUserRepository.save(Mockito.any(UserEntity.class))).thenReturn(updatedUser);
+    Mockito.when(modelMapper.map(Mockito.any(UserEntity.class), Mockito.eq(UserProfileViewModel.class)))
+            .thenReturn(expectedViewModel);
+
+    // Act
+    UserProfileViewModel result = serviceToTest.updateUserData(serviceModel);
+
+    // Assert
+    Assertions.assertNotNull(result);
+    Assertions.assertEquals("UpdatedName", result.getFirstName());
+
+    Mockito.verify(mockedUserRepository).findById(userId);
+    Mockito.verify(mockedUserRepository).save(Mockito.any(UserEntity.class));
+    Mockito.verify(modelMapper).map(Mockito.any(UserEntity.class), Mockito.eq(UserProfileViewModel.class));
   }
 }
 
