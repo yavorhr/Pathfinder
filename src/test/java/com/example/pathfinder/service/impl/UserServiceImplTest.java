@@ -1,13 +1,14 @@
 package com.example.pathfinder.service.impl;
 
+import com.example.pathfinder.model.entity.Route;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
-import com.example.pathfinder.model.entity.enums.GenderEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
+import com.example.pathfinder.service.events.UpdateUserLevelEvent;
 import com.example.pathfinder.service.events.UserRegisteredEvent;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,15 +21,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
   private UserServiceImpl serviceToTest;
   @Mock
-  private UserRepository userRepository;
+  private UserRepository mockedUserRepository;
   @Mock
   private ModelMapper modelMapper;
   @Mock
@@ -38,16 +39,20 @@ public class UserServiceImplTest {
   @Mock
   private PasswordEncoder passwordEncoder;
 
+  private UserEntity testUser;
 
   @BeforeEach
   void setUp() {
     serviceToTest = new UserServiceImpl(
-            userRepository,
+            mockedUserRepository,
             modelMapper,
             userRolesService,
             eventPublisher,
             passwordEncoder
     );
+
+    testUser = new UserEntity();
+    testUser.setUsername("testUser").setRoutes(new ArrayList<>());
   }
 
   @Test
@@ -58,10 +63,7 @@ public class UserServiceImplTest {
     serviceModel
             .setEmail("test@abv.bg")
             .setUsername("test")
-            .setPassword("plainPassword")
-            .setBirthday(LocalDate.now())
-            .setGender(GenderEnum.MALE)
-            .setFirstName("Test").setLastName("Testov");
+            .setPassword("plainPassword");
 
     UserEntity mappedUser = new UserEntity();
 
@@ -80,7 +82,7 @@ public class UserServiceImplTest {
     Assertions.assertEquals(Set.of(roleEntity), mappedUser.getRoles());
     Assertions.assertEquals("encodedPassword", mappedUser.getPassword());
 
-    Mockito.verify(userRepository).save(mappedUser);
+    Mockito.verify(mockedUserRepository).save(mappedUser);
 
     ArgumentCaptor<UserRegisteredEvent> eventCaptor = ArgumentCaptor.forClass(UserRegisteredEvent.class);
     Mockito.verify(eventPublisher).publishEvent(eventCaptor.capture());
@@ -90,5 +92,15 @@ public class UserServiceImplTest {
     Assertions.assertEquals(serviceModel.getUsername(), event.getUsername());
     Assertions.assertEquals(serviceModel.getEmail(), event.getEmail());
     Assertions.assertNotNull(event.getTimestamp());
+  }
+
+  @Test
+  void testBeginnerLevelWhenRoutesAreThreeOrLess() {
+    testUser.setRoutes(List.of(new Route(), new Route(), new Route()));
+
+    serviceToTest.updateUserLevelByNumberOfAddedRoutes(new UpdateUserLevelEvent(testUser));
+
+    Assertions.assertEquals(LevelEnum.BEGINNER, testUser.getLevel());
+    Mockito.verify(mockedUserRepository).save(testUser);
   }
 }
