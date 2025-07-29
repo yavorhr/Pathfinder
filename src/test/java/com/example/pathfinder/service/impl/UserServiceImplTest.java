@@ -174,4 +174,27 @@ public class UserServiceImplTest {
 
     Assertions.assertTrue(result);
   }
+
+  @Test
+  void testIfEmailIsOccupied() {
+    Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
+            .thenReturn(Optional.of(testUser));
+
+    //Act
+    boolean result = serviceToTest.isEmailAvailable("test@abv.bg");
+
+    Assertions.assertFalse(result);
+  }
+
+  @Test
+  void testIfEmailIsAvailable() {
+    Mockito.when(mockedUserRepository.findByEmail("available@abv.bg"))
+            .thenReturn(Optional.empty());
+
+    boolean result = serviceToTest.isEmailAvailable("available@abv.bg");
+
+    Assertions.assertTrue(result);
+  }
+
+
 }
