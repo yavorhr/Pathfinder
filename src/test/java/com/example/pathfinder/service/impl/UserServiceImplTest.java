@@ -54,6 +54,7 @@ public class UserServiceImplTest {
 
     testUser = new UserEntity();
     testUser.setUsername("testUser")
+            .setEmail("test@abv.bg")
             .setRoutes(new ArrayList<>())
             .setId(1L);
   }
@@ -154,5 +155,23 @@ public class UserServiceImplTest {
     Assertions.assertEquals(testUser, result.get());
   }
 
+  @Test
+  void testIfUsernameIsOccupied() {
+    Mockito.when(mockedUserRepository.findByUsername("testUser"))
+            .thenReturn(Optional.of(testUser));
 
+    boolean result = serviceToTest.isUserNameAvailable("testUser");
+
+    Assertions.assertFalse(result);
+  }
+
+  @Test
+  void testIfUsernameIsAvailable() {
+    Mockito.when(mockedUserRepository.findByUsername("available"))
+            .thenReturn(Optional.empty());
+
+    boolean result = serviceToTest.isUserNameAvailable("available");
+
+    Assertions.assertTrue(result);
+  }
 }
