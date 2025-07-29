@@ -95,7 +95,6 @@ public class UserServiceImpl implements UserService {
 
     userEntity.getRoles().clear();
     this.userRepository.save(userEntity);
-
     this.userRepository.deleteByEmail(email);
   }
 
