@@ -10,6 +10,7 @@ import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.events.UpdateUserLevelEvent;
 import com.example.pathfinder.service.events.UserRegisteredEvent;
+import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -132,7 +134,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findByIdShouldThrowObjectNotFoundException() {
+  void findByIdShouldReturnOptionalOfEmptyResult() {
     Mockito.when(mockedUserRepository.findById(2L))
             .thenReturn(Optional.empty());
 
@@ -196,5 +198,18 @@ public class UserServiceImplTest {
     Assertions.assertTrue(result);
   }
 
+  @Test
+  void findUserByEmailShouldReturnOptionalOfUserEntity() {
+    Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
+            .thenReturn(Optional.of(testUser));
 
+    UserEntity userEntity = serviceToTest.findByEmail("test@abv.bg");
+    Assertions.assertEquals(userEntity.getEmail(), "test@abv.bg");
+  }
+
+  @Test
+  void findUserByEmailShouldThrowObjectNotFoundException() {
+
+    Assertions.assertThrows(ObjectNotFoundException.class,
+            () -> serviceToTest.findByEmail("invalidEmail"));  }
 }
