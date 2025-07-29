@@ -1,5 +1,6 @@
 package com.example.pathfinder.service.impl;
 
+import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.entity.Route;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
@@ -54,6 +55,7 @@ public class UserServiceImplTest {
     testUser = new UserEntity();
     testUser.setUsername("testUser")
             .setProfileImageUrl("")
+            .setEnabled(true)
             .setProfileImagePublicId("")
             .setEmail("test@abv.bg")
             .setRoutes(new ArrayList<>())
@@ -252,4 +254,64 @@ public class UserServiceImplTest {
     Assertions.assertEquals("testUrl", testUser.getProfileImageUrl());
     Assertions.assertEquals("testId", testUser.getProfileImagePublicId());
   }
+
+  @Test
+  void userUpdateStatusResponseThrowsObjNotFoundExc() {
+    Mockito.when(mockedUserRepository.findByEmail("invalidEmail@abv.bg"))
+            .thenReturn(Optional.empty());
+
+    // Assert
+    Assertions.assertThrows(ObjectNotFoundException.class,
+            () -> serviceToTest.changeAccess("invalidEmail@abv.bg"));
+  }
+
+  @Test
+  void changeAccessWhenUserIsEnabled() {
+    // Arrange
+    Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
+            .thenReturn(Optional.of(testUser));
+
+    UserUpdateStatusResponse mockResponse = new UserUpdateStatusResponse();
+
+    Mockito.when(modelMapper.map(testUser, UserUpdateStatusResponse.class))
+            .thenReturn(mockResponse);
+
+    // Act
+    UserUpdateStatusResponse result = serviceToTest.changeAccess("test@abv.bg");
+
+    // Assert
+    Assertions.assertFalse(testUser.isEnabled());
+    Assertions.assertNotNull(testUser.getDisabledTime());
+
+    Mockito.verify(mockedUserRepository).save(testUser);
+    Mockito.verify(modelMapper).map(testUser, UserUpdateStatusResponse.class);
+    Assertions.assertEquals(mockResponse, result);
+  }
+
+  @Test
+  void changeAccessWhenUserIsDisabled() {
+    // Arrange
+    Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
+            .thenReturn(Optional.of(testUser));
+
+    testUser.setEnabled(false);
+
+    UserUpdateStatusResponse mockResponse = new UserUpdateStatusResponse();
+
+    Mockito.when(modelMapper.map(testUser, UserUpdateStatusResponse.class))
+            .thenReturn(mockResponse);
+
+    // Act
+    UserUpdateStatusResponse result = serviceToTest.changeAccess("test@abv.bg");
+
+    // Assert
+    Assertions.assertTrue(testUser.isEnabled());
+    Assertions.assertNull(testUser.getDisabledTime());
+
+    Mockito.verify(mockedUserRepository).save(testUser);
+    Mockito.verify(modelMapper).map(testUser, UserUpdateStatusResponse.class);
+    Assertions.assertEquals(mockResponse, result);
+  }
+
 }
+
