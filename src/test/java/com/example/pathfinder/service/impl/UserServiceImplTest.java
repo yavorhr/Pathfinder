@@ -11,7 +11,6 @@ import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.events.UpdateUserLevelEvent;
 import com.example.pathfinder.service.events.UserRegisteredEvent;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -54,12 +53,13 @@ public class UserServiceImplTest {
 
     testUser = new UserEntity();
     testUser.setUsername("testUser")
+            .setProfileImageUrl("")
+            .setProfileImagePublicId("")
             .setEmail("test@abv.bg")
             .setRoutes(new ArrayList<>())
             .setId(1L);
 
     testUser.setRoles(new HashSet<>());
-
   }
 
   @Test
@@ -238,5 +238,18 @@ public class UserServiceImplTest {
 
     Mockito.verify(mockedUserRepository, Mockito.never()).save(Mockito.any());
     Mockito.verify(mockedUserRepository, Mockito.never()).deleteByEmail(Mockito.any());
+  }
+
+  @Test
+  void updateUserProfilePictureSuccessfully() {
+    Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
+            .thenReturn(Optional.of(testUser));
+
+    this.serviceToTest.updateUsersProfilePicture("test@abv.bg", "testUrl", "testId");
+
+    Mockito.verify(mockedUserRepository).save(testUser);
+
+    Assertions.assertEquals("testUrl", testUser.getProfileImageUrl());
+    Assertions.assertEquals("testId", testUser.getProfileImagePublicId());
   }
 }
