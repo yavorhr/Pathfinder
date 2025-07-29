@@ -355,6 +355,35 @@ public class UserServiceImplTest {
     Assertions.assertTrue(result.stream().anyMatch(u -> u.getUsername().equals("testUser")));
   }
 
+  @Test
+  void updateUserRolesShouldThrowsObjNotFoundExc() {
+    Assertions.assertThrows(ObjectNotFoundException.class,
+            () -> serviceToTest.updateUserRoles("invalidEmail@abv.bg", new String[3]));
+  }
 
+  @Test
+  void updateUserRolesSuccessfully() {
+    //Arrange
+    UserRoleEntity adminRole = new UserRoleEntity();
+    adminRole.setRole(UserRoleEnum.ADMIN);
+
+    UserRoleEntity userRole = new UserRoleEntity();
+    userRole.setRole(UserRoleEnum.USER);
+
+    String[] roles = {"ADMIN", "USER"};
+
+    Mockito.when(mockedUserRepository.findByEmail(testUser.getEmail())).thenReturn(Optional.of(testUser));
+    Mockito.when(userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.USER)).thenReturn(userRole);
+    Mockito.when(userRolesService.findRoleEntityByRoleEnum(UserRoleEnum.ADMIN)).thenReturn(adminRole);
+
+    //Act
+    serviceToTest.updateUserRoles(testUser.getEmail(), roles);
+
+    //Assert
+    Mockito.verify(mockedUserRepository).save(testUser);
+    Assertions.assertEquals(2, testUser.getRoles().size());
+    Assertions.assertTrue(testUser.getRoles().contains(adminRole));
+    Assertions.assertTrue(testUser.getRoles().contains(userRole));
+  }
 }
 
