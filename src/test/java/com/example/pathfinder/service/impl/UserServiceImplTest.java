@@ -7,6 +7,7 @@ import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
+import com.example.pathfinder.model.view.UserNotificationViewModel;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.events.UpdateUserLevelEvent;
@@ -312,6 +313,48 @@ public class UserServiceImplTest {
     Mockito.verify(modelMapper).map(testUser, UserUpdateStatusResponse.class);
     Assertions.assertEquals(mockResponse, result);
   }
+
+  @Test
+  void findAllUsersMappedToUserNotificationViewModels() {
+    // Arrange
+
+    // testUser
+    UserRoleEntity role2 = new UserRoleEntity();
+    role2.setRole(UserRoleEnum.USER);
+    testUser.setRoles(Set.of(role2));
+
+    UserNotificationViewModel viewModel2 = new UserNotificationViewModel();
+    viewModel2.setUsername("testUser");
+    viewModel2.setRoles(Set.of(UserRoleEnum.USER));
+
+    // User 2
+    UserEntity testUser2 = new UserEntity();
+    testUser2.setUsername("alice");
+    testUser2.setEnabled(false);
+    UserRoleEntity role1 = new UserRoleEntity();
+    role1.setRole(UserRoleEnum.ADMIN);
+    testUser2.setRoles(Set.of(role1));
+
+    UserNotificationViewModel viewModel1 = new UserNotificationViewModel();
+    viewModel1.setUsername("alice");
+    viewModel1.setRoles(Set.of(UserRoleEnum.ADMIN));
+
+    // Mock repository and mapper
+    Mockito.when(mockedUserRepository.findAllUsersSortedByEnabledFalseAndUsernameAsc())
+            .thenReturn(List.of(testUser2, testUser));
+
+    Mockito.when(modelMapper.map(testUser2, UserNotificationViewModel.class)).thenReturn(viewModel1);
+    Mockito.when(modelMapper.map(testUser, UserNotificationViewModel.class)).thenReturn(viewModel2);
+
+    // Act
+    List<UserNotificationViewModel> result = serviceToTest.findAllUsers();
+
+    // Assert
+    Assertions.assertEquals(2, result.size());
+    Assertions.assertTrue(result.stream().anyMatch(u -> u.getUsername().equals("alice")));
+    Assertions.assertTrue(result.stream().anyMatch(u -> u.getUsername().equals("testUser")));
+  }
+
 
 }
 
