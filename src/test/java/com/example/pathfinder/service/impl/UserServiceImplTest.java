@@ -23,6 +23,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @ExtendWith(MockitoExtension.class)
@@ -52,7 +53,9 @@ public class UserServiceImplTest {
     );
 
     testUser = new UserEntity();
-    testUser.setUsername("testUser").setRoutes(new ArrayList<>());
+    testUser.setUsername("testUser")
+            .setRoutes(new ArrayList<>())
+            .setId(1L);
   }
 
   @Test
@@ -108,7 +111,7 @@ public class UserServiceImplTest {
   void testIntermediateLevel_whenUserHas6OrMoreRoutes() {
     testUser.setRoutes(List.of(
             new Route(), new Route(), new Route(),
-            new Route(), new Route(), new Route())); // 6 routes
+            new Route(), new Route(), new Route()));
 
     serviceToTest.updateUserLevelByNumberOfAddedRoutes(new UpdateUserLevelEvent(testUser));
 
@@ -116,15 +119,40 @@ public class UserServiceImplTest {
     Mockito.verify(mockedUserRepository).save(testUser);
   }
 
-
   @Test
   void testAdvancedLevel_whenUserHas4Or5Routes() {
     testUser.setRoutes(List.of(
-            new Route(), new Route(), new Route(), new Route())); // 4 routes
+            new Route(), new Route(), new Route(), new Route()));
 
     serviceToTest.updateUserLevelByNumberOfAddedRoutes(new UpdateUserLevelEvent(testUser));
 
     Assertions.assertEquals(LevelEnum.ADVANCED, testUser.getLevel());
     Mockito.verify(mockedUserRepository).save(testUser);
   }
+
+  @Test
+  void findByIdShouldThrowObjectNotFoundException() {
+    Mockito.when(mockedUserRepository.findById(2L))
+            .thenReturn(Optional.empty());
+
+    Optional<UserEntity> result = serviceToTest.findById(2L);
+
+    Assertions.assertTrue(result.isEmpty());
+  }
+
+  @Test
+  void findByIdReturnsOptionalOfUserEntity() {
+    //Arrange
+    Mockito.when(mockedUserRepository.findById(1L))
+            .thenReturn(Optional.of(testUser));
+
+    //Act
+    Optional<UserEntity> result = serviceToTest.findById(1L);
+
+    //Assert
+    Assertions.assertTrue(result.isPresent());
+    Assertions.assertEquals(testUser, result.get());
+  }
+
+
 }
