@@ -385,5 +385,10 @@ public class UserServiceImplTest {
     Assertions.assertTrue(testUser.getRoles().contains(adminRole));
     Assertions.assertTrue(testUser.getRoles().contains(userRole));
   }
+
+  @Test
+  void userIsNotAbleToModifyOwnProfile(){
+    Assertions.assertTrue(serviceToTest.isNotModifyingOwnProfile("loggedInUser", "invalidUser"));
+  }
 }
 
