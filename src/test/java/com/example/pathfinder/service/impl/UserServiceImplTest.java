@@ -11,6 +11,7 @@ import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.events.UpdateUserLevelEvent;
 import com.example.pathfinder.service.events.UserRegisteredEvent;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,10 +23,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+
+import java.util.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
@@ -58,6 +57,9 @@ public class UserServiceImplTest {
             .setEmail("test@abv.bg")
             .setRoutes(new ArrayList<>())
             .setId(1L);
+
+    testUser.setRoles(new HashSet<>());
+
   }
 
   @Test
@@ -213,5 +215,28 @@ public class UserServiceImplTest {
             () -> serviceToTest.findByEmail("invalidEmail"));
   }
 
+  @Test
+  void deleteUserByEmailShouldDeleteTheUserFromTheDB() {
+    Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
+            .thenReturn(Optional.of(testUser));
 
+    serviceToTest.deleteUser("test@abv.bg");
+
+    Assertions.assertTrue(testUser.getRoles().isEmpty());
+    Mockito.verify(mockedUserRepository).save(testUser);
+    Mockito.verify(mockedUserRepository).deleteByEmail("test@abv.bg");
+  }
+
+  @Test
+  void deleteUserByEmailShouldThrowObjNotFoundExc() {
+    Mockito.when(mockedUserRepository.findByEmail("invalidEmail@abv.bg"))
+            .thenReturn(Optional.empty());
+
+    // Assert
+    Assertions.assertThrows(ObjectNotFoundException.class,
+            () -> serviceToTest.deleteUser("invalidEmail@abv.bg"));
+
+    Mockito.verify(mockedUserRepository, Mockito.never()).save(Mockito.any());
+    Mockito.verify(mockedUserRepository, Mockito.never()).deleteByEmail(Mockito.any());
+  }
 }
