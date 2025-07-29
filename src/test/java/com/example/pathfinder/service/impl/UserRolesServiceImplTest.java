@@ -1,8 +1,6 @@
 package com.example.pathfinder.service.impl;
 
-import com.example.pathfinder.model.entity.Category;
 import com.example.pathfinder.model.entity.UserRoleEntity;
-import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import com.example.pathfinder.repository.UserRoleRepository;
 import com.example.pathfinder.service.UserRolesService;
