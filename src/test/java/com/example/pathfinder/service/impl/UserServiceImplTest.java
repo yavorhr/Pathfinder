@@ -15,6 +15,7 @@ import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.events.UpdateUserLevelEvent;
 import com.example.pathfinder.service.events.UserRegisteredEvent;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -602,6 +603,27 @@ public class UserServiceImplTest {
   void updateLastLoginTime() {
     this.serviceToTest.updateLastLoginTime(testUser);
     Mockito.verify(mockedUserRepository).save(testUser);
+  }
 
+  @Test
+  void findInactiveUsersSince_returnsListOfUsers(){
+    //Arrange
+    testUser.setLastLoginTime(LocalDateTime.of(2023,3,3,3,21));
+
+    UserEntity user2 = new UserEntity();
+    user2.setUsername("locked1");
+    user2.setLastLoginTime(LocalDateTime.of(2022,3,3,3,21));
+
+    Mockito.when(mockedUserRepository.
+            findInactiveUsersSinceOneYear(LocalDateTime.of(2024,1,1,00,01)))
+            .thenReturn(List.of(testUser,user2));
+
+    //Act
+    List<UserEntity> users =
+            this.serviceToTest.findInactiveUsersSince(LocalDateTime.of(2024, 1, 1, 00, 01));
+
+    Assertions.assertEquals(2, users.size());
+    Assertions.assertTrue(users.contains(testUser));
+    Assertions.assertTrue(users.contains(user2));
   }
 }
