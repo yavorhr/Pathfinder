@@ -26,6 +26,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
@@ -626,4 +629,49 @@ public class UserServiceImplTest {
     Assertions.assertTrue(users.contains(testUser));
     Assertions.assertTrue(users.contains(user2));
   }
+
+  @Test
+  void searchPaginatedUsersPerEmail_ReturnsCorrectPage() {
+    // Arrange
+    String emailSearch = "user";
+    Pageable pageable = PageRequest.of(0, 2);
+
+    UserRoleEntity roleAdmin = new UserRoleEntity();
+    roleAdmin.setRole(UserRoleEnum.ADMIN);
+
+    UserRoleEntity roleUser = new UserRoleEntity();
+    roleUser.setRole(UserRoleEnum.USER);
+
+    testUser.setRoles(Set.of(roleAdmin));
+
+    UserEntity user2 = new UserEntity();
+    user2.setEmail("user2@abv.bg");
+    user2.setRoles(Set.of(roleUser));
+
+    UserEntity user3 = new UserEntity();
+    user3.setEmail("user3@abv.bg");
+    user3.setRoles(Set.of(roleAdmin, roleUser));
+
+    List<UserEntity> allMatchingUsers = List.of(testUser, user2, user3);
+
+    Mockito.when(mockedUserRepository.findAllByEmailContainingIgnoreCase(emailSearch))
+            .thenReturn(allMatchingUsers);
+
+    Mockito.when(modelMapper.map(Mockito.any(UserEntity.class), Mockito.eq(UserNotificationViewModel.class)))
+            .thenAnswer(invocation -> new UserNotificationViewModel());
+
+    // Act
+    Page<UserNotificationViewModel> result = serviceToTest.searchPaginatedUsersPerEmail(emailSearch, pageable);
+
+    // Assert
+    Assertions.assertEquals(2, result.getContent().size());
+    Assertions.assertEquals(3, result.getTotalElements());
+
+    // Verify repository call
+    Mockito.verify(mockedUserRepository).findAllByEmailContainingIgnoreCase(emailSearch);
+
+    Mockito.verify(modelMapper, Mockito.times(2)).map(Mockito.any(UserEntity.class), Mockito.eq(UserNotificationViewModel.class));
+  }
+
+
 }
