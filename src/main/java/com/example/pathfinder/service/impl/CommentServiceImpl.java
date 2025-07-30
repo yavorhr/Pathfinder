@@ -47,8 +47,8 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public CommentViewModel createComment(CommentServiceModel serviceModel) {
 
-
     Objects.requireNonNull(serviceModel.getCreatorEmail(), "Creator email must not be null.");
+
     var route = routeService.
             findRouteById(serviceModel.getRouteId()).
             orElseThrow(() -> new ObjectNotFoundException("Route with id " + serviceModel.getRouteId() + " not found!"));
