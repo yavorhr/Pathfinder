@@ -7,7 +7,6 @@ import com.example.pathfinder.service.PictureService;
 import com.example.pathfinder.service.RouteService;
 import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,13 +16,12 @@ public class PictureServiceImpl implements PictureService {
   private final UserService userService;
   private final RouteService routeService;
   private final PictureRepository pictureRepository;
-  private final ModelMapper modelMapper;
 
-  public PictureServiceImpl(UserService userService, RouteService routeService, PictureRepository pictureRepository, ModelMapper modelMapper) {
+
+  public PictureServiceImpl(UserService userService, RouteService routeService, PictureRepository pictureRepository) {
     this.userService = userService;
     this.routeService = routeService;
     this.pictureRepository = pictureRepository;
-    this.modelMapper = modelMapper;
   }
 
   @Override
