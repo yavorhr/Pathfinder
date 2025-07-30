@@ -25,7 +25,7 @@ public class AccountExpirationSchedule {
 
     for (UserEntity user : inactiveUsers) {
       user.setAccountExpired(true);
-      userService.saveUpdatedUser(user);
+      userService.updateUser(user);
     }
   }
 

@@ -56,7 +56,5 @@ public interface UserService {
 
   List<UserEntity> findInactiveUsersSince(LocalDateTime oneYearAgo);
 
-  void saveUpdatedUser(UserEntity user);
-
   Page<UserNotificationViewModel> searchPaginatedUsersPerEmail(String emailQuery, Pageable pageable);
 }
