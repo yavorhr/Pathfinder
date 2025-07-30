@@ -212,13 +212,12 @@ public class UserServiceImpl implements UserService {
       if (user.getTimesLocked() == 3) {
         this.disableUser(user);
       }
-
     } else {
       userRepository.save(user);
     }
   }
 
-  private void disableUser(UserEntity user) {
+  protected void disableUser(UserEntity user) {
     user.setEnabled(false);
     user.setDisabledTime(LocalDateTime.now());
     userRepository.save(user);
@@ -270,11 +269,6 @@ public class UserServiceImpl implements UserService {
   @Override
   public List<UserEntity> findInactiveUsersSince(LocalDateTime oneYearAgo) {
     return this.userRepository.findInactiveUsersSinceOneYear(oneYearAgo);
-  }
-
-  @Override
-  public void saveUpdatedUser(UserEntity user) {
-    this.userRepository.save(user);
   }
 
   @Override
