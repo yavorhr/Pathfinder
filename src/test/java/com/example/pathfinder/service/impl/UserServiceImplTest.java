@@ -26,7 +26,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import java.util.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -446,6 +445,47 @@ public class UserServiceImplTest {
   }
 
   @Test
+  void increaseUserFailedLoginAttempts_whenFailedAttemptsIsNull() {
+    Assertions.assertEquals(0, testUser.getFailedLoginAttempts());
+
+  }
+
+  @Test
+  void testIncreaseFailedLoginAttempts_LessThan5() {
+    UserEntity user = new UserEntity();
+    user.setFailedLoginAttempts(2);
+
+    serviceToTest.increaseUserFailedLoginAttempts(user);
+
+    Assertions.assertEquals(3, user.getFailedLoginAttempts());
+    Mockito.verify(mockedUserRepository).save(user);
+  }
+
+  @Test
+  void testIncreaseFailedLoginAttempts_Exactly5FailedAttempts_UserLocked() {
+    UserEntity user = new UserEntity();
+    user.setFailedLoginAttempts(4);
+
+    serviceToTest.increaseUserFailedLoginAttempts(user);
+
+    Assertions.assertEquals(5, user.getFailedLoginAttempts());
+    Assertions.assertTrue(user.isAccountLocked());
+    Assertions.assertEquals(1, user.getTimesLocked());
+  }
+
+  @Test
+  void testIncreaseFailedLoginAttempts_Exactly3LockingTimes_UserDisabled() {
+    UserEntity user = new UserEntity();
+    user.setLockedAccountCounter(2);
+    user.setFailedLoginAttempts(4);
+
+    serviceToTest.increaseUserFailedLoginAttempts(user);
+
+    Assertions.assertEquals(5, user.getFailedLoginAttempts());
+    Assertions.assertTrue(user.isAccountLocked());
+    Assertions.assertFalse(user.isEnabled());
+    Assertions.assertEquals(1, user.getTimesLocked());
+  }
 
 }
 
