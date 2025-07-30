@@ -10,7 +10,6 @@ import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
@@ -47,9 +46,9 @@ public class CommentServiceImpl implements CommentService {
 
   @Override
   public CommentViewModel createComment(CommentServiceModel serviceModel) {
-    //TODO - add NullPointerException Handler
-    Objects.requireNonNull(serviceModel.getCreatorEmail());
 
+
+    Objects.requireNonNull(serviceModel.getCreatorEmail(), "Creator email must not be null.");
     var route = routeService.
             findRouteById(serviceModel.getRouteId()).
             orElseThrow(() -> new ObjectNotFoundException("Route with id " + serviceModel.getRouteId() + " not found!"));
@@ -58,8 +57,9 @@ public class CommentServiceImpl implements CommentService {
 
     Comment newComment = new Comment();
 
+    //TODO: Admin to approve comment. Need to add FE and BE functionality
     newComment.setApproved(true);
-    //TODO: Admin to approve comment
+
     newComment.setTextContent(serviceModel.getMessage());
     newComment.setRoute(route);
     newComment.setAuthor(author);
