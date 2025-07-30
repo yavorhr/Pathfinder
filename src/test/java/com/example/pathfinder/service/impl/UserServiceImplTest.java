@@ -27,6 +27,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -592,11 +593,15 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void updateUser_persistUserToDB(){
-
+  void updateUser_persistUserToDB() {
     serviceToTest.updateUser(testUser);
-
-    // Assert
     Mockito.verify(mockedUserRepository).save(testUser);
+  }
+
+  @Test
+  void updateLastLoginTime() {
+    this.serviceToTest.updateLastLoginTime(testUser);
+    Mockito.verify(mockedUserRepository).save(testUser);
+
   }
 }
