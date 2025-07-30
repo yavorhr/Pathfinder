@@ -590,4 +590,13 @@ public class UserServiceImplTest {
     Mockito.verify(mockedUserRepository).save(testUser);
     Mockito.verify(mockedUserRepository).findByEmail(testUser.getEmail());
   }
+
+  @Test
+  void updateUser_persistUserToDB(){
+
+    serviceToTest.updateUser(testUser);
+
+    // Assert
+    Mockito.verify(mockedUserRepository).save(testUser);
+  }
 }
