@@ -15,7 +15,6 @@ import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.events.UpdateUserLevelEvent;
 import com.example.pathfinder.service.events.UserRegisteredEvent;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -673,7 +672,6 @@ public class UserServiceImplTest {
     Mockito.verify(modelMapper, Mockito.times(2)).map(Mockito.any(UserEntity.class), Mockito.eq(UserNotificationViewModel.class));
   }
 
-
   @Test
   void resetFailedAttempts() {
     testUser.setFailedLoginAttempts(3);
@@ -684,5 +682,44 @@ public class UserServiceImplTest {
 
 
     Mockito.verify(mockedUserRepository).save(testUser);
+  }
+
+  @Test
+  void testIsAccountLocked_lockTimeInFuture_returnsTrue() {
+    UserEntity user = new UserEntity();
+    user.setAccountLocked(true);
+    user.setLockTime(LocalDateTime.now().plusMinutes(10));
+
+    boolean result = serviceToTest.isAccountLocked(user);
+
+    Assertions.assertTrue(result);
+    Mockito.verify(mockedUserRepository, Mockito.never()).save(Mockito.any());
+  }
+
+  @Test
+  void testIsAccountLocked_LockTimeExpired_UnlocksAndReturnsFalse() {
+    UserEntity user = new UserEntity();
+    user.setAccountLocked(true);
+    user.setLockTime(LocalDateTime.now().minusMinutes(10));
+    user.setFailedLoginAttempts(3);
+
+    boolean result = serviceToTest.isAccountLocked(user);
+
+    Assertions.assertFalse(result);
+    Assertions.assertFalse(user.isAccountLocked());
+    Assertions.assertEquals(0, user.getFailedLoginAttempts());
+    Mockito.verify(mockedUserRepository).save(user);
+  }
+
+  @Test
+  void testIsAccountLocked_NotLocked_ReturnsFalse() {
+    UserEntity user = new UserEntity();
+    user.setAccountLocked(false); // or default false
+    user.setLockTime(null); // if allowed
+
+    boolean result = serviceToTest.isAccountLocked(user);
+
+    Assertions.assertFalse(result);
+    Mockito.verify(mockedUserRepository, Mockito.never()).save(Mockito.any());
   }
 }
