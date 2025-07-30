@@ -8,7 +8,6 @@ import com.example.pathfinder.service.RouteService;
 import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
