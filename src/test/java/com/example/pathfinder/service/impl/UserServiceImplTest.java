@@ -26,6 +26,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.util.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -447,11 +448,10 @@ public class UserServiceImplTest {
   @Test
   void increaseUserFailedLoginAttempts_whenFailedAttemptsIsNull() {
     Assertions.assertEquals(0, testUser.getFailedLoginAttempts());
-
   }
 
   @Test
-  void testIncreaseFailedLoginAttempts_LessThan5() {
+  void increaseFailedLoginAttempts_LessThan5() {
     UserEntity user = new UserEntity();
     user.setFailedLoginAttempts(2);
 
@@ -462,7 +462,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void testIncreaseFailedLoginAttempts_Exactly5FailedAttempts_UserLocked() {
+  void increaseFailedLoginAttempts_Exactly5FailedAttempts_UserLocked() {
     UserEntity user = new UserEntity();
     user.setFailedLoginAttempts(4);
 
@@ -474,7 +474,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void testIncreaseFailedLoginAttempts_Exactly3LockingTimes_UserDisabled() {
+  void increaseFailedLoginAttempts_Exactly3LockingTimes_UserDisabled() {
     UserEntity user = new UserEntity();
     user.setLockedAccountCounter(2);
     user.setFailedLoginAttempts(4);
@@ -499,5 +499,34 @@ public class UserServiceImplTest {
     Mockito.verify(mockedUserRepository).save(user);
   }
 
+  @Test
+  void testFindLockedUsers_ReturnsLockedUsers() {
+    // Arrange
+    UserEntity user1 = new UserEntity();
+    user1.setUsername("locked1");
+    user1.setAccountLocked(true);
+
+    UserEntity user2 = new UserEntity();
+    user2.setUsername("locked2");
+    user2.setAccountLocked(true);
+
+    List<UserEntity> lockedUsers = List.of(user1, user2);
+
+    // Mock repository call
+    Mockito.when(mockedUserRepository
+            .findAllLockedUsers())
+            .thenReturn(lockedUsers);
+
+    // Act
+    List<UserEntity> result = serviceToTest.findLockedUsers();
+
+    // Assert
+    Assertions.assertEquals(2, result.size());
+    Assertions.assertTrue(result.contains(user1));
+    Assertions.assertTrue(result.contains(user2));
+
+    // Verify repository delegation
+    Mockito.verify(mockedUserRepository).findAllLockedUsers();
+  }
 }
 
