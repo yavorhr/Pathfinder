@@ -487,5 +487,17 @@ public class UserServiceImplTest {
     Assertions.assertEquals(1, user.getTimesLocked());
   }
 
+  @Test
+  void testDisableUser_directCall() {
+    UserEntity user = new UserEntity();
+    user.setEnabled(true);
+
+    serviceToTest.disableUser(user);
+
+    Assertions.assertFalse(user.isEnabled());
+    Assertions.assertNotNull(user.getDisabledTime());
+    Mockito.verify(mockedUserRepository).save(user);
+  }
+
 }
 
