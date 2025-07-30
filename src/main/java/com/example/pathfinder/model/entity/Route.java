@@ -2,6 +2,8 @@ package com.example.pathfinder.model.entity;
 
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,6 +21,7 @@ public class Route extends BaseEntity {
   private Set<Comment> comments;
 
   public Route() {
+    this.pictures = new HashSet<>();
   }
 
   @Column(nullable = false)
