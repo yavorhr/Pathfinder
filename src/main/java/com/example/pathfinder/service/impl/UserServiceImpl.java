@@ -317,7 +317,6 @@ public class UserServiceImpl implements UserService {
     }
   }
 
-
   // Helpers
   private UserEntity updateUserEntity(UserProfileServiceModel serviceModel, UserEntity userEntity) {
     return userEntity
