@@ -609,17 +609,17 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findInactiveUsersSince_returnsListOfUsers(){
+  void findInactiveUsersSince_returnsListOfUsers() {
     //Arrange
-    testUser.setLastLoginTime(LocalDateTime.of(2023,3,3,3,21));
+    testUser.setLastLoginTime(LocalDateTime.of(2023, 3, 3, 3, 21));
 
     UserEntity user2 = new UserEntity();
     user2.setUsername("locked1");
-    user2.setLastLoginTime(LocalDateTime.of(2022,3,3,3,21));
+    user2.setLastLoginTime(LocalDateTime.of(2022, 3, 3, 3, 21));
 
     Mockito.when(mockedUserRepository.
-            findInactiveUsersSinceOneYear(LocalDateTime.of(2024,1,1,00,01)))
-            .thenReturn(List.of(testUser,user2));
+            findInactiveUsersSinceOneYear(LocalDateTime.of(2024, 1, 1, 00, 01)))
+            .thenReturn(List.of(testUser, user2));
 
     //Act
     List<UserEntity> users =
@@ -674,4 +674,15 @@ public class UserServiceImplTest {
   }
 
 
+  @Test
+  void resetFailedAttempts() {
+    testUser.setFailedLoginAttempts(3);
+
+    this.serviceToTest.resetFailedAttempts(testUser);
+
+    Assertions.assertEquals(0, testUser.getFailedLoginAttempts());
+
+
+    Mockito.verify(mockedUserRepository).save(testUser);
+  }
 }
