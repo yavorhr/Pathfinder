@@ -16,10 +16,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @ExtendWith(MockitoExtension.class)
 public class PictureServiceImplTest {
@@ -114,5 +112,9 @@ public class PictureServiceImplTest {
     Assertions.assertEquals(author, saved.getAuthor());
   }
 
-
+  @Test
+  void deletePicture(){
+    this.serviceToTest.deletePicture(picture.getPublicId());
+    Mockito.verify(mockedPictureRepository).deleteByPublicId(picture.getPublicId());
+  }
 }
