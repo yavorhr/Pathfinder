@@ -25,7 +25,6 @@ import java.util.Set;
 
 @ExtendWith(MockitoExtension.class)
 public class CommentServiceImplTest {
-
   @Mock
   private CommentRepository mockedCommentRepository;
 
