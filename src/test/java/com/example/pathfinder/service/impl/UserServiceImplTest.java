@@ -68,7 +68,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void testRegisterUser_ShouldMapEncodeAssignRoleAndPublishEvent() {
+  void registerUser_ShouldMapEncodeAssignRoleAndPublishEvent() {
     //Arrange
     UserRegisterServiceModel serviceModel = new UserRegisterServiceModel();
 
@@ -107,7 +107,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void testBeginnerLevelWhenRoutesAreThreeOrLess() {
+  void updateUserLevelByNumberOfAddedRoutes_testBeginnerLevel() {
     testUser.setRoutes(List.of(new Route(), new Route(), new Route()));
 
     serviceToTest.updateUserLevelByNumberOfAddedRoutes(new UpdateUserLevelEvent(testUser));
@@ -140,7 +140,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findByIdShouldReturnOptionalOfEmptyResult() {
+  void findById_returnsOptionalOfEmpty() {
     Mockito.when(mockedUserRepository.findById(2L))
             .thenReturn(Optional.empty());
 
@@ -150,7 +150,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findByIdReturnsOptionalOfUserEntity() {
+  void findById_ReturnsOptionalOfUserEntity() {
     //Arrange
     Mockito.when(mockedUserRepository.findById(1L))
             .thenReturn(Optional.of(testUser));
@@ -164,7 +164,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void testIfUsernameIsOccupied() {
+  void findByUsername_returnsOptionalOfUser() {
     Mockito.when(mockedUserRepository.findByUsername("testUser"))
             .thenReturn(Optional.of(testUser));
 
@@ -174,7 +174,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void testIfUsernameIsAvailable() {
+  void findByUsername_returnsOptionalEmpty() {
     Mockito.when(mockedUserRepository.findByUsername("available"))
             .thenReturn(Optional.empty());
 
@@ -184,7 +184,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void testIfEmailIsOccupied() {
+  void isEmailAvailable_returnsOptionalOfUser() {
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
 
@@ -195,7 +195,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void testIfEmailIsAvailable() {
+  void isEmailAvailable_returnsOptionalEmpty() {
     Mockito.when(mockedUserRepository.findByEmail("available@abv.bg"))
             .thenReturn(Optional.empty());
 
@@ -205,7 +205,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findUserByEmailShouldReturnOptionalOfUserEntity() {
+  void findByEmail_ShouldReturnOptionalOfUserEntity() {
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
 
@@ -214,14 +214,14 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findUserByEmailShouldThrowObjectNotFoundException() {
+  void findByEmail_ShouldThrowObjectNotFoundException() {
 
     Assertions.assertThrows(ObjectNotFoundException.class,
             () -> serviceToTest.findByEmail("invalidEmail"));
   }
 
   @Test
-  void deleteUserByEmailShouldDeleteTheUserFromTheDB() {
+  void deleteUser_ShouldDeleteTheUserFromTheDB() {
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
 
@@ -233,7 +233,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void deleteUserByEmailShouldThrowObjNotFoundExc() {
+  void deleteUser_ShouldThrowObjNotFoundExc() {
     Mockito.when(mockedUserRepository.findByEmail("invalidEmail@abv.bg"))
             .thenReturn(Optional.empty());
 
@@ -246,7 +246,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void updateUserProfilePictureSuccessfully() {
+  void updateUserProfilePicture_Successfully() {
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
 
@@ -259,7 +259,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void userUpdateStatusResponseThrowsObjNotFoundExc() {
+  void userUpdateStatusResponse_ThrowsObjNotFoundExc() {
     Mockito.when(mockedUserRepository.findByEmail("invalidEmail@abv.bg"))
             .thenReturn(Optional.empty());
 
@@ -269,7 +269,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void changeAccessWhenUserIsEnabled() {
+  void changeAccess_WhenUserIsEnabled() {
     // Arrange
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
@@ -292,7 +292,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void changeAccessWhenUserIsDisabled() {
+  void changeAccess_WhenUserIsDisabled() {
     // Arrange
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
@@ -317,7 +317,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findAllUsersMappedToUserNotificationViewModels() {
+  void findAllUsers_MappedToUserNotificationViewModels() {
     // Arrange
 
     // testUser
@@ -358,13 +358,13 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void updateUserRolesShouldThrowsObjNotFoundExc() {
+  void updateUserRoles_ShouldThrowsObjNotFoundExc() {
     Assertions.assertThrows(ObjectNotFoundException.class,
             () -> serviceToTest.updateUserRoles("invalidEmail@abv.bg", new String[3]));
   }
 
   @Test
-  void updateUserRolesSuccessfully() {
+  void updateUserRoles_successfully() {
     //Arrange
     UserRoleEntity adminRole = new UserRoleEntity();
     adminRole.setRole(UserRoleEnum.ADMIN);
@@ -389,12 +389,12 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void userIsNotAbleToModifyOwnProfile() {
+  void isNotModifyingOwnProfile_returnsTrue() {
     Assertions.assertTrue(serviceToTest.isNotModifyingOwnProfile("loggedInUser", "invalidUser"));
   }
 
   @Test
-  void updateUserDataShouldThrowObjNotFoundExc() {
+  void updateUserData_ShouldThrowObjNotFoundExc() {
     Long userId = 99L;
 
     UserProfileServiceModel serviceModel = new UserProfileServiceModel();
@@ -444,5 +444,8 @@ public class UserServiceImplTest {
     Mockito.verify(mockedUserRepository).save(Mockito.any(UserEntity.class));
     Mockito.verify(modelMapper).map(Mockito.any(UserEntity.class), Mockito.eq(UserProfileViewModel.class));
   }
+
+  @Test
+
 }
 
