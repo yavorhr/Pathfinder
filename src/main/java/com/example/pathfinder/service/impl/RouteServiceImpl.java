@@ -162,6 +162,7 @@ public class RouteServiceImpl implements RouteService {
     return categoriesSet;
   }
 
+  // Helpers
   private RouteViewModel mapToViewModel(Route r) {
     RouteViewModel viewModel = this.modelMapper.map(r, RouteViewModel.class);
 
