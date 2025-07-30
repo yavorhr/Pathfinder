@@ -117,7 +117,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void testIntermediateLevel_whenUserHas6OrMoreRoutes() {
+  void updateUserLevelByNumberOfAddedRoutes_testIntermediateLevel() {
     testUser.setRoutes(List.of(
             new Route(), new Route(), new Route(),
             new Route(), new Route(), new Route()));
@@ -129,7 +129,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void testAdvancedLevel_whenUserHas4Or5Routes() {
+  void updateUserLevelByNumberOfAddedRoutes_testAdvancedLevel() {
     testUser.setRoutes(List.of(
             new Route(), new Route(), new Route(), new Route()));
 
@@ -150,7 +150,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findById_ReturnsOptionalOfUserEntity() {
+  void findById_returnsOptionalOfUserEntity() {
     //Arrange
     Mockito.when(mockedUserRepository.findById(1L))
             .thenReturn(Optional.of(testUser));
@@ -205,7 +205,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findByEmail_ShouldReturnOptionalOfUserEntity() {
+  void findByEmail_returnsOptionalOfUserEntity() {
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
 
@@ -214,14 +214,14 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findByEmail_ShouldThrowObjectNotFoundException() {
+  void findByEmail_throwObjectNotFoundException() {
 
     Assertions.assertThrows(ObjectNotFoundException.class,
             () -> serviceToTest.findByEmail("invalidEmail"));
   }
 
   @Test
-  void deleteUser_ShouldDeleteTheUserFromTheDB() {
+  void deleteUser_deletesTheUserFromTheDB() {
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
 
@@ -233,7 +233,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void deleteUser_ShouldThrowObjNotFoundExc() {
+  void deleteUser_throwsObjNotFoundExc() {
     Mockito.when(mockedUserRepository.findByEmail("invalidEmail@abv.bg"))
             .thenReturn(Optional.empty());
 
@@ -246,7 +246,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void updateUserProfilePicture_Successfully() {
+  void updateUserProfilePicture_updatesSuccessful() {
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
 
@@ -259,7 +259,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void userUpdateStatusResponse_ThrowsObjNotFoundExc() {
+  void userUpdateStatusResponse_throwsObjNotFoundExc() {
     Mockito.when(mockedUserRepository.findByEmail("invalidEmail@abv.bg"))
             .thenReturn(Optional.empty());
 
@@ -269,7 +269,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void changeAccess_WhenUserIsEnabled() {
+  void changeAccess_whenUserIsEnabled() {
     // Arrange
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
@@ -292,7 +292,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void changeAccess_WhenUserIsDisabled() {
+  void changeAccess_whenUserIsDisabled() {
     // Arrange
     Mockito.when(mockedUserRepository.findByEmail("test@abv.bg"))
             .thenReturn(Optional.of(testUser));
@@ -317,7 +317,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void findAllUsers_MappedToUserNotificationViewModels() {
+  void findAllUsers_mappedToUserNotificationViewModels() {
     // Arrange
 
     // testUser
@@ -358,13 +358,13 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void updateUserRoles_ShouldThrowsObjNotFoundExc() {
+  void updateUserRoles_throwsObjNotFoundExc() {
     Assertions.assertThrows(ObjectNotFoundException.class,
             () -> serviceToTest.updateUserRoles("invalidEmail@abv.bg", new String[3]));
   }
 
   @Test
-  void updateUserRoles_successfully() {
+  void updateUserRoles_successfullyUpdatesRoles() {
     //Arrange
     UserRoleEntity adminRole = new UserRoleEntity();
     adminRole.setRole(UserRoleEnum.ADMIN);
@@ -394,7 +394,7 @@ public class UserServiceImplTest {
   }
 
   @Test
-  void updateUserData_ShouldThrowObjNotFoundExc() {
+  void updateUserData_throwsObjNotFoundExc() {
     Long userId = 99L;
 
     UserProfileServiceModel serviceModel = new UserProfileServiceModel();
