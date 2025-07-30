@@ -528,5 +528,66 @@ public class UserServiceImplTest {
     // Verify repository delegation
     Mockito.verify(mockedUserRepository).findAllLockedUsers();
   }
-}
 
+  @Test
+  void modifyLockStatus_throwsObjNotFoundExc() {
+    Assertions.assertThrows(ObjectNotFoundException.class,
+            () -> serviceToTest.modifyLockStatus("invalidEmail"));
+  }
+
+  @Test
+  void modifyLockStatus_setAccountToLocked() {
+    //Arrange
+    testUser.setAccountLocked(false);
+
+    UserUpdateStatusResponse response = new UserUpdateStatusResponse();
+    response.setAccountLocked(true);
+    response.setEmail(testUser.getEmail());
+
+    //Mock
+    Mockito.when(modelMapper.map(testUser, UserUpdateStatusResponse.class))
+            .thenReturn(response);
+
+    Mockito.when(mockedUserRepository
+            .findByEmail(testUser.getEmail()))
+            .thenReturn(Optional.of(testUser));
+
+    //Act
+    UserUpdateStatusResponse responseResult =
+            this.serviceToTest.modifyLockStatus(testUser.getEmail());
+
+    //Assert
+    Assertions.assertEquals(responseResult.getEmail(), testUser.getEmail());
+    Assertions.assertTrue(responseResult.isAccountLocked());
+    Mockito.verify(mockedUserRepository).save(testUser);
+    Mockito.verify(mockedUserRepository).findByEmail(testUser.getEmail());
+  }
+
+  @Test
+  void modifyLockStatus_setAccountToUnlocked() {
+    //Arrange
+    testUser.setAccountLocked(true);
+
+    UserUpdateStatusResponse response = new UserUpdateStatusResponse();
+    response.setAccountLocked(false);
+    response.setEmail(testUser.getEmail());
+
+    //Mock
+    Mockito.when(modelMapper.map(testUser, UserUpdateStatusResponse.class))
+            .thenReturn(response);
+
+    Mockito.when(mockedUserRepository
+            .findByEmail(testUser.getEmail()))
+            .thenReturn(Optional.of(testUser));
+
+    //Act
+    UserUpdateStatusResponse responseResult =
+            this.serviceToTest.modifyLockStatus(testUser.getEmail());
+
+    //Assert
+    Assertions.assertEquals(responseResult.getEmail(), testUser.getEmail());
+    Assertions.assertFalse(responseResult.isAccountLocked());
+    Mockito.verify(mockedUserRepository).save(testUser);
+    Mockito.verify(mockedUserRepository).findByEmail(testUser.getEmail());
+  }
+}
