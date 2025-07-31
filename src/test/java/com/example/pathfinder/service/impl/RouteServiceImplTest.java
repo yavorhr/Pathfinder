@@ -15,7 +15,6 @@ import com.example.pathfinder.service.CategoryService;
 import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.service.events.UpdateUserLevelEvent;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +27,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -134,6 +132,19 @@ public class RouteServiceImplTest {
   void findRouteByIdWithCanModifyProperty_returnsRouteServiceModel() {
     //1. Arrange
     RouteDetailsServiceModel serviceModel = new RouteDetailsServiceModel();
+    serviceModel.setName(route1.getName());
+
+
+    //1.1 Mock dependencies
+    Mockito.when(routeRepository.findById(1L)).thenReturn(Optional.of(route1));
+    Mockito.when(modelMapper.map(route1, RouteDetailsServiceModel.class)).thenReturn(serviceModel);
+
+    //2. Act
+    RouteDetailsServiceModel result =
+            this.serviceToTest.findRouteByIdWithCanModifyProperty("admin@abv.bg", 1L);
+
+    //3. Assert
+    Assertions.assertEquals(serviceModel.getName(),result.getName());
   }
 
   @Test
@@ -257,4 +268,6 @@ public class RouteServiceImplTest {
     Mockito.verify(routeRepository).save(route1);
     Mockito.verify(eventPublisher).publishEvent(Mockito.any(UpdateUserLevelEvent.class));
   }
+
+
 }
