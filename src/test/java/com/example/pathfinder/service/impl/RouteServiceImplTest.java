@@ -27,6 +27,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -71,9 +72,9 @@ public class RouteServiceImplTest {
     admin.setRoles(Set.of(new UserRoleEntity(UserRoleEnum.ADMIN), new UserRoleEntity(UserRoleEnum.USER)));
 
     user = new UserEntity();
-    user.setId(1L);
-    user.setEmail("admin@abv.bg");
-    user.setRoles(Set.of(new UserRoleEntity(UserRoleEnum.ADMIN), new UserRoleEntity(UserRoleEnum.USER)));
+    user.setId(2L);
+    user.setEmail("user@abv.bg");
+    user.setRoles(Set.of(new UserRoleEntity(UserRoleEnum.USER)));
 
     //Mock categories
     cat1 = new Category();
@@ -144,7 +145,7 @@ public class RouteServiceImplTest {
             this.serviceToTest.findRouteByIdWithCanModifyProperty("admin@abv.bg", 1L);
 
     //3. Assert
-    Assertions.assertEquals(serviceModel.getName(),result.getName());
+    Assertions.assertEquals(serviceModel.getName(), result.getName());
   }
 
   @Test
@@ -269,5 +270,25 @@ public class RouteServiceImplTest {
     Mockito.verify(eventPublisher).publishEvent(Mockito.any(UpdateUserLevelEvent.class));
   }
 
+  @Test
+  void isNotOwnerOrIsAdmin_isAdmin() {
 
+    Mockito.when(routeRepository.findById(1L)).thenReturn(Optional.of(route1));
+    Mockito.when(userService.findByEmail("admin@abv.bg")).thenReturn(admin);
+
+    boolean result = this.serviceToTest
+            .isNotOwnerOrIsAdmin("admin@abv.bg", 1L);
+
+    Assertions.assertTrue(result);
+  }
+
+  @Test
+  void isNotOwnerOrIsAdmin_isNotOwner() {
+    Mockito.when(routeRepository.findById(1L)).thenReturn(Optional.of(route1));
+
+    boolean result = this.serviceToTest
+            .isNotOwnerOrIsAdmin("user@abv.bg", 1L);
+
+    Assertions.assertTrue(result);
+  }
 }
