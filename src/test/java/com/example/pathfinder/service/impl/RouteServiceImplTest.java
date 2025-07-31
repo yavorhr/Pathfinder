@@ -21,6 +21,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -29,7 +30,7 @@ import java.util.Set;
 public class RouteServiceImplTest {
   private Route route1, route2;
   private RouteViewModel vm1, vm2;
-  private UserEntity admin;
+  private UserEntity admin, user;
 
   @Mock
   private RouteRepository routeRepository;
@@ -54,25 +55,33 @@ public class RouteServiceImplTest {
 
   @BeforeEach
   void setUp() {
+    //Mock users
+    admin = new UserEntity();
+    admin.setId(1L);
+    admin.setEmail("admin@abv.bg");
+    admin.setRoles(Set.of(new UserRoleEntity(UserRoleEnum.ADMIN), new UserRoleEntity(UserRoleEnum.USER)));
 
+    user = new UserEntity();
+    user.setId(1L);
+    user.setEmail("admin@abv.bg");
+    user.setRoles(Set.of(new UserRoleEntity(UserRoleEnum.ADMIN), new UserRoleEntity(UserRoleEnum.USER)));
+
+    //Mock routes
     route1 = new Route();
     route1.setId(1L);
     route1.setName("testRoute1");
+    route1.setAuthor(admin);
 
     route2 = new Route();
     route2.setId(2L);
     route2.setName("testRoute2");
+    route2.setAuthor(user);
 
     vm1 = new RouteViewModel();
     vm1.setName("testRoute1");
 
     vm2 = new RouteViewModel();
     vm2.setName("testRoute2");
-
-    admin = new UserEntity();
-    admin.setId(1L);
-    admin.setEmail("admin@abv.bg");
-    admin.setRoles(Set.of(new UserRoleEntity(UserRoleEnum.ADMIN), new UserRoleEntity(UserRoleEnum.USER)));
   }
 
   @Test
@@ -109,14 +118,29 @@ public class RouteServiceImplTest {
 
   }
 
-
   @Test
   void isAdmin() {
-    Mockito.when( userService.findByEmail("admin@abv.bg")).thenReturn(admin);
+    Mockito.when(userService.findByEmail("admin@abv.bg")).thenReturn(admin);
 
     boolean result = this.serviceToTest.isAdmin("admin@abv.bg");
 
     Assertions.assertTrue(result);
   }
+
+  @Test
+  void isOwner_throwsObjNotFoundExc() {
+    Assertions.assertThrows(ObjectNotFoundException.class,
+            () -> this.serviceToTest.isOwner("admin@abv.bg", 999L));
+  }
+
+  @Test
+  void isOwner_returnsTrue() {
+    Mockito.when(routeRepository.findById(1L)).thenReturn(Optional.of(route1));
+
+    boolean result = this.serviceToTest.isOwner("admin@abv.bg", 1L);
+
+    Assertions.assertTrue(result);
+  }
+
 
 }
