@@ -1,8 +1,10 @@
 package com.example.pathfinder.service.impl;
 
+import com.example.pathfinder.model.entity.Category;
 import com.example.pathfinder.model.entity.Route;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
+import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import com.example.pathfinder.model.service.RouteDetailsServiceModel;
 import com.example.pathfinder.model.view.RouteViewModel;
@@ -22,6 +24,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +36,7 @@ public class RouteServiceImplTest {
   private Route route1, route2;
   private RouteViewModel vm1, vm2;
   private UserEntity admin, user;
+  private Category cat1, cat2;
 
   @Mock
   private RouteRepository routeRepository;
@@ -59,6 +64,8 @@ public class RouteServiceImplTest {
     //Mock users
     admin = new UserEntity();
     admin.setId(1L);
+    admin.setFirstName("John");
+    admin.setLastName("Doe");
     admin.setEmail("admin@abv.bg");
     admin.setRoles(Set.of(new UserRoleEntity(UserRoleEnum.ADMIN), new UserRoleEntity(UserRoleEnum.USER)));
 
@@ -67,16 +74,24 @@ public class RouteServiceImplTest {
     user.setEmail("admin@abv.bg");
     user.setRoles(Set.of(new UserRoleEntity(UserRoleEnum.ADMIN), new UserRoleEntity(UserRoleEnum.USER)));
 
+    //Mock categories
+    cat1 = new Category();
+    cat1.setName(CategoryEnum.CAR);
+    cat2 = new Category();
+    cat2.setName(CategoryEnum.PEDESTRIAN);
+
     //Mock routes
     route1 = new Route();
     route1.setId(1L);
     route1.setName("testRoute1");
     route1.setAuthor(admin);
+    route1.setCategories(Set.of(cat1));
 
     route2 = new Route();
     route2.setId(2L);
     route2.setName("testRoute2");
     route2.setAuthor(user);
+    route2.setCategories(Set.of(cat2));
 
     vm1 = new RouteViewModel();
     vm1.setName("testRoute1");
@@ -116,7 +131,6 @@ public class RouteServiceImplTest {
   void findRouteByIdWithCanModifyProperty_returnsRouteServiceModel() {
     //1. Arrange
     RouteDetailsServiceModel serviceModel = new RouteDetailsServiceModel();
-
   }
 
   @Test
@@ -193,5 +207,32 @@ public class RouteServiceImplTest {
     Mockito.verify(routeRepository).delete(route1);
   }
 
+  @Test
+  void findMostCommentedRoute_shouldMapAllFieldsCorrectly() {
+    // 1. Arrange
+    Pageable topOne = PageRequest.of(0, 1);
 
+    RouteDetailsServiceModel expectedMappedModel = new RouteDetailsServiceModel();
+
+    expectedMappedModel.setName("testRoute1");
+    expectedMappedModel.setAuthorFullName("John Doe");
+    expectedMappedModel.setCategories(Set.of(CategoryEnum.CAR));
+    expectedMappedModel.setCanModify(true);
+
+    // Mock repository
+    Mockito.when(routeRepository.findMostCommentedRoute(topOne)).thenReturn(List.of(route1));
+    Mockito.when(routeRepository.findById(1L)).thenReturn(Optional.of(route1));
+    Mockito.when(modelMapper.map(route1, RouteDetailsServiceModel.class)).thenReturn(expectedMappedModel);
+
+    // Act
+    RouteDetailsServiceModel result = serviceToTest.findMostCommentedRoute(admin.getEmail());
+
+    // Assert
+    Assertions.assertEquals("John Doe", result.getAuthorFullName());
+    Assertions.assertEquals(Set.of(CategoryEnum.CAR), result.getCategories());
+    Assertions.assertTrue(result.isCanModify());
+  }
+
+  @Test
+ 
 }
