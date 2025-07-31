@@ -88,24 +88,9 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
-  public boolean isOwnerOrIsAdmin(String authorEmail, Long routeId) {
-    return isOwner(authorEmail, routeId) || isAdmin(authorEmail);
-  }
-
-  @Override
   public boolean isNotOwnerOrIsAdmin(String authorEmail, Long routeId) {
     return !isOwner(authorEmail, routeId) || isAdmin(authorEmail);
   }
-
-  @Override
-  public boolean isOwner(String authorEmail, Long routeId) {
-    var route = routeRepository.
-            findById(routeId).
-            orElseThrow(() -> new ObjectNotFoundException("Route with id " + routeId + " not found!"));
-
-    return route.getAuthor().getEmail().equals(authorEmail);
-  }
-
 
   @Override
   public List<RouteViewModel> findAllByCategory(String category) {
@@ -123,14 +108,6 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
-  public RouteDetailsServiceModel findMostCommentedRoute(String email) {
-    Pageable topOne = PageRequest.of(0, 1); // Fetch only the first result
-    Route route = routeRepository.findMostCommentedRoute(topOne).get(0);
-
-    return mapToRouteServiceModel(email, route);
-  }
-
-  @Override
   public void deleteRouteById(Long routeId) {
     Route route =
             this.routeRepository
@@ -140,26 +117,26 @@ public class RouteServiceImpl implements RouteService {
     this.routeRepository.delete(route);
   }
 
-  // Helpers
-  private boolean isAdmin(String authorEmail) {
-    var user = userService.findByEmail(authorEmail);
+  @Override
+  public RouteDetailsServiceModel findMostCommentedRoute(String email) {
+    Pageable topOne = PageRequest.of(0, 1);
+    Route route = routeRepository.findMostCommentedRoute(topOne).get(0);
 
-    return user.
-            getRoles().
-            stream().
-            map(UserRoleEntity::getRole).
-            anyMatch(r -> r == UserRoleEnum.ADMIN);
+    return mapToRouteServiceModel(email, route);
   }
 
-  private Set<Category> mapCategories(Set<CategoryEnum> categoryEnums) {
-    Set<Category> categoriesSet = new HashSet<>();
+  @Override
+  public boolean isOwner(String authorEmail, Long routeId) {
+    var route = routeRepository.
+            findById(routeId).
+            orElseThrow(() -> new ObjectNotFoundException("Route with id " + routeId + " not found!"));
 
-    categoryEnums.forEach(catEnum -> {
-      Category entity = this.categoryService.findByName(catEnum);
-      categoriesSet.add(entity);
-    });
+    return route.getAuthor().getEmail().equals(authorEmail);
+  }
 
-    return categoriesSet;
+  @Override
+  public boolean isOwnerOrIsAdmin(String authorEmail, Long routeId) {
+    return isOwner(authorEmail, routeId) || isAdmin(authorEmail);
   }
 
   // Helpers
@@ -171,6 +148,17 @@ public class RouteServiceImpl implements RouteService {
             : r.getPictures().stream().findAny().get().getUrl());
 
     return viewModel;
+  }
+
+  private Set<Category> mapCategories(Set<CategoryEnum> categoryEnums) {
+    Set<Category> categoriesSet = new HashSet<>();
+
+    categoryEnums.forEach(catEnum -> {
+      Category entity = this.categoryService.findByName(catEnum);
+      categoriesSet.add(entity);
+    });
+
+    return categoriesSet;
   }
 
   private RouteDetailsServiceModel mapToRouteServiceModel(String email, Route route) {
@@ -187,4 +175,15 @@ public class RouteServiceImpl implements RouteService {
 
     return serviceModel;
   }
+
+  protected boolean isAdmin(String authorEmail) {
+    var user = userService.findByEmail(authorEmail);
+
+    return user.
+            getRoles().
+            stream().
+            map(UserRoleEntity::getRole).
+            anyMatch(r -> r == UserRoleEnum.ADMIN);
+  }
+
 }
