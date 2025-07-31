@@ -1,9 +1,6 @@
 package com.example.pathfinder.service.impl;
 
-import com.example.pathfinder.model.entity.Category;
-import com.example.pathfinder.model.entity.Route;
-import com.example.pathfinder.model.entity.UserEntity;
-import com.example.pathfinder.model.entity.UserRoleEntity;
+import com.example.pathfinder.model.entity.*;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
 import com.example.pathfinder.model.service.AddRouteServiceModel;
@@ -91,11 +88,16 @@ public class RouteServiceImplTest {
     route1.setCategories(Set.of(cat1));
     route1.setPictures(new HashSet<>());
 
+    //Mock picture entity
+    Picture picture = new Picture();
+    picture.setUrl("testUrl");
+
     route2 = new Route();
     route2.setId(2L);
     route2.setName("testRoute2");
     route2.setAuthor(user);
     route2.setCategories(Set.of(cat2));
+    route2.setPictures(Set.of(picture));
 
     vm1 = new RouteViewModel();
     vm1.setName("testRoute1");
@@ -295,7 +297,7 @@ public class RouteServiceImplTest {
   }
 
   @Test
-  void findAllByCategory() {
+  void findAllByCategory_returnsListOfRouteViewModels() {
     //1.Arrange
     RouteViewModel routeViewModel = new RouteViewModel();
     routeViewModel.setName(route1.getName());
@@ -316,5 +318,26 @@ public class RouteServiceImplTest {
 
     Category category = expectedRoutes.get(0).getCategories().stream().findFirst().get();
     Assertions.assertEquals(CategoryEnum.CAR, category.getName());
+    Assertions.assertEquals("/images/pic4", viewModels.getFirst().getPictureUrl());
   }
+
+  @Test
+  void findAllByCategory_testIfThereAreImageUrl() {
+    RouteViewModel routeViewModel = new RouteViewModel();
+    routeViewModel.setName(route2.getName());
+
+    List<Route> expectedRoutes = List.of(route2);
+
+    //1.1. Mock dependencies
+    Mockito.when(categoryService.findByName(CategoryEnum.PEDESTRIAN)).thenReturn(cat2);
+    Mockito.when(routeRepository.findAllByCategories(Set.of(cat2))).thenReturn(Optional.of(expectedRoutes));
+    Mockito.when(modelMapper.map(route2, RouteViewModel.class)).thenReturn(routeViewModel);
+
+    //2. Act
+    List<RouteViewModel> viewModels = this.serviceToTest.findAllByCategory("PEDESTRIAN");
+
+    //3. Assert
+    Assertions.assertEquals("testUrl", viewModels.getFirst().getPictureUrl());
+  }
+
 }
