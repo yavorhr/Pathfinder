@@ -142,5 +142,23 @@ public class RouteServiceImplTest {
     Assertions.assertTrue(result);
   }
 
+  @Test
+  void findRouteByName_routeAlreadyExists() {
+    Mockito.when(routeRepository.findByName("testRoute1"))
+            .thenReturn(Optional.of(route1));
 
+    boolean result = this.serviceToTest.findRouteByName("testRoute1");
+
+    Assertions.assertFalse(result);
+  }
+
+  @Test
+  void findRouteByName_routeNotExists() {
+    Mockito.when(routeRepository.findByName("testRoute333"))
+            .thenReturn(Optional.empty());
+
+    boolean result = this.serviceToTest.findRouteByName("testRoute333");
+
+    Assertions.assertTrue(result);
+  }
 }
