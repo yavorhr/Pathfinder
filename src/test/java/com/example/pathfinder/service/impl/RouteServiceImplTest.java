@@ -1,10 +1,16 @@
 package com.example.pathfinder.service.impl;
 
 import com.example.pathfinder.model.entity.Route;
+import com.example.pathfinder.model.entity.UserEntity;
+import com.example.pathfinder.model.entity.UserRoleEntity;
+import com.example.pathfinder.model.entity.enums.UserRoleEnum;
+import com.example.pathfinder.model.service.RouteDetailsServiceModel;
 import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.repository.RouteRepository;
+import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.CategoryService;
 import com.example.pathfinder.service.UserService;
+import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,18 +21,21 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
-
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @ExtendWith(MockitoExtension.class)
 public class RouteServiceImplTest {
-  @InjectMocks
-  private RouteServiceImpl serviceToTest;
   private Route route1, route2;
   private RouteViewModel vm1, vm2;
+  private UserEntity admin;
 
   @Mock
   private RouteRepository routeRepository;
+
+  @Mock
+  private UserRepository userRepository;
 
   @Mock
   private ModelMapper modelMapper;
@@ -39,6 +48,9 @@ public class RouteServiceImplTest {
 
   @Mock
   private ApplicationEventPublisher eventPublisher;
+
+  @InjectMocks
+  private RouteServiceImpl serviceToTest;
 
   @BeforeEach
   void setUp() {
@@ -56,6 +68,11 @@ public class RouteServiceImplTest {
 
     vm2 = new RouteViewModel();
     vm2.setName("testRoute2");
+
+    admin = new UserEntity();
+    admin.setId(1L);
+    admin.setEmail("admin@abv.bg");
+    admin.setRoles(Set.of(new UserRoleEntity(UserRoleEnum.ADMIN), new UserRoleEntity(UserRoleEnum.USER)));
   }
 
   @Test
@@ -78,4 +95,28 @@ public class RouteServiceImplTest {
     Mockito.verify(modelMapper).map(route1, RouteViewModel.class);
     Mockito.verify(modelMapper).map(route2, RouteViewModel.class);
   }
+
+  @Test
+  void findRouteByIdWithCanModifyProperty_throwsObjNotFound() {
+    Assertions.assertThrows(ObjectNotFoundException.class, () ->
+            serviceToTest.findRouteByIdWithCanModifyProperty("testEmail", 333L));
+  }
+
+  @Test
+  void findRouteByIdWithCanModifyProperty_returnsRouteServiceModel() {
+    //1. Arrange
+    RouteDetailsServiceModel serviceModel = new RouteDetailsServiceModel();
+
+  }
+
+
+  @Test
+  void isAdmin() {
+    Mockito.when( userService.findByEmail("admin@abv.bg")).thenReturn(admin);
+
+    boolean result = this.serviceToTest.isAdmin("admin@abv.bg");
+
+    Assertions.assertTrue(result);
+  }
+
 }
