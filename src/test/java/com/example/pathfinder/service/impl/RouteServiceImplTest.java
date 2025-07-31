@@ -6,12 +6,14 @@ import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.UserRoleEnum;
+import com.example.pathfinder.model.service.AddRouteServiceModel;
 import com.example.pathfinder.model.service.RouteDetailsServiceModel;
 import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.repository.RouteRepository;
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.CategoryService;
 import com.example.pathfinder.service.UserService;
+import com.example.pathfinder.service.events.UpdateUserLevelEvent;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -30,6 +32,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @ExtendWith(MockitoExtension.class)
 public class RouteServiceImplTest {
@@ -234,5 +237,24 @@ public class RouteServiceImplTest {
   }
 
   @Test
- 
+  void addNewRoute_returnsIdOfTheNewRoute() {
+    //1. Arrange
+    AddRouteServiceModel serviceModel = new AddRouteServiceModel();
+    serviceModel.setAuthorId(admin.getId());
+    serviceModel.setName(route1.getName());
+    serviceModel.setCategories(route1.getCategories().stream().map(Category::getName).collect(Collectors.toSet()));
+
+    //1.1 Mock dependencies
+    Mockito.when(modelMapper.map(serviceModel, Route.class)).thenReturn(route1);
+    Mockito.when(userService.findByEmail(admin.getEmail())).thenReturn(admin);
+    Mockito.when(categoryService.findByName(CategoryEnum.CAR)).thenReturn(cat1);
+    Mockito.when(routeRepository.save(route1)).thenReturn(route1);
+
+    Long resultId = serviceToTest.addNewRoute(serviceModel, admin.getEmail());
+
+    // Assert
+    Assertions.assertEquals(1L, resultId);
+    Mockito.verify(routeRepository).save(route1);
+    Mockito.verify(eventPublisher).publishEvent(Mockito.any(UpdateUserLevelEvent.class));
+  }
 }
