@@ -164,7 +164,7 @@ public class RouteServiceImplTest {
   }
 
   @Test
-  void findRouteById_returnsOptionalRoute(){
+  void findRouteById_returnsOptionalRoute() {
     Mockito.when(routeRepository.findById(1L)).thenReturn(Optional.of(route1));
 
     Optional<Route> route = this.serviceToTest.findRouteById(1L);
@@ -172,12 +172,26 @@ public class RouteServiceImplTest {
   }
 
   @Test
-  void findRouteById_returnsOptionalEmpty(){
+  void findRouteById_returnsOptionalEmpty() {
     Mockito.when(routeRepository.findById(222L)).thenReturn(Optional.empty());
 
     Optional<Route> route = this.serviceToTest.findRouteById(222L);
     Assertions.assertTrue(route.isEmpty());
   }
 
- 
+  @Test
+  void deleteRouteById_throwsObjNotFound() {
+    Assertions.assertThrows(ObjectNotFoundException.class, () -> this.serviceToTest.deleteRouteById(333L));
+  }
+
+  @Test
+  void deleteRouteById_deletesRoute() {
+    Mockito.when(routeRepository.findById(1L)).thenReturn(Optional.of(route1));
+
+    this.serviceToTest.deleteRouteById(1L);
+
+    Mockito.verify(routeRepository).delete(route1);
+  }
+
+
 }
