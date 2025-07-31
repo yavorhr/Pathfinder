@@ -11,6 +11,7 @@ import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.service.CategoryService;
 import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -161,4 +162,22 @@ public class RouteServiceImplTest {
 
     Assertions.assertTrue(result);
   }
+
+  @Test
+  void findRouteById_returnsOptionalRoute(){
+    Mockito.when(routeRepository.findById(1L)).thenReturn(Optional.of(route1));
+
+    Optional<Route> route = this.serviceToTest.findRouteById(1L);
+    Assertions.assertEquals(route1, route.get());
+  }
+
+  @Test
+  void findRouteById_returnsOptionalEmpty(){
+    Mockito.when(routeRepository.findById(222L)).thenReturn(Optional.empty());
+
+    Optional<Route> route = this.serviceToTest.findRouteById(222L);
+    Assertions.assertTrue(route.isEmpty());
+  }
+
+ 
 }
