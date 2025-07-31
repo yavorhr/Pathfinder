@@ -28,6 +28,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -88,6 +89,7 @@ public class RouteServiceImplTest {
     route1.setName("testRoute1");
     route1.setAuthor(admin);
     route1.setCategories(Set.of(cat1));
+    route1.setPictures(new HashSet<>());
 
     route2 = new Route();
     route2.setId(2L);
@@ -290,5 +292,29 @@ public class RouteServiceImplTest {
             .isNotOwnerOrIsAdmin("user@abv.bg", 1L);
 
     Assertions.assertTrue(result);
+  }
+
+  @Test
+  void findAllByCategory() {
+    //1.Arrange
+    RouteViewModel routeViewModel = new RouteViewModel();
+    routeViewModel.setName(route1.getName());
+
+    List<Route> expectedRoutes = List.of(route1);
+
+    //1.1. Mock dependencies
+    Mockito.when(categoryService.findByName(CategoryEnum.CAR)).thenReturn(cat1);
+    Mockito.when(routeRepository.findAllByCategories(Set.of(cat1))).thenReturn(Optional.of(expectedRoutes));
+    Mockito.when(modelMapper.map(route1, RouteViewModel.class)).thenReturn(routeViewModel);
+
+    //2. Act
+    List<RouteViewModel> viewModels = this.serviceToTest.findAllByCategory("CAR");
+
+    //3. Assert
+    Assertions.assertEquals(expectedRoutes.size(), viewModels.size());
+    Assertions.assertEquals("testRoute1", expectedRoutes.get(0).getName());
+
+    Category category = expectedRoutes.get(0).getCategories().stream().findFirst().get();
+    Assertions.assertEquals(CategoryEnum.CAR, category.getName());
   }
 }
