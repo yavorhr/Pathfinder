@@ -9,6 +9,13 @@ public class CommentViewModel {
   private boolean canModify;
 
   public CommentViewModel() {
+
+  }
+
+  public CommentViewModel(Long commentId, String textContent, String author) {
+    this.commentId = commentId;
+    this.textContent = textContent;
+    this.author = author;
   }
 
   public boolean isCanModify() {
