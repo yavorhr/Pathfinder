@@ -14,7 +14,7 @@ public class Category extends BaseEntity {
   public Category() {
   }
 
-  @Column(columnDefinition = "TEXT")
+  @Lob
   public String getDescription() {
     return description;
   }

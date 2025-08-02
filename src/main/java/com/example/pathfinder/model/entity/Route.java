@@ -54,13 +54,13 @@ public class Route extends BaseEntity {
     return distance;
   }
 
-  @Column(columnDefinition = "TEXT", nullable = false)
+  @Lob
   public String getDescription() {
     return description;
   }
 
   @Lob
-  @Column(name = "gpx_coordinates", columnDefinition = "LONGTEXT")
+  @Column(name = "gpx_coordinates")
   public String getGpxCoordinates() {
     return gpxCoordinates;
   }
