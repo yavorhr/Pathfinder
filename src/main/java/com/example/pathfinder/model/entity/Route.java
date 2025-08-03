@@ -34,7 +34,7 @@ public class Route extends BaseEntity {
     return categories;
   }
 
-  @OneToMany(mappedBy = "route", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "route", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   public Set<Comment> getComments() {
     return comments;
   }
