@@ -6,6 +6,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import com.example.pathfinder.model.binding.NewCommentBindingModel;
 import com.example.pathfinder.model.entity.Comment;
 import com.example.pathfinder.model.entity.Route;
 import com.example.pathfinder.model.entity.UserEntity;
@@ -14,14 +19,17 @@ import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.repository.RouteRepository;
 import com.example.pathfinder.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hamcrest.text.MatchesPattern;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.RequestPostProcessor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -76,6 +84,27 @@ class CommentRestControllerTest {
             andExpect(jsonPath("$[*].textContent", containsInAnyOrder(COMMENT_1, COMMENT_2)));
   }
 
+  @Test
+  void testCreateComments() throws Exception {
+    NewCommentBindingModel testComment = new NewCommentBindingModel().
+            setMessage(COMMENT_1);
+
+    var emptyRoute = initRoute();
+
+    mockMvc.perform(
+            post("/api/" + emptyRoute.getId() + "/add-comment")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(objectMapper.writeValueAsString(testComment))
+                    .accept(MediaType.APPLICATION_JSON)
+                    .with(csrf()))
+            .andExpect(status().isCreated())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(header().string("Location", MatchesPattern.matchesPattern("/api/" + emptyRoute.getId() + "/comments/\\d")))
+            .andExpect(jsonPath("$.textContent").value(is(COMMENT_1)));
+  }
+
+
+  // Helpers
   private Route initRoute() {
     Route testRoute = new Route();
     testRoute.setName("Testing route");
@@ -106,5 +135,4 @@ class CommentRestControllerTest {
 
     return routeRepository.save(route);
   }
-
 }
