@@ -20,7 +20,6 @@ public class CategoryServiceImplTest {
   private Category testCategory;
   private CategoryServiceImpl serviceToTest;
 
-
   @BeforeEach
   void init() {
     this.serviceToTest = new CategoryServiceImpl(mockRepository);
