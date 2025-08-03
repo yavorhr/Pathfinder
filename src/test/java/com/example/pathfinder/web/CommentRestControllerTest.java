@@ -2,6 +2,9 @@ package com.example.pathfinder.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.hasSize;
 import com.example.pathfinder.model.entity.Comment;
 import com.example.pathfinder.model.entity.Route;
 import com.example.pathfinder.model.entity.UserEntity;
@@ -22,13 +25,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-
 @WithMockUser(username = "yavor@abv.bg", roles = {"ADMIN, USER"})
 @SpringBootTest
 @AutoConfigureMockMvc
 class CommentRestControllerTest {
-  private static final String COMMENT_1 = "hey Spring is cool!";
-  private static final String COMMENT_2 = "Well... it is a bit trick sometimes... :(";
+  private static final String COMMENT_1 = "Well... it is a bit trick sometimes... :(";
+  private static final String COMMENT_2 = "hey Spring is cool!";
 
   @Autowired
   private MockMvc mockMvc;
@@ -67,11 +69,11 @@ class CommentRestControllerTest {
     var route = initComments(initRoute());
 
     mockMvc.perform(get("/api/" + route.getId() + "/comments")).
-            andExpect(status().isOk()); }
-//            andExpect(jsonPath("$", hasSize(2))).
-//            andExpect(jsonPath("$.[0].message", is(COMMENT_1))).
-//            andExpect(jsonPath("$.[1].message", is(COMMENT_2)));
-//  }
+            andExpect(status().isOk()).
+            andExpect(jsonPath("$", hasSize(2))).
+            andExpect(jsonPath("$.[0].textContent", is(COMMENT_1))).
+            andExpect(jsonPath("$.[1].textContent", is(COMMENT_2)));
+  }
 
   private Route initRoute() {
     Route testRoute = new Route();
