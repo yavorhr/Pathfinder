@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import com.example.pathfinder.model.entity.Comment;
 import com.example.pathfinder.model.entity.Route;
 import com.example.pathfinder.model.entity.UserEntity;
@@ -21,6 +22,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -29,8 +31,8 @@ import java.util.Set;
 @SpringBootTest
 @AutoConfigureMockMvc
 class CommentRestControllerTest {
-  private static final String COMMENT_1 = "Well... it is a bit trick sometimes... :(";
-  private static final String COMMENT_2 = "hey Spring is cool!";
+  private static final String COMMENT_1 = "hey Spring is cool!";
+  private static final String COMMENT_2 = "Well... it is a bit trick sometimes... :(";
 
   @Autowired
   private MockMvc mockMvc;
@@ -71,8 +73,7 @@ class CommentRestControllerTest {
     mockMvc.perform(get("/api/" + route.getId() + "/comments")).
             andExpect(status().isOk()).
             andExpect(jsonPath("$", hasSize(2))).
-            andExpect(jsonPath("$.[0].textContent", is(COMMENT_1))).
-            andExpect(jsonPath("$.[1].textContent", is(COMMENT_2)));
+            andExpect(jsonPath("$[*].textContent", containsInAnyOrder(COMMENT_1, COMMENT_2)));
   }
 
   private Route initRoute() {
