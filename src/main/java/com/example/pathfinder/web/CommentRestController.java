@@ -31,7 +31,6 @@ public class CommentRestController {
     return ResponseEntity.ok(commentService.getAllComments(routeId));
   }
 
-//  @PreAuthorize("@routeServiceImpl.isNotOwnerOrIsAdmin(#principal.username, #routeId)")
   @PostMapping("/api/{routeId}/add-comment")
   public ResponseEntity<CommentViewModel> newComment(
           @AuthenticationPrincipal UserDetails principal,
