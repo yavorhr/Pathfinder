@@ -42,16 +42,12 @@ class CommentRestControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
-
   @Autowired
   private RouteRepository routeRepository;
-
   @Autowired
   private UserRepository userRepository;
-
   @Autowired
   private ObjectMapper objectMapper;
-
   private UserEntity testUser;
 
   @BeforeEach
