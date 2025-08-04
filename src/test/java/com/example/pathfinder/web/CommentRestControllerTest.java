@@ -58,7 +58,6 @@ class CommentRestControllerTest {
     testUser.setEmail("yavor@abv.bg");
     testUser.setFirstName("admin");
     testUser.setLastName("adminov").setBirthday(LocalDate.now()).setGender(GenderEnum.MALE);
-
     testUser = userRepository.save(testUser);
   }
 
@@ -96,7 +95,6 @@ class CommentRestControllerTest {
             .andExpect(header().string("Location", MatchesPattern.matchesPattern("/api/" + emptyRoute.getId() + "/comments/\\d")))
             .andExpect(jsonPath("$.textContent").value(is(COMMENT_1)));
   }
-
 
   // Helpers
   private Route initRoute() {
