@@ -111,7 +111,7 @@ class CommentRestControllerTest {
             .andExpect(jsonPath("$.fieldWithErrors").isArray())
             .andExpect(jsonPath("$.fieldWithErrors[0]").value("message")).andDo(print());
   }
-  
+
   // Helpers
   private Route initRoute() {
     Route testRoute = new Route();
