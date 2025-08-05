@@ -41,7 +41,7 @@ public class AdminController {
 
     return "notifications";
   }
-  
+
   @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #email)")
   @PutMapping("/admin/change-user-access/{email}")
   @ResponseBody
@@ -79,7 +79,6 @@ public class AdminController {
   @ResponseBody
   public ResponseEntity<UserUpdateStatusResponse> changeUserLockStatus(@PathVariable String email,
                                                                        @AuthenticationPrincipal UserDetails principal) {
-
     UserUpdateStatusResponse statusResponse = this.userService.modifyLockStatus(email);
 
     return ResponseEntity.ok(statusResponse);
