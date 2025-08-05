@@ -18,6 +18,8 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -74,4 +76,19 @@ public class PicturesControllerTest {
             .andExpect(jsonPath("$.url").value("https://cloudinary.com/test.jpg"))
             .andExpect(jsonPath("$.publicId").value("test_public_id"));
   }
+
+  @Test
+  void uploadProfilePicture_shouldHandleIOException() throws Exception {
+    MockMultipartFile file = new MockMultipartFile("file", "bad.jpg", MediaType.IMAGE_JPEG_VALUE, "bad content".getBytes());
+
+    Mockito.when(cloudinaryService.upload(any(), eq("users-pictures")))
+            .thenThrow(new IOException("Upload failed"));
+
+    mockMvc.perform(multipart("/api/profile/image-upload")
+            .file(file)
+            .with(csrf()))
+            .andExpect(status().isInternalServerError())
+            .andExpect(jsonPath("$.error").value("Upload failed"));
+  }
+
 }
