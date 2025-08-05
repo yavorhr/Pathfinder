@@ -44,7 +44,7 @@ public class AdminController {
 
   @PostMapping("/admin/remove-user/{email}")
   @ResponseBody
-  public ResponseEntity<String> deleteUserById(@PathVariable String email) {
+  public ResponseEntity<String> deleteUserByEmail(@PathVariable String email) {
     this.userService.deleteUser(email);
 //    this.notificationService.deleteNotification(email);
     return ResponseEntity.ok("User with email " + email + " has been deleted.");
