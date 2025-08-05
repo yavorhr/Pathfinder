@@ -60,6 +60,7 @@ public class PageViewsController {
     redis.delete("views:sorted");
 
     Set<String> keys = redis.keys("views:*");
+
     if (keys != null) {
       redis.delete(keys);
     }
