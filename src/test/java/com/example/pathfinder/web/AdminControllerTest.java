@@ -1,7 +1,6 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.binding.RoleUpdateRequest;
-import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.GenderEnum;
@@ -13,21 +12,13 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.repository.UserRoleRepository;
-import com.example.pathfinder.service.UserRolesService;
-import com.example.pathfinder.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hamcrest.text.MatchesPattern;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -47,7 +38,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AdminControllerTest {
 
   private UserEntity testUser;
-  private UserRoleEntity role;
+  private UserRoleEntity adminRole, moderatorRole, userRole;
+
 
   @Autowired
   private MockMvc mockMvc;
@@ -62,8 +54,10 @@ public class AdminControllerTest {
 
   @BeforeEach
   void setUp() {
-    role = new UserRoleEntity(UserRoleEnum.ADMIN);
-    roleRepository.save(role);
+    adminRole = new UserRoleEntity(UserRoleEnum.ADMIN);
+    moderatorRole = new UserRoleEntity(UserRoleEnum.MODERATOR);
+    userRole = new UserRoleEntity(UserRoleEnum.USER);
+    roleRepository.saveAll(List.of(adminRole, moderatorRole, userRole));
 
     testUser = new UserEntity();
     testUser.setPassword("password");
@@ -72,7 +66,7 @@ public class AdminControllerTest {
     testUser.setEmail("admin@abv.bg");
     testUser.setFirstName("admin");
     testUser.setLastName("adminov").setBirthday(LocalDate.now()).setGender(GenderEnum.MALE);
-    testUser.setRoles(Set.of(role));
+    testUser.setRoles(Set.of(adminRole));
 
     testUser = userRepository.save(testUser);
   }
@@ -99,10 +93,10 @@ public class AdminControllerTest {
 
   @Test
   void deleteUserByEmail_shouldReturnOkResponse() throws Exception {
-    mockMvc.perform(post("/admin/remove-user/admin@abv.bg")
+    mockMvc.perform(delete("/admin/api/remove-user/admin@abv.bg")
             .with(csrf()))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("admin@abv.bg"))).andDo(print());
+            .andExpect(content().string("User deleted successfully!"));
   }
 
   @Test
@@ -117,7 +111,21 @@ public class AdminControllerTest {
             .andDo(print());
   }
 
+  @Test
+  void updateRoles_shouldUpdateAndReturnSuccessMessage() throws Exception {
+    RoleUpdateRequest request = new RoleUpdateRequest();
+    request.setEmail(testUser.getEmail());
+    request.setRoles(new String[]{"USER", "MODERATOR"});
 
+    String json = new ObjectMapper().writeValueAsString(request);
 
+    mockMvc.perform(patch("/admin/api/update-roles")
+            .with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json))
+            .andExpect(status().isOk())
+            .andExpect(content().string("Roles updated successfully"))
+            .andDo(print());
+  }
 }
 
