@@ -20,7 +20,9 @@ import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -68,5 +70,15 @@ public class PageViewsControllerTest {
             .andExpect(content().string(containsString("/home")))
             .andExpect(content().string(containsString("/about")))
             .andExpect(content().string(containsString("/contact")));
+  }
+
+  @Test
+  void resetStats_shouldClearAllViewKeysAndRedirect() throws Exception {
+
+    mockMvc.perform(post("/admin/statistics/reset")
+            .with(csrf()))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/admin/statistics"));
+
   }
 }
