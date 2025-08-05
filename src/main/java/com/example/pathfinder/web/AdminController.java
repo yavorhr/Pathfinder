@@ -41,15 +41,7 @@ public class AdminController {
 
     return "notifications";
   }
-
-  @PostMapping("/admin/remove-user/{email}")
-  @ResponseBody
-  public ResponseEntity<String> deleteUserByEmail(@PathVariable String email) {
-    this.userService.deleteUser(email);
-//    this.notificationService.deleteNotification(email);
-    return ResponseEntity.ok("User with email " + email + " has been deleted.");
-  }
-
+  
   @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #email)")
   @PutMapping("/admin/change-user-access/{email}")
   @ResponseBody
