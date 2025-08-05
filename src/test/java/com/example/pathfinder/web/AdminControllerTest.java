@@ -1,5 +1,7 @@
 package com.example.pathfinder.web;
 
+import com.example.pathfinder.model.binding.RoleUpdateRequest;
+import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.GenderEnum;
@@ -8,12 +10,12 @@ import com.example.pathfinder.model.view.UserNotificationViewModel;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.example.pathfinder.repository.UserRepository;
 import com.example.pathfinder.repository.UserRoleRepository;
 import com.example.pathfinder.service.UserRolesService;
 import com.example.pathfinder.service.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.text.MatchesPattern;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +37,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -55,6 +57,8 @@ public class AdminControllerTest {
   @Autowired
   private UserRoleRepository roleRepository;
 
+  @Autowired
+  private ObjectMapper objectMapper;
 
   @BeforeEach
   void setUp() {
@@ -63,6 +67,7 @@ public class AdminControllerTest {
 
     testUser = new UserEntity();
     testUser.setPassword("password");
+    testUser.setEnabled(true);
     testUser.setUsername("admin");
     testUser.setEmail("admin@abv.bg");
     testUser.setFirstName("admin");
@@ -93,12 +98,25 @@ public class AdminControllerTest {
   }
 
   @Test
-  void deleteUserById_shouldReturnOkResponse() throws Exception {
+  void deleteUserByEmail_shouldReturnOkResponse() throws Exception {
     mockMvc.perform(post("/admin/remove-user/admin@abv.bg")
             .with(csrf()))
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("admin@abv.bg"))).andDo(print());
   }
+
+  @Test
+  void changeUserAccess_shouldReturnUpdatedStatus() throws Exception {
+
+    mockMvc.perform(put("/admin/change-user-access/admin@abv.bg")
+            .with(csrf()))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.email").value("admin@abv.bg"))
+            .andExpect(jsonPath("$.enabled").value(false))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andDo(print());
+  }
+
 
 
 }
