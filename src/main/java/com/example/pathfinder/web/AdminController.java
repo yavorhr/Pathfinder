@@ -47,7 +47,7 @@ public class AdminController {
   public ResponseEntity<String> deleteUserById(@PathVariable String email) {
     this.userService.deleteUser(email);
 //    this.notificationService.deleteNotification(email);
-    return ResponseEntity.ok("User with email" + email + " has been deleted.");
+    return ResponseEntity.ok("User with email " + email + " has been deleted.");
   }
 
   @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #email)")
