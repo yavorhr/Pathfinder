@@ -23,4 +23,12 @@ public class HomeControllerTest {
             .andExpect(view().name("index"))
             .andExpect(model().attributeExists("pictures"));
   }
+
+  @Test
+  void testGetHomePage_returnsAboutPage() throws Exception {
+
+    mockMvc.perform(get("/about")).
+            andExpect(status().isOk())
+            .andExpect(view().name("about"));
+  }
 }
