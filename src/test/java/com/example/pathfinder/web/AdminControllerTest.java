@@ -1,6 +1,7 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.binding.RoleUpdateRequest;
+import com.example.pathfinder.model.common.UserUpdateStatusResponse;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.GenderEnum;
@@ -22,12 +23,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -39,7 +38,6 @@ public class AdminControllerTest {
 
   private UserEntity testUser;
   private UserRoleEntity adminRole, moderatorRole, userRole;
-
 
   @Autowired
   private MockMvc mockMvc;
@@ -67,6 +65,7 @@ public class AdminControllerTest {
     testUser.setFirstName("admin");
     testUser.setLastName("adminov").setBirthday(LocalDate.now()).setGender(GenderEnum.MALE);
     testUser.setRoles(Set.of(adminRole));
+    testUser.setAccountLocked(false);
 
     testUser = userRepository.save(testUser);
   }
@@ -125,6 +124,26 @@ public class AdminControllerTest {
             .content(json))
             .andExpect(status().isOk())
             .andExpect(content().string("Roles updated successfully"))
+            .andDo(print());
+  }
+
+  @Test
+  void changeUserLockStatus_shouldReturnStatusResponse() throws Exception {
+    UserUpdateStatusResponse response = new UserUpdateStatusResponse();
+    response.setEmail(testUser.getEmail());
+    response.setAccountLocked(false);
+    response.setEnabled(testUser.isEnabled());
+    response.setRoles(testUser.getRoles().stream().map(UserRoleEntity::getRole).collect(Collectors.toSet()));
+
+    String json = new ObjectMapper().writeValueAsString(response);
+
+    mockMvc.perform(put("/admin/change-user-lock-status/admin@abv.bg")
+            .with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.email").value("admin@abv.bg"))
+            .andExpect(jsonPath("$.accountLocked").value(true))
             .andDo(print());
   }
 }
