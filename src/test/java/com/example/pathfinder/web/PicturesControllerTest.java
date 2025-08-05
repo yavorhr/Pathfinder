@@ -1,8 +1,10 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.entity.UserEntity;
+import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.GenderEnum;
 import com.example.pathfinder.repository.UserRepository;
+import com.example.pathfinder.service.RouteService;
 import com.example.pathfinder.util.cloudinary.CloudinaryImage;
 import com.example.pathfinder.util.cloudinary.CloudinaryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,22 +20,19 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@WithMockUser(username = "admin@abv.bg", roles = {"ADMIN, USER"})
+@WithMockUser(username = "admin@abv.bg", roles = {"ADMIN", "USER"})
 public class PicturesControllerTest {
   @Autowired
   private MockMvc mockMvc;
@@ -44,6 +43,8 @@ public class PicturesControllerTest {
   private UserEntity testUser;
   @Autowired
   private UserRepository userRepository;
+  @MockBean
+  private RouteService routeService;
 
   @BeforeEach
   void setUp() {
@@ -57,7 +58,7 @@ public class PicturesControllerTest {
   }
 
   @AfterEach
-  void tearDown(){
+  void tearDown() {
     userRepository.deleteAll();
   }
 
@@ -118,5 +119,21 @@ public class PicturesControllerTest {
             .content(objectMapper.writeValueAsString(Map.of("publicId", "fail-id"))))
             .andExpect(status().isInternalServerError())
             .andExpect(jsonPath("$.error").value("Failed to delete image"));
+  }
+
+  @Test
+  void deletePicture_shouldDeleteAndRedirect() throws Exception {
+    String publicId = "test_public_id";
+    Long routeId = 123L;
+
+    Mockito.when(routeService.isOwnerOrIsAdmin(eq("admin@abv.bg"), eq(routeId))).thenReturn(true);
+    Mockito.when(cloudinaryService.delete(publicId)).thenReturn(true);
+
+    mockMvc.perform(delete("/pictures/delete")
+            .param("public_id", publicId)
+            .param("routeId", String.valueOf(routeId))
+            .with(csrf()))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/routes/details/" + routeId));
   }
 }
