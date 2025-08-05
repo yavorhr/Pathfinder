@@ -17,7 +17,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Map;
 
 @Controller
@@ -49,11 +51,12 @@ public class PicturesController {
     return "redirect:/routes/details/" + bindingModel.getRouteId();
   }
 
-  @PreAuthorize("@routeServiceImpl.isOwnerOrIsAdmin(#principal.username, #routeId)")
+  @PreAuthorize("@routeServiceImpl.isOwnerOrIsAdmin(#principal.name, #routeId)")
   @Transactional
   @DeleteMapping("/pictures/delete")
   public String delete(@RequestParam("public_id") String publicId, @RequestParam("routeId") String routeId,
-                       @AuthenticationPrincipal PathfinderUser principal) {
+                       Principal principal) {
+
     if (cloudinaryService.delete(publicId)) {
       pictureService.deletePicture(publicId);
     }
@@ -65,11 +68,11 @@ public class PicturesController {
   @ResponseBody
   @PostMapping("/api/profile/image-upload")
   public ResponseEntity<Map<String, String>> uploadProfilePicture(@RequestParam("file") MultipartFile file,
-  @AuthenticationPrincipal UserDetails principal) {
+                                                                  @AuthenticationPrincipal UserDetails principal) {
     try {
       CloudinaryImage uploadedImage = cloudinaryService.upload(file, "users-pictures");
 
-      this.userService.updateUsersProfilePicture(principal.getUsername(),uploadedImage.getUrl(), uploadedImage.getPublicId());
+      this.userService.updateUsersProfilePicture(principal.getUsername(), uploadedImage.getUrl(), uploadedImage.getPublicId());
 
       return ResponseEntity.ok(Map.of(
               "url", uploadedImage.getUrl(),
@@ -99,7 +102,7 @@ public class PicturesController {
     PictureAddServiceModel serviceModel =
             this.modelMapper.map(bindingModel, PictureAddServiceModel.class);
 
-/*    serviceModel.setAuthorId(this.currentUser.getId());*/
+    /*    serviceModel.setAuthorId(this.currentUser.getId());*/
     serviceModel.setPublicId(image.getPublicId());
     serviceModel.setUrl(image.getUrl());
 
