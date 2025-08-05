@@ -91,5 +91,15 @@ public class AdminControllerTest {
             .andExpect(view().name("notifications"))
             .andExpect(model().attributeExists("usersPage", "users", "loggedInUserEmail", "query", "currentPage", "totalPages"));
   }
+
+  @Test
+  void deleteUserById_shouldReturnOkResponse() throws Exception {
+    mockMvc.perform(post("/admin/remove-user/admin@abv.bg")
+            .with(csrf()))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("admin@abv.bg"))).andDo(print());
+  }
+
+
 }
 
