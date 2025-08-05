@@ -1,6 +1,7 @@
 package com.example.pathfinder.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.hamcrest.Matchers.is;
@@ -96,6 +97,21 @@ class CommentRestControllerTest {
             .andExpect(jsonPath("$.textContent").value(is(COMMENT_1)));
   }
 
+  @Test
+  void newComment_shouldFailValidation() throws Exception {
+    NewCommentBindingModel invalidInput = new NewCommentBindingModel();
+    invalidInput.setMessage("");
+
+    mockMvc.perform(post("/api/1/add-comment")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(invalidInput))
+            .with(csrf()))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.status").value("BAD_REQUEST"))
+            .andExpect(jsonPath("$.fieldWithErrors").isArray())
+            .andExpect(jsonPath("$.fieldWithErrors[0]").value("message")).andDo(print());
+  }
+  
   // Helpers
   private Route initRoute() {
     Route testRoute = new Route();
