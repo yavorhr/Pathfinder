@@ -21,9 +21,12 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Map;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -32,7 +35,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WithMockUser(username = "admin@abv.bg", roles = {"ADMIN, USER"})
 public class PicturesControllerTest {
-
   @Autowired
   private MockMvc mockMvc;
   @Autowired
@@ -61,7 +63,9 @@ public class PicturesControllerTest {
 
   @Test
   void uploadProfilePicture_shouldReturnUrlAndPublicId() throws Exception {
-    MockMultipartFile file = new MockMultipartFile("file", "test.jpg", MediaType.IMAGE_JPEG_VALUE, "test content".getBytes());
+    MockMultipartFile file =
+            new MockMultipartFile("file", "bad.jpg",
+                    MediaType.IMAGE_JPEG_VALUE, "bad content".getBytes());
 
     CloudinaryImage uploaded = new CloudinaryImage();
     uploaded.setPublicId("test_public_id").setUrl("https://cloudinary.com/test.jpg");
@@ -79,7 +83,9 @@ public class PicturesControllerTest {
 
   @Test
   void uploadProfilePicture_shouldHandleIOException() throws Exception {
-    MockMultipartFile file = new MockMultipartFile("file", "bad.jpg", MediaType.IMAGE_JPEG_VALUE, "bad content".getBytes());
+    MockMultipartFile file =
+            new MockMultipartFile("file", "bad.jpg",
+                    MediaType.IMAGE_JPEG_VALUE, "bad content".getBytes());
 
     Mockito.when(cloudinaryService.upload(any(), eq("users-pictures")))
             .thenThrow(new IOException("Upload failed"));
@@ -91,4 +97,26 @@ public class PicturesControllerTest {
             .andExpect(jsonPath("$.error").value("Upload failed"));
   }
 
+  @Test
+  void deleteProfileImage_shouldDeleteSuccessfully() throws Exception {
+    Mockito.when(cloudinaryService.delete("some-public-id")).thenReturn(true);
+
+    mockMvc.perform(delete("/api/profile/image-delete")
+            .with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(Map.of("publicId", "some-public-id"))))
+            .andExpect(status().isOk());
+  }
+
+  @Test
+  void deleteProfileImage_shouldHandleException() throws Exception {
+    Mockito.doThrow(new RuntimeException("Failed to delete")).when(cloudinaryService).delete("fail-id");
+
+    mockMvc.perform(delete("/api/profile/image-delete")
+            .with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(Map.of("publicId", "fail-id"))))
+            .andExpect(status().isInternalServerError())
+            .andExpect(jsonPath("$.error").value("Failed to delete image"));
+  }
 }
