@@ -94,7 +94,7 @@ class CommentRestControllerTest {
                     .with(csrf()))
             .andExpect(status().isCreated())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(header().string("Location", MatchesPattern.matchesPattern("/api/" + emptyRoute.getId() + "/comments/\\d")))
+            .andExpect(header().string("Location", MatchesPattern.matchesPattern("/api/" + emptyRoute.getId() + "/comments/\\d+")))
             .andExpect(jsonPath("$.textContent").value(is(COMMENT_1)));
   }
 
