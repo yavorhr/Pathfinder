@@ -21,17 +21,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
-
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -143,8 +144,6 @@ public class RouteControllerTest {
     Assertions.assertEquals("very interesting route!", route.getDescription());
   }
 
-  ;
-
   @Test
   void getMostCommentedRoute_returnsViewAndRoute() throws Exception {
     MvcResult result = mockMvc.perform(get("/routes/most-commented"))
@@ -165,11 +164,55 @@ public class RouteControllerTest {
   @Test
   void addRoute_returnsView() throws Exception {
 
- mockMvc.perform(get("/routes/add/"))
+ mockMvc.perform(get("/routes/add"))
             .andExpect(status().isOk())
             .andExpect(view().name("add-route"));
   }
 
+  @Test
+  void addRoute_validationFails_redirectsBackToForm() throws Exception {
+    MockMultipartFile gpxFile = new MockMultipartFile(
+            "gpxCoordinates",
+            "test.gpx",
+            "application/octet-stream",
+            "<gpx></gpx>".getBytes()
+    );
+
+    mockMvc.perform(multipart("/routes/add")
+            .file(gpxFile)
+            .param("name", "") // missing required name
+            .param("description", "Too short")
+            .param("level", "BEGINNER")
+            .param("videoUrl", "https://example.com/video")
+            .param("categories", "BICYCLE")
+            .with(csrf()))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("add"))
+            .andExpect(flash().attributeExists("routeAddBindingModel"))
+            .andExpect(flash().attributeExists("org.springframework.validation.BindingResult.routeAddBindingModel"));
+  }
+
+  @Test
+  void addRoute_validationSuccessRedirectsToRouteDetailsId() throws Exception {
+    MockMultipartFile gpxFile = new MockMultipartFile(
+            "gpxCoordinates",
+            "test.gpx",
+            "application/octet-stream",
+            "<gpx></gpx>".getBytes()
+    );
+
+    mockMvc.perform(multipart("/routes/add")
+            .file(gpxFile)
+            .param("name", "New Route")
+            .param("description", "A very nice route")
+            .param("level", "BEGINNER")
+            .param("distance", "30")
+            .param("videoUrl", "dQw4w9WgXcQ")
+            .param("categories", "BICYCLE")
+            .with(csrf()))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrlPattern("/routes/details/*"));
+  }
 
   // Helpers
   private Comment initComment(String text, boolean approved, LocalDateTime created) {
