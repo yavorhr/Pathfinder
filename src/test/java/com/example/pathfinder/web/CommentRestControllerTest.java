@@ -59,6 +59,7 @@ class CommentRestControllerTest {
     testUser.setEmail("yavor@abv.bg");
     testUser.setFirstName("admin");
     testUser.setLastName("adminov").setBirthday(LocalDate.now()).setGender(GenderEnum.MALE);
+
     testUser = userRepository.save(testUser);
   }
 
