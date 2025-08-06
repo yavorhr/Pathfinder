@@ -42,6 +42,21 @@ public class UserProfileControllerTest {
     userRepository.deleteAll();
   }
 
+  @Test
+  void profilePage_returnsCorrectModelAndView() throws Exception {
+    String testEmail = user.getEmail();
+
+    mockMvc.perform(get("/users/profile"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("profile"))
+            .andExpect(model().attributeExists("userViewModel"))
+            .andExpect(model().attribute("userViewModel",
+                    Matchers.hasProperty("email", Matchers.equalTo(testEmail))))
+            .andExpect(model().attribute("userViewModel",
+                    Matchers.hasProperty("firstName", Matchers.equalTo(user.getFirstName()))));
+  }
+
+
   private UserEntity initUser(String username, String email, String password, String firstName, String lastName, LocalDate birthday, GenderEnum gender, LocalDateTime registrationDate, boolean isEnabled) {
     UserEntity testUser = new UserEntity();
 
