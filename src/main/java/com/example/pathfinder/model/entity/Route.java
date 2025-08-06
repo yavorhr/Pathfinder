@@ -2,7 +2,6 @@ package com.example.pathfinder.model.entity;
 
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.*;
-
 import java.util.HashSet;
 import java.util.Set;
 
