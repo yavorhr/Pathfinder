@@ -141,7 +141,24 @@ public class RouteControllerTest {
     Assertions.assertEquals("route1", route.getName());
     Assertions.assertEquals("very interesting route!", route.getDescription());
   };
-  
+
+  @Test
+  void getMostCommentedRoute_returnsViewAndRoute() throws Exception {
+    MvcResult result = mockMvc.perform(get("/routes/most-commented"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("route-details"))
+            .andExpect(model().attributeExists("routeDetails")).andReturn();
+
+    ModelAndView mav = result.getModelAndView();
+    assert mav != null;
+
+    RouteDetailsViewModel route = (RouteDetailsViewModel) mav.getModel().get("routeDetails");
+
+    Assertions.assertNotNull(route);
+
+    Assertions.assertEquals("route1", route.getName());
+  }
+
   // Helpers
   private Comment initComment(String text, boolean approved, LocalDateTime created) {
     Comment comment = new Comment();
