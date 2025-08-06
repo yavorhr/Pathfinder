@@ -31,8 +31,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -212,6 +211,16 @@ public class RouteControllerTest {
             .with(csrf()))
             .andExpect(status().is3xxRedirection())
             .andExpect(redirectedUrlPattern("/routes/details/*"));
+  }
+
+  @Test
+  void testDeleteRoute() throws Exception {
+
+    mockMvc.perform(delete("/routes/delete")
+            .with(csrf())
+            .param("routeId", route1.getId().toString()))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/routes"));
   }
 
   // Helpers
