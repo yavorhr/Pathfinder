@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -47,6 +48,7 @@ public class UserEntity extends BaseEntity {
     this.accountLocked = false;
     this.failedLoginAttempts = 0;
     this.timesLocked = 0;
+    this.routes = new ArrayList<>();
   }
 
   @Column(name ="is_account_expired")
