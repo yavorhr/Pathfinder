@@ -1,6 +1,7 @@
 package com.example.pathfinder.web;
 
 import com.example.pathfinder.model.entity.Category;
+import com.example.pathfinder.model.entity.Comment;
 import com.example.pathfinder.model.entity.Route;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
@@ -9,6 +10,7 @@ import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.model.view.RouteDetailsViewModel;
 import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.repository.CategoryRepository;
+import com.example.pathfinder.repository.CommentRepository;
 import com.example.pathfinder.repository.RouteRepository;
 import com.example.pathfinder.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -49,23 +51,32 @@ public class RouteControllerTest {
   private Category cat1;
   private Category cat2;
 
+  private Comment comment1;
+  private Comment comment2;
+
   @Autowired
   private RouteRepository routeRepository;
   @Autowired
   private CategoryRepository categoryRepository;
   @Autowired
   private UserRepository userRepository;
+  @Autowired
+  private CommentRepository commentRepository;
 
   @BeforeEach
   void setup() {
+
+    comment1 = initComment("hey man, nice to meet you!", true,LocalDateTime.now());
+    comment2 = initComment("what an amazing route!", true,LocalDateTime.now());
+
     cat1 = initCat(CategoryEnum.BICYCLE, "cat1_description");
     cat2 = initCat(CategoryEnum.CAR, "cat2_description");
 
     author1 = initAuthor("testUser1", "admin@abv.bg", "test1", "Ivan", "Ivanov", LocalDate.of(1989, 4, 4), GenderEnum.MALE, LocalDateTime.now(), true);
     author2 = initAuthor("testUser2", "user2@abv.bg", "test2", "Georgi", "Georgiev", LocalDate.of(1993, 9, 8), GenderEnum.MALE, LocalDateTime.now(), true);
 
-    route1 = initRoute(LevelEnum.ADVANCED, 33, author1, Set.of(cat1) , "route1", "very interesting route!", "testUrl1");
-    route2 = initRoute(LevelEnum.INTERMEDIATE, 55, author2, Set.of(cat2), "route2", "wowwwwwwwwwwwwwwwwwwwwwwwww!", "testUrl2");
+    route1 = initRoute(LevelEnum.ADVANCED, 33, author1, Set.of(cat1) , "route1", "very interesting route!", "testUrl1", Set.of(comment1));
+    route2 = initRoute(LevelEnum.INTERMEDIATE, 55, author2, Set.of(cat2), "route2", "wowwwwwwwwwwwwwwwwwwwwwwwww!", "testUrl2", Set.of(comment1,comment2));
   }
 
   @AfterEach
@@ -73,6 +84,7 @@ public class RouteControllerTest {
     routeRepository.deleteAll();
     categoryRepository.deleteAll();
     userRepository.deleteAll();
+    commentRepository.deleteAll();
   }
 
   @Test
@@ -82,7 +94,6 @@ public class RouteControllerTest {
             .andExpect(view().name("routes"))
             .andExpect(model().attributeExists("routes"));
   }
-
 
   @Test
   @WithMockUser
@@ -130,9 +141,19 @@ public class RouteControllerTest {
     Assertions.assertEquals("route1", route.getName());
     Assertions.assertEquals("very interesting route!", route.getDescription());
   };
-
+  
   // Helpers
-  private Route initRoute(LevelEnum advanced, int distance, UserEntity author1, Set<Category> categories, String name, String description, String videoUrl) {
+  private Comment initComment(String text, boolean approved, LocalDateTime created) {
+    Comment comment = new Comment();
+    comment.setTextContent(text);
+    comment.setApproved(approved);
+    comment.setCreated(created);
+
+    commentRepository.save(comment);
+    return comment;
+  }
+
+  private Route initRoute(LevelEnum advanced, int distance, UserEntity author1, Set<Category> categories, String name, String description, String videoUrl, Set<Comment> comments) {
     Route route = new Route();
     route.setLevel(advanced);
     route.setDistance(distance);
@@ -141,9 +162,9 @@ public class RouteControllerTest {
     route.setName(name);
     route.setDescription(description);
     route.setVideoUrl(videoUrl);
+    route.setComments(comments);
 
     routeRepository.save(route);
-
     return route;
   }
 
@@ -153,7 +174,6 @@ public class RouteControllerTest {
     category.setDescription(description);
 
     categoryRepository.save(category);
-
     return category;
   }
 
@@ -172,7 +192,6 @@ public class RouteControllerTest {
             .setEnabled(isEnabled);
 
     userRepository.save(testUser);
-
     return testUser;
   }
 
