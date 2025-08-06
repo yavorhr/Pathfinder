@@ -62,7 +62,7 @@ public class UserProfileControllerTest {
   }
 
   @Test
-  void updateProfile_returnsOkAndUpdatedViewModel() throws Exception {
+  void updateProfile_withValidParamsReturnsOkAndUpdatedViewModel() throws Exception {
     ProfileUpdateBindingModel bindingModel = new ProfileUpdateBindingModel();
     bindingModel.setFirstName("update_first_name");
     bindingModel.setLastName("updated_last_name");
@@ -77,6 +77,20 @@ public class UserProfileControllerTest {
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.firstName").value("update_first_name"))
             .andExpect(jsonPath("$.lastName").value("updated_last_name"));
+  }
+
+  @Test
+  void updateProfile_withInvalidParamsReturnsBadRequest() throws Exception {
+    ProfileUpdateBindingModel bindingModel = new ProfileUpdateBindingModel();
+    bindingModel.setLastName("");
+    String json = objectMapper.writeValueAsString(bindingModel);
+
+    mockMvc.perform(patch("/users/profile/edit")
+            .with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.lastName").exists());
   }
 
   private UserEntity initUser(String username, String email, String password, String firstName, String lastName, LocalDate birthday, GenderEnum gender, LocalDateTime registrationDate, boolean isEnabled) {
