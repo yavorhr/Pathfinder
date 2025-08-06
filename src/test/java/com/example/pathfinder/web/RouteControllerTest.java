@@ -6,22 +6,29 @@ import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.GenderEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
+import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.repository.CategoryRepository;
 import com.example.pathfinder.repository.RouteRepository;
 import com.example.pathfinder.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.UpperCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -47,19 +54,19 @@ public class RouteControllerTest {
   private RouteRepository routeRepository;
   @Autowired
   private CategoryRepository categoryRepository;
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired
+  private UserRepository userRepository;
 
-    @BeforeEach
-    void setup() {
-      cat1 = initCat(CategoryEnum.BICYCLE, "cat1_description");
-      cat2 = initCat(CategoryEnum.CAR, "cat2_description");
+  @BeforeEach
+  void setup() {
+    cat1 = initCat(CategoryEnum.BICYCLE, "cat1_description");
+    cat2 = initCat(CategoryEnum.CAR, "cat2_description");
 
-      author1 = initAuthor("testUser1", "user1@abv.bg", "test1", "Ivan", "Ivanov", LocalDate.of(1989, 4, 4), GenderEnum.MALE, LocalDateTime.now(), true, 1L);
-      author2 = initAuthor("testUser2", "user2@abv.bg", "test2", "Georgi", "Georgiev", LocalDate.of(1993, 9, 8), GenderEnum.MALE, LocalDateTime.now(), true, 2L);
+    author1 = initAuthor("testUser1", "user1@abv.bg", "test1", "Ivan", "Ivanov", LocalDate.of(1989, 4, 4), GenderEnum.MALE, LocalDateTime.now(), true, 1L);
+    author2 = initAuthor("testUser2", "user2@abv.bg", "test2", "Georgi", "Georgiev", LocalDate.of(1993, 9, 8), GenderEnum.MALE, LocalDateTime.now(), true, 2L);
 
-      route1 = initRoute(LevelEnum.ADVANCED, 33, author1, Set.of(cat1), 1L, "route1");
-      route2 = initRoute(LevelEnum.INTERMEDIATE, 55, author2, Set.of(cat2), 2L, "route2");
+    route1 = initRoute(LevelEnum.ADVANCED, 33, author1, Set.of(cat1), 1L, "route1", "very interesting route!");
+    route2 = initRoute(LevelEnum.INTERMEDIATE, 55, author2, Set.of(cat2), 2L, "route2", "wowwwwwwwwwwwwwwwwwwwwwwwww!");
   }
 
   @AfterEach
@@ -77,8 +84,39 @@ public class RouteControllerTest {
             .andExpect(model().attributeExists("routes"));
   }
 
+
+  @Test
+  @WithMockUser
+  void getRoutesPerCategory_returnsViewWithRoutes() throws Exception {
+    String category = "car";
+
+    MvcResult mvcResult =   mockMvc.perform(get("/routes/" + category))
+            .andExpect(status().isOk())
+            .andExpect(view().name("route-category"))
+            .andExpect(model().attributeExists("routes"))
+            .andExpect(model().attribute("category", "car"))
+            .andExpect(model().attributeExists("quote"))
+            .andReturn();
+
+    // Extract model and inspect it
+    ModelAndView mav = mvcResult.getModelAndView();
+    assert mav != null;
+    List<RouteViewModel> routes = (List<RouteViewModel>) mav.getModel().get("routes");
+
+    // Now assert on size or contents
+    Assertions.assertNotNull(routes);
+    Assertions.assertFalse(routes.isEmpty());
+
+    routes.forEach(route -> {
+      System.out.println(route.getName());
+      Assertions.assertEquals("route2", route.getName());
+      Assertions.assertEquals("wowwwwwwwwwwwwwwwwwwwwwwwww!", route.getDescription());
+    });
+
+  }
+
   // Helpers
-  private Route initRoute(LevelEnum advanced, int distance, UserEntity author1, Set<Category> categories, long id, String name) {
+  private Route initRoute(LevelEnum advanced, int distance, UserEntity author1, Set<Category> categories, long id, String name, String description) {
     Route route = new Route();
     route.setLevel(advanced);
     route.setDistance(distance);
@@ -86,6 +124,7 @@ public class RouteControllerTest {
     route.setCategories(categories);
     route.setId(id);
     route.setName(name);
+    route.setDescription(description);
 
     routeRepository.save(route);
 
