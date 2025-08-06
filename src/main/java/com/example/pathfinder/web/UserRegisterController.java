@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.time.LocalDate;
 
 @Controller
@@ -47,23 +48,23 @@ public class UserRegisterController {
               .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
 
       return "redirect:register";
-}
+    }
 
-  UserRegisterServiceModel serviceModel =
-          modelMapper.map(userRegisterBindingModel, UserRegisterServiceModel.class);
+    UserRegisterServiceModel serviceModel =
+            modelMapper.map(userRegisterBindingModel, UserRegisterServiceModel.class);
 
-  convertLocalDate(userRegisterBindingModel.getYear(),
+    convertLocalDate(userRegisterBindingModel.getYear(),
             userRegisterBindingModel.getMonth(),
-                    userRegisterBindingModel.getDay(),
-                    serviceModel);
+            userRegisterBindingModel.getDay(),
+            serviceModel);
 
-                    this.userService.registerUser(serviceModel);
+    this.userService.registerUser(serviceModel);
 
-                    return "redirect:login";
-                    }
+    return "redirect:login";
+  }
 
-// Helpers
-private void convertLocalDate(String year, String month, String day, UserRegisterServiceModel serviceModel) {
+  // Helpers
+  private void convertLocalDate(String year, String month, String day, UserRegisterServiceModel serviceModel) {
     int yearInt = Integer.parseInt(year);
     int monthInt = Integer.parseInt(month);
     int dayInt = Integer.parseInt(day);
