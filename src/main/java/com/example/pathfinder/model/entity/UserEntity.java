@@ -149,6 +149,7 @@ public class UserEntity extends BaseEntity {
   @Column(nullable = false)
   public String getPassword() {
     return password;
+
   }
 
   public UserEntity setDisabledTime(LocalDateTime disabledTime) {
@@ -289,8 +290,10 @@ public class UserEntity extends BaseEntity {
     this.level = level;
   }
 
-  public void setPassword(String password) {
+  public UserEntity setPassword(String password) {
     this.password = password;
+
+    return this;
   }
 
   public UserEntity setUsername(String username) {
