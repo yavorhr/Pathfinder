@@ -6,6 +6,7 @@ import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.GenderEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
+import com.example.pathfinder.model.view.RouteDetailsViewModel;
 import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.repository.CategoryRepository;
 import com.example.pathfinder.repository.RouteRepository;
@@ -15,7 +16,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.UpperCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +23,6 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -62,11 +61,11 @@ public class RouteControllerTest {
     cat1 = initCat(CategoryEnum.BICYCLE, "cat1_description");
     cat2 = initCat(CategoryEnum.CAR, "cat2_description");
 
-    author1 = initAuthor("testUser1", "user1@abv.bg", "test1", "Ivan", "Ivanov", LocalDate.of(1989, 4, 4), GenderEnum.MALE, LocalDateTime.now(), true, 1L);
-    author2 = initAuthor("testUser2", "user2@abv.bg", "test2", "Georgi", "Georgiev", LocalDate.of(1993, 9, 8), GenderEnum.MALE, LocalDateTime.now(), true, 2L);
+    author1 = initAuthor("testUser1", "admin@abv.bg", "test1", "Ivan", "Ivanov", LocalDate.of(1989, 4, 4), GenderEnum.MALE, LocalDateTime.now(), true);
+    author2 = initAuthor("testUser2", "user2@abv.bg", "test2", "Georgi", "Georgiev", LocalDate.of(1993, 9, 8), GenderEnum.MALE, LocalDateTime.now(), true);
 
-    route1 = initRoute(LevelEnum.ADVANCED, 33, author1, Set.of(cat1), 1L, "route1", "very interesting route!");
-    route2 = initRoute(LevelEnum.INTERMEDIATE, 55, author2, Set.of(cat2), 2L, "route2", "wowwwwwwwwwwwwwwwwwwwwwwwww!");
+    route1 = initRoute(LevelEnum.ADVANCED, 33, author1, Set.of(cat1) , "route1", "very interesting route!", "testUrl1");
+    route2 = initRoute(LevelEnum.INTERMEDIATE, 55, author2, Set.of(cat2), "route2", "wowwwwwwwwwwwwwwwwwwwwwwwww!", "testUrl2");
   }
 
   @AfterEach
@@ -90,7 +89,7 @@ public class RouteControllerTest {
   void getRoutesPerCategory_returnsViewWithRoutes() throws Exception {
     String category = "car";
 
-    MvcResult mvcResult =   mockMvc.perform(get("/routes/" + category))
+    MvcResult mvcResult = mockMvc.perform(get("/routes/" + category))
             .andExpect(status().isOk())
             .andExpect(view().name("route-category"))
             .andExpect(model().attributeExists("routes"))
@@ -98,12 +97,10 @@ public class RouteControllerTest {
             .andExpect(model().attributeExists("quote"))
             .andReturn();
 
-    // Extract model and inspect it
     ModelAndView mav = mvcResult.getModelAndView();
     assert mav != null;
     List<RouteViewModel> routes = (List<RouteViewModel>) mav.getModel().get("routes");
 
-    // Now assert on size or contents
     Assertions.assertNotNull(routes);
     Assertions.assertFalse(routes.isEmpty());
 
@@ -112,19 +109,38 @@ public class RouteControllerTest {
       Assertions.assertEquals("route2", route.getName());
       Assertions.assertEquals("wowwwwwwwwwwwwwwwwwwwwwwwww!", route.getDescription());
     });
-
   }
 
+  @Test
+  void getRouteDetailsPage_returnsViewAndRoute() throws Exception {
+
+    MvcResult result = mockMvc.perform(get("/routes/details/" + route1.getId()))
+            .andExpect(status().isOk())
+            .andExpect(view().name("route-details"))
+            .andExpect(model().attributeExists("routeDetails"))
+            .andReturn();
+
+    ModelAndView mav = result.getModelAndView();
+    assert mav != null;
+
+    RouteDetailsViewModel route = (RouteDetailsViewModel) mav.getModel().get("routeDetails");
+
+    Assertions.assertNotNull(route);
+
+    Assertions.assertEquals("route1", route.getName());
+    Assertions.assertEquals("very interesting route!", route.getDescription());
+  };
+
   // Helpers
-  private Route initRoute(LevelEnum advanced, int distance, UserEntity author1, Set<Category> categories, long id, String name, String description) {
+  private Route initRoute(LevelEnum advanced, int distance, UserEntity author1, Set<Category> categories, String name, String description, String videoUrl) {
     Route route = new Route();
     route.setLevel(advanced);
     route.setDistance(distance);
     route.setAuthor(author1);
     route.setCategories(categories);
-    route.setId(id);
     route.setName(name);
     route.setDescription(description);
+    route.setVideoUrl(videoUrl);
 
     routeRepository.save(route);
 
@@ -141,7 +157,7 @@ public class RouteControllerTest {
     return category;
   }
 
-  private UserEntity initAuthor(String username, String email, String password, String firstName, String lastName, LocalDate birthday, GenderEnum gender, LocalDateTime registrationDate, boolean isEnabled, long id) {
+  private UserEntity initAuthor(String username, String email, String password, String firstName, String lastName, LocalDate birthday, GenderEnum gender, LocalDateTime registrationDate, boolean isEnabled) {
     UserEntity testUser = new UserEntity();
 
     testUser
@@ -153,8 +169,7 @@ public class RouteControllerTest {
             .setGender(gender)
             .setRegistrationDate(registrationDate)
             .setPassword(password)
-            .setEnabled(isEnabled)
-            .setId(1L);
+            .setEnabled(isEnabled);
 
     userRepository.save(testUser);
 
