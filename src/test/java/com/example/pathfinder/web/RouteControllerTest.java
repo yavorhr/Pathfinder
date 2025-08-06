@@ -25,6 +25,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -66,8 +67,8 @@ public class RouteControllerTest {
   @BeforeEach
   void setup() {
 
-    comment1 = initComment("hey man, nice to meet you!", true,LocalDateTime.now());
-    comment2 = initComment("what an amazing route!", true,LocalDateTime.now());
+    comment1 = initComment("hey man, nice to meet you!", true, LocalDateTime.now());
+    comment2 = initComment("what an amazing route!", true, LocalDateTime.now());
 
     cat1 = initCat(CategoryEnum.BICYCLE, "cat1_description");
     cat2 = initCat(CategoryEnum.CAR, "cat2_description");
@@ -75,8 +76,8 @@ public class RouteControllerTest {
     author1 = initAuthor("testUser1", "admin@abv.bg", "test1", "Ivan", "Ivanov", LocalDate.of(1989, 4, 4), GenderEnum.MALE, LocalDateTime.now(), true);
     author2 = initAuthor("testUser2", "user2@abv.bg", "test2", "Georgi", "Georgiev", LocalDate.of(1993, 9, 8), GenderEnum.MALE, LocalDateTime.now(), true);
 
-    route1 = initRoute(LevelEnum.ADVANCED, 33, author1, Set.of(cat1) , "route1", "very interesting route!", "testUrl1", Set.of(comment1));
-    route2 = initRoute(LevelEnum.INTERMEDIATE, 55, author2, Set.of(cat2), "route2", "wowwwwwwwwwwwwwwwwwwwwwwwww!", "testUrl2", Set.of(comment1,comment2));
+    route1 = initRoute(LevelEnum.ADVANCED, 33, author1, Set.of(cat1), "route1", "very interesting route!", "testUrl1", Set.of(comment1));
+    route2 = initRoute(LevelEnum.INTERMEDIATE, 55, author2, Set.of(cat2), "route2", "wowwwwwwwwwwwwwwwwwwwwwwwww!", "testUrl2", Set.of(comment1, comment2));
   }
 
   @AfterEach
@@ -140,7 +141,9 @@ public class RouteControllerTest {
 
     Assertions.assertEquals("route1", route.getName());
     Assertions.assertEquals("very interesting route!", route.getDescription());
-  };
+  }
+
+  ;
 
   @Test
   void getMostCommentedRoute_returnsViewAndRoute() throws Exception {
@@ -158,6 +161,15 @@ public class RouteControllerTest {
 
     Assertions.assertEquals("route1", route.getName());
   }
+
+  @Test
+  void addRoute_returnsView() throws Exception {
+
+ mockMvc.perform(get("/routes/add/"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("add-route"));
+  }
+
 
   // Helpers
   private Comment initComment(String text, boolean approved, LocalDateTime created) {
