@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     user.setRoles(Set.of(roleEntity));
     user.setPassword(this.passwordEncoder.encode(serviceModel.getPassword()));
 
-    this.userRepository.saveAndFlush(user);
+    this.userRepository.save(user);
 
     eventPublisher.publishEvent(new UserRegisteredEvent(
             this,
