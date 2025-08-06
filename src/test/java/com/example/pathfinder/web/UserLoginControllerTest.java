@@ -1,6 +1,5 @@
 package com.example.pathfinder.web;
 
-import com.example.pathfinder.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -19,8 +18,6 @@ public class UserLoginControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
-  @Autowired
-  private UserRepository userRepository;
 
   @ParameterizedTest
   @CsvSource({
