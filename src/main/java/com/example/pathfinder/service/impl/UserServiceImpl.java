@@ -228,6 +228,7 @@ public class UserServiceImpl implements UserService {
     user.setLockedAccountCounter(+1);
     user.setAccountLocked(true);
     user.setLockTime(LocalDateTime.now().plusMinutes(15));
+    user.setFailedLoginAttempts(0);
 
     userRepository.save(user);
   }
