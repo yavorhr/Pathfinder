@@ -3,7 +3,6 @@ package com.example.pathfinder.service.impl.principal;
 import com.example.pathfinder.model.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -20,6 +19,7 @@ public class PathfinderUser extends User {
             true,
             !userEntity.isAccountLocked(),
             authorities);
+
     this.id = userEntity.getId();
     this.userEntity = userEntity;
   }
