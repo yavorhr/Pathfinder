@@ -11,19 +11,17 @@
 <header
         th:fragment="navbar">
     <nav class="main-nav">
-        <div class="nav-container">
-            <button class="nav-toggle" onclick="toggleNav()">☰</button>
             <ul class="nav-list">
                 <li class="home-nav-item">
-                    <a class="btn btn-link nav-link" href="/">
-                        <img src="/images/home.png"
+                    <a class="btn-link nav-link" href="/">
+                        <img src="/images/home.png"`
                              alt="home"
                              class="navbar-icon">
                     </a>
                 </li>
                 <th:block sec:authorize="isAuthenticated()">
                     <li class="nav-item">
-                        <a class="btn btn-link nav-link" href="/routes/add">Add new route</a>
+                        <a class="btn btn-link nav-link" href="/routes/add">new route</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-link nav-link" href="/users/profile ">Profile</a>
@@ -65,18 +63,10 @@
                     <a href="/about">About</a>
                 </li>
             </ul>
-        </div>
     </nav>
 </header>
 </body>
 
-
-<script>
-    function toggleNav() {
-        const navList = document.querySelector('.nav-list');
-        navList.classList.toggle('active');
-    }
-</script>
 
 <script src="/js/navigation/toggleAdminPanel.js"></script>
 
