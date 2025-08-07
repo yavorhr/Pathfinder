@@ -1,182 +1,118 @@
 .main-nav {
     width: 100%;
-    position: relative;
+    padding: 10px 20px;
+}
+
+.nav-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0.5rem 1rem;
-}
-
-.main-nav ul {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 0;
     list-style: none;
-    gap: 2rem;
-    padding: 0.5rem 1rem;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-.main-nav ul .nav-item {
+.home-nav-item {
+    margin-right: auto;
+}
+
+.nav-item {
     display: flex;
-    justify-content: space-between;
-    text-align: center;
-
-    min-width: 200px;
-    padding: 0 1rem;
-    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
     height: 50px;
-
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
+    padding: 0 10px;
     letter-spacing: 1px;
 }
 
-.main-nav .nav-item a, #logout-form input {
+.nav-item a,
+#logout-form input {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    width: 100%;
-    height: 100%;
-    padding: 0.4rem 0.8rem;
-    background: var(--primary);
     text-decoration: none;
-    border-radius: 4px;
-    box-shadow: var(--shadow);
-
-    text-align: center;
+    background: var(--primary);
     color: var(--dark);
     text-transform: uppercase;
     font-size: 0.9rem;
-
+    border-radius: 4px;
+    box-shadow: var(--shadow);
     transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-
-.main-nav .nav-item a:hover,
+.nav-item a:hover,
 #logout-form input:hover {
     background: var(--dark);
     color: var(--light);
     transform: scale(1.1);
 }
 
-/* Home button */
-.home-nav-item {
-    position: absolute;
-    top: -15px;
-    left: 0;
-
-    background: transparent;
-}
-
-.home-nav-item a {
-    background-color: transparent;
-}
-
+/* Navbar Icon (Home Button) */
 .navbar-icon {
+    width: 55px;
+    height: 55px;
     padding: 10px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--primary);
+    border-radius: 50%;
     transition: all 0.3s ease;
 }
 
 .navbar-icon:hover {
-    width: 80px;
-    height: 80px;
-    border-color: black;
-    background-color: white;
+    width: 65px;
+    height: 65px;
     transform: scale(1.1);
+    background-color: white;
+    border-color: black;
 }
 
-/* Logout button */
+/* Logout form */
 #logout-form {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.dropdown-menu{
-    border: none!important;
-    left: 25px !important;
-}
-
-.dropdown-menu.show {
-    top: 110%;
-    padding: 0;
-
+/* Admin Dropdown */
+.dropdown-menu {
+    border: none !important;
+    left: 0 !important;
     background-color: transparent !important;
+    top: 110%;
 }
 
 .dropdown-menu.show div {
     margin-bottom: 8px;
 }
 
-
-/* Responsive UX */
-
-
-
-.nav-toggle {
-    display: none;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    /*color: var(--dark);*/
-    cursor: pointer;
-    margin-left: auto;
-    color: red;
-}
-
-/* Responsive nav list */
-.nav-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 1rem;
-    width: 100%;
-}
-
+/* Responsive */
 @media (max-width: 768px) {
-    .nav-toggle {
-        display: block;
-    }
-
-    .main-nav .nav-list {
-        display: none;
+    .nav-list {
         flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        background-color: transparent;
-        padding: 1rem 0;
+        align-items: stretch;
     }
 
-    .nav-list.active {
-        display: flex;
-    }
-
-    .nav-item {
+    .nav-item, .home-nav-item {
         width: 100%;
         justify-content: center;
     }
 
-    .home-nav-item {
-        position: static;
-        order: -1;
+    .navbar-icon {
+        margin: 0 auto;
+    }
+
+    .nav-item a,
+    #logout-form input {
+        width: 90%;
+        margin: 5px auto;
     }
 }
