@@ -264,3 +264,86 @@
     font-size: 0.95rem;
 }
 
+/* Tablet mode */
+@media (max-width: 1024px) {
+    .details-main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .details-main .gallery {
+        grid-column: 1/3;
+    }
+
+    #map {
+        height: 400px;
+    }
+
+    #video iframe {
+        height: 350px;
+    }
+
+    .track-info .meta {
+        font-size: 1.1rem;
+        letter-spacing: normal;
+    }
+
+    .track-info .meta span {
+        color: #0d6efd;
+    }
+
+}
+
+/* Smartphone mode */
+@media (max-width: 768px) {
+    .details-main {
+        grid-template-columns: 1fr;
+    }
+
+    .route-info {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .route-description {
+        grid-column: 1;
+    }
+
+
+    #map {
+        height: 300px;
+    }
+
+    #video iframe {
+        height: 250px;
+    }
+
+    .details-main .gallery {
+        grid-column: 1;
+    }
+
+    .comments {
+        grid-column: 1;
+    }
+
+    .track-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .track-info .meta {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .track-info .meta p {
+        padding: 0.3rem 0.6rem;
+    }
+
+    .track-info .difficulty-label {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
