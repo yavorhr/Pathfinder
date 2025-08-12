@@ -7,9 +7,46 @@
     grid-template-columns: repeat(2, 1fr);
     padding: 3rem;
     grid-row: auto;
+    align-items: center;
 }
 
 .road img {
+    width: 100%;
     height: auto;
-    width: 800px;
+    max-width: 800px;
+    border-radius: 8px
+}
+
+/* Tablet view */
+@media (max-width: 1024px) {
+    .road {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+    .road img {
+        max-width: 100%;
+    }
+}
+
+/* Phone view */
+@media (max-width: 600px) {
+    .road {
+        padding: 1rem;
+        grid-gap: 15px;
+    }
+    .road img {
+        width: 100%;
+        height: auto;
+    }
+    .road h2 {
+        font-size: 1.5rem;
+    }
+    .road p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    .road .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
 }
