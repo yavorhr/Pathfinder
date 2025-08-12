@@ -44,8 +44,9 @@
 /* Card */
 .container {
     display: grid;
-    grid-template-columns: repeat(2, 300px);
-    gap: 70px;
+    grid-template-columns: repeat(3, 300px);
+    gap: 30px;
+    row-gap: 50px;
     place-items: center;
     justify-content: center;
     align-content: start;
@@ -167,44 +168,96 @@
     }
 }
 
-/* ========== Card Responsive design ========== */
-
-/* For small devices */
-@media screen and (max-width: 340px) {
-    .card__data {
-        width: 250px;
-        padding: 1rem;
-    }
-}
-
-/* For medium devices */
-@media screen and (min-width: 768px) {
-    .card__container {
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 1.5rem;
-    }
-}
-
-/* For large devices */
-@media screen and (min-width: 1120px) {
+/* Tablet (≤ 1024px) */
+@media screen and (max-width: 1024px) {
     .container {
-        /*height: 1000px;*/
-        grid-row-gap: 50px;
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        gap: 40px;
+    }
+
+    .category-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .category-title {
+        font-size: 1.3rem;
+        max-width: 500px;
     }
 
     .card__img {
-        width: 348px;
+        height: auto;
     }
 
     .card__data {
-        width: 316px;
-        padding-inline: 2.5rem;
+        width: 90%;
     }
 }
 
-@media screen and (min-width: 1120px) {
-    :root {
-        --h2-font-size: 1.5rem;
-        --small-font-size: .875rem;
+/*  Phones (≤ 768px) */
+@media screen and (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .category-front-img {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .category-image {
+        width: 130px;
+        height: 130px;
+        margin-bottom: 10px;
+    }
+
+    .category-title {
+        font-size: 1.2rem;
+        padding: 0 10px;
+    }
+
+    .card__img {
+        width: 100%;
+        height: auto;
+    }
+
+    .card__data {
+        position: relative;
+        width: 100%;
+        bottom: 0;
+        margin-top: 10px;
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+
+    .card__article:hover .card__data {
+        animation: none;
+        transform: none;
+    }
+}
+
+/* Small Phones (≤ 480px) */
+@media screen and (max-width: 480px) {
+    .container {
+        gap: 25px;
+    }
+
+    .category-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .category-title {
+        font-size: 1rem;
+    }
+
+    .card__description {
+        font-size: 0.85rem;
+    }
+
+    .card__title {
+        font-size: 1.2rem;
     }
 }
