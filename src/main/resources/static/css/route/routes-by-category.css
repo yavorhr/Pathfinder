@@ -61,6 +61,28 @@
     transition: transform 0.3s ease;
 }
 
+.card__data .card__button {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.card__data .card__button:hover,
+.card__data .card__button:active{
+    background-color: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Card arrow + rotation */
 .card__arrow {
     position: absolute;
     top: 12px;
@@ -78,36 +100,35 @@
     user-select: none;
     transition: transform 0.3s ease, background-color 0.3s ease;
     z-index: 10;
-}
-
-.card__article:hover .card__arrow {
-    animation: shake 0.5s ease-in-out;
+    transform: rotate(0deg);
 }
 
 .card__article.active .card__arrow {
     transform: rotate(180deg);
 }
 
-/* Shake effect on hover (desktop only) */
-@media (hover: hover) {
-    .card__article:hover {
-        animation: shake 0.4s ease-in-out;
+.card__article:not(.active):hover .card__arrow {
+    animation: shakeArrow 0.5s ease-in-out;
+}
+
+@keyframes shakeArrow {
+    0%, 100% {
+        transform: rotate(var(--rotation, 0deg)) translateX(0);
+    }
+    25% {
+        transform: rotate(var(--rotation, 0deg)) translateX(-4px);
+    }
+    50% {
+        transform: rotate(var(--rotation, 0deg)) translateX(4px);
+    }
+    75% {
+        transform: rotate(var(--rotation, 0deg)) translateX(-4px);
     }
 }
 
-@keyframes shake {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-4px);
-    }
-    50% {
-        transform: translateX(4px);
-    }
-    75% {
-        transform: translateX(-4px);
-    }
+.card__article.active:hover .card__arrow {
+    --rotation: 180deg;
+    animation: shakeArrow 0.5s ease-in-out;
 }
 
 .card__img {
@@ -123,6 +144,11 @@
     left: 0;
     right: 0;
     width: 280px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     padding: 1.5rem 2rem;
     background-color: var(--container-color);
     box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
@@ -150,6 +176,7 @@
 }
 
 .card__title {
+    text-align: center;
     font-size: var(--h2-font-size);
     font-weight: 500;
     color: var(--title-color);
