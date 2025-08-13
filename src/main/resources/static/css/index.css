@@ -126,8 +126,10 @@
 }
 
 .main-content {
-    display: grid;
     margin: 30px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* Tablet (768px–1024px) */
