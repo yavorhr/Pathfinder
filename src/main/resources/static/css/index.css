@@ -125,3 +125,117 @@
     margin: 0 auto;
 }
 
+/* Tablet (768px–1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .main-content .top-container {
+        grid-template-areas:
+      'showcase showcase'
+      'top-box-a top-box-b';
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content  .showcase {
+        padding: 2rem;
+        min-height: 300px;
+    }
+
+    .main-content  .showcase h1 {
+        font-size: 2.5rem;
+    }
+
+    .main-content  .showcase p {
+        font-size: 1.1rem;
+    }
+
+    .main-content  .most-commented {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .most-commented img {
+        width: 100%;
+        height: auto;
+    }
+
+    .most-commented div {
+        padding: 1rem 2rem;
+    }
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+    .main-content .top-container {
+        grid-template-areas:
+      'showcase'
+      'top-box-a'
+      'top-box-b';
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+        padding: 1rem;
+    }
+
+    .main-content .showcase {
+        padding: 1rem;
+        min-height: auto;
+        text-align: center;
+        align-items: center;
+    }
+
+    .main-content .showcase h1 {
+        font-size: 2rem;
+    }
+
+    .main-content  .showcase p {
+        font-size: 1rem;
+    }
+
+    .main-content .top-box {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .main-content  .top-box img {
+        max-width: 100px;
+        height: auto;
+    }
+
+    .main-content .boxes {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .main-content  .box {
+        padding: 1rem;
+    }
+
+    .main-content .most-commented {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .most-commented img {
+        width: 100%;
+        height: auto;
+    }
+
+    .most-commented div {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .most-commented div .btn {
+        width: 100%;
+    }
+
+    .main-content  .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .gallery-item {
+        width: 100%;
+        height: auto;
+    }
+}
