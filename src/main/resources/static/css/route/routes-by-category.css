@@ -1,3 +1,4 @@
+/* ===== Category section ===== */
 .category-front-img {
     display: flex;
     align-items: center;
@@ -7,28 +8,23 @@
     border-radius: 10px;
     background-color: transparent;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
     text-align: center;
 }
 
-/* Style the image */
 .category-image {
-    width: 200px;
     height: 200px;
+    width: 200px;
+    margin-bottom: 15px;
     object-fit: cover;
     border: 4px solid #ccc;
-    margin-bottom: 15px;
-
     transition: transform 0.3s ease;
 }
 
-/* Add hover effect to the image */
 .category-image:hover {
     transform: scale(1.1);
     border-color: #f9a825;
 }
 
-/* Style the title */
 .category-title {
     max-width: 600px;
     margin-top: 10px;
@@ -41,12 +37,11 @@
     line-height: 1.4;
 }
 
-/* Card */
+/* ===== Card grid layout ===== */
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 300px);
-    gap: 30px;
-    row-gap: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
     place-items: center;
     justify-content: center;
     align-content: start;
@@ -62,31 +57,92 @@
     position: relative;
     max-width: 100%;
     overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card__arrow {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+
+    background-color: var(--white);
+    border-radius: 50%;
+    color: grey;
+
+    font-size: 1.8rem;
+    line-height: 32px;
+    text-align: center;
+    user-select: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 10;
+}
+
+.card__article:hover .card__arrow {
+    animation: shake 0.5s ease-in-out;
+}
+
+.card__article.active .card__arrow {
+    transform: rotate(180deg);
+}
+
+/* Shake effect on hover (desktop only) */
+@media (hover: hover) {
+    .card__article:hover {
+        animation: shake 0.4s ease-in-out;
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px);
+    }
+    50% {
+        transform: translateX(4px);
+    }
+    75% {
+        transform: translateX(-4px);
+    }
 }
 
 .card__img {
     width: 100%;
     height: 100%;
     border-radius: 1.5rem;
+    object-fit: cover;
 }
 
+/* Card data show panel */
 .card__data {
     position: absolute;
-
+    left: 0;
+    right: 0;
     width: 280px;
-    background-color: var(--container-color);
     padding: 1.5rem 2rem;
+    background-color: var(--container-color);
     box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
     border-radius: 1rem;
     bottom: -9rem;
-    left: 0;
-    right: 0;
-    margin-inline: auto;
 
+    margin-inline: auto;
     opacity: 0;
-    transition: opacity 1s 1s;
+    transform: translateY(3rem);
+    transition: all 0.4s ease;
 }
 
+/* Show data when active */
+.card__article.active .card__data {
+    bottom: 1rem;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Text styles */
 .card__description {
     display: block;
     font-size: var(--small-font-size);
@@ -104,160 +160,46 @@
     text-decoration: none;
     font-size: var(--small-font-size);
     font-weight: 500;
-    color: var(--first-color);
+    color: var(--blue);
 }
 
 .card__button:hover {
     text-decoration: underline;
 }
 
-/* Naming animations in hover */
-.card__article:hover .card__data {
-    animation: show-data 1s forwards;
-    opacity: 1;
-    transition: opacity .3s;
-}
-
-.card__article:hover {
-    animation: remove-overflow 2s forwards;
-}
-
-.card__article:not(:hover) {
-    animation: show-overflow 2s forwards;
-}
-
-.card__article:not(:hover) .card__data {
-    animation: remove-data 1s forwards;
-}
-
-/* Card animation */
-@keyframes show-data {
-    50% {
-        transform: translateY(-10rem);
-    }
-    100% {
-        transform: translateY(-7rem);
+/* Small screens */
+@media screen and (max-width: 340px) {
+    .card__data {
+        width: 250px;
+        padding: 1rem;
     }
 }
 
-@keyframes remove-overflow {
-    to {
-        overflow: initial;
+/* Phones */
+@media screen and (min-width: 768px) {
+    .card__container {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.5rem;
     }
 }
 
-@keyframes remove-data {
-    0% {
-        transform: translateY(-7rem);
-    }
-    50% {
-        transform: translateY(-10rem);
-    }
-    100% {
-        transform: translateY(.5rem);
-    }
-}
-
-@keyframes show-overflow {
-    0% {
-        overflow: initial;
-        pointer-events: none;
-    }
-    50% {
-        overflow: hidden;
-    }
-}
-
-/* Tablet (≤ 1024px) */
-@media screen and (max-width: 1024px) {
+/* Tablets */
+@media screen and (min-width: 1120px) {
     .container {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        gap: 40px;
-    }
-
-    .category-image {
-        width: 150px;
-        height: 150px;
-    }
-
-    .category-title {
-        font-size: 1.3rem;
-        max-width: 500px;
+        grid-row-gap: 50px;
     }
 
     .card__img {
-        height: auto;
+        width: 348px;
     }
 
     .card__data {
-        width: 90%;
-    }
-}
-
-/*  Phones (≤ 768px) */
-@media screen and (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        width: 316px;
+        padding-inline: 2.5rem;
     }
 
-    .category-front-img {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .category-image {
-        width: 130px;
-        height: 130px;
-        margin-bottom: 10px;
-    }
-
-    .category-title {
-        font-size: 1.2rem;
-        padding: 0 10px;
-    }
-
-    .card__img {
-        width: 100%;
-        height: auto;
-    }
-
-    .card__data {
-        position: relative;
-        width: 100%;
-        bottom: 0;
-        margin-top: 10px;
-        opacity: 1;
-        transform: none;
-        animation: none;
-    }
-
-    .card__article:hover .card__data {
-        animation: none;
-        transform: none;
-    }
-}
-
-/* Small Phones (≤ 480px) */
-@media screen and (max-width: 480px) {
-    .container {
-        gap: 25px;
-    }
-
-    .category-image {
-        width: 100px;
-        height: 100px;
-    }
-
-    .category-title {
-        font-size: 1rem;
-    }
-
-    .card__description {
-        font-size: 0.85rem;
-    }
-
-    .card__title {
-        font-size: 1.2rem;
+    :root {
+        --h2-font-size: 1.5rem;
+        --small-font-size: .875rem;
     }
 }
