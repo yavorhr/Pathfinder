@@ -1,5 +1,5 @@
 .login-parent {
-    width: 100%;
+   width: 100%;
     padding: 50px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
@@ -28,8 +28,8 @@
     gap: 20px;
 }
 
-.form-wrapper {
-    min-width: 600px;
+.form-wrapper{
+   min-width: 600px;
 }
 
 /* Home button */
@@ -92,6 +92,10 @@
         width: 70px;
         height: 70px;
     }
+
+    .page-wrapper {
+        min-height: auto; 
+    }
 }
 
 /* Mobile (up to 768px) */
@@ -136,5 +140,9 @@
 
     .btn-block {
         width: 100% !important;
+    }
+
+    .page-wrapper {
+        min-height: auto;
     }
 }
