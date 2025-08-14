@@ -5,10 +5,9 @@
 
 
 <body>
-<header th:replace="fragments/navbar"></header>
+<!--<header th:replace="fragments/navbar"></header>-->
 <div class="wrapper route-wrapper">
     <!-- Navigation -->
-
     <section class="category-front-img">
         <img class="rounded-circle category-image"
              th:src="@{'/images/route-categories/' + ${category} + '.jpg'}" alt="Title image">
@@ -21,10 +20,8 @@
         <div class="card__container" th:each="r : ${routes}" th:object="${r}">
             <article class="card__article">
                 <img th:src="*{pictureUrl}" alt="image" class="card__img">
-
+                <span class="card__arrow">▼</span>
                 <div class="card__data">
-                    <span th:text="*{description.length() > 30 ? #strings.substring(description, 0, 20) + '...': description}"
-                          class="card__description">Vancouver Mountains, Canada</span>
                     <h2 th:text="*{name}" class="card__title">The Great Path</h2>
                     <a th:href="@{/routes/details/{id}(id=*{id})}" class="card__button">Read More</a>
                 </div>
@@ -35,6 +32,7 @@
 
 </body>
 
-<footer th:replace="fragments/footer"></footer>
+<!--<footer th:replace="fragments/footer"></footer>-->
+<script src="/js/routes-by-categories.js"></script>
 
 </html>
