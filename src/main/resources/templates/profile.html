@@ -4,10 +4,17 @@
 <head th:replace="fragments/head :: head(additionalCss='/css/profile.css')">
 
 <body>
-<!-- Navigation -->
-<header th:replace="fragments/navbar"></header>
 
 <main class="p-5 profile-main">
+
+    <div class="home-nav-item">
+        <a class="btn btn-link nav-link" href="/">
+            <img src="/images/home.png"
+                 alt="home"
+                 class="navbar-icon">
+        </a>
+    </div>
+
     <div class="profile-container">
         <div class="row d-flex justify-content-center">
             <div class="profile-card p-3 py-4"
