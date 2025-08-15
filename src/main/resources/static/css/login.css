@@ -7,7 +7,7 @@
     border-radius: 10px;
 }
 
-.page-wrapper {
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -58,7 +58,7 @@
         padding-top: 40px;
     }
 
-    .page-wrapper {
+    body {
         min-height: auto;
     }
 }
@@ -88,7 +88,7 @@
         width: 100% !important;
     }
 
-    .page-wrapper {
+    body {
         min-height: auto;
     }
 }
