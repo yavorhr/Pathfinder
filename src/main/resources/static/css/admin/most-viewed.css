@@ -4,13 +4,19 @@ body {
     margin: 0;
     padding: 2rem;
     color: #333;
+    min-height: 100vh;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .container {
     max-width: 1000px;
     padding: 2rem;
-    margin: 0 auto;
+    margin-top: 4rem;
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -76,10 +82,6 @@ body {
 /* Home button */
 .home-nav-item {
     position: absolute;
-    top: 30px;
-    left: 20px;
-    background: transparent;
-    width: 300px;
 }
 
 .home-nav-item a {
@@ -104,3 +106,23 @@ body {
     transform: scale(1.1);
 }
 
+/* Tablet & phone */
+@media (max-width: 1600px) {
+    .home-nav-item {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .container {
+        padding: 1rem;
+        margin-top: 0;
+        width: 100%;
+    }
+
+    body{
+        min-height: auto;
+    }
+}

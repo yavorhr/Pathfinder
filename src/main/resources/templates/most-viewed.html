@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+
 <head>
     <meta charset="UTF-8">
     <title>Most Viewed Pages</title>
@@ -8,43 +9,42 @@
 </head>
 
 <body>
-<div class="container">
-    <section class="most-viewed">
-        <div class="home-nav-item">
-            <a class="btn btn-link nav-link" href="/">
-                <img src="/images/home.png"
-                     alt="home"
-                     class="navbar-icon">
-            </a>
-        </div>
-        <h2>📊 Top 10 Most Viewed Pages</h2>
+<div th:replace="fragments/home-button"></div>
+<main>
+    <div class="container">
+        <section class="most-viewed">
+            <h2>📊 Top 10 Most Viewed Pages</h2>
 
-        <form method="post" th:action="@{/admin/statistics/reset}" class="reset-form">
-            <button type="submit" class="reset-button">🔄 Reset Statistics</button>
-        </form>
+            <form method="post" th:action="@{/admin/statistics/reset}" class="reset-form">
+                <button type="submit" class="reset-button">🔄 Reset Statistics</button>
+            </form>
 
-        <table class="stats-table">
-            <thead>
-            <tr><th>Page URI</th>
-                <th>Views</th>
-                <th>% of Total</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="pv : ${topPages}">
-                <td th:text="${pv.path}">/example</td>
-                <td th:text="${pv.views}">123</td>
-                <td th:text="${pv.percentage} + '%'">15%</td>
-            </tr>
-            </tbody>
-        </table>
+            <table class="stats-table">
+                <thead>
+                <tr>
+                    <th>Page URI</th>
+                    <th>Views</th>
+                    <th>% of Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pv : ${topPages}">
+                    <td th:text="${pv.path}">/example</td>
+                    <td th:text="${pv.views}">123</td>
+                    <td th:text="${pv.percentage} + '%'">15%</td>
+                </tr>
+                </tbody>
+            </table>
 
-        <div class="chart-container">
-            <canvas id="viewsChart" width="600" height="300"></canvas>
-        </div>
-    </section>
-</div>
+            <div class="chart-container">
+                <canvas id="viewsChart" width="600" height="300"></canvas>
+            </div>
+        </section>
+    </div>
+</main>
 
+<footer th:replace="fragments/footer"></footer>
+</body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script th:inline="javascript">
     /*<![CDATA[*/
@@ -76,5 +76,4 @@
     });
     /*]]>*/
 </script>
-</body>
 </html>
