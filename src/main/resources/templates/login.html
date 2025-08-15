@@ -5,56 +5,52 @@
 
 <body class="page-wrapper">
 <main class="align-content-center bg-blur content">
-    <div class="home-nav-item">
-        <a class="btn btn-link nav-link" href="/">
-            <img src="/images/home.png"
-                 alt="home"
-                 class="navbar-icon">
-        </a>
-    </div>
-    <div class="d-flex justify-content-center form-wrapper">
-        <div class="row g-3 align-items-center d-flex flex-column login-parent">
-            <h1 class="mb-5 title">Login</h1>
-            <form class="login-form"
-                    th:action="@{/users/login}"
-                    th:method="POST">
-                <div>
-                    <div class="col-auto">
-                        <label for="inputEmail" class="col-form-label ">Email</label>
+
+    <div class="content-wrapper">
+        <div th:replace="fragments/home-button"></div>
+        <div class="d-flex justify-content-center form-wrapper">
+            <div class="row g-3 align-items-center d-flex flex-column login-parent">
+                <h1 class="mb-5 title">Login</h1>
+                <form class="login-form"
+                      th:action="@{/users/login}"
+                      th:method="POST">
+                    <div>
+                        <div class="col-auto">
+                            <label for="inputEmail" class="col-form-label ">Email</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text"
+                                   name="email"
+                                   id="inputEmail"
+                                   class="form-control"
+                                   aria-describedby="emailHelpInline">
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <input type="text"
-                               name="email"
-                               id="inputEmail"
-                               class="form-control"
-                               aria-describedby="emailHelpInline">
+                    <div>
+                        <div class="col-auto">
+                            <label for="inputPassword" class="col-form-label ">Password</label>
+                        </div>
+                        <div class="col-auto">
+                            <input
+                                    name="password"
+                                    type="password"
+                                    id="inputPassword" class="form-control"
+                                    aria-describedby="passwordHelpInline">
+                        </div>
                     </div>
+                    <div class="d-flex justify-content-center mt-4">
+                        <button class="btn btn-primary btn-block w-50 mt-3" type="submit">Login</button>
+                    </div>
+                </form>
+                <div th:if="${login_error_message}">
+                    <p th:text="${login_error_message}"
+                       class="text-danger errors alert alert-danger login-error">Error passed by model</p>
                 </div>
-                <div>
-                    <div class="col-auto">
-                        <label for="inputPassword" class="col-form-label ">Password</label>
-                    </div>
-                    <div class="col-auto">
-                        <input
-                                name="password"
-                                type="password"
-                                id="inputPassword" class="form-control"
-                                aria-describedby="passwordHelpInline">
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center mt-4">
-                    <button class="btn btn-primary btn-block w-50 mt-3" type="submit">Login</button>
-                </div>
-            </form>
-            <div th:if="${login_error_message}">
-                <p th:text="${login_error_message}"
-                   class="text-danger errors alert alert-danger login-error">Error passed by model</p>
             </div>
         </div>
     </div>
 </main>
 
 <footer th:replace="fragments/footer"></footer>
-
 </body>
 </html>

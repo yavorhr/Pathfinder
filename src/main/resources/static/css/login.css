@@ -1,5 +1,5 @@
 .login-parent {
-   width: 100%;
+    width: 100%;
     padding: 50px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
@@ -17,10 +17,15 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 .login-form {
     display: flex;
@@ -28,8 +33,8 @@
     gap: 20px;
 }
 
-.form-wrapper{
-   min-width: 600px;
+.form-wrapper {
+    min-width: 600px;
 }
 
 /* Tablet (768px - 1024px) */
