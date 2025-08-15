@@ -1,0 +1,18 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head(additionalCss='/css/home-button.css')">
+
+<body>
+
+<div th:fragment="home-button"
+     class="home-nav-item">
+    <a class="btn btn-link nav-link" href="/">
+        <img src="/images/home.png"
+             alt="home"
+             class="navbar-icon">
+    </a>
+</div>
+
+</body>
+</html>
