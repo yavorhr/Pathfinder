@@ -1,3 +1,7 @@
+body {;
+    min-height: 100vh;
+}
+
 .add-image-wrapper {
     display: flex;
     flex-direction: column;
@@ -43,28 +47,6 @@
     top: 15px;
     left: 0;
     background: transparent;
-}
-
-.home-nav-item a {
-    background-color: transparent;
-}
-
-.navbar-icon {
-    padding: 10px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--primary);
-    transition: all 0.3s ease;
-}
-
-.navbar-icon:hover {
-    width: 80px;
-    height: 80px;
-    border-color: black;
-    background-color: white;
-    transform: scale(1.1);
 }
 
 .rounded-circle {
@@ -267,6 +249,10 @@
 }
 /* Tablet view */
 @media (max-width: 1024px) {
+    body {;
+        min-height: auto;
+    }
+
     .profile-container {
         width: 80%;
     }
@@ -287,6 +273,10 @@
 
 /* Mobile view */
 @media (max-width: 768px) {
+    body {;
+        min-height: auto;
+    }
+
     .profile-main {
         flex-direction: column;
         padding: 1rem;
