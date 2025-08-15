@@ -1,5 +1,12 @@
-body {;
+body {
     min-height: 100vh;
+}
+
+/* Home button position */
+.home-nav-item {
+    position: absolute;
+    top: 15px;
+    left: 0;
 }
 
 .add-image-wrapper {
@@ -16,7 +23,7 @@ body {;
 }
 
 .profile-card {
-    width:80%;
+    width: 80%;
     border: none;
     position: relative;
     overflow: hidden;
@@ -39,14 +46,6 @@ body {;
     transform: scaleY(1);
     transition: all 0.5s;
     transform-origin: bottom
-}
-
-/* Home button */
-.home-nav-item {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    background: transparent;
 }
 
 .rounded-circle {
@@ -84,7 +83,6 @@ body {;
 .profile-card:hover::after {
     transform: scaleY(1)
 }
-
 
 .fonts {
     font-size: 20px
@@ -222,6 +220,7 @@ body {;
     cursor: not-allowed;
     border: 1px solid #ccc;
 }
+
 .read-only-input:focus {
     outline: none;
     box-shadow: none;
@@ -247,6 +246,7 @@ body {;
     opacity: 1;
     pointer-events: auto;
 }
+
 /* Tablet view */
 @media (max-width: 1024px) {
     body {;
@@ -292,7 +292,7 @@ body {;
     }
 
     .home-nav-item {
-        position: static; /* remove absolute position */
+        position: static;
         margin-bottom: 1rem;
         display: flex;
         justify-content: center;
