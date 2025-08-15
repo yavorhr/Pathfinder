@@ -1,29 +1,29 @@
-/* 1) Backdrop blur */
-.route-card-backdrop {
-    position: relative;
+
+body {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
-    padding: 4rem 1rem;
-    background: url('/images/your-page-bg.jpg') center/cover no-repeat;
 }
 
-.route-card-backdrop::before {
-    content: "";
+main {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Home button */
+.home-nav-item {
+    display: block;
     position: absolute;
-    top: 0;
+    top: 15px;
     left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.2);
-    z-index: 0;
 }
 
-/* 2) Card */
+/* Card */
 .route-card {
     position: relative;
-    z-index: 1;
     max-width: 600px;
-    margin: 0 auto;
+    margin-top: 4rem;
     background: rgba(255, 255, 255, 0.25);
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -160,10 +160,17 @@
     transform: translateY(-2px);
 }
 
-/* Smartphone mode */
 @media (max-width: 1024px) {
-    .route-card-backdrop {
-        position: relative;
-        min-height: unset;
+    body {
+        min-height: auto;
+    }
+
+    .home-nav-item {
+        position: static;
+    }
+
+    .route-card {
+        margin-top: 2rem;
     }
 }
+
