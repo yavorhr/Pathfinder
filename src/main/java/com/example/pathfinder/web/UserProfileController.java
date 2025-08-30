@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
+@RequestMapping("/users")
 public class UserProfileController {
   private final UserService userService;
   private final ModelMapper modelMapper;
@@ -32,7 +33,7 @@ public class UserProfileController {
     this.cloudinaryService = cloudinaryService;
   }
 
-  @GetMapping("/users/profile")
+  @GetMapping("/profile")
   public String profilePage(@AuthenticationPrincipal UserDetails principal,
                             Model model) {
 
@@ -46,7 +47,7 @@ public class UserProfileController {
     return "profile";
   }
 
-  @PatchMapping("/users/profile/edit")
+  @PatchMapping("/profile/edit")
   public ResponseEntity<?> updateProfile(
           @RequestBody @Valid ProfileUpdateBindingModel bindingModel,
           BindingResult bindingResult) {
