@@ -126,7 +126,8 @@ It includes a personalized profile system, social features like comments, and an
 ### 🔑 Authentication
 | Method | Endpoint         | Description       | Access  |
 |--------|------------------|-------------------|---------|
-| POST   | `/auth/login`    | User login        | Public  |
+| GET    | `/users/login`   | Get login page    | Public  |
+| POST   | `/users/login`   | User login       | Public  |
 | POST   | `/auth/register` | User registration | Public  |
 
 ### 🛤️ Routes
