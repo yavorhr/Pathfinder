@@ -357,10 +357,10 @@ button:focus {
         font-size: 0.9rem;
     }
 
-    .notifications-table th:nth-child(3),
-    .notifications-table td:nth-child(3),
     .notifications-table th:nth-child(4),
-    .notifications-table td:nth-child(4) {
+    .notifications-table td:nth-child(4),
+    .notifications-table th:nth-child(7),
+    .notifications-table td:nth-child(7) {
         display: none;
     }
 
