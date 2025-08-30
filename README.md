@@ -71,8 +71,6 @@ It includes a personalized profile system, social features like comments, and an
 
 ## 🛠️ Tech Stack
 
-## 🛠️ Tech Stack
-
 ### 🔙 Backend
 <p align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="40" height="40" alt="Java"/> **Java**
