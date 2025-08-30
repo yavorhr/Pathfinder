@@ -3,114 +3,116 @@
 </head>
 
 <body data-logged-in-user-email="${loggedInUserEmail}">
-<section class="first-section">
-    <div class="home-nav-item">
-        <a class="btn btn-link nav-link" href="/">
-            <img src="/images/home.png"
-                 alt="home"
-                 class="navbar-icon">
-        </a>
-    </div>
-    <h1 class="admin-header">Admin Notifications</h1>
-</section>
+<main>
+    <section class="first-section">
 
-<section>
-    <form
-            th:method="GET"
-            class="search-container"
-            action="/admin/notifications">
-        <input type="text" id="searchInput"
-               name="query"
-               placeholder="Search users..."
-               th:value="${query}">
-        <input type="hidden"
-               name="size"
-               th:value="${usersPage.size}">
-        <button type="submit">Search</button>
-    </form>
+        <div th:replace="fragments/home-button"></div>
 
-    <table class="notifications-table">
-        <thead>
-        <tr>
-            <th>Status</th>
-            <th>Locked status</th>
-            <th>Times Locked</th>
-            <th>Disabled date</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Creation date</th>
-            <th>User roles</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody id="users-tbody">
+        <h1 class="admin-header">Admin Notifications</h1>
+    </section>
 
-        <tr th:each="u :${users}" th:object="${u}">
-            <td class="status"
-                th:classappend="${u.isEnabled} ? 'active' : 'inactive'"
-                th:text="${u.isEnabled} ?'Active' : 'Inactive'"></td>
-            <td class="locked-status"
-                th:classappend="${u.accountLocked} ? 'inactive' : 'active'"
-                th:text="${u.accountLocked} ?'Locked' : 'Not locked'"></td>
-            <td th:text="*{timesLocked}"></td>
-            <td class="disabled_time" th:text="*{disabledTime != null ? #temporals.format(disabledTime, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}"></td>
-            <td class="username" th:text="*{username}">test2</td>
-            <td class="email" th:text="*{email}">test@abv.bg</td>
-            <td th:text="*{#temporals.format(registrationDate, 'yyyy-MM-dd HH:mm:ss')}">
-                formatted date
-            </td>
-            <td>
-                <div class="change-role-wrapper">
-                    <div class="role-action-container">
-                        <th:block
-                                th:each="role : ${T(com.example.pathfinder.model.entity.enums.UserRoleEnum).values()}">
-                            <div class="role-wrapper">
-                                <input type="checkbox" class="role-checkbox"
-                                       th:value="${role}"
-                                       th:checked="${u.roles.contains(role)}">
-                                <span th:text="${role}"></span>
+    <section class="second-section">
+        <form
+                th:method="GET"
+                class="search-container"
+                action="/admin/notifications">
+            <input type="text" id="searchInput"
+                   name="query"
+                   placeholder="Search users..."
+                   th:value="${query}">
+            <input type="hidden"
+                   name="size"
+                   th:value="${usersPage.size}">
+            <button type="submit">Search</button>
+        </form>
+        <div class="table-wrapper">
+            <table class="notifications-table">
+                <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Locked status</th>
+                    <th>Times Locked</th>
+                    <th>Disabled date</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Creation date</th>
+                    <th>User roles</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="users-tbody">
+
+                <tr th:each="u :${users}" th:object="${u}">
+                    <td class="status"
+                        th:classappend="${u.isEnabled} ? 'active' : 'inactive'"
+                        th:text="${u.isEnabled} ?'Active' : 'Inactive'"></td>
+                    <td class="locked-status"
+                        th:classappend="${u.accountLocked} ? 'inactive' : 'active'"
+                        th:text="${u.accountLocked} ?'Locked' : 'Not locked'"></td>
+                    <td th:text="*{timesLocked}"></td>
+                    <td class="disabled_time"
+                        th:text="*{disabledTime != null ? #temporals.format(disabledTime, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}"></td>
+                    <td class="username" th:text="*{username}">test2</td>
+                    <td class="email" th:text="*{email}">test@abv.bg</td>
+                    <td th:text="*{#temporals.format(registrationDate, 'yyyy-MM-dd HH:mm:ss')}">
+                        formatted date
+                    </td>
+                    <td>
+                        <div class="change-role-wrapper">
+                            <div class="role-action-container">
+                                <th:block
+                                        th:each="role : ${T(com.example.pathfinder.model.entity.enums.UserRoleEnum).values()}">
+                                    <div class="role-wrapper">
+                                        <input type="checkbox" class="role-checkbox"
+                                               th:value="${role}"
+                                               th:checked="${u.roles.contains(role)}">
+                                        <span th:text="${role}"></span>
+                                    </div>
+                                </th:block>
                             </div>
-                        </th:block>
-                    </div>
-                    <button
-                            class="change-role-btn disabled">Update Roles
-                    </button>
-                </div>
-            </td>
-            <td>
-                <div class="actions-container">
-                    <button
-                            class="delete-btn">Delete User
-                    </button>
-                    <button
-                            class="enable-btn"
-                            th:text="${u.isEnabled} ? 'Disable user' : 'Enable user'"
-                            th:classappend="${u.isEnabled} ? 'inactive' : 'active'"> Enable/Disable User
-                    </button>
-                    <button
-                            class="lock-btn"
-                            th:text="${u.isAccountLocked} ? 'Unlock user' : 'Lock user'"
-                            th:classappend="${u.isAccountLocked} ? 'active' : 'inactive'"> Lock/Unlock User
-                    </button>
-                    <button class="send-email-btn">Send Email</button>
-                </div>
-            </td>
-        </tr>
-        </tr>
-        </tbody>
-    </table>
+                            <button
+                                    class="change-role-btn disabled">Update Roles
+                            </button>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="actions-container">
+                            <button
+                                    class="delete-btn">Delete User
+                            </button>
+                            <button
+                                    class="enable-btn"
+                                    th:text="${u.isEnabled} ? 'Disable user' : 'Enable user'"
+                                    th:classappend="${u.isEnabled} ? 'inactive' : 'active'"> Enable/Disable User
+                            </button>
+                            <button
+                                    class="lock-btn"
+                                    th:text="${u.isAccountLocked} ? 'Unlock user' : 'Lock user'"
+                                    th:classappend="${u.isAccountLocked} ? 'active' : 'inactive'"> Lock/Unlock User
+                            </button>
+                            <button class="send-email-btn">Send Email</button>
+                        </div>
+                    </td>
+                </tr>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <div id="pagination">
-        <div th:if="${totalPages > 1}">
+        <div id="pagination">
+            <div th:if="${totalPages > 1}">
         <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
             <a th:href="@{/admin/notifications(page=${i}, query=${query}, size=${usersPage.size})}"
                th:text="${i + 1}"
                th:class="${currentPage == i} ? 'active-page' : ''"></a>
         </span>
+            </div>
         </div>
-    </div>
 
-</section>
+    </section>
+</main>
+
+<footer th:replace="fragments/footer"></footer>
 </body>
 
 <script th:inline="javascript">
