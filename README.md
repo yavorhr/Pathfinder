@@ -135,29 +135,25 @@ It includes a personalized profile system, social features like comments, and an
 | Method | Endpoint        | Description                        | Access      |
 |--------|-----------------|------------------------------------|-------------|
 | GET    | `/routes`       | Get all routes                     | User        |
-| GET    | `/routes/{category}`       | Get routes by category                     | User        |
-| GET    | `/routes/{id}`  | Get route by ID                    | User        |
-| POST   | `/routes`       | Create new route                   | User        |
-| DELETE | `/routes/{id}`  | Delete a route (author/admin only) | User/Admin  |
-
----
+| GET    | `/routes/{category}`  | Get routes by category       | User        |
+| GET    | `/routes/details/{id}`  | Get route by ID            | User        |
+| GET    | `/routes/most-commented` | Get the routes with most comments | User |
+| POST   | `/routes/add`       | Create new route               | User        |
+| DELETE | `/routes/delete`  | Delete a route (author/admin only) | User/Admin  |
 
 ### 👤 Profile
 | Method | Endpoint             | Description             | Access |
 |--------|----------------------|-------------------------|--------|
-| GET    | `/profile/{username}`| Get user profile        | User   |
-| PUT    | `/profile`           | Update profile details  | User   |
-| PUT    | `/profile/picture`   | Update profile picture  | User   |
-
----
+| GET    | `/users/profile`| Get user profile        | User   |
+| PATCH    | `/users/profile/edit`  | Update profile details  | User   |
 
 ### ⚙️ Admin
 | Method | Endpoint                  | Description             | Access |
 |--------|---------------------------|-------------------------|--------|
-| GET    | `/admin/users`            | Manage users            | Admin  |
-| POST   | `/admin/users/{id}/lock`  | Lock user account       | Admin  |
-| POST   | `/admin/users/{id}/unlock`| Unlock user account     | Admin  |
-| POST   | `/admin/users/{id}/disable`| Disable user account   | Admin  |
+| GET    | `/admin/notifications`     | Get users  table    | Admin  |
+| PUT   | `/admin//api/change-user-access/{email}`  | Enable/disable user's account | Admin  |
+| POST   | `/admin/api/update-roles`| Change user roles      | Admin  |
+| POST   | `/admin/api/remove-user/{email}`| Remove user account  | Admin  |
 | DELETE | `/admin/users/{id}`       | Delete user             | Admin  |
 | PUT    | `/admin/users/{id}/role`  | Update user role        | Admin  |
 | GET    | `/admin/stats`            | Get statistics          | Admin  |
