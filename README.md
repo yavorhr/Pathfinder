@@ -49,7 +49,7 @@ It includes a personalized profile system, social features like comments, and an
 
 ## 🛠️ Tech Stack
 
-- **Backend:** Java, Spring Boot, Spring Security  
+- **Backend:** ![Java](https://img.shields.io/badge/Java-17-blue?logo=java&logoColor=white), Spring Boot, Spring Security  
 - **Frontend:** HTML, CSS, Thymeleaf, Bootstrap, JavaScript  
 - **Database:** MySQL  
 - **Cloud Storage:** Cloudinary  
