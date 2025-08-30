@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
   private final UserService userService;
 
@@ -22,7 +23,7 @@ public class AdminController {
     this.userService = userService;
   }
 
-  @GetMapping("/admin/notifications")
+  @GetMapping("/notifications")
   public String viewNotifications(
           @RequestParam(defaultValue = "") String query,
           @RequestParam(defaultValue = "0") int page,
@@ -43,7 +44,7 @@ public class AdminController {
   }
 
   @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #email)")
-  @PutMapping("/admin/change-user-access/{email}")
+  @PutMapping("/api/change-user-access/{email}")
   @ResponseBody
   public ResponseEntity<UserUpdateStatusResponse> changeUserAccess(@PathVariable String email,
                                                                    @AuthenticationPrincipal UserDetails principal) {
@@ -54,7 +55,7 @@ public class AdminController {
   }
 
   @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #request.email)")
-  @PatchMapping("/admin/api/update-roles")
+  @PatchMapping("/api/update-roles")
   @ResponseBody
   public ResponseEntity<?> updateRoles(@RequestBody RoleUpdateRequest request,
                                        @AuthenticationPrincipal UserDetails principal) {
@@ -65,7 +66,7 @@ public class AdminController {
   }
 
   @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#email, #principal.username)")
-  @DeleteMapping("/admin/api/remove-user/{email}")
+  @DeleteMapping("/api/remove-user/{email}")
   @ResponseBody
   public ResponseEntity<?> deleteUser(@PathVariable String email,
                                       @AuthenticationPrincipal UserDetails principal) {
@@ -75,7 +76,7 @@ public class AdminController {
   }
 
   @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #email)")
-  @PutMapping("/admin/change-user-lock-status/{email}")
+  @PutMapping("/change-user-lock-status/{email}")
   @ResponseBody
   public ResponseEntity<UserUpdateStatusResponse> changeUserLockStatus(@PathVariable String email,
                                                                        @AuthenticationPrincipal UserDetails principal) {
