@@ -74,3 +74,42 @@ cd pathfinder
 # Build & run
 ./mvnw clean install
 ./mvnw spring-boot:run
+```
+
+### 🐳 Run with Docker (coming soon)
+A ready-to-use docker-compose.yml will be provided for easy setup.
+
+---
+
+## 📂 Project Structure
+
+pathfinder/
+ ├── src/main/java/...       # Spring Boot backend
+ ├── src/main/resources/...  # Static resources, templates
+ ├── src/test/java/...       # Unit & integration tests
+ ├── pom.xml                 # Maven config
+ └── README.md               # This file
+
+---
+
+ ## 🗺️ Roadmap
+
+- Add audit logging for admin actions
+- Enhance email templates
+- Docker setup with docker-compose
+
+---
+
+## 📜 License
+
+This project is currently unlicensed.
+For a student/portfolio project, a license isn’t mandatory — but if you want others to use or build on your code, MIT is the simplest choice.
+
+---
+
+📬 Contact
+
+Created by Yavor 👨‍💻
+
+- LinkedIn
+- GitHub
