@@ -15,6 +15,7 @@
 - [✨ Features](#-features)
 - [🖼️ Screenshots](#-screenshots)
 - [🛠️ Tech Stack](#️-tech-stack)
+- [📡 API Endpoints](#-api-endpoints)  
 - [🚀 Getting Started](#-getting-started)
   - [Clone & Run (manual)](#clone--run-manual)
   - [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
@@ -119,6 +120,21 @@ It includes a personalized profile system, social features like comments, and an
 </p>
 
 ---
+
+## 📡 API Endpoints
+
+## 🔗 API Endpoints
+
+| Method | Endpoint              | Description                          | Access   |
+|--------|-----------------------|--------------------------------------|----------|
+| POST   | `/auth/login`         | User login                           | Public   |
+| POST   | `/auth/register`      | User registration                    | Public   |
+| GET    | `/routes`             | Get all routes                       | User     |
+| POST   | `/routes`             | Create new route                     | User     |
+| DELETE | `/routes/{id}`        | Delete a route (author/admin only)   | User/Admin |
+| GET    | `/admin/users`        | Manage users                         | Admin    |
+| POST   | `/admin/users/{id}/lock` | Lock user account                 | Admin    |
+
 
 ## 🚀 Getting Started
 
