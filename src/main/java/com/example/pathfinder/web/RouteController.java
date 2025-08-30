@@ -153,7 +153,6 @@ public class RouteController {
 
     return quotes.get(new Random().nextInt(quotes.size()));
   }
-
 }
 
 
