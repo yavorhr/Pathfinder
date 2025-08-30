@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Random;
 
 @Controller
+@RequestMapping("/routes")
 public class RouteController {
   private final RouteService routeService;
   private ModelMapper modelMapper;
@@ -36,7 +37,7 @@ public class RouteController {
   }
 
   // GET
-  @GetMapping("/routes")
+  @GetMapping
   public String getRoutesPage(Model model) {
     List<RouteViewModel> allRoutes = this.routeService.findAllRoutes();
     model.addAttribute("routes", allRoutes);
@@ -44,7 +45,7 @@ public class RouteController {
     return "routes";
   }
 
-  @GetMapping("/routes/{category}")
+  @GetMapping("/{category}")
   public String getRoutesPerCategory(@PathVariable String category,
                                      Model model) {
 
@@ -70,7 +71,7 @@ public class RouteController {
     return "route-details";
   }
 
-  @GetMapping("/routes/most-commented")
+  @GetMapping("/most-commented")
   public String getMostCommentedRoute(@AuthenticationPrincipal UserDetails principal,
                                       Model model) {
     var viewModel = this.modelMapper.map(
@@ -83,12 +84,12 @@ public class RouteController {
   }
 
   // ADD
-  @GetMapping("/routes/add")
+  @GetMapping("/add")
   public String getAddRoutePage() {
     return "add-route";
   }
 
-  @PostMapping("/routes/add")
+  @PostMapping("/add")
   public String addRoute(@AuthenticationPrincipal UserDetails principal,
                          @Valid RouteAddBindingModel routeAddBindingModel,
                          BindingResult bindingResult,
@@ -111,7 +112,7 @@ public class RouteController {
   }
 
   @PreAuthorize("@routeServiceImpl.isOwnerOrIsAdmin(#principal.username, #routeId)")
-  @DeleteMapping("/routes/delete")
+  @DeleteMapping("/delete")
   public String deleteRoute(@RequestParam Long routeId, @AuthenticationPrincipal UserDetails principal) {
 
     this.routeService.deleteRouteById(routeId);
