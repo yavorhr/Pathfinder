@@ -104,15 +104,6 @@ It includes a personalized profile system, social features like comments, and an
   <img src="https://img.icons8.com/fluency/48/clouds.png" width="40" height="40" alt="OpenWeather API"/> **OpenWeather API**
 </p>
 
-
-<!-- APIs / Extras (use placeholders since no direct devicon logos) -->
-<p align="center">
-  <img src="https://img.icons8.com/fluency/48/api.png" width="40" height="40" alt="API Integration"/>
-  <img src="https://img.icons8.com/color/48/cloud.png" width="40" height="40" alt="Cloudinary"/>
-  <img src="https://img.icons8.com/color/48/combo-chart--v1.png" width="40" height="40" alt="Chart.js"/>
-  <img src="https://img.icons8.com/fluency/48/clouds.png" width="40" height="40" alt="OpenWeather API"/>
-</p>
-
 ---
 
 ## 🚀 Getting Started
