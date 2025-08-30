@@ -37,6 +37,13 @@
     line-height: 1.4;
 }
 
+/* Home button position */
+.home-nav-item {
+    position: absolute;
+    top: 15px;
+    left: 0;
+}
+
 /* ===== Card grid layout ===== */
 .container {
     display: grid;
