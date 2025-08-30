@@ -5,14 +5,14 @@
 
 
 <body>
-<!--<header th:replace="fragments/navbar"></header>-->
+<div th:replace="fragments/home-button"></div>
+
 <div class="wrapper route-wrapper">
-    <!-- Navigation -->
     <section class="category-front-img">
         <img class="rounded-circle category-image"
              th:src="@{'/images/route-categories/' + ${category} + '.jpg'}" alt="Title image">
         <h3 class="category-title">
-            <q th:text="${quote}" >10 Inspirational Walking Quotes to Help You Go The Extra Mile</q>
+            <q th:text="${quote}">10 Inspirational Walking Quotes to Help You Go The Extra Mile</q>
         </h3>
     </section>
 
@@ -32,7 +32,8 @@
 
 </body>
 
-<!--<footer th:replace="fragments/footer"></footer>-->
+<footer th:replace="fragments/footer"></footer>
+
 <script src="/js/routes-by-categories.js"></script>
 
 </html>
