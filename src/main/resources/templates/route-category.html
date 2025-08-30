@@ -5,34 +5,35 @@
 
 
 <body>
-<div th:replace="fragments/home-button"></div>
+<main>
+    <div th:replace="fragments/home-button"></div>
 
-<div class="wrapper route-wrapper">
-    <section class="category-front-img">
-        <img class="rounded-circle category-image"
-             th:src="@{'/images/route-categories/' + ${category} + '.jpg'}" alt="Title image">
-        <h3 class="category-title">
-            <q th:text="${quote}">10 Inspirational Walking Quotes to Help You Go The Extra Mile</q>
-        </h3>
-    </section>
+    <div class="wrapper route-wrapper">
+        <section class="category-front-img">
+            <img class="rounded-circle category-image"
+                 th:src="@{'/images/route-categories/' + ${category} + '.jpg'}" alt="Title image">
+            <h3 class="category-title">
+                <q th:text="${quote}">10 Inspirational Walking Quotes to Help You Go The Extra Mile</q>
+            </h3>
+        </section>
 
-    <section class="container">
-        <div class="card__container" th:each="r : ${routes}" th:object="${r}">
-            <article class="card__article">
-                <img th:src="*{pictureUrl}" alt="image" class="card__img">
-                <span class="card__arrow">▼</span>
-                <div class="card__data">
-                    <h2 th:text="*{name}" class="card__title">The Great Path</h2>
-                    <a th:href="@{/routes/details/{id}(id=*{id})}" class="card__button">Read More</a>
-                </div>
-            </article>
-        </div>
-    </section>
-</div>
-
-</body>
+        <section class="container">
+            <div class="card__container" th:each="r : ${routes}" th:object="${r}">
+                <article class="card__article">
+                    <img th:src="*{pictureUrl}" alt="image" class="card__img">
+                    <span class="card__arrow">▼</span>
+                    <div class="card__data">
+                        <h2 th:text="*{name}" class="card__title">The Great Path</h2>
+                        <a th:href="@{/routes/details/{id}(id=*{id})}" class="card__button">Read More</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+</main>
 
 <footer th:replace="fragments/footer"></footer>
+</body>
 
 <script src="/js/routes-by-categories.js"></script>
 
