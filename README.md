@@ -153,9 +153,8 @@ pathfinder/
 
  ## 🗺️ Roadmap
 
-- Add audit logging for admin actions
-- Enhance email templates
-- Docker setup with docker-compose
+- [ ] Docker setup with `docker-compose`
+- [ ] Add social login (Google, GitHub)
 
 ---
 
