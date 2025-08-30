@@ -43,4 +43,34 @@ It includes a personalized profile system, social features like comments, and an
 ## 🖼️ Screenshots
 
 > Screenshots will be added soon.  
-*(e.g. H*
+*(e.g. Home Page, Route Details, Profile Page, Admin Panel, etc.)*  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend:** Java, Spring Boot, Spring Security  
+- **Frontend:** HTML, CSS, Thymeleaf, Bootstrap, JavaScript  
+- **Database:** MySQL  
+- **Cloud Storage:** Cloudinary  
+- **APIs:**  
+  - OpenWeatherMap (Weather data)  
+  - Chart.js (Statistics visualization)  
+- **DevOps:** Docker (planned)  
+- **Testing:** JUnit, Spring Boot Test (95% coverage)  
+
+---
+
+## 🚀 Getting Started
+
+### Clone & Run (manual)
+```bash
+# Clone the repository
+git clone https://github.com/your-username/pathfinder.git
+cd pathfinder
+
+# Configure application.properties with your MySQL + Cloudinary credentials
+
+# Build & run
+./mvnw clean install
+./mvnw spring-boot:run
