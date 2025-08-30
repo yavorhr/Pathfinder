@@ -123,17 +123,44 @@ It includes a personalized profile system, social features like comments, and an
 
 ## 📡 API Endpoints
 
-## 🔗 API Endpoints
+### 🔑 Authentication
+| Method | Endpoint         | Description       | Access  |
+|--------|------------------|-------------------|---------|
+| POST   | `/auth/login`    | User login        | Public  |
+| POST   | `/auth/register` | User registration | Public  |
 
-| Method | Endpoint              | Description                          | Access   |
-|--------|-----------------------|--------------------------------------|----------|
-| POST   | `/auth/login`         | User login                           | Public   |
-| POST   | `/auth/register`      | User registration                    | Public   |
-| GET    | `/routes`             | Get all routes                       | User     |
-| POST   | `/routes`             | Create new route                     | User     |
-| DELETE | `/routes/{id}`        | Delete a route (author/admin only)   | User/Admin |
-| GET    | `/admin/users`        | Manage users                         | Admin    |
-| POST   | `/admin/users/{id}/lock` | Lock user account                 | Admin    |
+---
+
+### 🛤️ Routes
+| Method | Endpoint        | Description                        | Access      |
+|--------|-----------------|------------------------------------|-------------|
+| GET    | `/routes`       | Get all routes                     | User        |
+| GET    | `/routes/{id}`  | Get route by ID                    | User        |
+| POST   | `/routes`       | Create new route                   | User        |
+| DELETE | `/routes/{id}`  | Delete a route (author/admin only) | User/Admin  |
+
+---
+
+### 👤 Profile
+| Method | Endpoint             | Description             | Access |
+|--------|----------------------|-------------------------|--------|
+| GET    | `/profile/{username}`| Get user profile        | User   |
+| PUT    | `/profile`           | Update profile details  | User   |
+| PUT    | `/profile/picture`   | Update profile picture  | User   |
+
+---
+
+### ⚙️ Admin
+| Method | Endpoint                  | Description             | Access |
+|--------|---------------------------|-------------------------|--------|
+| GET    | `/admin/users`            | Manage users            | Admin  |
+| POST   | `/admin/users/{id}/lock`  | Lock user account       | Admin  |
+| POST   | `/admin/users/{id}/unlock`| Unlock user account     | Admin  |
+| POST   | `/admin/users/{id}/disable`| Disable user account   | Admin  |
+| DELETE | `/admin/users/{id}`       | Delete user             | Admin  |
+| PUT    | `/admin/users/{id}/role`  | Update user role        | Admin  |
+| GET    | `/admin/stats`            | Get statistics          | Admin  |
+| POST   | `/admin/stats/reset`      | Reset statistics        | Admin  |
 
 
 ## 🚀 Getting Started
