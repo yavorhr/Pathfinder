@@ -9,6 +9,22 @@
 
 ---
 
+# 📑 Table of Contents
+
+- [📖 About the Project](#-about-the-project)
+- [✨ Features](#-features)
+- [🖼️ Screenshots](#-screenshots)
+- [🛠️ Tech Stack](#-tech-stack)
+- [🚀 Getting Started](#-getting-started)
+  - [Clone & Run (manual)](#clone--run-manual)
+  - [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
+- [📂 Project Structure](#-project-structure)
+- [🗺️ Roadmap](#️-roadmap)
+- [📜 License](#-license)
+- [📬 Contact](#-contact)
+
+---
+
 ## 📖 About the Project
 Pathfinder is a full-stack application that allows users to **create, share, and explore travel routes** with detailed metadata.  
 It includes a personalized profile system, social features like comments, and an **Admin Panel** for advanced user and content management.  
