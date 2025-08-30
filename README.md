@@ -1,3 +1,8 @@
+<!-- Banner Image -->
+<p align="center">
+  <img src="https://via.placeholder.com/1200x300.png?text=Pathfinder+Travel+Routes+App" alt="Pathfinder Banner" width="100%">
+</p>
+
 # 🧭 Pathfinder  
 *A Spring Boot & HTML/CSS application for sharing and exploring travel route experiences.*
 
