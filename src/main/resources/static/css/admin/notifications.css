@@ -19,43 +19,9 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Home button */
-.home-nav-item {
-    background: transparent;
-    justify-content: center;
-    align-items: center;
-}
-
 .active-page {
     background-color: #007bff;
     color: white;
-}
-
-/* Home button */
-.home-nav-item {
-    background: transparent;
-}
-
-.home-nav-item a {
-    background-color: transparent;
-}
-
-.navbar-icon {
-    padding: 10px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--primary);
-    transition: all 0.3s ease;
-}
-
-.navbar-icon:hover {
-    width: 80px;
-    height: 80px;
-    border-color: black;
-    background-color: white;
-    transform: scale(1.1);
 }
 
 .admin-header {
@@ -77,8 +43,7 @@ body {
 
 /* Notifications Table */
 .notifications-table {
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
     margin: 20px auto;
     border-collapse: collapse;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
@@ -324,21 +289,87 @@ button:focus {
     font-weight: bold;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+
+/* Responsive design */
+@media (max-width: 1600px) {
     .notifications-table th,
     .notifications-table td {
         padding: 10px;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
-    button {
-        font-size: 0.9rem;
+    .notifications-table th:nth-child(3),
+    .notifications-table td:nth-child(3) {
+        display: none;
+    }
+}
+
+@media (max-width: 1400px) {
+    .actions-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 buttons per row */
+        gap: 8px;
+        justify-items: center;
+    }
+
+    .actions-container button {
+        font-size: 0.85rem;
         padding: 8px 12px;
+        border-radius: 6px;
+    }
+
+    .change-role-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 
     .role-action-container {
-        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
     }
+
+    .change-role-btn {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
 }
+
+/* Tablet screens */
+@media (max-width: 900px) {
+    .notifications-table th,
+    .notifications-table td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .notifications-table th:nth-child(3),
+    .notifications-table td:nth-child(3),
+    .notifications-table th:nth-child(4),
+    .notifications-table td:nth-child(4) {
+        display: none;
+    }
+}
+
+/* Phone screens */
+@media (max-width: 600px) {
+    .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .notifications-table {
+        min-width: 700px;
+    }
+
+    .notifications-table th,
+    .notifications-table td {
+        padding: 6px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+}
+
