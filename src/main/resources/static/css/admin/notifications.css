@@ -15,8 +15,18 @@ body {
 
 .first-section {
     display: flex;
+    justify-content: center;
     align-items: center;
+    position: relative;
+    width: 100%;
     margin-bottom: 2rem;
+}
+
+.first-section > div {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .active-page {
@@ -25,7 +35,6 @@ body {
 }
 
 .admin-header {
-    font-family: 'Arial', sans-serif;
     font-size: 36px;
     font-weight: bold;
     color: #fff;
@@ -33,12 +42,12 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     background: linear-gradient(145deg, #807f86, #4c4b4e);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 0, 0, 0.2), 0 0 50px rgba(0, 0, 0, 0.1);
-
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 25px rgba(0, 0, 0, 0.2),
+    0 0 50px rgba(0, 0, 0, 0.1);
     border: 3px solid #fff;
     padding: 20px;
     border-radius: 10px;
-/ box-shadow: 0 8 px 15 px rgba(0, 0, 0, 0.2);
 }
 
 /* Notifications Table */
@@ -239,6 +248,7 @@ button:focus {
     font-size: 1rem;
     transition: border-color 0.2s;
 }
+
 .search-container input[type="text"]:focus {
     border-color: #007bff;
 }
@@ -255,6 +265,7 @@ button:focus {
     color: #fff;
     transition: background-color 0.2s;
 }
+
 .search-container button:hover {
     background-color: #0056b3;
 }
@@ -277,6 +288,7 @@ button:focus {
     color: #007bff;
     transition: background-color 0.2s, color 0.2s;
 }
+
 #pagination a:hover {
     background-color: #e9ecef;
 }
@@ -351,6 +363,11 @@ button:focus {
     .notifications-table td:nth-child(4) {
         display: none;
     }
+
+    .admin-header {
+        font-size: 28px;
+        padding: 15px;
+    }
 }
 
 /* Phone screens */
@@ -370,6 +387,12 @@ button:focus {
         padding: 6px;
         font-size: 0.8rem;
         white-space: nowrap;
+    }
+
+    .admin-header {
+        font-size: 22px;
+        padding: 10px;
+        letter-spacing: 1px;
     }
 }
 
