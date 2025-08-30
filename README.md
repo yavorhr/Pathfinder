@@ -126,15 +126,16 @@ It includes a personalized profile system, social features like comments, and an
 ### 🔑 Authentication
 | Method | Endpoint         | Description       | Access  |
 |--------|------------------|-------------------|---------|
-| POST   | `/auth/login`    | User login        | Public  |
-| POST   | `/auth/register` | User registration | Public  |
-
----
+| GET    | `/users/login`   | Get login page    | Public  |
+| POST   | `/users/login`   | User login       | Public  |
+| POST   | `/users/register` | User registration | Public  |
+| POST   | `/users/logout` | User logout | User  |
 
 ### 🛤️ Routes
 | Method | Endpoint        | Description                        | Access      |
 |--------|-----------------|------------------------------------|-------------|
 | GET    | `/routes`       | Get all routes                     | User        |
+| GET    | `/routes/{category}`       | Get routes by category                     | User        |
 | GET    | `/routes/{id}`  | Get route by ID                    | User        |
 | POST   | `/routes`       | Create new route                   | User        |
 | DELETE | `/routes/{id}`  | Delete a route (author/admin only) | User/Admin  |
