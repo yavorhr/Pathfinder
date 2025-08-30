@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const tr = clickedButton.closest("tr");
             const email = tr.querySelector('.email').textContent.trim();
 
-            fetch(`/admin/change-user-lock-status/${email}`, {
+            fetch(`/admin/api/change-user-lock-status/${email}`, {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',

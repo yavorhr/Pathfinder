@@ -76,7 +76,7 @@ public class AdminController {
   }
 
   @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #email)")
-  @PutMapping("/change-user-lock-status/{email}")
+  @PutMapping("/api/change-user-lock-status/{email}")
   @ResponseBody
   public ResponseEntity<UserUpdateStatusResponse> changeUserLockStatus(@PathVariable String email,
                                                                        @AuthenticationPrincipal UserDetails principal) {
