@@ -14,7 +14,7 @@
 - [📖 About the Project](#-about-the-project)
 - [✨ Features](#-features)
 - [🖼️ Screenshots](#-screenshots)
-- [🛠️ Tech Stack](#-tech-stack)
+- [🛠️ Tech Stack](#️-tech-stack)
 - [🚀 Getting Started](#-getting-started)
   - [Clone & Run (manual)](#clone--run-manual)
   - [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
