@@ -49,14 +49,14 @@ It includes a personalized profile system, social features like comments, and an
 
 ## 🛠️ Tech Stack
 
-- **Backend:** ![Java](https://img.shields.io/badge/Java-17-blue?logo=java&logoColor=white), Spring Boot, Spring Security  
-- **Frontend:** HTML, CSS, Thymeleaf, Bootstrap, JavaScript  
-- **Database:** MySQL  
-- **Cloud Storage:** Cloudinary  
+- **Backend:** ![Java](https://img.shields.io/badge/Java-17-blue?logo=java&logoColor=white), ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1.0-brightgreen?logo=spring&logoColor=white), Spring Security  
+- **Frontend:** HTML, CSS, ![Thymeleaf](https://img.shields.io/badge/Thymeleaf-3.1.1-orange?logo=thymeleaf&logoColor=white), ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?logo=bootstrap&logoColor=white), ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript&logoColor=black)  
+- **Database:** ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?logo=mysql&logoColor=white)  
+- **Cloud Storage:** ![Cloudinary](https://img.shields.io/badge/Cloudinary-API-ff69b4?logo=cloudinary&logoColor=white)  
 - **APIs:**  
-  - OpenWeatherMap (Weather data)  
-  - Chart.js (Statistics visualization)  
-- **DevOps:** Docker (planned)  
+  - ![OpenWeatherMap](https://img.shields.io/badge/OpenWeatherMap-API-0077B5?logo=openweathermap&logoColor=white) (Weather data)  
+  - ![Chart.js](https://img.shields.io/badge/Chart.js-4.3.0-lightblue?logo=chartdotjs&logoColor=white) (Statistics visualization)  
+- **DevOps:** ![Docker](https://img.shields.io/badge/Docker-Coming%20Soon-0db7ed?logo=docker&logoColor=white) (planned)  
 - **Testing:** JUnit, Spring Boot Test (95% coverage)  
 
 ---
