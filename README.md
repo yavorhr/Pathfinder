@@ -62,7 +62,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   - Send emails to users  
   - Update user roles  
   - Search + pagination support
--⚡ **AJAX-style controls for user management and admin actions**
+- **⚡AJAX-style controls for user management and admin actions**
 - Lock/unlock, change roles, remove accounts and send notifications dynamically
   
 ### 🧪 Testing
@@ -99,7 +99,9 @@ This is the user managmenet page. It provides the following features:
 
 ### 📊 Endpoints statistics
 
-- 📊 **Most viewed pages statistics** with reset functionality 
+This page provides an overview of the **most visited endpoints/pages by user**, visualized using **Chart.js**.  
+Includes a **reset functionality** to clear the stats when needed.
+  
 ![most-viewed](https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04)
 
 ---
