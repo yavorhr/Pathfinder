@@ -152,13 +152,9 @@ It includes a personalized profile system, social features like comments, and an
 |--------|---------------------------|-------------------------|--------|
 | GET    | `/admin/notifications`     | Get users  table    | Admin  |
 | PUT   | `/admin//api/change-user-access/{email}`  | Enable/disable user's account | Admin  |
-| POST   | `/admin/api/update-roles`| Change user roles      | Admin  |
-| POST   | `/admin/api/remove-user/{email}`| Remove user account  | Admin  |
-| DELETE | `/admin/users/{id}`       | Delete user             | Admin  |
-| PUT    | `/admin/users/{id}/role`  | Update user role        | Admin  |
-| GET    | `/admin/stats`            | Get statistics          | Admin  |
-| POST   | `/admin/stats/reset`      | Reset statistics        | Admin  |
-
+| PUT   | `/admin/api/change-user-lock-status/{email}`| Change user roles  | Admin  |
+| PATCH   | `/admin/api/update-roles`| Change user roles  | Admin  |
+| DELETE   | `/admin//api/remove-user/{email}`| Change user roles  | Admin  |
 
 ## 🚀 Getting Started
 
