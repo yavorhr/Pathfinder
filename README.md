@@ -159,18 +159,24 @@ It includes a personalized profile system, social features like comments, and an
 | DELETE   | `/admin//api/remove-user/{email}`| Change user roles  | Admin  |
 
 ### 🏠 Home page
+| Method | Endpoint                  | Description             | Access |
+|--------|---------------------------|-------------------------|--------|
 | GET    | `/`     | Get home page   | Public  |
 | GET    | `/about`     | Get about page   | Public  |
 
 ### 🖼️ Cloudinary API
+| Method | Endpoint                  | Description             | Access |
+|--------|---------------------------|-------------------------|--------|
 | POST    | `/pictures/add`     | User (author) add picture to route | User |
 | DELETE    | `/pictures/delete`     | User (author) deletes picture from route | User |
 | POST    | `/api/profile/image-upload`     | User uploads new profile image | User |
 | DELETE    | `/api/profile/image-delete`     | User deletes old profile image  | User |
 
 ### 💬 Comments
-| GET    | `/`     | Get home page   | Public  |
-| GET    | `/about`     | Get about page   | Public  |
+| Method | Endpoint                  | Description             | Access |
+|--------|---------------------------|-------------------------|--------|
+| GET    | `/api/{routeId}/comments`     | Get all route comments   | User  |
+| POST    | `/api/{routeId}/add-comment`     | Add comment to route   | User  |
 
 ## 🚀 Getting Started
 
@@ -207,6 +213,8 @@ pathfinder/
 
 - [ ] Docker setup with `docker-compose`
 - [ ] Add social login (Google, GitHub)
+- [ ] Admin to be able to delete users comments
+- [ ] To add messages feature between users
 
 ---
 
