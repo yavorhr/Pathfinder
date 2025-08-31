@@ -67,6 +67,11 @@ It includes a personalized profile system, social features like comments, and an
 
 ### 🏠 Home Page
 
+The homepage is the start point of the application. It provides the following features:
+- Quick links to all routes and or to route, sorted by category (car, pedestrian, etc.)
+- Live wheater forecast
+- Link to the most commented route
+- Gallery with all recent route images
 
 ![home1](https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5)
 
