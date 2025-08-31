@@ -52,7 +52,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   - Customize profile fields (age, name, social links)  
   - Change or reset profile picture (Cloudinary API)  
   - Leveling system based on created routes
--⚡ **Dynamic interactions with JavaScript Fetch API**
+- **⚡Dynamic interactions with JavaScript Fetch API**
   - Comment routes, update profile fields, and more — all without refreshing the page
 
 ### 🛠️ Admin Panel
