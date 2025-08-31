@@ -65,6 +65,14 @@ It includes a personalized profile system, social features like comments, and an
 
 ## 🖼️ Screenshots
 
+### 🏠 Home Page
+
+
+![home1](https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5)
+
+![home2](https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1)
+
+
 > Screenshots will be added soon.  
 *(e.g. Home Page, Route Details, Profile Page, Admin Panel, etc.)*  
 
@@ -209,7 +217,7 @@ pathfinder/
 
 ---
 
- ## 🗺️ Roadmap
+ ## 🚧 In progress
 
 - [ ] Docker setup with `docker-compose`
 - [ ] Add social login (Google, GitHub)
