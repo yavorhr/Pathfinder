@@ -151,12 +151,26 @@ It includes a personalized profile system, social features like comments, and an
 | Method | Endpoint                  | Description             | Access |
 |--------|---------------------------|-------------------------|--------|
 | GET    | `/admin/notifications`     | Get users  table    | Admin  |
+| GET    | `/admin/statistics`     | Get most visited endpoints    | Admin  |
+| POST    | `/admin/statistics/reset`     | Reset most visited endpoints    | Admin  |
 | PUT   | `/admin//api/change-user-access/{email}`  | Enable/disable user's account | Admin  |
 | PUT   | `/admin/api/change-user-lock-status/{email}`| Change user roles  | Admin  |
 | PATCH   | `/admin/api/update-roles`| Change user roles  | Admin  |
 | DELETE   | `/admin//api/remove-user/{email}`| Change user roles  | Admin  |
 
-[![Homepage](https://img.shields.io/badge/Homepage-000?style=for-the-badge&logo=homeadvisor&logoColor=white)](https://your-homepage-link.com)
+### 🏠 Home page
+| GET    | `/`     | Get home page   | Public  |
+| GET    | `/about`     | Get about page   | Public  |
+
+### 🖼️ Cloudinary API
+| POST    | `/pictures/add`     | User (author) add picture to route | User |
+| DELETE    | `/pictures/delete`     | User (author) deletes picture from route | User |
+| POST    | `/api/profile/image-upload`     | User uploads new profile image | User |
+| DELETE    | `/api/profile/image-delete`     | User deletes old profile image  | User |
+
+### 💬 Comments
+| GET    | `/`     | Get home page   | Public  |
+| GET    | `/about`     | Get about page   | Public  |
 
 ## 🚀 Getting Started
 
