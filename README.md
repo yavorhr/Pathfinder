@@ -156,6 +156,8 @@ It includes a personalized profile system, social features like comments, and an
 | PATCH   | `/admin/api/update-roles`| Change user roles  | Admin  |
 | DELETE   | `/admin//api/remove-user/{email}`| Change user roles  | Admin  |
 
+[![Homepage](https://img.shields.io/badge/Homepage-000?style=for-the-badge&logo=homeadvisor&logoColor=white)](https://your-homepage-link.com)
+
 ## 🚀 Getting Started
 
 ### Clone & Run (manual)
