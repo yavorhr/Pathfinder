@@ -27,10 +27,13 @@
 ---
 
 ## 📖 About the Project
-Pathfinder is a full-stack application that allows users to **create, share, and explore travel routes** with detailed metadata.  
-It includes a personalized profile system, social features like comments, and an **Admin Panel** for advanced user and content management.  
+Pathfinder is a MVC full-stack application that allows users to **create, share, and explore travel routes** with detailed metadata. 
 
-> ⚡ Built with **Java + Spring Boot**, **Thymeleaf**, and modern web integrations (Cloudinary, Weather API, Chart.js).  
+The application is fully responsive — optimized for desktop, tablet, and smartphones.
+It leverages **JavaScript (Fetch API)** to handle many actions dynamically without page reloads,  
+providing a smoother, SPA-like user experience on top of the MVC architecture.
+
+> ⚡ Built with **Java + Spring Boot (MVC)** for the backend, and **Thymeleaf, JavaScript, HTML5, and CSS3** for the frontend visualizations.   
 
 ---
 
@@ -67,8 +70,9 @@ It includes a personalized profile system, social features like comments, and an
 
 ### 🏠 Home Page
 
-The homepage is the start point of the application. It provides the following features:
-- Quick links to all routes and or to route, sorted by category (car, pedestrian, etc.)
+The homepage is the start point of the application. It includes the following features:
+- Quick link to all users routes
+- Link tabs to routes, sorted by category (car, pedestrian, etc.)
 - Live wheater forecast
 - Link to the most commented route
 - Gallery with all recent route images
@@ -77,9 +81,22 @@ The homepage is the start point of the application. It provides the following fe
 
 ![home2](https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1)
 
+### 🛠️ Admin control panel
 
-> Screenshots will be added soon.  
-*(e.g. Home Page, Route Details, Profile Page, Admin Panel, etc.)*  
+This is the user managmenet page. It provides the following features:
+  - Remove user from the database
+  - Disable/enable user access
+  - Lock/unlock user account
+  - Send emails to users  
+  - Update user roles  
+  - Search + pagination support
+
+![notifications](https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1)
+
+### 📊 Endpoints statistics
+
+- 📊 **Most viewed pages statistics** with reset functionality 
+![most-viewed](https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04)
 
 ---
 
