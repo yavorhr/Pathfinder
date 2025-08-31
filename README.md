@@ -72,7 +72,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ## 🖼️ Screenshots
 
-### 🏠 Home Page
+### Home Page
 
 The homepage is the start point of the application. It includes the following features:
 - Quick link to all users routes
@@ -85,7 +85,7 @@ The homepage is the start point of the application. It includes the following fe
 
 ![home2](https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1)
 
-### 🛠️ Admin control panel
+### Admin control panel
 
 This is the user managmenet page. It provides the following features:
   - Remove user from the database
@@ -97,12 +97,24 @@ This is the user managmenet page. It provides the following features:
 
 ![notifications](https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1)
 
-### 📊 Endpoints statistics
+### Endpoints statistics
 
 This page provides an overview of the **most visited endpoints/pages by user**, visualized using **Chart.js**.  
 Includes a **reset functionality** to clear the stats when needed.
   
 ![most-viewed](https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04)
+
+---
+
+### Login
+
+![login](https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8)
+
+---
+
+### Register
+
+![register](https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc)
 
 ---
 
