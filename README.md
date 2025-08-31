@@ -3,9 +3,8 @@
   <img src="https://github.com/user-attachments/assets/a0319615-169e-464f-a82a-14534689fb75" alt="Pathfinder Banner" width="100%">
 </p>
 
-
 # 🧭 Pathfinder  
-*A Spring Boot & HTML/CSS application for sharing and exploring travel route experiences.*
+*A Full-stack application (Spring Boot & Thymeleaf + HTML/CSS) for sharing and exploring travel route experiences.*
 
 ---
 
@@ -30,8 +29,7 @@
 Pathfinder is a MVC full-stack application that allows users to **create, share, and explore travel routes** with detailed metadata. 
 
 The application is fully responsive — optimized for desktop, tablet, and smartphones.
-It leverages **JavaScript (Fetch API)** to handle many actions dynamically without page reloads,  
-providing a smoother, SPA-like user experience on top of the MVC architecture.
+It leverages **JavaScript (Fetch API)** to handle many actions dynamically without page reloads, providing a smoother, SPA-like user experience on top of the MVC architecture.
 
 > ⚡ Built with **Java + Spring Boot (MVC)** for the backend, and **Thymeleaf, JavaScript, HTML5, and CSS3** for the frontend visualizations.   
 
@@ -53,7 +51,9 @@ providing a smoother, SPA-like user experience on top of the MVC architecture.
 - 👤 **Profile**  
   - Customize profile fields (age, name, social links)  
   - Change or reset profile picture (Cloudinary API)  
-  - Leveling system based on created routes  
+  - Leveling system based on created routes
+-⚡ **Dynamic interactions with JavaScript Fetch API**
+  - Comment routes, update profile fields, and more — all without refreshing the page
 
 ### 🛠️ Admin Panel
 - 📊 **Most viewed pages statistics** with reset functionality  
@@ -61,8 +61,12 @@ providing a smoother, SPA-like user experience on top of the MVC architecture.
   - Delete, disable/enable, lock/unlock accounts  
   - Send emails to users  
   - Update user roles  
-  - Search + pagination support  
-- 🧪 Project includes **95%+ unit & integration test coverage**  
+  - Search + pagination support
+-⚡ **AJAX-style controls for user management and admin actions**
+- Lock/unlock, change roles, remove accounts and send notifications dynamically
+  
+### 🧪 Testing
+- **95%+ JUnit & Integration test coverage**  
 
 ---
 
