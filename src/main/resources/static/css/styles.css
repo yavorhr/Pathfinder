@@ -24,6 +24,8 @@ html {
 body {
     background-image: url("/images/site-bgr.jpg");
     backdrop-filter: blur(4px);
+    background-position: center center;
+    background-size: cover;
     padding: 10px;
     background-repeat: no-repeat;
     background-attachment: fixed;
