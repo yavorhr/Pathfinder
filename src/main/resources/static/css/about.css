@@ -2,11 +2,16 @@
     margin-top: 3rem;
 }
 
+.home-nav-item {
+    position: absolute;
+    top: 15px;
+    left: 0;
+}
+
 .info {
     display: grid;
     grid-gap: 2rem;
     grid-template-columns: repeat(3, 1fr);
-    background-color: var(--blue);
     padding: 5rem;
     border-radius: 3rem;
     color: var(--light);
@@ -17,13 +22,22 @@
     grid-column: 1 / -1;
 }
 
-/* Section styling */
 .info .section {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     padding: 2rem;
     border-radius: 1.5rem;
     backdrop-filter: blur(5px);
-    position: relative;
+
+    font-size: 20px;
+    letter-spacing: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info .section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
 }
 
 /* Headings */
@@ -34,18 +48,30 @@
     text-align: center;
 }
 
-ul, p {
+ul {
     text-align: justify;
+    transition: color 0.3s ease;
 }
 
-.author-info{
+.section:nth-child(2) ul li:hover,
+.section:nth-child(3) ul li:hover,
+.section:nth-child(4) ul li:hover {
+    color: var(--text-color);
+    cursor: default;
+    transform: translateX(3px);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.author-info {
     text-align: center;
 }
 
 .info ul {
     list-style: none;
     padding: 0;
+
 }
+
 .info ul li {
     margin-bottom: 0.8rem;
 }
@@ -55,6 +81,7 @@ ul, p {
     color: #ffd700;
     text-decoration: none;
 }
+
 .info a:hover {
     text-decoration: underline;
 }
@@ -89,7 +116,6 @@ ul, p {
     border-bottom-left-radius: 3rem;
     border-bottom-right-radius: 3rem;
 }
-
 
 .info .full h4,
 .info .full h5 {
