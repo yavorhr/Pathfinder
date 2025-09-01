@@ -32,7 +32,6 @@ The application is fully responsive — optimized for desktop, tablet, and smart
 It leverages **JavaScript (Fetch API)** to handle many actions dynamically without page reloads, providing a smoother, SPA-like user experience on top of the MVC architecture.
 
 > ⚡ Built with **Java + Spring Boot (MVC)** for the backend, and **Thymeleaf, JavaScript, HTML5, and CSS3** for the frontend visualizations.   
-
 ---
 
 ## ✨ Features
@@ -117,6 +116,10 @@ Includes a **reset functionality** to clear the stats when needed.
 ![register](https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc)
 
 ---
+
+### About page
+
+![about](https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e)
 
 ## 🛠️ Tech Stack
 
