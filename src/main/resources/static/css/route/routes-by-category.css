@@ -17,7 +17,7 @@ main {
 
     padding: 20px;
     border-radius: 10px;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.15);;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
@@ -41,8 +41,8 @@ main {
     margin-top: 10px;
     margin-bottom: 0;
 
-    font-size: 1.5rem;
-    color: white;
+    font-size: 2em;
+    color: var(--lightGray);
     font-weight: bold;
     font-style: italic;
     line-height: 1.4;
