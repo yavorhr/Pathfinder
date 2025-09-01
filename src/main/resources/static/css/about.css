@@ -1,27 +1,82 @@
+.wrapper {
+    margin-top: 3rem;
+}
+
 .info {
     display: grid;
     grid-gap: 2rem;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     background-color: #005cbf;
     color: white;
     padding: 5rem;
-    border-radius: 5rem;
+    border-radius: 3rem;
 }
 
-.info div {
-    text-align: center;
+/* Full-width rows */
+.info .full {
+    grid-column: 1 / -1;
 }
 
-.info div:nth-child(1) {
+/* Section styling */
+.info .section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+
+/* Headings */
+.info h4,
+.info h5 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.info ul {
+    list-style: none;
+    padding: 0;
+}
+.info ul li {
+    margin-bottom: 0.8rem;
+}
+
+/* Links */
+.info a {
+    color: #ffd700;
+    text-decoration: none;
+}
+.info a:hover {
+    text-decoration: underline;
+}
+
+.info .full:first-child {
     background-image: url("/images/pic4.jpg");
     background-size: cover;
-    border-bottom-right-radius: 5rem;
-    border-top-left-radius: 5rem;
+    background-position: center;
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
+    color: #fff;
 }
 
-.info div:nth-child(3) {
+.info .full:first-child::before,
+.info .full:last-child::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: inherit;
+}
+
+.info .full * {
+    position: relative;
+    z-index: 1;
+}
+
+.info .full:last-child {
     background-image: url("/images/pic1.jpg");
     background-size: cover;
-    border-bottom-left-radius: 5rem;
-    border-top-right-radius: 5rem;
+    background-position: center;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
 }
