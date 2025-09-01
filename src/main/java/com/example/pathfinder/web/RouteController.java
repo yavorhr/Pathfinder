@@ -58,7 +58,7 @@ public class RouteController {
     return "route-category";
   }
 
-  @GetMapping("/routes/details/{id}")
+  @GetMapping("/details/{id}")
   public String getRouteDetailsPage(@AuthenticationPrincipal UserDetails principal,
                                     @PathVariable Long id,
                                     Model model) {
