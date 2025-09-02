@@ -83,11 +83,6 @@ The homepage is the start point of the application. It includes the following fe
 ![home1](https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5)
 ![home2](https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1)
 
-<a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
-  <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" width="400"/>
-</a>
-
-
 ### Admin control panel
 
 This is the user managmenet page. It provides the following features:
@@ -109,19 +104,48 @@ Includes a **reset functionality** to clear the stats when needed.
 
 ---
 
-### Login
-
-![login](https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8)
-
----
-
 ### Register
 
 ![register](https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc)
 
 ---
 
+### Login
 
+![login](https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8)
+
+---
+
+### All routes
+
+![all-routes](https://github.com/user-attachments/assets/4f678865-a005-4a84-b14e-524f094d720e)
+
+### Create route
+
+![new-route](https://github.com/user-attachments/assets/f12041b3-612d-43c0-bb75-26a83d70820a)
+
+---
+
+### Route Details
+
+![details - 1](https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193)
+![details - 2](https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c)
+
+---
+
+### Routes by category (Car, Pedestrian, Bike or Bicycle)
+
+![by-cat](https://github.com/user-attachments/assets/08629c12-6e1c-4889-8919-0b9e3a973379)
+
+---
+
+### User profile
+
+![profile](https://github.com/user-attachments/assets/367dedb1-a853-484b-9c55-e7f281b03f42)
+
+### User profile in "Edit mode"
+
+![profile-edit-mode](https://github.com/user-attachments/assets/38db2fca-ef13-4f13-9646-fe5d91c5e009)
 
 ### About page
 
