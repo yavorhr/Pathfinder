@@ -1,4 +1,16 @@
-/* ====== Layout positioning  ====== */
+/* Common classes */
+
+.wrapper {
+    margin: 120px 70px 0;
+}
+
+.home-nav-item {
+    position: absolute;
+    top: 15px;
+    left: 0;
+}
+
+/* Layout positioning */
 
 .details-main {
     display: grid;
