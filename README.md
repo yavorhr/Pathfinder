@@ -105,6 +105,20 @@ Includes a **reset functionality** to clear the stats when needed.
 
 ---
 
+### Home page
+
+The homepage is the start point of the application. It provides the following features:
+- Quick links to all routes and or to route, sorted by category (car, pedestrian, etc.)
+- Live wheater forecast
+- Link to the most commented route
+- Gallery with all recent route images
+
+![home1](https://github.com/user-attachments/assets/e07ee566-368f-4723-b2a8-ebf7634d5b79)
+![home2](https://github.com/user-attachments/assets/ae321fd4-229a-487f-9fbd-defc4d6260ec)
+
+
+---
+
 ### Login
 
 ![login](https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8)
