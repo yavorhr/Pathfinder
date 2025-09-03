@@ -127,9 +127,27 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   </tr>
 </table>
 
-
-
 ### Endpoints statistics
+
+<table>
+  <tr>
+    <td valign="top">
+<a href="https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04">
+  <img src="https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04" width="400"/>
+</a>
+    </td>
+    <td valign="top" style="padding-left:20px;">
+      <p>
+       This page provides an overview of the **most visited endpoints/pages by user**.
+        <ul>
+          <li>Using **Chart.js** API for the graph</li>
+          <li>Reset functionality to clear the stats when needed</li>
+          <li>Using Reddis memory database to persist data</li
+        </ul>
+      </p>
+    </td>
+  </tr>
+</table>
 
 This page provides an overview of the **most visited endpoints/pages by user**, visualized using **Chart.js**.  
 Includes a **reset functionality** to clear the stats when needed.
