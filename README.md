@@ -166,7 +166,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   <tr>
     <td valign="top" width="50%">
       <a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
-        <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="height:400px; width:auto;"/>
+        <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="height:300px; width:auto;"/>
       </a>
     </td>
      <td valign="top" style="padding-left:20px;">
@@ -189,9 +189,27 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ### Login
 
-<a href="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8">
-  <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" width="400"/>
-</a>
+<table>
+  <tr>
+    <td valign="top" width="50%">
+       <a href="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8">
+        <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" style="height:300px; width:auto;"/>
+      </a>
+    </td>
+     <td valign="top" style="padding-left:20px;">
+       <p>
+    <ul>
+        <li>Implemented with <b>Spring Security filter chain</b>.</li>
+        <li>Custom <code>loginSuccessHandler</code> and <code>loginFailureHandler</code>.</li>
+        <li>Checks for: <b>Locked</b>, <b>Disabled</b>, or <b>Expired</b> accounts.</li>
+        <li>If 5 failed attempts (valid username, wrong password) → account is <b>locked for 15 minutes</b> using Spring Scheduler.</li>
+        <li>If account is locked 3 times → becomes <b>disabled</b> (admin-only reactivation).</li>
+        <li>Detailed <b>error messages</b> appear on the login screen.</li>
+      </ul>
+       </p>
+    </td>
+  </tr>
+</table>
 
 ---
 
