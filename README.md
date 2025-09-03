@@ -101,16 +101,33 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   </tr>
 </table>
 
-
 ### Admin control panel
 
-This is the user managmenet page. It provides the following features:
-  - Remove user from the database
-  - Disable/enable user access
-  - Lock/unlock user account
-  - Send emails to users  
-  - Update user roles  
-  - Search + pagination support
+<table>
+  <tr>
+    <td valign="top">
+<a href="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1">
+  <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" width="400"/>
+</a>
+    </td>
+    <td valign="top" style="padding-left:20px;">
+      <!-- Description column -->
+      <p>
+        This is the user managmenet page. It provides the following features:
+        <ul>
+          <li>Remove user from the database</li>
+          <li>Disable/enable user access</li>
+          <li>Lock/unlock user account</li>
+          <li>Send emails to users</li>
+          <li>Update user roles</li>
+           <li>Search + pagination support</li>
+        </ul>
+      </p>
+    </td>
+  </tr>
+</table>
+
+
 
 <a href="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1">
   <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" width="400"/>
