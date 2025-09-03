@@ -135,7 +135,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   </tr>
 </table>
 
-##![Capture]()
 # Endpoints statistics (admin only)
 
 <table>
@@ -159,19 +158,12 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   </tr>
 </table>
 
-This page provides an overview of the **most visited endpoints/pages by user**, visualized using **Chart.js**.  
-Includes a **reset functionality** to clear the stats when needed.
-  
-<a href="https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04">
-  <img src="https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04" width="400"/>
-</a>
-
 ---
 
 ### Register
 
 <a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
-  <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" width="400"/>
+  <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="height:300px; width:auto;"/>
 </a>
 
 ---
