@@ -7,8 +7,14 @@
   />
 </p>
 
-# 🧭 Pathfinder  
-*A Full-stack application (Spring Boot & Thymeleaf + HTML/CSS) for sharing and exploring travel route experiences.*
+<h1 align="center">🌍 Pathfinder</h1>
+
+<p align="center">
+  <b>A modern web application for creating, sharing, and exploring routes</b><br>
+  Built with <code>Spring Boot</code>, <code>React</code>, and <code>MySQL</code>
+</p>
+
+
 
 ---
 
