@@ -127,13 +127,13 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   </tr>
 </table>
 
-### Endpoints statistics
+### Endpoints statistics (admin only)
 
 <table>
   <tr>
     <td valign="top">
 <a href="https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04">
-  <img src="https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04" width="400"/>
+  <img src="https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04" style="height:220px; width:auto;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
