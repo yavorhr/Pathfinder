@@ -162,9 +162,25 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ### Register
 
-<a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
-  <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="height:300px; width:auto;"/>
-</a>
+<table>
+  <tr>
+    <td valign="top" width="50%">
+      <a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
+        <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="height:400px; width:auto;"/>
+      </a>
+      <h3>📝 Register</h3>
+      <ul>
+        <li>By default, newly registered users are <b>disabled</b>.</li>
+        <li>A <b>notification event</b> is created and visible in the Admin Panel.</li>
+        <li>Only after Admin approval the user can log in.</li>
+        <li>Admin can also send an <b>email notification</b> to unapproved users.</li>
+        <li>Includes <b>input validation</b>: minimal field length, unique email/username, required options (e.g., gender).</li>
+        <li>After successful registration, users are redirected to <b>Login</b>.</li>
+        <li>All user data is stored in <b>MySQL database</b>.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ---
 
