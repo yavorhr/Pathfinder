@@ -78,11 +78,11 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     <td valign="top">
       <!-- Images column -->
       <a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
-        <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" style="height:400px; width:auto;"/>
+        <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" style="height:300px; width:auto;"/>
       </a>
       <br/>
       <a href="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1">
-        <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" style="height:400px; width:auto;"/>
+        <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" style="height:300px; width:auto;"/>
       </a>
     </td>
     <td valign="top" style="padding-left:20px;">
