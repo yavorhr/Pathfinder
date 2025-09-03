@@ -161,7 +161,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ---
 
 ### Register
-
 <table>
   <tr>
     <td valign="top" width="50%">
@@ -170,17 +169,21 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
       </a>
     </td>
      <td valign="top" style="padding-left:20px;">
-       <p>
       <ul>
         <li>By default, newly registered users are <b>disabled</b>.</li>
         <li>A <b>notification event</b> is created and visible in the Admin Panel.</li>
         <li>Only after Admin approval the user can log in.</li>
         <li>Admin can also send an <b>email notification</b> to unapproved users.</li>
-        <li>Includes <b>input validation</b>: minimal field length, unique email/username, required options (e.g., gender).</li>
+        <li>
+          Includes <b>input validation</b>: minimal field length, unique email/username, required options (e.g., gender).  
+          <br/>
+          <a href="https://github.com/user-attachments/assets/e74f2622-e74c-49b8-9e4a-01dd3c56aa86">
+            <img src="https://github.com/user-attachments/assets/e74f2622-e74c-49b8-9e4a-01dd3c56aa86" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          </a>
+        </li>
         <li>After successful registration, users are redirected to <b>Login</b>.</li>
         <li>All user data is stored in <b>MySQL database</b>.</li>
       </ul>
-       </p>
     </td>
   </tr>
 </table>
