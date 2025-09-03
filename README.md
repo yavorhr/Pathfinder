@@ -3,7 +3,7 @@
   <img 
     src="https://github.com/user-attachments/assets/a0319615-169e-464f-a82a-14534689fb75" 
     alt="Pathfinder Banner" 
-    style="max-width:100%; height:60%; border-radius:12px; box-shadow:0px 4px 12px rgba(0,0,0,0.2);" 
+    style="max-width:100%; height:500px; border-radius:12px; box-shadow:0px 4px 12px rgba(0,0,0,0.2);" 
   />
 </p>
 
