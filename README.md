@@ -1,6 +1,10 @@
 <!-- Banner Image -->
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a0319615-169e-464f-a82a-14534689fb75" alt="Pathfinder Banner" width="100%">
+  <img 
+    src="https://github.com/user-attachments/assets/a0319615-169e-464f-a82a-14534689fb75" 
+    alt="Pathfinder Banner" 
+    style="max-width:100%; height:auto; border-radius:12px; box-shadow:0px 4px 12px rgba(0,0,0,0.2);" 
+  />
 </p>
 
 # 🧭 Pathfinder  
@@ -134,7 +138,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   <tr>
     <td valign="top">
 <a href="https://github.com/user-attachments/assets/731f5f9d-a8a4-439f-a144-bfa5262e6fbd">
-  <img src="https://github.com/user-attachments/assets/731f5f9d-a8a4-439f-a144-bfa5262e6fbd" style="height:300px; width:300px;"/>
+  <img src="https://github.com/user-attachments/assets/731f5f9d-a8a4-439f-a144-bfa5262e6fbd" style="height:300px; width:auto;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
