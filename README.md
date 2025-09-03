@@ -208,6 +208,10 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
         <li>If 5 failed attempts (valid username, wrong password) → account is <b>locked for 15 minutes</b> using Spring Scheduler.</li>
         <li>If account is locked 3 times → becomes <b>disabled</b> (admin-only reactivation).</li>
         <li>Detailed <b>error messages</b> appear on the login screen.</li>
+       <br/>
+          <a href="https://github.com/user-attachments/assets/b3b4cedf-e048-48b1-acc2-31ea3691e8ee">
+            <img src="https://github.com/user-attachments/assets/b3b4cedf-e048-48b1-acc2-31ea3691e8ee" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          </a>
       </ul>
        </p>
     </td>
