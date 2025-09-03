@@ -80,8 +80,13 @@ The homepage is the start point of the application. It includes the following fe
 - Link to the most commented route
 - Gallery with all recent route images
 
-![home1](https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5)
-![home2](https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1)
+<a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
+  <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" width="400"/>
+</a>
+
+<a href="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1">
+  <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" width="400"/>
+</a>
 
 ### Admin control panel
 
@@ -93,63 +98,87 @@ This is the user managmenet page. It provides the following features:
   - Update user roles  
   - Search + pagination support
 
-![notifications](https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1)
+<a href="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1">
+  <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" width="400"/>
+</a>
 
 ### Endpoints statistics
 
 This page provides an overview of the **most visited endpoints/pages by user**, visualized using **Chart.js**.  
 Includes a **reset functionality** to clear the stats when needed.
   
-![most-viewed](https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04)
+<a href="https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04">
+  <img src="https://github.com/user-attachments/assets/4e11b9cf-7469-4188-bd67-591f297e7d04" width="400"/>
+</a>
 
 ---
 
 ### Register
 
-![register](https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc)
+<a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
+  <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" width="400"/>
+</a>
 
 ---
 
 ### Login
 
-![login](https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8)
+<a href="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8">
+  <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" width="400"/>
+</a>
 
 ---
 
 ### All routes
 
-![all-routes](https://github.com/user-attachments/assets/4f678865-a005-4a84-b14e-524f094d720e)
+<a href="https://github.com/user-attachments/assets/4f678865-a005-4a84-b14e-524f094d720e">
+  <img src="https://github.com/user-attachments/assets/4f678865-a005-4a84-b14e-524f094d720e" width="400"/>
+</a>
 
 ### Create route
 
-![new-route](https://github.com/user-attachments/assets/f12041b3-612d-43c0-bb75-26a83d70820a)
+<a href="https://github.com/user-attachments/assets/f12041b3-612d-43c0-bb75-26a83d70820a">
+  <img src="https://github.com/user-attachments/assets/f12041b3-612d-43c0-bb75-26a83d70820a" width="400"/>
+</a>
 
 ---
 
 ### Route Details
 
-![details - 1](https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193)
-![details - 2](https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c)
+<a href="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193">
+  <img src="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193" width="400"/>
+</a>
+<a href="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c">
+  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c" width="400"/>
+</a>
 
 ---
 
 ### Routes by category (Car, Pedestrian, Bike or Bicycle)
 
-![by-cat](https://github.com/user-attachments/assets/08629c12-6e1c-4889-8919-0b9e3a973379)
+<a href="https://github.com/user-attachments/assets/08629c12-6e1c-4889-8919-0b9e3a973379">
+  <img src="https://github.com/user-attachments/assets/08629c12-6e1c-4889-8919-0b9e3a973379" width="400"/>
+</a>
 
 ---
 
 ### User profile
 
-![profile](https://github.com/user-attachments/assets/367dedb1-a853-484b-9c55-e7f281b03f42)
+<a href="https://github.com/user-attachments/assets/367dedb1-a853-484b-9c55-fe5d91c5e009">
+  <img src="https://github.com/user-attachments/assets/367dedb1-a853-484b-9c55-fe5d91c5e009" width="400"/>
+</a>
 
 ### User profile in "Edit mode"
 
-![profile-edit-mode](https://github.com/user-attachments/assets/38db2fca-ef13-4f13-9646-fe5d91c5e009)
+<a href="https://github.com/user-attachments/assets/38db2fca-ef13-4f13-9646-fe5d91c5e009">
+  <img src="https://github.com/user-attachments/assets/38db2fca-ef13-4f13-9646-fe5d91c5e009" width="400"/>
+</a>
 
 ### About page
 
-![about](https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e)
+<a href="https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e">
+  <img src="https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e" width="400"/>
+</a>
 
 ## 🛠️ Tech Stack
 
