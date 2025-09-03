@@ -168,7 +168,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
       <a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
         <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="height:400px; width:auto;"/>
       </a>
-      <h3>📝 Register</h3>
+    </td>
+     <td valign="top" style="padding-left:20px;">
+       <p>
       <ul>
         <li>By default, newly registered users are <b>disabled</b>.</li>
         <li>A <b>notification event</b> is created and visible in the Admin Panel.</li>
@@ -178,6 +180,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
         <li>After successful registration, users are redirected to <b>Login</b>.</li>
         <li>All user data is stored in <b>MySQL database</b>.</li>
       </ul>
+       </p>
     </td>
   </tr>
 </table>
