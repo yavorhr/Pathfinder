@@ -138,11 +138,12 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     </td>
     <td valign="top" style="padding-left:20px;">
       <p>
-       This page provides an overview of the **most visited endpoints/pages by user**.
+       This page provides an overview of the most visited endpoints from the end users.
         <ul>
-          <li>Using **Chart.js** API for the graph</li>
+          <li>The page is accessible only to users with admin role (Spring security)</li>
+          <li>Using Chart.js API to visualize the statistics</li>
           <li>Reset functionality to clear the stats when needed</li>
-          <li>Using Reddis memory database to persist data</li
+          <li>Using reddis docker image to to persist the data. The data persist even after app shut down.</li>
         </ul>
       </p>
     </td>
