@@ -7,14 +7,12 @@
   />
 </p>
 
-<h1 align="center">🌍 Pathfinder</h1>
+<h1 align="center">🧭 Pathfinder</h1>
 
 <p align="center">
-  <b>A modern web application for creating, sharing, and exploring routes</b><br>
-  Built with <code>Spring Boot</code>, <code>React</code>, and <code>MySQL</code>
+  <b>A modern web Full-stack application for creating, sharing, and exploring routes</b><br>
+  Built with <code>Spring Boot</code>, <code>Thymeleaf, HTML&CSS</code>, and <code>MySQL</code>
 </p>
-
-
 
 ---
 
