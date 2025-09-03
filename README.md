@@ -73,20 +73,33 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ### Home Page
 
-The homepage is the start point of the application. It includes the following features:
-- Quick link to all users routes
-- Link tabs to routes, sorted by category (car, pedestrian, etc.)
-- Live wheater forecast
-- Link to the most commented route
-- Gallery with all recent route images
-
-<a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
-  <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" width="400"/>
-</a>
-
-<a href="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1">
-  <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" width="400"/>
-</a>
+<table>
+  <tr>
+    <td valign="top">
+      <!-- Images column -->
+      <a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
+        <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" width="200"/>
+      </a>
+      <br/>
+      <a href="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1">
+        <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" width="200"/>
+      </a>
+    </td>
+    <td valign="top" style="padding-left:20px;">
+      <!-- Description column -->
+      <p>
+        The homepage is the start point of the application. It includes the following features:
+        <ul>
+          <li>Quick link to all users routes</li>
+          <li>Link tabs to routes, sorted by category (car, pedestrian, etc.)</li>
+          <li>Live weather forecast</li>
+          <li>Link to the most commented route</li>
+          <li>Gallery with all recent route images</li>
+        </ul>
+      </p>
+    </td>
+  </tr>
+</table>
 
 ### Admin control panel
 
