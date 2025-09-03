@@ -107,7 +107,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   <tr>
     <td valign="top">
 <a href="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1">
-  <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" width="400"/>
+  <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" style="height:300px; width:auto;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
