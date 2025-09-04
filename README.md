@@ -316,9 +316,29 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ### Routes by category (Car, Pedestrian, Bike or Bicycle)
 
+<table>
+  <tr>
+   <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/08629c12-6e1c-4889-8919-0b9e3a973379">
-  <img src="https://github.com/user-attachments/assets/08629c12-6e1c-4889-8919-0b9e3a973379" width="400"/>
+  <img src="https://github.com/user-attachments/assets/08629c12-6e1c-4889-8919-0b9e3a973379" style="width:500px; height:auto;"/>
 </a>
+    </td>
+    <td valign="top" style="padding-left:20px;">
+      <p>
+        The route details page offers the following information and features: </p>
+      <ul>
+    <li>Main information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
+    <li>Author/Admin actions: If the current user is the <b>author</b> or <b>admin</b>, additional buttons appear for <b>deleting the route</b> and <b>adding images</b> to the gallery. Both functionalities are secured with <code>Spring security</code> in the backend.</li>
+    <li>Dynamic GPX visualization: Displays route paths using <b>Leaflet.js</b>.</li>
+    <li>YouTube integration: Optionally shows an embedded YouTube video for the route.</li>
+    <li>Gallery images: All route-related images are displayed with a <b>modal preview</b> using JavaScript to show full-size images.</li>
+    <li>Comments section: Users can post comments. Implemented with <b>JavaScript and Fetch API</b> so the page does not reload after posting for a smoother user experience.</li>
+</ul>
+    </td>
+  </tr>
+</table>
+
+
 
 ---
 
