@@ -294,7 +294,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </a>
  <br/>
 <a href="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c">
-  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c" style="height:300px; width:auto;"/>
+  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c" style="height:auto; width:300px;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
