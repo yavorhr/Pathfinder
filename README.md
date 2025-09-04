@@ -256,8 +256,12 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   <tr>
     <td valign="top" width="50%">
      <a href="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8">
-  <img src="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8" width="400"/>
+  <img src="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8" style=height:300px; width:auto;/>
 </a>
+        <a href="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210">
+            <img src="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210" style=height:300px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          </a>
+      
     </td>
      <td valign="top" style="padding-left:20px;">
        <p>This is the place where user can add route to the application.
@@ -270,11 +274,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     <li><b>Categories selection:</b> Users can select one or multiple categories (e.g., Pedestrian, Bicycle, Car, Motorcycle).</li>
     <li><b>Difficulty level:</b> Users can choose the route’s difficulty (e.g., Beginner, Intermediate, Advanced).</li>
     <li><b>Input validation:</b> All fields are validated on the frontend and backend, including required fields, GPX data correctness, and valid YouTube URL format.</li>
-    <li>User feedback: <b>Invalid inputs</b> are displayed directly on the form to guide the user.
-      <br/>
-          <a href="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210">
-            <img src="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
-          </a>
+    <li>User feedback: <b>Invalid inputs</b> are displayed directly on the form to guide the user.  
     </li>
     <li><b>Data persistence:</b> Submitted routes are saved in the <b>MySQL database</b>, linked to the submitting user.</li>
 </ul>
