@@ -7,15 +7,12 @@
 <div th:replace="fragments/home-button"></div>
 <main>
     <div class="wrapper">
-
-        <!-- 🔍 Search Form -->
         <form th:action="@{/routes}" method="get" class="search-form">
-            <input type="text" name="keyword" placeholder="Search routes..."
+            <input type="text" name="keyword" placeholder="Search route by name ..."
                    th:value="${keyword}">
             <button type="submit">Search</button>
         </form>
 
-        <!-- 🛣️ Paginated Routes -->
         <section th:each="r : ${routesPage.content}" th:object="${r}" class="road">
             <img th:src="*{pictureUrl}" alt="Title image">
             <div>
@@ -25,7 +22,6 @@
             </div>
         </section>
 
-        <!-- ⬅️➡️ Pagination Controls -->
         <div class="pagination">
             <a th:if="${currentPage > 0}"
                th:href="@{/routes(page=${currentPage - 1}, keyword=${keyword})}">&laquo;</a>
@@ -39,9 +35,7 @@
             <a th:if="${currentPage + 1 < totalPages}"
                th:href="@{/routes(page=${currentPage + 1}, keyword=${keyword})}">&raquo;</a>
         </div>
-
     </div>
-
     </div>
 </main>
 
