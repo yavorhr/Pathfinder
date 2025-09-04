@@ -263,20 +263,20 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
        <p>This is the place where user can add route to the application.
        </p>
    <ul>
-    <li>Access control: <b>Only authenticated users</b> can access this page (enforced via Spring Security).</li>
+    <li><b>Access control:</b> <b>Only authenticated users</b> can access this page (enforced via Spring Security).</li>
     <li><b>Route information</b>: Users can provide a name and description for the route.</li>
-    <li>GPX coordinates: Users can draw or upload route paths using the <b>Leaflet JavaScript library</b>.</li>
-    <li>YouTube integration: Users can optionally embed a video to visualize the route.</li>
-    <li>Categories selection: Users can select one or multiple categories (e.g., Pedestrian, Bicycle, Car, Motorcycle).</li>
-    <li>Difficulty level: Users can choose the route’s difficulty (e.g., Beginner, Intermediate, Advanced).</li>
-    <li>Input validation: All fields are validated on the frontend and backend, including required fields, GPX data correctness, and valid YouTube URL format.</li>
-    <li>User feedback: Invalid inputs are displayed directly on the form to guide the user.
+    <li><b>GPX coordinates:</b> Users can upload route GPX coordinates, which are visualized later with <b>Leaflet JavaScript library</b>.</li>
+    <li><b>YouTube integration:</b> Users can optionally embed a video to visualize the route.</li>
+    <li><b>Categories selection:</b> Users can select one or multiple categories (e.g., Pedestrian, Bicycle, Car, Motorcycle).</li>
+    <li><b>Difficulty level:</b> Users can choose the route’s difficulty (e.g., Beginner, Intermediate, Advanced).</li>
+    <li><b>Input validation:</b> All fields are validated on the frontend and backend, including required fields, GPX data correctness, and valid YouTube URL format.</li>
+    <li>User feedback: <b>Invalid inputs</b> are displayed directly on the form to guide the user.
       <br/>
           <a href="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210">
             <img src="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
     </li>
-    <li>Data persistence: Submitted routes are saved in the <b>MySQL database</b>, linked to the submitting user.</li>
+    <li><b>Data persistence:</b> Submitted routes are saved in the <b>MySQL database</b>, linked to the submitting user.</li>
 </ul>
     </td>
   </tr>
