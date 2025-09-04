@@ -298,9 +298,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
-     
       <p>
-        The homepage is the start point of the application. It includes the following features:
+        The homepage is the start point of the application. It includes the following features:  </p>
       <ul>
     <li>Access control: <b>Only logged-in users</b> can access the route details page (enforced via Spring Security).</li>
     <li>Information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
@@ -310,12 +309,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     <li>Gallery images: All route-related images are displayed with a <b>modal preview</b> using JavaScript to show full-size images.</li>
     <li>Comments section: Users can post comments. Implemented with <b>JavaScript and Fetch API</b> so the page does not reload after posting for a smoother user experience.</li>
 </ul>
-      </p>
     </td>
   </tr>
 </table>
-
-
 
 ---
 
