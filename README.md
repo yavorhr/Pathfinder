@@ -337,24 +337,25 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </table>
 
 ---
+![profile](https://github.com/user-attachments/assets/)
 
 ### User profile
 
 <table>
   <tr>
    <td valign="top" width="50%">
-<a href="https://github.com/user-attachments/assets/5da5e0ed-fe10-41c7-b0c1-b37c29edd362">
-  <img src="https://github.com/user-attachments/assets/05da5e0ed-fe10-41c7-b0c1-b37c29edd362" style="width:500px; height:auto;"/>
+<a href="https://github.com/user-attachments/assets/9fa7a9bb-594b-4689-8bea-d3bf11b7a06c">
+  <img src="https://github.com/user-attachments/assets/9fa7a9bb-594b-4689-8bea-d3bf11b7a06c" style="width:500px; height:auto;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
-      <p>
-         This page is rendering routes per category.</p>
-    <ul>
-  <li><b>Category-based browsing</b>: Users can explore routes by category (Car, Pedestrian, Bicycle, Motorcycle).</li>
-  <li><b>Dynamic quotes</b>: Each category displays a random motivational quote, generated from the backend.</li>
-  <li><b>Interactive UX</b>: Clicking on a route opens a modal with a link to the route details page, ensuring smooth navigation without page reload.</li>
-  <li><b>Seamless integration</b>: Combines backend logic (random quote generation) with frontend JavaScript (modal functionality).</li>
+   <ul>
+  <li><b>Profile image</b>: Displays the user’s profile picture (or placeholder if none).</li>
+  <li><b>Image upload</b>: Users can change their profile image via a button.  
+      – Implemented with <b>Fetch API</b> and <b>Cloudinary</b> for seamless uploads without page reload. Image persists in the database.</li>
+  <li><b>User level</b>: Displays user’s level, calculated dynamically based on the number of routes they have added.</li>
+  <li><b>Personal information</b>: Shows user details (name, email, etc.) and connected <b>social accounts</b>.</li>
+  <li><b>Enhanced UX</b>: Clean CSS styling for a visually appealing and user-friendly profile page.</li>
 </ul>
     </td>
   </tr>
@@ -372,13 +373,26 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
-      <p>
-         This page is rendering routes per category.</p>
+ <ul>
+  <li>
+    Clicking <b>Edit</b> opens a <b>modal window</b> without page reload, keeping the experience smooth and fast.
+  </li>
+  <li>
+    <b>Editable fields:</b> First Name, Last Name, About Me, and Social Accounts.
+  </li>
+  <li>
+    <b>Username:</b> Always visible but <i>non-editable</i> to preserve account identity.
+  </li>
+  <li>
+    <b>Actions:</b>
     <ul>
-  <li><b>Category-based browsing</b>: Users can explore routes by category (Car, Pedestrian, Bicycle, Motorcycle).</li>
-  <li><b>Dynamic quotes</b>: Each category displays a random motivational quote, generated from the backend.</li>
-  <li><b>Interactive UX</b>: Clicking on a route opens a modal with a link to the route details page, ensuring smooth navigation without page reload.</li>
-  <li><b>Seamless integration</b>: Combines backend logic (random quote generation) with frontend JavaScript (modal functionality).</li>
+      <li><b>Save Changes</b> – Updates the user data asynchronously (via Fetch API) without refreshing the page.</li>
+      <li><b>Reset</b> – Cancels edits and restores the profile to its last saved state.</li>
+    </ul>
+  </li>
+  <li>
+    All interactions are <b>asynchronous</b> for better UX, with immediate feedback on changes.
+  </li>
 </ul>
     </td>
   </tr>
