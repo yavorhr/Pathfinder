@@ -270,16 +270,19 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     <li>Categories selection: Users can select one or multiple categories (e.g., Pedestrian, Bicycle, Car, Motorcycle).</li>
     <li>Difficulty level: Users can choose the route’s difficulty (e.g., Beginner, Intermediate, Advanced).</li>
     <li>Input validation: All fields are validated on the frontend and backend, including required fields, GPX data correctness, and valid YouTube URL format.</li>
-    <li>User feedback: Invalid inputs are displayed directly on the form to guide the user.</li>
+    <li>User feedback: Invalid inputs are displayed directly on the form to guide the user.
+      <br/>
+          <a href="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210">
+            <img src="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          </a>
+    </li>
     <li>Data persistence: Submitted routes are saved in the <b>MySQL database</b>, linked to the submitting user.</li>
 </ul>
-
     </td>
   </tr>
 </table>
 
 ---
-
 ### Route Details
 
 <a href="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193">
