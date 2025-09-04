@@ -163,9 +163,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ### Register
 <table>
   <tr>
-    <td valign="top" width="30%">
+    <td valign="top" width="50%">
       <a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
-        <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="height:320px; width:auto;"/>
+        <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="width:500px; height:auto;"/>
       </a>
     </td>
      <td valign="top" style="padding-left:20px;">
