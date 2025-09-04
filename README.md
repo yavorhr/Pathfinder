@@ -78,268 +78,86 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ---
 
 ## 🖼️ Screenshots
-
 ### Home Page
-
-<table>
-  <tr>
-    <td valign="top">
-      <!-- Images column -->
-      <a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
-        <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" style="height:300px; width:auto;"/>
-      </a>
-      <br/>
-      <a href="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1">
-        <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" style="height:300px; width:auto;"/>
-      </a>
-    </td>
-    <td valign="top" style="padding-left:20px;">
-      <!-- Description column -->
-      <p>
-        The homepage is the start point of the application. It includes the following features:
-        <ul>
-          <li>Quick link to all users routes</li>
-          <li>Link tabs to routes, sorted by category (car, pedestrian, etc.)</li>
-          <li>Live weather forecast</li>
-          <li>Link to the most commented route</li>
-          <li>Gallery with all recent route images</li>
-        </ul>
-      </p>
-    </td>
-  </tr>
-</table>
+<a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
+  <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" width="400" style="height:auto;"/>
+</a>
+<a href="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1">
+  <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" width="400" style="height:auto;"/>
+</a>
 
 ### Admin control panel
-
-<table>
-  <tr>
-    <td valign="top">
 <a href="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1">
-  <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" style="height:220px; width:auto;"/>
+  <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" width="400" style="height:auto;"/>
 </a>
-    </td>
-    <td valign="top" style="padding-left:20px;">
-      <!-- Description column -->
-      <p>
-        This is the user managmenet page. It provides the following features:
-        <ul>
-          <li>Remove user from the database</li>
-          <li>Disable/enable user access</li>
-          <li>Lock/unlock user account</li>
-          <li>Send emails to users</li>
-          <li>Update user roles</li>
-           <li>Search + pagination support</li>
-        </ul>
-      </p>
-    </td>
-  </tr>
-</table>
 
-# Endpoints statistics (admin only)
-
-<table>
-  <tr>
-    <td valign="top">
+### Endpoints statistics
 <a href="https://github.com/user-attachments/assets/731f5f9d-a8a4-439f-a144-bfa5262e6fbd">
-  <img src="https://github.com/user-attachments/assets/731f5f9d-a8a4-439f-a144-bfa5262e6fbd" style="height:320px; width:auto;"/>
+  <img src="https://github.com/user-attachments/assets/731f5f9d-a8a4-439f-a144-bfa5262e6fbd" width="400" style="height:auto;"/>
 </a>
-    </td>
-    <td valign="top" style="padding-left:20px;">
-      <p>
-       This page provides an overview of the most visited endpoints from the end users.
-        <ul>
-          <li>The page is accessible only to users with admin role (Spring security)</li>
-          <li>Using Chart.js API to visualize the statistics</li>
-          <li>Reset functionality to clear the stats when needed</li>
-          <li>Using reddis docker image to to persist the data. The data persist even after app shut down.</li>
-        </ul>
-      </p>
-    </td>
-  </tr>
-</table>
-
----
 
 ### Register
-<table>
-  <tr>
-    <td valign="top" width="50%">
-      <a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
-        <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="height:320px; width:auto;"/>
-      </a>
-    </td>
-     <td valign="top" style="padding-left:20px;">
-      <ul>
-        <li>By default, newly registered users are <b>disabled</b>.</li>
-        <li>A <b>notification event</b> is created and visible in the Admin Panel.</li>
-        <li>Only after Admin approval the user can log in.</li>
-        <li>Admin can also send an <b>email notification</b> to unapproved users.</li>
-        <li>
-          Includes <b>input validation</b>: minimal field length, unique email/username, required options (e.g., gender).  
-          <br/>
-          <a href="https://github.com/user-attachments/assets/e74f2622-e74c-49b8-9e4a-01dd3c56aa86">
-            <img src="https://github.com/user-attachments/assets/e74f2622-e74c-49b8-9e4a-01dd3c56aa86" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
-          </a>
-        </li>
-        <li>After successful registration, users are redirected to <b>Login</b>.</li>
-        <li>All user data is stored in <b>MySQL database</b>.</li>
-      </ul>
-    </td>
-  </tr>
-</table>
-
----
+<a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
+  <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" width="400" style="height:auto;"/>
+</a>
+<a href="https://github.com/user-attachments/assets/e74f2622-e74c-49b8-9e4a-01dd3c56aa86">
+  <img src="https://github.com/user-attachments/assets/e74f2622-e74c-49b8-9e4a-01dd3c56aa86" height="250" style="width:auto; margin-top:6px; border:1px solid #ccc;"/>
+</a>
 
 ### Login
-
-<table>
-  <tr>
-    <td valign="top" width="50%">
-       <a href="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8">
-        <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" style="height:300px; width:auto;"/>
-      </a>
-    </td>
-     <td valign="top" style="padding-left:20px;">
-       <p>
-    <ul>
-        <li>Implemented with <b>Spring Security filter chain</b>.</li>
-        <li>Custom <code>loginSuccessHandler</code> and <code>loginFailureHandler</code>.</li>
-        <li>Checks for: <b>Locked</b>, <b>Disabled</b>, or <b>Expired</b> accounts.</li>
-        <li>If 5 failed attempts (valid username, wrong password) → account is <b>locked for 15 minutes</b> using Spring Scheduler.</li>
-        <li>If account is locked 3 times → becomes <b>disabled</b> (admin-only reactivation).</li>
-        <li>Detailed <b>error messages</b> appear on the login screen.</li>
-       <br/>
-          <a href="https://github.com/user-attachments/assets/b3b4cedf-e048-48b1-acc2-31ea3691e8ee">
-            <img src="https://github.com/user-attachments/assets/b3b4cedf-e048-48b1-acc2-31ea3691e8ee" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
-          </a>
-        <a href="https://github.com/user-attachments/assets/0d556747-b70f-4bb6-a38f-abd57af1178c">
-            <img src="https://github.com/user-attachments/assets/0d556747-b70f-4bb6-a38f-abd57af1178c" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
-          </a>
-      </ul>
-       </p>
-    </td>
-  </tr>
-</table>
-
----
+<a href="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8">
+  <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" width="400" style="height:auto;"/>
+</a>
+<a href="https://github.com/user-attachments/assets/b3b4cedf-e048-48b1-acc2-31ea3691e8ee">
+  <img src="https://github.com/user-attachments/assets/b3b4cedf-e048-48b1-acc2-31ea3691e8ee" height="250" style="width:auto; margin-top:6px; border:1px solid #ccc;"/>
+</a>
+<a href="https://github.com/user-attachments/assets/0d556747-b70f-4bb6-a38f-abd57af1178c">
+  <img src="https://github.com/user-attachments/assets/0d556747-b70f-4bb6-a38f-abd57af1178c" height="250" style="width:auto; margin-top:6px; border:1px solid #ccc;"/>
+</a>
 
 ### All routes
-
-<table>
-  <tr>
-     <td valign="top" width="50%">
-    <a href="https://github.com/user-attachments/assets/5b2bc253-725e-48c4-b380-f24f05ad6b7a">
-  <img src="https://github.com/user-attachments/assets/5b2bc253-725e-48c4-b380-f24f05ad6b7a" width="400"/>
+<a href="https://github.com/user-attachments/assets/5b2bc253-725e-48c4-b380-f24f05ad6b7a">
+  <img src="https://github.com/user-attachments/assets/5b2bc253-725e-48c4-b380-f24f05ad6b7a" width="400" style="height:auto;"/>
 </a>
-    <a href="https://github.com/user-attachments/assets/d18fdc17-e97c-40fd-8e24-1f34505e5622">
-  <img src="https://github.com/user-attachments/assets/d18fdc17-e97c-40fd-8e24-1f34505e5622" width="400"/>
+<a href="https://github.com/user-attachments/assets/d18fdc17-e97c-40fd-8e24-1f34505e5622">
+  <img src="https://github.com/user-attachments/assets/d18fdc17-e97c-40fd-8e24-1f34505e5622" width="400" style="height:auto;"/>
 </a>
-        </td>
-    <td valign="top" style="padding-left:20px;">
-      <p>
-     This page is rendering all user's routes.
-          </p>
-        <ul>
-          <li>The content is loaded with Thymeleaf engine</li>
-          <li>Pagination feature is added</li>
-              <li>Search support by route name is added</li>
-        </ul>
-    </td>
-  </tr>
-</table>
-
----
 
 ### Create route
+<a href="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8">
+  <img src="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8" width="300" height="300" style="object-fit:cover;"/>
+</a>
+<a href="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210">
+  <img src="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210" width="300" height="300" style="object-fit:cover;"/>
+</a>
 
-<table>
-  <tr>
-   <td valign="top" width="50%">
-    <a href="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8">
-        <img src="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8"
-             style="height: 300px; width: 250px; "/>
-    </a>
-    <a href="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210">
-        <img src="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210"
-             style="height: 300px; width: 250px; "/>
-    </a>
-</td>
-     <td valign="top" style="padding-left:20px;">
-       <p>This is the place where user can add route to the application.
-       </p>
-   <ul>
-    <li><b>Access control:</b> <b>Only authenticated users</b> can access this page (enforced via Spring Security).</li>
-    <li><b>Route information</b>: Users can provide a name and description for the route.</li>
-    <li><b>GPX coordinates:</b> Users can upload route GPX coordinates, which are visualized later with <b>Leaflet JavaScript library</b>.</li>
-    <li><b>YouTube integration:</b> Users can optionally embed a video to visualize the route.</li>
-    <li><b>Categories selection:</b> Users can select one or multiple categories (e.g., Pedestrian, Bicycle, Car, Motorcycle).</li>
-    <li><b>Difficulty level:</b> Users can choose the route’s difficulty (e.g., Beginner, Intermediate, Advanced).</li>
-    <li><b>Input validation:</b> All fields are validated on the frontend and backend, including required fields, GPX data correctness, and valid YouTube URL format.</li>
-    <li>User feedback: <b>Invalid inputs</b> are displayed directly on the form to guide the user.  
-    </li>
-    <li><b>Data persistence:</b> Submitted routes are saved in the <b>MySQL database</b>, linked to the submitting user.</li>
-</ul>
-    </td>
-  </tr>
-</table>
-
----
 ### Route Details
-
-<table>
-  <tr>
-    <td valign="top">
 <a href="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193">
-  <img src="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193" style="height:auto; width:300px;"/>
+  <img src="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193" width="400" style="height:auto;"/>
 </a>
- <br/>
 <a href="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c">
-  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c" style="height:auto; width:300px;"/>
+  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c" width="400" style="height:auto;"/>
 </a>
-    </td>
-    <td valign="top" style="padding-left:20px;">
-      <p>
-        The homepage is the start point of the application. It includes the following features:  </p>
-      <ul>
-    <li>Access control: <b>Only logged-in users</b> can access the route details page (enforced via Spring Security).</li>
-    <li>Information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
-    <li>Author/Admin actions: If the current user is the <b>author</b> or <b>admin</b>, additional buttons appear for <b>deleting the route</b> and <b>adding images</b>. Both are secured with <code>@PreAuthorize</code> annotations.</li>
-    <li>Dynamic GPX visualization: Displays route paths using <b>Leaflet.js</b> (if GPX coordinates are available).</li>
-    <li>YouTube integration: Optionally shows an embedded YouTube video for the route (if available).</li>
-    <li>Gallery images: All route-related images are displayed with a <b>modal preview</b> using JavaScript to show full-size images.</li>
-    <li>Comments section: Users can post comments. Implemented with <b>JavaScript and Fetch API</b> so the page does not reload after posting for a smoother user experience.</li>
-</ul>
-    </td>
-  </tr>
-</table>
 
----
-
-### Routes by category (Car, Pedestrian, Bike or Bicycle)
-
+### Routes by category
 <a href="https://github.com/user-attachments/assets/08629c12-6e1c-4889-8919-0b9e3a973379">
-  <img src="https://github.com/user-attachments/assets/08629c12-6e1c-4889-8919-0b9e3a973379" width="400"/>
+  <img src="https://github.com/user-attachments/assets/08629c12-6e1c-4889-8919-0b9e3a973379" width="400" style="height:auto;"/>
 </a>
-
----
 
 ### User profile
-
 <a href="https://github.com/user-attachments/assets/367dedb1-a853-484b-9c55-fe5d91c5e009">
-  <img src="https://github.com/user-attachments/assets/367dedb1-a853-484b-9c55-fe5d91c5e009" width="400"/>
+  <img src="https://github.com/user-attachments/assets/367dedb1-a853-484b-9c55-fe5d91c5e009" width="400" style="height:auto;"/>
 </a>
 
 ### User profile in "Edit mode"
-
 <a href="https://github.com/user-attachments/assets/38db2fca-ef13-4f13-9646-fe5d91c5e009">
-  <img src="https://github.com/user-attachments/assets/38db2fca-ef13-4f13-9646-fe5d91c5e009" width="400"/>
+  <img src="https://github.com/user-attachments/assets/38db2fca-ef13-4f13-9646-fe5d91c5e009" width="400" style="height:auto;"/>
 </a>
 
 ### About page
-
 <a href="https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e">
-  <img src="https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e" width="400"/>
-</a>
+  <img src="https://github.com/user-attachments/assets/c3903367-3c7f-
+
 
 ## 🛠️ Tech Stack
 
