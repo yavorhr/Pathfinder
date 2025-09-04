@@ -194,9 +194,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 <table>
   <tr>
-    <td valign="top" width="30%">
+     <td valign="top" width="50%">
        <a href="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8">
-        <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" style="height:300px; width:auto;"/>
+        <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" style="width:500px; height:auto;"/>
       </a>
     </td>
      <td valign="top" style="padding-left:20px;">
@@ -227,12 +227,12 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 <table>
   <tr>
-     <td valign="top" width="50%">
+    <td valign="top" width="50%">
     <a href="https://github.com/user-attachments/assets/5b2bc253-725e-48c4-b380-f24f05ad6b7a">
-  <img src="https://github.com/user-attachments/assets/5b2bc253-725e-48c4-b380-f24f05ad6b7a" width="400" style="height:auto;"/>
+  <img src="https://github.com/user-attachments/assets/5b2bc253-725e-48c4-b380-f24f05ad6b7a" style="width:500px; height:auto;"/>
 </a>
     <a href="https://github.com/user-attachments/assets/d18fdc17-e97c-40fd-8e24-1f34505e5622">
-  <img src="https://github.com/user-attachments/assets/d18fdc17-e97c-40fd-8e24-1f34505e5622"width="400" style="height:auto;"/>
+  <img src="https://github.com/user-attachments/assets/d18fdc17-e97c-40fd-8e24-1f34505e5622" style="width:500px; height:auto;"/>
 </a>
         </td>
     <td valign="top" style="padding-left:20px;">
@@ -254,14 +254,14 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 <table>
   <tr>
-   <td valign="top">
+    <td valign="top" width="50%">
     <a href="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8">
         <img src="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8"
-              style="height: 300px; width: 250px; "/>
+              style="width:500px; height:auto;"/>
     </a>
     <a href="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210">
         <img src="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210"
-             style="height: 300px; width: 250px; "/>
+            style="width:500px; height:auto;"/>
     </a>
 </td>
      <td valign="top" style="padding-left:20px;">
