@@ -150,7 +150,7 @@ public class RouteServiceImpl implements RouteService {
     RouteViewModel viewModel = this.modelMapper.map(r, RouteViewModel.class);
 
     viewModel.setPictureUrl(r.getPictures().isEmpty()
-            ? "/images/pic4"
+            ? "/images/pic4.jpg"
             : r.getPictures().stream().findAny().get().getUrl());
 
     return viewModel;
