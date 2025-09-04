@@ -225,9 +225,40 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ### All routes
 
-<a href="https://github.com/user-attachments/assets/4f678865-a005-4a84-b14e-524f094d720e">
+<table>
+  <tr>
+     <td valign="top" width="50%">
+    <a href="https://github.com/user-attachments/assets/4f678865-a005-4a84-b14e-524f094d720e">
   <img src="https://github.com/user-attachments/assets/4f678865-a005-4a84-b14e-524f094d720e" width="400"/>
 </a>
+        </td>
+    <td valign="top" style="padding-left:20px;">
+      <p>
+     This page is rendering all routes.
+          </p>
+        <ul>
+          <li>The page content is loaded with Thymeleaf template</li>
+          <li>Pagination + search support by route name</li>
+        </ul>
+    </td>
+  </tr>
+</table>
+
+
+<table>
+  <tr>
+
+   
+     <td valign="top" style="padding-left:20px;">
+    <ul>
+        <li>Implemented with <b>Spring Security filter chain</b>.</li>
+        <li>Custom <code>loginSuccessHandler</code> and <code>loginFailureHandler</code>.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+
 
 ### Create route
 
