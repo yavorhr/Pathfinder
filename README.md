@@ -163,7 +163,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ### Register
 <table>
   <tr>
-    <td valign="top" width="50%">
+    <td valign="top">
       <a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
         <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="height:320px; width:auto;"/>
       </a>
@@ -194,7 +194,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 <table>
   <tr>
-    <td valign="top" width="50%">
+    <td valign="top">
        <a href="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8">
         <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" style="height:300px; width:auto;"/>
       </a>
