@@ -86,11 +86,11 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     <td valign="top" width="50%">
       <!-- Images column -->
       <a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
-        <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" style="width:400px; height:auto;"/>
+        <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" style="width:500px; height:auto;"/>
       </a>
       <br/>
       <a href="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1">
-        <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" style="width:400px; height:auto;"/>
+        <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" style="width:500px; height:auto;"/>
       </a>
     </td>
     <td valign="top" style="padding-left:20px;">
@@ -115,7 +115,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   <tr>
     <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1">
-  <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" width="400" style="height:auto;"/>
+  <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" style="width:500px; height:auto;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
