@@ -22,6 +22,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
@@ -107,25 +109,29 @@ public class RouteServiceImplTest {
   }
 
   @Test
-  void findAllRoutes_returnsMappedViewModels() {
-    //1. Arrange
+  void findAllRoutes_withPagination_returnsMappedViewModels() {
+    // Arrange
+    Pageable pageable = PageRequest.of(0, 2); // first page, 2 items
     List<Route> routes = List.of(route1, route2);
-    Mockito.when(routeRepository.findAll()).thenReturn(routes);
+    Page<Route> page = new PageImpl<>(routes, pageable, routes.size());
+
+    Mockito.when(routeRepository.findAll(pageable)).thenReturn(page);
     Mockito.when(modelMapper.map(route1, RouteViewModel.class)).thenReturn(vm1);
     Mockito.when(modelMapper.map(route2, RouteViewModel.class)).thenReturn(vm2);
 
     // Act
-    List<RouteViewModel> result = serviceToTest.findAllRoutes();
+    Page<RouteViewModel> result = serviceToTest.findAllRoutes(pageable, null);
 
     // Assert
-    Assertions.assertEquals(2, result.size());
-    Assertions.assertEquals("testRoute1", result.get(0).getName());
-    Assertions.assertEquals("testRoute2", result.get(1).getName());
+    Assertions.assertEquals(2, result.getContent().size());
+    Assertions.assertEquals("testRoute1", result.getContent().get(0).getName());
+    Assertions.assertEquals("testRoute2", result.getContent().get(1).getName());
 
-    Mockito.verify(routeRepository).findAll();
+    Mockito.verify(routeRepository).findAll(pageable);
     Mockito.verify(modelMapper).map(route1, RouteViewModel.class);
     Mockito.verify(modelMapper).map(route2, RouteViewModel.class);
   }
+
 
   @Test
   void findRouteByIdWithCanModifyProperty_throwsObjNotFound() {
