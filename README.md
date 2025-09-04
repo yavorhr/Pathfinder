@@ -237,11 +237,12 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
         </td>
     <td valign="top" style="padding-left:20px;">
       <p>
-     This page is rendering all routes.
+     This page is rendering all user's routes.
           </p>
         <ul>
-          <li>The page content is loaded with Thymeleaf template</li>
-          <li>Pagination + search support by route name</li>
+          <li>The content is loaded with Thymeleaf engine</li>
+          <li>Pagination feature is added</li>
+              <li>Search support by route name is added</li>
         </ul>
     </td>
   </tr>
