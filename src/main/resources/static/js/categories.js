@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function checkCheckboxes() {
         const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
 
+        if (isChecked) {
+            addRouteButton.style.cursor = "pointer";
+        } else {
+            addRouteButton.style.cursor = "not-allowed";
+        }
+
         addRouteButton.disabled = !isChecked;
     }
 
