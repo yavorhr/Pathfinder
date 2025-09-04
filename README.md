@@ -244,21 +244,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   </tr>
 </table>
 
-
-<table>
-  <tr>
-
-   
-     <td valign="top" style="padding-left:20px;">
-    <ul>
-        <li>Implemented with <b>Spring Security filter chain</b>.</li>
-        <li>Custom <code>loginSuccessHandler</code> and <code>loginFailureHandler</code>.</li>
-      </ul>
-    </td>
-  </tr>
-</table>
-
-
+---
 
 ### Create route
 
