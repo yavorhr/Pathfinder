@@ -299,13 +299,12 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     </td>
     <td valign="top" style="padding-left:20px;">
       <p>
-        The homepage is the start point of the application. It includes the following features:  </p>
+        The route details page offers the following information and features: </p>
       <ul>
-    <li>Access control: <b>Only logged-in users</b> can access the route details page (enforced via Spring Security).</li>
-    <li>Information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
-    <li>Author/Admin actions: If the current user is the <b>author</b> or <b>admin</b>, additional buttons appear for <b>deleting the route</b> and <b>adding images</b>. Both are secured with <code>@PreAuthorize</code> annotations.</li>
-    <li>Dynamic GPX visualization: Displays route paths using <b>Leaflet.js</b> (if GPX coordinates are available).</li>
-    <li>YouTube integration: Optionally shows an embedded YouTube video for the route (if available).</li>
+    <li>Main information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
+    <li>Author/Admin actions: If the current user is the <b>author</b> or <b>admin</b>, additional buttons appear for <b>deleting the route</b> and <b>adding images</b> to the gallery. Both functionalities are secured with <code>Spring security</code> in the backend.</li>
+    <li>Dynamic GPX visualization: Displays route paths using <b>Leaflet.js</b>.</li>
+    <li>YouTube integration: Optionally shows an embedded YouTube video for the route.</li>
     <li>Gallery images: All route-related images are displayed with a <b>modal preview</b> using JavaScript to show full-size images.</li>
     <li>Comments section: Users can post comments. Implemented with <b>JavaScript and Fetch API</b> so the page does not reload after posting for a smoother user experience.</li>
 </ul>
