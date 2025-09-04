@@ -325,34 +325,64 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     </td>
     <td valign="top" style="padding-left:20px;">
       <p>
-        The route details page offers the following information and features: </p>
-      <ul>
-    <li>Main information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
-    <li>Author/Admin actions: If the current user is the <b>author</b> or <b>admin</b>, additional buttons appear for <b>deleting the route</b> and <b>adding images</b> to the gallery. Both functionalities are secured with <code>Spring security</code> in the backend.</li>
-    <li>Dynamic GPX visualization: Displays route paths using <b>Leaflet.js</b>.</li>
-    <li>YouTube integration: Optionally shows an embedded YouTube video for the route.</li>
-    <li>Gallery images: All route-related images are displayed with a <b>modal preview</b> using JavaScript to show full-size images.</li>
-    <li>Comments section: Users can post comments. Implemented with <b>JavaScript and Fetch API</b> so the page does not reload after posting for a smoother user experience.</li>
+         This page is rendering routes per category.</p>
+    <ul>
+  <li><b>Category-based browsing</b>: Users can explore routes by category (Car, Pedestrian, Bicycle, Motorcycle).</li>
+  <li><b>Dynamic quotes</b>: Each category displays a random motivational quote, generated from the backend.</li>
+  <li><b>Interactive UX</b>: Clicking on a route opens a modal with a link to the route details page, ensuring smooth navigation without page reload.</li>
+  <li><b>Seamless integration</b>: Combines backend logic (random quote generation) with frontend JavaScript (modal functionality).</li>
 </ul>
     </td>
   </tr>
 </table>
 
-
-
 ---
 
 ### User profile
 
-<a href="https://github.com/user-attachments/assets/367dedb1-a853-484b-9c55-fe5d91c5e009">
-  <img src="https://github.com/user-attachments/assets/367dedb1-a853-484b-9c55-fe5d91c5e009" width="400"/>
+<table>
+  <tr>
+   <td valign="top" width="50%">
+<a href="https://github.com/user-attachments/assets/5da5e0ed-fe10-41c7-b0c1-b37c29edd362">
+  <img src="https://github.com/user-attachments/assets/05da5e0ed-fe10-41c7-b0c1-b37c29edd362" style="width:500px; height:auto;"/>
 </a>
+    </td>
+    <td valign="top" style="padding-left:20px;">
+      <p>
+         This page is rendering routes per category.</p>
+    <ul>
+  <li><b>Category-based browsing</b>: Users can explore routes by category (Car, Pedestrian, Bicycle, Motorcycle).</li>
+  <li><b>Dynamic quotes</b>: Each category displays a random motivational quote, generated from the backend.</li>
+  <li><b>Interactive UX</b>: Clicking on a route opens a modal with a link to the route details page, ensuring smooth navigation without page reload.</li>
+  <li><b>Seamless integration</b>: Combines backend logic (random quote generation) with frontend JavaScript (modal functionality).</li>
+</ul>
+    </td>
+  </tr>
+</table>
+
+---
 
 ### User profile in "Edit mode"
 
-<a href="https://github.com/user-attachments/assets/38db2fca-ef13-4f13-9646-fe5d91c5e009">
-  <img src="https://github.com/user-attachments/assets/38db2fca-ef13-4f13-9646-fe5d91c5e009" width="400"/>
+<table>
+  <tr>
+   <td valign="top" width="50%">
+<a href="https://github.com/user-attachments/assets/42919274-af59-4e9f-a37e-b08429455102">
+  <img src="https://github.com/user-attachments/assets/42919274-af59-4e9f-a37e-b08429455102" style="width:500px; height:auto;"/>
 </a>
+    </td>
+    <td valign="top" style="padding-left:20px;">
+      <p>
+         This page is rendering routes per category.</p>
+    <ul>
+  <li><b>Category-based browsing</b>: Users can explore routes by category (Car, Pedestrian, Bicycle, Motorcycle).</li>
+  <li><b>Dynamic quotes</b>: Each category displays a random motivational quote, generated from the backend.</li>
+  <li><b>Interactive UX</b>: Clicking on a route opens a modal with a link to the route details page, ensuring smooth navigation without page reload.</li>
+  <li><b>Seamless integration</b>: Combines backend logic (random quote generation) with frontend JavaScript (modal functionality).</li>
+</ul>
+    </td>
+  </tr>
+</table>
 
 ### About page
 
