@@ -24,18 +24,18 @@ public class RouteAddBindingModel {
   }
 
   @NotNull(message = "Please insert distance")
-  @Positive(message = "Distance must be positive")
+  @Positive(message = "Distance should be positive")
   public Integer getDistance() {
     return distance;
   }
 
   @UniqueRouteName
-  @Size(min = 3, max = 20, message = "Name must be between 3 and 20 symbols")
+  @Size(min = 3, max = 20, message = "Name should be between 3 and 20 symbols")
   public String getName() {
     return name;
   }
 
-  @Size(min = 3, message = "Description must beat least 5 symbols long")
+  @Size(min = 3, message = "Description should beat least 5 symbols long")
   public String getDescription() {
     return description;
   }
@@ -44,7 +44,7 @@ public class RouteAddBindingModel {
     return gpxCoordinates;
   }
 
-  @NotEmpty(message = "At least one category must be selected.")
+  @NotEmpty(message = "At least one category should be selected")
   public Set<CategoryEnum> getCategories() {
     return categories;
   }
@@ -54,7 +54,7 @@ public class RouteAddBindingModel {
     return level;
   }
 
-  @Size(min = 11, max = 11, message = "Must be exact 11 symbols")
+  @Size(min = 11, max = 11, message = "Link should be exact 11 symbols")
   @NotNull
   public String getVideoUrl() {
     return videoUrl;
