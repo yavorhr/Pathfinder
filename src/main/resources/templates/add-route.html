@@ -79,11 +79,13 @@
                     <label>Categories</label>
                     <div class="categories">
                         <label class="category-pill">
-                            <input type="checkbox" th:field="*{categories}" th:value="PEDESTRIAN"/>
+                            <input
+                                    type="checkbox" th:field="*{categories}" th:value="PEDESTRIAN"/>
                             <span>🚶‍♂️ Pedestrian</span>
                         </label>
                         <label class="category-pill">
-                            <input type="checkbox" th:field="*{categories}" th:value="BICYCLE"/>
+                            <input type="checkbox"
+                                   th:field="*{categories}" th:value="BICYCLE"/>
                             <span>🚴‍♀️ Bicycle</span>
                         </label>
                         <label class="category-pill">
@@ -106,7 +108,6 @@
         </form>
 
 </main>
-
 
 <footer th:replace="fragments/footer"></footer>
 </body>
