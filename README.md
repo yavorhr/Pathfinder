@@ -83,7 +83,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 <table>
   <tr>
-    <td valign="top" width="40%">
+    <td valign="top" width="50%">
       <!-- Images column -->
       <a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
         <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" style="height:300px; width:auto;"/>
@@ -113,7 +113,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 <table>
   <tr>
-    <td valign="top" width="40%">
+    <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1">
   <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" width="400" style="height:auto;"/>
 </a>
@@ -139,7 +139,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 <table>
   <tr>
-    <td valign="top" width="40%">
+    <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/731f5f9d-a8a4-439f-a144-bfa5262e6fbd">
   <img src="https://github.com/user-attachments/assets/731f5f9d-a8a4-439f-a144-bfa5262e6fbd" width="400" style="height:auto;"/>
 </a>
@@ -163,7 +163,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ### Register
 <table>
   <tr>
-    <td valign="top" width="40%">
+    <td valign="top" width="30%">
       <a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
         <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="height:320px; width:auto;"/>
       </a>
@@ -194,7 +194,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 <table>
   <tr>
-    <td valign="top">
+    <td valign="top" width="30%">
        <a href="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8">
         <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" style="height:300px; width:auto;"/>
       </a>
@@ -227,7 +227,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 <table>
   <tr>
-     <td valign="top">
+     <td valign="top" width="50%">
     <a href="https://github.com/user-attachments/assets/5b2bc253-725e-48c4-b380-f24f05ad6b7a">
   <img src="https://github.com/user-attachments/assets/5b2bc253-725e-48c4-b380-f24f05ad6b7a" width="400" style="height:auto;"/>
 </a>
