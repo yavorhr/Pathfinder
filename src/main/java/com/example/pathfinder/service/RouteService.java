@@ -4,12 +4,14 @@ import com.example.pathfinder.model.entity.Route;
 import com.example.pathfinder.model.service.AddRouteServiceModel;
 import com.example.pathfinder.model.service.RouteDetailsServiceModel;
 import com.example.pathfinder.model.view.RouteViewModel;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface RouteService {
-  List<RouteViewModel> findAllRoutes();
+  Page<RouteViewModel> findAllRoutes(Pageable pageable, String keyword);
 
   Optional<Route> findRouteById(Long id);
 

@@ -16,6 +16,7 @@ import com.example.pathfinder.service.events.UpdateUserLevelEvent;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -42,11 +43,16 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
-  public List<RouteViewModel> findAllRoutes() {
-    return this.routeRepository.findAll()
-            .stream()
-            .map(this::mapToViewModel)
-            .collect(Collectors.toList());
+  public Page<RouteViewModel> findAllRoutes(Pageable pageable, String keyword) {
+    Page<Route> routes;
+
+    if (keyword != null && !keyword.isEmpty()) {
+      routes = routeRepository.findByNameContainingIgnoreCase(keyword, pageable);
+    } else {
+      routes = routeRepository.findAll(pageable);
+    }
+
+    return routes.map(this::mapToViewModel);
   }
 
   @Override

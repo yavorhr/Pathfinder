@@ -7,6 +7,10 @@ import com.example.pathfinder.model.view.RouteViewModel;
 import com.example.pathfinder.service.RouteService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,9 +42,19 @@ public class RouteController {
 
   // GET
   @GetMapping
-  public String getRoutesPage(Model model) {
-    List<RouteViewModel> allRoutes = this.routeService.findAllRoutes();
-    model.addAttribute("routes", allRoutes);
+  public String getRoutesPage(
+          @RequestParam(defaultValue = "0") int page,
+          @RequestParam(defaultValue = "3") int size,
+          @RequestParam(required = false) String keyword,
+          Model model) {
+
+    Pageable pageable = PageRequest.of(page, size, Sort.by("name").ascending());
+    Page<RouteViewModel> routesPage = routeService.findAllRoutes(pageable, keyword);
+
+    model.addAttribute("routesPage", routesPage);
+    model.addAttribute("currentPage", page);
+    model.addAttribute("totalPages", routesPage.getTotalPages());
+    model.addAttribute("keyword", keyword);
 
     return "routes";
   }
