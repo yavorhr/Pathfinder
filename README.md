@@ -283,17 +283,18 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </table>
 
 ---
+
 ### Route Details
 
 <table>
   <tr>
-    <td valign="top">
+   <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193">
-  <img src="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193" width="400" style="height:auto;"/>
+  <img src="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193"  style="width:500px; height:auto;"/>
 </a>
  <br/>
 <a href="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c">
-  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c" width="400" style="height:auto;"/>
+  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c"  style="width:500px; height:auto;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
