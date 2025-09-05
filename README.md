@@ -29,7 +29,7 @@
 - [👤 Roles & Permissions](#-roles-&-permissions)
 - [🔒 Security Features](#-security-features)
   
-### 🛠️ Project Structure
+### [🛠️ Project Structure](#-project-structure)
 - [📂 Folder Structure](#-folder-structure)
 - [🗄️ Database Design](#-database-design)
 
