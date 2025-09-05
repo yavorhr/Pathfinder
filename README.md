@@ -555,8 +555,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ## 🔐 Security Features  
 
-## 🔐 Security Features  
-
 - **Spring Security integration** – full authentication & authorization layer.  
 - **Role-based access control (RBAC)** – Roles include `Guest`, `User`, `Author`, and `Admin` (see [Roles & Permissions](#-roles--permissions)).  
 - **Account lockout policy** –  
