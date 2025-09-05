@@ -74,7 +74,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 - Lock/unlock, change roles, remove accounts and send notifications dynamically
   
 ### 🧪 Testing
-- **95%+ JUnit & Integration test coverage**  
+- **95%+ test coverage with JUnit & MockMVC**  
 
 ---
 
