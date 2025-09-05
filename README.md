@@ -94,9 +94,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
       </a>
     </td>
     <td valign="top" style="padding-left:20px;">
-      <!-- Description column -->
-      <p>
-        The homepage is the start point of the application. It includes the following features:
+      <p>The homepage is the start point of the application. It includes the following features:</p>
         <ul>
           <li>Quick link to all users routes</li>
           <li>Link tabs to routes, sorted by category (car, pedestrian, etc.)</li>
@@ -104,7 +102,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
           <li>Link to the most commented route</li>
           <li>Gallery with all recent route images</li>
         </ul>
-      </p>
     </td>
   </tr>
 </table>
@@ -119,9 +116,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
-      <!-- Description column -->
-      <p>
-        This is the user managmenet page. It provides the following features:
+      <p>This is the user managmenet page. It provides the following features:</p>
         <ul>
           <li>Remove user from the database</li>
           <li>Disable/enable user access</li>
@@ -130,12 +125,12 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
           <li>Update user roles</li>
            <li>Search + pagination support</li>
         </ul>
-      </p>
+  
     </td>
   </tr>
 </table>
 
-# Endpoints statistics (admin only)
+### Endpoints statistics (admin only)
 
 <table>
   <tr>
