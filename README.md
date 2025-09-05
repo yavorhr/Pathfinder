@@ -106,6 +106,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   </tr>
 </table>
 
+---
+
 ### Admin control panel
 
 <table>
@@ -125,10 +127,11 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
           <li>Update user roles</li>
            <li>Search + pagination support</li>
         </ul>
-  
     </td>
   </tr>
 </table>
+
+---
 
 ### Endpoints statistics (admin only)
 
