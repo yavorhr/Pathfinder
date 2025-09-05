@@ -533,6 +533,33 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 - **Session management** – invalid sessions are prevented, and concurrent logins can be restricted.  
 - **Admin-only tools** – sensitive features (user management, endpoint statistics, role updates) are restricted strictly to Admins.  
 
+## 🛠️ Tech Stack
+
+### 🔙 Backend
+| IntelliJ IDEA | Java | Spring Boot | Spring Security | JUnit |
+|---------------|------|------------|----------------|-------|
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-plain.svg" width="40" height="40"/> |
+
+### 🎨 Frontend
+| HTML5 | CSS3 | JavaScript | Bootstrap | Thymeleaf |
+|-------|------|------------|-----------|-----------|
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/thymeleaf/thymeleaf-original.svg" width="40" height="40"/> |
+
+### 🗄️ Database
+| MySQL |
+|-------|
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="40" height="40"/> |
+
+### ⚙️ DevOps / Tools
+| Docker | Git | GitHub |
+|--------|-----|--------|
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="40" height="40"/> |
+
+### 🌐 APIs / External Services
+| REST API | Cloudinary | Chart.js | OpenWeather API | Leaflet JS |
+|----------|------------|----------|----------------|------------|
+| <img src="https://img.icons8.com/fluency/48/api.png" width="40" height="40"/> | <img src="https://img.icons8.com/color/48/cloud.png" width="40" height="40"/> | <img src="https://img.icons8.com/color/48/combo-chart--v1.png" width="40" height="40"/> | <img src="https://img.icons8.com/fluency/48/clouds.png" width="40" height="40"/> | <img src="https://img.icons8.com/arcade/64/leaf.png" width="40" height="40"/> |
+
 
 ---
 
