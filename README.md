@@ -26,9 +26,8 @@
 ### 🛠️ Technical Details
 - [🛠️ Tech Stack](#-tech-stack)
 - [📡 API Endpoints](#-api-endpoints)
-- [👤 Roles & Permissions](#-roles-&-permissions)
-- [🔒 Security Features](#-security-features)
-  
+- [👤🔒 Roles, Permissions & Security](#-roles-&-permissions-&-security)
+
 ### 🛠️ Project Structure
 - [📂 Folder Structure](#-folder-structure)
 - [🗄️ Database Design](#-database-design)
@@ -36,7 +35,6 @@
 ### 🚀 Getting Started
 - [Clone & Run (manual)](#clone--run-manual)
 - [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
-- [📂 Project Structure](#-project-structure)
 
 ### 🗺️ Roadmap & License
 - [🗺️ Roadmap](#️-roadmap)
@@ -495,27 +493,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ---
 
-### 👤 Roles & Permissions  
-
-| Feature / Permission       | Guest | User | Author | Admin |
-|----------------------------|:-----:|:----:|:------:|:-----:|
-| View Home & About page     | ✅    | ✅   | ✅     | ✅    |
-| Register                   | ✅    | ❌   | ❌     | ❌    |
-| View all routes            | ❌    | ✅   | ✅     | ✅    |
-| Create new routes          | ❌    | ✅   | ✅     | ✅    |
-| Comment on routes          | ❌    | ✅   | ✅     | ✅    |
-| Edit own profile           | ❌    | ✅   | ✅     | ✅    |
-| Upload profile image       | ❌    | ✅   | ✅     | ✅    |
-| Edit own routes            | ❌    | ❌   | ✅     | ✅    |
-| Delete own routes          | ❌    | ❌   | ✅     | ✅    |
-| Upload images to own routes| ❌    | ❌   | ✅     | ✅    |
-| Manage users (CRUD, roles) | ❌    | ❌   | ❌     | ✅    |
-| Access Admin Panel         | ❌    | ❌   | ❌     | ✅    |
-| Access Endpoint Stats      | ❌    | ❌   | ❌     | ✅    |
-| Approve new registrations  | ❌    | ❌   | ❌     | ✅    |
-| Send email notifications   | ❌    | ❌   | ❌     | ✅    |
-
----
+### 👤🔒 Roles, Permissions & Security
 
 ## 🔐 Security Features  
 
@@ -535,6 +513,26 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 - **HTTPS-support** – the application can be deployed securely with SSL certificates to ensure encrypted communication between clients and the server.
 - **Session management** – invalid sessions are prevented, and concurrent logins can be restricted.  
 - **Admin-only tools** – sensitive features (user management, endpoint statistics, role updates) are restricted strictly to Admins.  
+
+##👤 Roles & Permissions
+
+| Feature / Permission       | Guest | User | Author | Admin |
+|----------------------------|:-----:|:----:|:------:|:-----:|
+| View Home & About page     | ✅    | ✅   | ✅     | ✅    |
+| Register                   | ✅    | ❌   | ❌     | ❌    |
+| View all routes            | ❌    | ✅   | ✅     | ✅    |
+| Create new routes          | ❌    | ✅   | ✅     | ✅    |
+| Comment on routes          | ❌    | ✅   | ✅     | ✅    |
+| Edit own profile           | ❌    | ✅   | ✅     | ✅    |
+| Upload profile image       | ❌    | ✅   | ✅     | ✅    |
+| Edit own routes            | ❌    | ❌   | ✅     | ✅    |
+| Delete own routes          | ❌    | ❌   | ✅     | ✅    |
+| Upload images to own routes| ❌    | ❌   | ✅     | ✅    |
+| Manage users (CRUD, roles) | ❌    | ❌   | ❌     | ✅    |
+| Access Admin Panel         | ❌    | ❌   | ❌     | ✅    |
+| Access Endpoint Stats      | ❌    | ❌   | ❌     | ✅    |
+| Approve new registrations  | ❌    | ❌   | ❌     | ✅    |
+| Send email notifications   | ❌    | ❌   | ❌     | ✅    |
 
 ---
 
