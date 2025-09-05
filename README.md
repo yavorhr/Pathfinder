@@ -79,35 +79,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ## 🖼️ Screenshots
 
-### Home Page
-
-<table>
-  <tr>
-    <td valign="top" width="50%">
-      <!-- Images column -->
-      <a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
-        <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" style="width:500px; height:auto;"/>
-      </a>
-      <br/>
-      <a href="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1">
-        <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" style="width:500px; height:auto;"/>
-      </a>
-    </td>
-    <td valign="top" style="padding-left:20px;">
-      <p>The homepage is the start point of the application. It includes the following features:</p>
-        <ul>
-          <li>Quick link to all users routes</li>
-          <li>Link tabs to routes, sorted by category (car, pedestrian, etc.)</li>
-          <li>Live weather forecast</li>
-          <li>Link to the most commented route</li>
-          <li>Gallery with all recent route images</li>
-        </ul>
-    </td>
-  </tr>
-</table>
-
----
-
 ### Admin control panel
 
 <table>
@@ -152,6 +123,35 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
           <li>Using reddis docker image to to persist the data. The data persist even after app shut down.</li>
         </ul>
       </p>
+    </td>
+  </tr>
+</table>
+
+---
+
+### Home Page
+
+<table>
+  <tr>
+    <td valign="top" width="50%">
+      <!-- Images column -->
+      <a href="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5">
+        <img src="https://github.com/user-attachments/assets/4d39db9a-5cc5-479e-87b6-da2bab844ef5" style="width:500px; height:auto;"/>
+      </a>
+      <br/>
+      <a href="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1">
+        <img src="https://github.com/user-attachments/assets/53e604da-3557-4e7a-942c-1a7219ba9da1" style="width:500px; height:auto;"/>
+      </a>
+    </td>
+    <td valign="top" style="padding-left:20px;">
+      <p>The homepage is the start point of the application. It includes the following features:</p>
+        <ul>
+          <li>Quick link to all users routes</li>
+          <li>Link tabs to routes, sorted by category (car, pedestrian, etc.)</li>
+          <li>Live weather forecast</li>
+          <li>Link to the most commented route</li>
+          <li>Gallery with all recent route images</li>
+        </ul>
     </td>
   </tr>
 </table>
@@ -248,6 +248,35 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ---
 
+### Route Details
+
+<table>
+  <tr>
+   <td valign="top" width="50%">
+<a href="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193">
+  <img src="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193"  style="width:500px; height:auto;"/>
+</a>
+ <br/>
+<a href="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c">
+  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c"  style="width:500px; height:auto;"/>
+</a>
+    </td>
+    <td valign="top" style="padding-left:20px;">
+      <ul>
+    <p>This is one of the main pages of the application, where specific route with it's details are displayed.</p>
+    <li>Main information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
+    <li>Author/Admin actions: If the current user is the <b>author</b> or <b>admin</b>, additional buttons appear for <b>deleting the route</b> and <b>adding images</b> to the gallery. Both functionalities are secured with <code>Spring security</code> in the backend.</li>
+    <li>Dynamic GPX visualization: Displays route paths using <b>Leaflet.js</b>.</li>
+    <li>YouTube integration: Optionally shows an embedded YouTube video for the route.</li>
+    <li>Gallery images: All route-related images are displayed with a <b>modal preview</b> using JavaScript to show full-size images.</li>
+    <li>Comments section: Users can post comments. Implemented with <b>JavaScript and Fetch API</b> so the page does not reload after posting for a smoother user experience.</li>
+</ul>
+    </td>
+  </tr>
+</table>
+
+---
+
 ### Create route
 
 <table>
@@ -275,35 +304,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
           </a>
     <li>User feedback: <b>Invalid inputs</b> are displayed directly on the form to guide the user.</li>
     <li><b>Data persistence:</b> Submitted routes are saved in the <b>MySQL database</b>, linked to the submitting user.</li>
-</ul>
-    </td>
-  </tr>
-</table>
-
----
-
-### Route Details
-
-<table>
-  <tr>
-   <td valign="top" width="50%">
-<a href="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193">
-  <img src="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193"  style="width:500px; height:auto;"/>
-</a>
- <br/>
-<a href="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c">
-  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c"  style="width:500px; height:auto;"/>
-</a>
-    </td>
-    <td valign="top" style="padding-left:20px;">
-      <ul>
-    <p>This is one of the main pages of the application, where specific route with it's details are displayed.</p>
-    <li>Main information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
-    <li>Author/Admin actions: If the current user is the <b>author</b> or <b>admin</b>, additional buttons appear for <b>deleting the route</b> and <b>adding images</b> to the gallery. Both functionalities are secured with <code>Spring security</code> in the backend.</li>
-    <li>Dynamic GPX visualization: Displays route paths using <b>Leaflet.js</b>.</li>
-    <li>YouTube integration: Optionally shows an embedded YouTube video for the route.</li>
-    <li>Gallery images: All route-related images are displayed with a <b>modal preview</b> using JavaScript to show full-size images.</li>
-    <li>Comments section: Users can post comments. Implemented with <b>JavaScript and Fetch API</b> so the page does not reload after posting for a smoother user experience.</li>
 </ul>
     </td>
   </tr>
@@ -416,6 +416,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   </tr>
 </table>
 
+---
 
 ## 🛠️ Tech Stack
 
