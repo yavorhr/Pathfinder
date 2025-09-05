@@ -382,30 +382,20 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
    <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/42919274-af59-4e9f-a37e-b08429455102">
   <img src="https://github.com/user-attachments/assets/42919274-af59-4e9f-a37e-b08429455102" style="width:500px; height:auto;"/>
-</a>
-    </td>
+</a></td>
     <td valign="top" style="padding-left:20px;">
       <p>User is able to edit dynamically own profile as follows:</p>
  <ul>
-  <li>
-    Clicking <b>Edit</b> opens a <b>modal window</b> without page reload, keeping the experience smooth and fast.
-  </li>
-  <li>
-    <b>Editable fields:</b> First Name, Last Name, About Me, and Social Accounts.
-  </li>
-  <li>
-    <b>Username:</b> Always visible but <i>non-editable</i> to preserve account identity.
-  </li>
-  <li>
-    <b>Actions:</b>
+  <li>Clicking <b>Edit</b> opens a <b>modal window</b> without page reload, keeping the experience smooth and fast.</li>
+  <li><b>Editable fields:</b> First Name, Last Name, About Me, and Social Accounts.</li>
+  <li><b>Username:</b> Always visible but <i>non-editable</i> to preserve account identity.</li>
+  <li><b>Actions:</b>
     <ul>
       <li><b>Save Changes</b> – Updates the user data asynchronously (via Fetch API) without refreshing the page.</li>
       <li><b>Reset</b> – Cancels edits and restores the profile to its last saved state.</li>
     </ul>
   </li>
-  <li>
-    All interactions are <b>asynchronous</b> for better UX, with immediate feedback on changes.
-  </li>
+  <li>All interactions are <b>asynchronous</b> for better UX, with immediate feedback on changes.</li>
 </ul>
     </td>
   </tr>
@@ -636,6 +626,8 @@ The application uses a relational database to manage users, roles, routes, messa
 - messages – Stores private messages between users with timestamps, author, and recipient IDs.
 
 Relationships:
+
+<table> <tr> <th>Entity</th> <th>Related Entity</th> <th>Relationship</th> <th>Description</th> </tr> <tr> <td><code>users</code></td> <td><code>roles</code></td> <td>Many-to-Many</td> <td>Users can have multiple roles via <code>users_roles</code>.</td> </tr> <tr> <td><code>routes</code></td> <td><code>users</code></td> <td>Many-to-One</td> <td>Each route is authored by a single user (<code>author_id</code>).</td> </tr> <tr> <td><code>routes</code></td> <td><code>categories</code></td> <td>Many-to-Many</td> <td>A route can belong to multiple categories via <code>routes_categories</code>.</td> </tr> <tr> <td><code>routes</code></td> <td><code>routes_pictures</code></td> <td>One-to-Many</td> <td>Each route can have multiple pictures.</td> </tr> <tr> <td><code>routes</code></td> <td><code>comments</code></td> <td>One-to-Many</td> <td>Each route can have multiple comments. Supports parent-child threading.</td> </tr> <tr> <td><code>messages</code></td> <td><code>users</code></td> <td>Many-to-One</td> <td>Each message has an <b>author</b> and a <b>recipient</b> (both users).</td> </tr> </table>
 
 - Users can have multiple roles via users_roles.
 - Routes are authored by users (author_id) and can belong to multiple categories.
