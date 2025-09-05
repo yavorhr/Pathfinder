@@ -48,16 +48,17 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 - 🔑 **Authentication** with Spring Security (Login/Logout)
 - 🛤️ **Routes**
   - Add new routes with **categories** (Pedestrian, Bicycle, Motorcycle, Car)  
-  - Attach **GPX coordinates**, YouTube video, and description  
+  - Attach **GPX coordinates** (render with **Leaflet.js** library)
+  - **YouTube video embedded**
   - Upload an **image gallery** (via Cloudinary API)  
   - Delete route (author or admin only)  
   - Browse all routes or filter by category  
   - Homepage highlights **Most Commented Route**  
-- 🌦️ **Weather Integration**  
-  - Current weather in Sofia & Plovdiv (via OpenWeather API)  
+- 🌦️ **Weather API Integration**  
+  - Current weather in Sofia & Plovdiv (via **OpenWeather API**)  
 - 👤 **Profile**  
   - Customize profile fields (age, name, social links)  
-  - Change or reset profile picture (Cloudinary API)  
+  - Change or reset profile picture (**Cloudinary API**)  
   - Leveling system based on created routes
 - **⚡Dynamic interactions with JavaScript Fetch API**
   - Comment routes, update profile fields, and more — all without refreshing the page
