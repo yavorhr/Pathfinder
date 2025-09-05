@@ -18,30 +18,12 @@
 
 ## Table of Contents
 
-### 📚 Project Overview
-- [📖 About the Project](#-about-the-project)
-- [✨ Features](#-features)
-- [🖼️ Screenshots](#-screenshots)
+| 📚 Project Overview | 🛠️ Technical Details | 🏗️ Project Structure | 🚀 Getting Started | 🗺️ Roadmap & License | 📬 Contact |
+|-------------------|-------------------|--------------------|-----------------|--------------------|------------|
+| [📖 About the Project](#-about-the-project) | [🛠️ Tech Stack](#-tech-stack) | [📂 Folder Structure](#-folder-structure) | [Clone & Run (manual)](#clone--run-manual) | [🗺️ Roadmap](#-roadmap) | [📬 Contact](#-contact) |
+| [✨ Features](#-features) | [📡 API Endpoints](#-api-endpoints) | [🗄️ Database Design](#-database-design) | [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon) | [📜 License](#-license) | |
+| [🖼️ Screenshots](#-screenshots) | [👤🔒 Roles, Permissions & Security](#-roles-permissions-&-security) |  |  |  | |
 
-### 🛠️ Technical Details
-- [🛠️ Tech Stack](#-tech-stack)
-- [📡 API Endpoints](#-api-endpoints)
-- [👤🔒 Roles, Permissions & Security](#-roles-permissions-&-security)
-
-### 🏗️ Project Structure
-- [📂 Folder Structure](#-folder-structure)
-- [🗄️ Database Design](#-database-design)
-
-### 🚀 Getting Started
-- [Clone & Run (manual)](#clone--run-manual)
-- [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
-
-### 🗺️ Roadmap & License
-- [🗺️ Roadmap](#-roadmap)
-- [📜 License](#-license)
-
-### 📬 Contact / Support
-- [📬 Contact](#-contact)
 
 
 ---
