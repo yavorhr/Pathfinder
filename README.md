@@ -23,8 +23,8 @@
 - [🖼️ Screenshots](#-screenshots)
 - [🛠️ Tech Stack](#️-tech-stack)
 - [📡 API Endpoints](#-api-endpoints)
-- [👤 Roles & Permissions](#-api-roles-&-permissions)
-- [🔒 Security features](#-api-security-features)
+- [👤 Roles & Permissions](#-roles-&-permissions)
+- [🔒 Security features](#-security-features)
 - [🚀 Getting Started](#-getting-started)
   - [Clone & Run (manual)](#clone--run-manual)
   - [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
@@ -555,6 +555,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ## 🔐 Security Features  
 
+## 🔐 Security Features  
+
 - **Spring Security integration** – full authentication & authorization layer.  
 - **Role-based access control (RBAC)** – Roles include `Guest`, `User`, `Author`, and `Admin` (see [Roles & Permissions](#-roles--permissions)).  
 - **Account lockout policy** –  
@@ -564,7 +566,14 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   - New users are *disabled* by default until Admin approval.  
   - Admin receives a notification event and can approve/deny.  
   - Email notifications supported for unapproved users.  
-- **Password handling** – all passwords are stored using strong **BCrypt hashing**.
+- **Password handling** – all passwords are stored using strong **PasswordEncoder hashing**.  
+- **CSRF protection** – enabled for all state-changing requests.  
+- **Input validation** – both frontend & backend validation for forms (XSS / SQL Injection prevention).  
+- **Authorization annotations** – critical actions like deleting routes or managing users are protected with `@PreAuthorize` checks.  
+- **HTTPS-support** – the application can be deployed securely with SSL certificates to ensure encrypted communication between clients and the server.
+- **Session management** – invalid sessions are prevented, and concurrent logins can be restricted.  
+- **Admin-only tools** – sensitive features (user management, endpoint statistics, role updates) are restricted strictly to Admins.  
+
 
 ---
 
