@@ -423,14 +423,13 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ## 🛠️ Tech Stack
 
-| 🔙 Backend | 🎨 Frontend | 🗄️ Database | ⚙️ DevOps / Tools | 🌐 APIs / External Services |
-|------------|-------------|-------------|-----------------|----------------------------|
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" width="40" height="40"/><br>IntelliJ IDEA | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="40" height="40"/><br>HTML5 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="40" height="40"/><br>MySQL | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="40" height="40"/><br>Docker | <img src="https://img.icons8.com/fluency/48/api.png" width="40" height="40"/><br>REST API |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="40" height="40"/><br>Java | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="40" height="40"/><br>CSS3 |  | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40" height="40"/><br>Git | <img src="https://img.icons8.com/color/48/cloud.png" width="40" height="40"/><br>Cloudinary |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40"/><br>Spring Boot | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/><br>JavaScript |  | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="40" height="40"/><br>GitHub | <img src="https://img.icons8.com/color/48/combo-chart--v1.png" width="40" height="40"/><br>Chart.js |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40"/><br>Spring Security | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="40" height="40"/><br>Bootstrap |  |  | <img src="https://img.icons8.com/fluency/48/clouds.png" width="40" height="40"/><br>OpenWeather API |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-plain.svg" width="40" height="40"/><br>JUnit | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/thymeleaf/thymeleaf-original.svg" width="40" height="40"/><br>Thymeleaf |  |  | <img src="https://img.icons8.com/arcade/64/leaf.png" width="40" height="40"/><br>Leaflet JS |
-
+| Category | Technologies |
+|----------|--------------|
+| 🔙 Backend | <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" width="40" height="40"/> IntelliJ IDEA</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="40" height="40"/> Java</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40"/> Spring Boot</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40"/> Spring Security</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-plain.svg" width="40" height="40"/> JUnit</span> |
+| 🎨 Frontend | <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="40" height="40"/> HTML5</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="40" height="40"/> CSS3</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/> JavaScript</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="40" height="40"/> Bootstrap</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/thymeleaf/thymeleaf-original.svg" width="40" height="40"/> Thymeleaf</span> |
+| 🗄️ Database | <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="40" height="40"/> MySQL</span> |
+| ⚙️ DevOps / Tools | <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="40" height="40"/> Docker</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40" height="40"/> Git</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="40" height="40"/> GitHub</span> |
+| 🌐 APIs / External Services | <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://img.icons8.com/fluency/48/api.png" width="40" height="40"/> REST API</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://img.icons8.com/color/48/cloud.png" width="40" height="40"/> Cloudinary</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://img.icons8.com/color/48/combo-chart--v1.png" width="40" height="40"/> Chart.js</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://img.icons8.com/fluency/48/clouds.png" width="40" height="40"/> OpenWeather API</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://img.icons8.com/arcade/64/leaf.png" width="40" height="40"/> Leaflet JS</span> |
 ---
 
 ## 📡 API Endpoints
@@ -532,34 +531,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 - **HTTPS-support** – the application can be deployed securely with SSL certificates to ensure encrypted communication between clients and the server.
 - **Session management** – invalid sessions are prevented, and concurrent logins can be restricted.  
 - **Admin-only tools** – sensitive features (user management, endpoint statistics, role updates) are restricted strictly to Admins.  
-
-## 🛠️ Tech Stack
-
-### 🔙 Backend
-| IntelliJ IDEA | Java | Spring Boot | Spring Security | JUnit |
-|---------------|------|------------|----------------|-------|
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-plain.svg" width="40" height="40"/> |
-
-### 🎨 Frontend
-| HTML5 | CSS3 | JavaScript | Bootstrap | Thymeleaf |
-|-------|------|------------|-----------|-----------|
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/thymeleaf/thymeleaf-original.svg" width="40" height="40"/> |
-
-### 🗄️ Database
-| MySQL |
-|-------|
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="40" height="40"/> |
-
-### ⚙️ DevOps / Tools
-| Docker | Git | GitHub |
-|--------|-----|--------|
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40" height="40"/> | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="40" height="40"/> |
-
-### 🌐 APIs / External Services
-| REST API | Cloudinary | Chart.js | OpenWeather API | Leaflet JS |
-|----------|------------|----------|----------------|------------|
-| <img src="https://img.icons8.com/fluency/48/api.png" width="40" height="40"/> | <img src="https://img.icons8.com/color/48/cloud.png" width="40" height="40"/> | <img src="https://img.icons8.com/color/48/combo-chart--v1.png" width="40" height="40"/> | <img src="https://img.icons8.com/fluency/48/clouds.png" width="40" height="40"/> | <img src="https://img.icons8.com/arcade/64/leaf.png" width="40" height="40"/> |
-
 
 ---
 
