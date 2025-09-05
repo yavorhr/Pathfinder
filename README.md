@@ -444,8 +444,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 | ⚙️ DevOps / Tools | <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="40" height="40"/> Docker</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40" height="40"/> Git</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="40" height="40"/> GitHub</span> |
 | 🌐 APIs / External Services | <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://img.icons8.com/fluency/48/api.png" width="40" height="40"/> REST API</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://img.icons8.com/color/48/cloud.png" width="40" height="40"/> Cloudinary</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://img.icons8.com/color/48/combo-chart--v1.png" width="40" height="40"/> Chart.js</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://img.icons8.com/fluency/48/clouds.png" width="40" height="40"/> OpenWeather API</span> &nbsp; <span style="background:#f0f0f0; padding:4px; border-radius:6px;"><img src="https://img.icons8.com/arcade/64/leaf.png" width="40" height="40"/> Leaflet JS</span> |
 
-
-
 ---
 
 ## 📡 API Endpoints
@@ -574,12 +572,36 @@ A ready-to-use docker-compose.yml will be provided for easy setup.
 
 ## 📂 Folder Structure
 
-pathfinder/
- ├── src/main/java/...       # Spring Boot backend
- ├── src/main/resources/...  # Static resources, templates
- ├── src/test/java/...       # Unit & integration tests
- ├── pom.xml                 # Maven config
- └── README.md               # This file
+Project Tree	Description
+src/main/java/com/example/pathfinder/	Main application source code
+├── config/	Application configuration (security, beans, handlers, web config, etc.)
+├── model/	Core domain layer (entities, DTOs, bindings, views, services)
+│ ├── binding/	Data transfer objects for request binding/validation
+│ ├── common/	Shared enums/constants across the project
+│ ├── entity/	JPA entities mapped to database tables
+│ ├── service/	Service interfaces defining business logic
+│ └── view/	View models used for rendering responses
+├── repository/	Spring Data JPA repositories for DB access
+├── service/	Service implementations and supporting logic
+│ ├── events/	Application event handlers/listeners
+│ ├── impl/	Concrete service implementations
+│ └── schedulers/	Scheduled tasks (e.g., admin notifications)
+├── util/	Utility classes/helpers
+├── validation/	Custom validation annotations and logic
+└── web/	Web layer (controllers, REST endpoints, MVC handlers)
+PathfinderApplication	Spring Boot application entry point
+	
+src/main/resources/	Application resources
+├── META-INF/	Persistence and ORM configs (if needed)
+├── static/	Static assets (CSS, JS, images)
+├── templates/	Thymeleaf templates for server-side rendering
+├── application.properties	Spring Boot application configuration
+└── data.sql	Initial database data seeding
+	
+src/test/java/com/example/pathfinder/	Unit & integration tests
+└── PathfinderApplicationTests	Base test class
+	
+src/test/resources/	Test-specific resources/configuration
 
 ---
 
@@ -631,22 +653,4 @@ Created by Yavor 👨‍💻
 - LinkedIn
 - GitHub
 
-flowchart TB
-    A[🌐 Presentation Layer] --> B[💼 Business Layer]
-    B --> C[🗄️ Persistence Layer]
-    C --> D[(Database)]
-    subgraph Presentation Layer
-        A1[Controllers (Web)]
-        A2[Thymeleaf Templates]
-        A3[Static Resources]
-    end
-    subgraph Business Layer
-        B1[Services]
-        B2[Events & Schedulers]
-        B3[Validation & Utils]
-    end
-    subgraph Persistence Layer
-        C1[Repositories]
-        C2[Entities]
-        C3[DTOs & View Models]
-    end
+
