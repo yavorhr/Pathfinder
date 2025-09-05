@@ -23,7 +23,8 @@
 - [🖼️ Screenshots](#-screenshots)
 - [🛠️ Tech Stack](#️-tech-stack)
 - [📡 API Endpoints](#-api-endpoints)
-- [### 👤 Roles & Permissions](#-api-endpoints)  
+- [👤 Roles & Permissions](#-api-roles-&-permissions)
+- [🔒 Security features](#-api-security-features)
 - [🚀 Getting Started](#-getting-started)
   - [Clone & Run (manual)](#clone--run-manual)
   - [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
@@ -549,6 +550,21 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 | Access Endpoint Stats      | ❌    | ❌   | ❌     | ✅    |
 | Approve new registrations  | ❌    | ❌   | ❌     | ✅    |
 | Send email notifications   | ❌    | ❌   | ❌     | ✅    |
+
+---
+
+## 🔐 Security Features  
+
+- **Spring Security integration** – full authentication & authorization layer.  
+- **Role-based access control (RBAC)** – Roles include `Guest`, `User`, `Author`, and `Admin` (see [Roles & Permissions](#-roles--permissions)).  
+- **Account lockout policy** –  
+  - 5 failed login attempts → account locked for 15 minutes.  
+  - 3 lockouts → account automatically disabled (requires Admin reactivation).  
+- **Secure registration flow** –  
+  - New users are *disabled* by default until Admin approval.  
+  - Admin receives a notification event and can approve/deny.  
+  - Email notifications supported for unapproved users.  
+- **Password handling** – all passwords are stored using strong **BCrypt hashing**.
 
 ---
 
