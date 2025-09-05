@@ -22,7 +22,8 @@
 - [✨ Features](#-features)
 - [🖼️ Screenshots](#-screenshots)
 - [🛠️ Tech Stack](#️-tech-stack)
-- [📡 API Endpoints](#-api-endpoints)  
+- [📡 API Endpoints](#-api-endpoints)
+- [### 👤 Roles & Permissions](#-api-endpoints)  
 - [🚀 Getting Started](#-getting-started)
   - [Clone & Run (manual)](#clone--run-manual)
   - [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
@@ -526,6 +527,30 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 |--------|---------------------------|-------------------------|--------|
 | GET    | `/api/{routeId}/comments`     | Get all route comments   | User  |
 | POST    | `/api/{routeId}/add-comment`     | Add comment to route   | User  |
+
+---
+
+### 👤 Roles & Permissions  
+
+| Feature / Permission       | Guest | User | Author | Admin |
+|----------------------------|:-----:|:----:|:------:|:-----:|
+| View Home & About page     | ✅    | ✅   | ✅     | ✅    |
+| Register                   | ✅    | ❌   | ❌     | ❌    |
+| View all routes            | ❌    | ✅   | ✅     | ✅    |
+| Create new routes          | ❌    | ✅   | ✅     | ✅    |
+| Comment on routes          | ❌    | ✅   | ✅     | ✅    |
+| Edit own profile           | ❌    | ✅   | ✅     | ✅    |
+| Upload profile image       | ❌    | ✅   | ✅     | ✅    |
+| Edit own routes            | ❌    | ❌   | ✅     | ✅    |
+| Delete own routes          | ❌    | ❌   | ✅     | ✅    |
+| Upload images to own routes| ❌    | ❌   | ✅     | ✅    |
+| Manage users (CRUD, roles) | ❌    | ❌   | ❌     | ✅    |
+| Access Admin Panel         | ❌    | ❌   | ❌     | ✅    |
+| Access Endpoint Stats      | ❌    | ❌   | ❌     | ✅    |
+| Approve new registrations  | ❌    | ❌   | ❌     | ✅    |
+| Send email notifications   | ❌    | ❌   | ❌     | ✅    |
+
+---
 
 ## 🚀 Getting Started
 
