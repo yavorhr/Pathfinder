@@ -18,20 +18,31 @@
 
 # 📑 Table of Contents
 
+## Table of Contents
+
+### 📚 Project Overview
 - [📖 About the Project](#-about-the-project)
 - [✨ Features](#-features)
 - [🖼️ Screenshots](#-screenshots)
+
+### 🛠️ Technical Details
 - [🛠️ Tech Stack](#️-tech-stack)
 - [📡 API Endpoints](#-api-endpoints)
 - [👤 Roles & Permissions](#-roles-&-permissions)
-- [🔒 Security features](#-security-features)
-- [🚀 Getting Started](#-getting-started)
-  - [Clone & Run (manual)](#clone--run-manual)
-  - [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
+- [🔒 Security Features](#-security-features)
+
+### 🚀 Getting Started
+- [Clone & Run (manual)](#clone--run-manual)
+- [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
 - [📂 Project Structure](#-project-structure)
+
+### 🗺️ Roadmap & License
 - [🗺️ Roadmap](#️-roadmap)
 - [📜 License](#-license)
+
+### 📬 Contact / Support
 - [📬 Contact](#-contact)
+
 
 ---
 
