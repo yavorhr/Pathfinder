@@ -298,9 +298,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
-      <p>
-        The route details page offers the following information and features: </p>
       <ul>
+    <p>This is one of the main pages of the application, where specific route with it's details are displayed.</p>
     <li>Main information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
     <li>Author/Admin actions: If the current user is the <b>author</b> or <b>admin</b>, additional buttons appear for <b>deleting the route</b> and <b>adding images</b> to the gallery. Both functionalities are secured with <code>Spring security</code> in the backend.</li>
     <li>Dynamic GPX visualization: Displays route paths using <b>Leaflet.js</b>.</li>
@@ -324,10 +323,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
-      <p>
-         This page is rendering routes per category.</p>
     <ul>
-  <li><b>Category-based browsing</b>: Users can explore routes by category (Car, Pedestrian, Bicycle, Motorcycle).</li>
+  <p>This page represents category-based browsing.</p>
+  <li>Users can explore routes by category (Car, Pedestrian, Bicycle, Motorcycle).</li>
   <li><b>Dynamic quotes</b>: Each category displays a random motivational quote, generated from the backend.</li>
   <li><b>Interactive UX</b>: Clicking on a route opens a modal with a link to the route details page, ensuring smooth navigation without page reload.</li>
   <li><b>Seamless integration</b>: Combines backend logic (random quote generation) with frontend JavaScript (modal functionality).</li>
@@ -337,7 +335,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </table>
 
 ---
-![profile](https://github.com/user-attachments/assets/)
 
 ### User profile
 
@@ -350,6 +347,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     </td>
     <td valign="top" style="padding-left:20px;">
    <ul>
+  <p>This user's profile page brings the following features:</p>
   <li><b>Profile image</b>: Displays the user’s profile picture (or placeholder if none).</li>
   <li><b>Image upload</b>: Users can change their profile image via a button.  
       – Implemented with <b>Fetch API</b> and <b>Cloudinary</b> for seamless uploads without page reload. Image persists in the database.</li>
@@ -373,6 +371,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
+      <p>User is able to edit dynamically own profile as follows:</p>
  <ul>
   <li>
     Clicking <b>Edit</b> opens a <b>modal window</b> without page reload, keeping the experience smooth and fast.
@@ -400,9 +399,25 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ### About page
 
+<table>
+  <tr>
+   <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e">
-  <img src="https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e" width="400"/>
+  <img src="https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e" style="width:500px; height:auto;"/>
 </a>
+    </td>
+    <td valign="top" style="padding-left:20px;">
+ <ul>
+  <li>Provides <b>meta information</b> about the project and its purpose.</li>
+  <li>Summarizes the <b>main features</b> of the application (routes, profiles, comments, admin tools, etc.).</li>
+  <li>Includes a clear overview of the <b>tech stack</b> used (Spring Boot, Thymeleaf, JavaScript, MySQL, Redis, Cloudinary, Leaflet, etc.).</li>
+  <li>Presents a <b>roadmap</b> with expected enhancements and future improvements.</li>
+  <li>Styled with <b>custom CSS</b> to ensure readability and a pleasant user experience.</li>
+</ul>
+    </td>
+  </tr>
+</table>
+
 
 ## 🛠️ Tech Stack
 
