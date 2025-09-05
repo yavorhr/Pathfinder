@@ -24,10 +24,14 @@
 - [🖼️ Screenshots](#-screenshots)
 
 ### 🛠️ Technical Details
-- [🛠️ Tech Stack](#️-tech-stack)
+- [🛠️ Tech Stack](#-tech-stack)
 - [📡 API Endpoints](#-api-endpoints)
 - [👤 Roles & Permissions](#-roles-&-permissions)
 - [🔒 Security Features](#-security-features)
+  
+### 🛠️ Project Structure
+- [📂 Folder Structure](#-folder-structure)
+- [🗄️ Database Design](#-database-design)
 
 ### 🚀 Getting Started
 - [Clone & Run (manual)](#clone--run-manual)
@@ -566,7 +570,9 @@ A ready-to-use docker-compose.yml will be provided for easy setup.
 
 ---
 
-## 📂 Project Structure
+# Project Structure
+
+## 📂 Folder Structure
 
 pathfinder/
  ├── src/main/java/...       # Spring Boot backend
@@ -574,6 +580,31 @@ pathfinder/
  ├── src/test/java/...       # Unit & integration tests
  ├── pom.xml                 # Maven config
  └── README.md               # This file
+
+---
+
+## 📂 Database Design
+
+<img width="1398" height="1433" alt="pathfinder" src="https://github.com/user-attachments/assets/f5117a00-e7ab-408a-9d0b-a7371de31c61" />
+
+The application uses a relational database to manage users, roles, routes, messages, and related content. Key tables and relationships are as follows:
+
+- users – Stores user account information, profile details, status flags (enabled, locked, etc.), and social media links.
+- roles – Defines user roles (admin, moderator, user).
+- users_roles – Join table connecting users to their assigned roles (many-to-many relationship).
+- categories – Stores route categories (bicycle, car, motorcycle, pedestrian).
+- routes – Contains all user-submitted routes, including descriptions, GPX coordinates, difficulty levels, and optional YouTube video links.
+- routes_categories – Join table connecting routes to one or more categories (many-to-many).
+- routes_pictures – Stores images uploaded for each route, with author and route references.
+- comments – User comments for routes, supporting parent-child relationships for threaded discussions.
+- messages – Stores private messages between users with timestamps, author, and recipient IDs.
+
+Relationships:
+
+- Users can have multiple roles via users_roles.
+- Routes are authored by users (author_id) and can belong to multiple categories.
+- Each route can have multiple pictures and comments.
+- Messages link two users (author → recipient).
 
 ---
 
