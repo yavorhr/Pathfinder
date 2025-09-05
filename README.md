@@ -423,30 +423,13 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ## 🛠️ Tech Stack
 
-## 🛠️ Tech Stack
-
-| Category | Technology | Icon |
-|----------|------------|------|
-| **Backend** | IntelliJ IDEA | ![IntelliJ](https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg) |
-| | Java | ![Java](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg) |
-| | Spring Boot | ![Spring Boot](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg) |
-| | Spring Security | ![Spring Security](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg) |
-| | JUnit | ![JUnit](https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-plain.svg) |
-| **Frontend** | HTML5 | ![HTML5](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg) |
-| | CSS3 | ![CSS3](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg) |
-| | JavaScript | ![JavaScript](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg) |
-| | Bootstrap | ![Bootstrap](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg) |
-| | Thymeleaf | ![Thymeleaf](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/thymeleaf/thymeleaf-original.svg) |
-| **Database** | MySQL | ![MySQL](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg) |
-| **DevOps / Tools** | Docker | ![Docker](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg) |
-| | Git | ![Git](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg) |
-| | GitHub | ![GitHub](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg) |
-| **APIs / External Services** | REST API | ![API](https://img.icons8.com/fluency/48/api.png) |
-| | Cloudinary | ![Cloudinary](https://img.icons8.com/color/48/cloud.png) |
-| | Chart.js | ![Chart.js](https://img.icons8.com/color/48/combo-chart--v1.png) |
-| | OpenWeather API | ![OpenWeather](https://img.icons8.com/fluency/48/clouds.png) |
-| | Leaflet JS | ![Leaflet](https://img.icons8.com/arcade/64/leaf.png) |
-
+| Category | Technologies |
+|----------|--------------|
+| **Backend** | ![IntelliJ](https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg) IntelliJ IDEA, ![Java](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg) Java, ![Spring Boot](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg) Spring Boot, ![Spring Security](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg) Spring Security, ![JUnit](https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-plain.svg) JUnit |
+| **Frontend** | ![HTML5](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg) HTML5, ![CSS3](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg) CSS3, ![JavaScript](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg) JavaScript, ![Bootstrap](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg) Bootstrap, ![Thymeleaf](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/thymeleaf/thymeleaf-original.svg) Thymeleaf |
+| **Database** | ![MySQL](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg) MySQL |
+| **DevOps / Tools** | ![Docker](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg) Docker, ![Git](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg) Git, ![GitHub](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg) GitHub |
+| **APIs / External Services** | ![API](https://img.icons8.com/fluency/48/api.png) REST API, ![Cloudinary](https://img.icons8.com/color/48/cloud.png) Cloudinary, ![Chart.js](https://img.icons8.com/color/48/combo-chart--v1.png) Chart.js, ![OpenWeather](https://img.icons8.com/fluency/48/clouds.png) OpenWeather API, ![Leaflet](https://img.icons8.com/arcade/64/leaf.png) Leaflet JS |
 
 ---
 
