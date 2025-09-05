@@ -26,9 +26,9 @@
 ### 🛠️ Technical Details
 - [🛠️ Tech Stack](#-tech-stack)
 - [📡 API Endpoints](#-api-endpoints)
-- [👤🔒 Roles, Permissions & Security](#-roles-&-permissions-&-security)
+- [👤🔒 Roles, Permissions & Security](#-roles-permissions-&-security)
 
-### 🛠️ Project Structure
+### 🏗️ Project Structure
 - [📂 Folder Structure](#-folder-structure)
 - [🗄️ Database Design](#-database-design)
 
@@ -37,7 +37,7 @@
 - [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
 
 ### 🗺️ Roadmap & License
-- [🗺️ Roadmap](#️-roadmap)
+- [🗺️ Roadmap](#-roadmap)
 - [📜 License](#-license)
 
 ### 📬 Contact / Support
