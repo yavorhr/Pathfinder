@@ -630,3 +630,23 @@ Created by Yavor 👨‍💻
 
 - LinkedIn
 - GitHub
+
+flowchart TB
+    A[🌐 Presentation Layer] --> B[💼 Business Layer]
+    B --> C[🗄️ Persistence Layer]
+    C --> D[(Database)]
+    subgraph Presentation Layer
+        A1[Controllers (Web)]
+        A2[Thymeleaf Templates]
+        A3[Static Resources]
+    end
+    subgraph Business Layer
+        B1[Services]
+        B2[Events & Schedulers]
+        B3[Validation & Utils]
+    end
+    subgraph Persistence Layer
+        C1[Repositories]
+        C2[Entities]
+        C3[DTOs & View Models]
+    end
