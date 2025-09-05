@@ -572,36 +572,7 @@ A ready-to-use docker-compose.yml will be provided for easy setup.
 
 ## 📂 Folder Structure
 
-Project Tree	Description
-src/main/java/com/example/pathfinder/	Main application source code
-├── config/	Application configuration (security, beans, handlers, web config, etc.)
-├── model/	Core domain layer (entities, DTOs, bindings, views, services)
-│ ├── binding/	Data transfer objects for request binding/validation
-│ ├── common/	Shared enums/constants across the project
-│ ├── entity/	JPA entities mapped to database tables
-│ ├── service/	Service interfaces defining business logic
-│ └── view/	View models used for rendering responses
-├── repository/	Spring Data JPA repositories for DB access
-├── service/	Service implementations and supporting logic
-│ ├── events/	Application event handlers/listeners
-│ ├── impl/	Concrete service implementations
-│ └── schedulers/	Scheduled tasks (e.g., admin notifications)
-├── util/	Utility classes/helpers
-├── validation/	Custom validation annotations and logic
-└── web/	Web layer (controllers, REST endpoints, MVC handlers)
-PathfinderApplication	Spring Boot application entry point
-	
-src/main/resources/	Application resources
-├── META-INF/	Persistence and ORM configs (if needed)
-├── static/	Static assets (CSS, JS, images)
-├── templates/	Thymeleaf templates for server-side rendering
-├── application.properties	Spring Boot application configuration
-└── data.sql	Initial database data seeding
-	
-src/test/java/com/example/pathfinder/	Unit & integration tests
-└── PathfinderApplicationTests	Base test class
-	
-src/test/resources/	Test-specific resources/configuration
+<table> <tr> <th>Project Tree</th> <th>Description</th> </tr> <tr> <td><code>src/main/java/com/example/pathfinder/</code></td> <td>Main application source code</td> </tr> <tr> <td>&nbsp;&nbsp;├── <code>config/</code></td> <td>Application configuration (security, beans, handlers, web config, etc.)</td> </tr> <tr> <td>&nbsp;&nbsp;├── <code>model/</code></td> <td>Core domain layer (entities, DTOs, bindings, views, services)</td> </tr> <tr> <td>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <code>binding/</code></td> <td>Data transfer objects for request binding/validation</td> </tr> <tr> <td>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <code>common/</code></td> <td>Shared enums/constants across the project</td> </tr> <tr> <td>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <code>entity/</code></td> <td>JPA entities mapped to database tables</td> </tr> <tr> <td>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <code>service/</code></td> <td>Service interfaces defining business logic</td> </tr> <tr> <td>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;└── <code>view/</code></td> <td>View models used for rendering responses</td> </tr> <tr> <td>&nbsp;&nbsp;├── <code>repository/</code></td> <td>Spring Data JPA repositories for DB access</td> </tr> <tr> <td>&nbsp;&nbsp;├── <code>service/</code></td> <td>Service implementations and supporting logic</td> </tr> <tr> <td>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <code>events/</code></td> <td>Application event handlers/listeners</td> </tr> <tr> <td>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── <code>impl/</code></td> <td>Concrete service implementations</td> </tr> <tr> <td>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;└── <code>schedulers/</code></td> <td>Scheduled tasks (e.g., admin notifications)</td> </tr> <tr> <td>&nbsp;&nbsp;├── <code>util/</code></td> <td>Utility classes/helpers</td> </tr> <tr> <td>&nbsp;&nbsp;├── <code>validation/</code></td> <td>Custom validation annotations and logic</td> </tr> <tr> <td>&nbsp;&nbsp;└── <code>web/</code></td> <td>Web layer (controllers, REST endpoints, MVC handlers)</td> </tr> <tr> <td><code>PathfinderApplication</code></td> <td>Spring Boot application entry point</td> </tr> <tr> <td><code>src/main/resources/</code></td> <td>Application resources</td> </tr> <tr> <td>&nbsp;&nbsp;├── <code>META-INF/</code></td> <td>Persistence and ORM configs (if needed)</td> </tr> <tr> <td>&nbsp;&nbsp;├── <code>static/</code></td> <td>Static assets (CSS, JS, images)</td> </tr> <tr> <td>&nbsp;&nbsp;├── <code>templates/</code></td> <td>Thymeleaf templates for server-side rendering</td> </tr> <tr> <td>&nbsp;&nbsp;├── <code>application.properties</code></td> <td>Spring Boot application configuration</td> </tr> <tr> <td>&nbsp;&nbsp;└── <code>data.sql</code></td> <td>Initial database data seeding</td> </tr> <tr> <td><code>src/test/java/com/example/pathfinder/</code></td> <td>Unit & integration tests</td> </tr> <tr> <td>&nbsp;&nbsp;└── <code>PathfinderApplicationTests</code></td> <td>Base test class</td> </tr> <tr> <td><code>src/test/resources/</code></td> <td>Test-specific resources/configuration</td> </tr> </table>
 
 ---
 
