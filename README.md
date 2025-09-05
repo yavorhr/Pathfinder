@@ -571,7 +571,39 @@ A ready-to-use docker-compose.yml will be provided for easy setup.
 # Project Structure
 
 ## 📂 Folder Structure
-
+<details> <summary>📜 Show Full Project Tree</summary>
+src/
+├── main/
+│   ├── java/com/example/pathfinder/
+│   │   ├── config/                 # Application configuration (security, beans, handlers, web config, etc.)
+│   │   ├── model/
+│   │   │   ├── binding/            # DTOs for request binding/validation
+│   │   │   ├── common/             # Shared enums/constants
+│   │   │   ├── entity/             # JPA entities mapped to DB tables
+│   │   │   ├── service/            # Service interfaces
+│   │   │   └── view/               # View models for responses
+│   │   ├── repository/             # Spring Data JPA repositories
+│   │   ├── service/
+│   │   │   ├── events/             # Event handlers/listeners
+│   │   │   ├── impl/               # Service implementations
+│   │   │   └── schedulers/         # Scheduled tasks
+│   │   ├── util/                   # Utility classes
+│   │   ├── validation/             # Custom validation logic
+│   │   └── web/                    # Web controllers (REST + MVC)
+│   │
+│   │── PathfinderApplication.java   # Spring Boot application entry point
+│   │
+│   └── resources/
+│       ├── META-INF/               # Persistence/ORM configs
+│       ├── static/                 # Static assets (CSS, JS, images)
+│       ├── templates/              # Thymeleaf templates
+│       ├── application.properties  # Spring Boot config
+│       └── data.sql                # Initial DB seed data
+│
+└── test/
+    ├── java/com/example/pathfinder/
+    │   └── PathfinderApplicationTests.java   # Base test class
+    └── resources/                            # Test resources
 <details> <summary>🌐 Presentation Layer</summary> <table> <tr><th>Project Tree</th><th>Description</th></tr> <tr><td>&nbsp;&nbsp;└── <code>web/</code></td><td>Web layer (controllers, REST endpoints, MVC handlers)</td></tr> <tr><td><code>src/main/resources/templates/</code></td><td>Thymeleaf templates for server-side rendering</td></tr> <tr><td><code>src/main/resources/static/</code></td><td>Static assets (CSS, JS, images)</td></tr> </table> </details>
 <details> <summary>⚙️ Configuration Layer</summary> <table> <tr><th>Project Tree</th><th>Description</th></tr> <tr><td>&nbsp;&nbsp;└── <code>config/</code></td><td>Application configuration (security, beans, handlers, web config, etc.)</td></tr> <tr><td><code>PathfinderApplication</code></td><td>Spring Boot application entry point</td></tr> <tr><td><code>src/main/resources/application.properties</code></td><td>Spring Boot application configuration</td></tr> <tr><td><code>src/main/resources/data.sql</code></td><td>Initial database data seeding</td></tr> <tr><td><code>src/main/resources/META-INF/</code></td><td>Persistence and ORM configs (if needed)</td></tr> </table> </details>
 <details> <summary>💼 Business Layer</summary> <table> <tr><th>Project Tree</th><th>Description</th></tr> <tr><td>&nbsp;&nbsp;└── <code>model/service/</code></td><td>Service interfaces defining business logic</td></tr> <tr><td>&nbsp;&nbsp;└── <code>service/</code></td><td>Service implementations and supporting logic</td></tr> <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;├── <code>events/</code></td><td>Application event handlers/listeners</td></tr> <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;├── <code>impl/</code></td><td>Concrete service implementations</td></tr> <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;└── <code>schedulers/</code></td><td>Scheduled tasks (e.g., admin notifications)</td></tr> <tr><td>&nbsp;&nbsp;└── <code>util/</code></td><td>Utility classes/helpers</td></tr> <tr><td>&nbsp;&nbsp;└── <code>validation/</code></td><td>Custom validation annotations and logic</td></tr> </table> </details>
