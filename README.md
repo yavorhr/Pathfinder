@@ -615,7 +615,7 @@ src/
 
 The application uses a relational database to manage users, roles, routes, messages, and related content. Key tables and relationships are as follows:
 
-- users – Stores user account information, profile details, status flags (enabled, locked, etc.), and social media links.
+- users – Stores user account information, profile details, status flags (enabled, locked, isAccountExpired etc.), and social media links.
 - roles – Defines user roles (admin, moderator, user).
 - users_roles – Join table connecting users to their assigned roles (many-to-many relationship).
 - categories – Stores route categories (bicycle, car, motorcycle, pedestrian).
@@ -628,11 +628,6 @@ The application uses a relational database to manage users, roles, routes, messa
 Relationships:
 
 <table> <tr> <th>Entity</th> <th>Related Entity</th> <th>Relationship</th> <th>Description</th> </tr> <tr> <td><code>users</code></td> <td><code>roles</code></td> <td>Many-to-Many</td> <td>Users can have multiple roles via <code>users_roles</code>.</td> </tr> <tr> <td><code>routes</code></td> <td><code>users</code></td> <td>Many-to-One</td> <td>Each route is authored by a single user (<code>author_id</code>).</td> </tr> <tr> <td><code>routes</code></td> <td><code>categories</code></td> <td>Many-to-Many</td> <td>A route can belong to multiple categories via <code>routes_categories</code>.</td> </tr> <tr> <td><code>routes</code></td> <td><code>routes_pictures</code></td> <td>One-to-Many</td> <td>Each route can have multiple pictures.</td> </tr> <tr> <td><code>routes</code></td> <td><code>comments</code></td> <td>One-to-Many</td> <td>Each route can have multiple comments. Supports parent-child threading.</td> </tr> <tr> <td><code>messages</code></td> <td><code>users</code></td> <td>Many-to-One</td> <td>Each message has an <b>author</b> and a <b>recipient</b> (both users).</td> </tr> </table>
-
-- Users can have multiple roles via users_roles.
-- Routes are authored by users (author_id) and can belong to multiple categories.
-- Each route can have multiple pictures and comments.
-- Messages link two users (author → recipient).
 
 ---
 
