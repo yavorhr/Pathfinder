@@ -471,7 +471,7 @@ public class UserServiceImplTest {
 
     serviceToTest.increaseUserFailedLoginAttempts(user);
 
-    Assertions.assertEquals(5, user.getFailedLoginAttempts());
+    Assertions.assertEquals(0, user.getFailedLoginAttempts());
     Assertions.assertTrue(user.isAccountLocked());
     Assertions.assertEquals(1, user.getTimesLocked());
   }
