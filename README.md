@@ -523,15 +523,25 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ### 🧪 Testing
 
-- **95%+ coverage** with **JUnit 5** and **Spring MockMVC**.  
+- **90%+ coverage** with **JUnit 5** and **Spring MockMVC**.  
 - Unit tests for services, repositories, and utility classes.  
 - Integration tests for controllers and security configuration.  
 - Coverage reports generated with **JaCoCo** (`mvn clean test`).  
-- Run tests:
+- To run the tests with mvn, open bash terminal in the main folder and run:
   ```bash
   ./mvnw clean test
   ```
-  
+Coverage report is available at:
+```bash
+target/site/jacoco/index.html
+
+```
+Snip with the current test coverage : 
+
+   <a href="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589">
+            <img src="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          </a>
+
 | Package | Instructions | Coverage Bar |
 |---------|-------------|--------------|
 | **Total** | 90% ✅ | ██████████ |
