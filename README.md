@@ -536,11 +536,6 @@ Coverage report is available at:
 target/site/jacoco/index.html
 
 ```
-Snip with the current test coverage : 
-
-   <a href="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589">
-            <img src="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
-          </a>
 
 | Package | Instructions | Coverage Bar |
 |---------|-------------|--------------|
@@ -564,6 +559,13 @@ Snip with the current test coverage :
 | com.example.pathfinder.model.entity.enums | 100% ✅ | ██████████ |
 | com.example.pathfinder.model.common | 100% ✅ | ██████████ |
 | com.example.pathfinder.validation.route | 100% ✅ | ██████████ |
+
+
+Snip with the current test coverage : 
+
+   <a href="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589">
+            <img src="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          </a>
 
 
 ---
