@@ -18,33 +18,14 @@
 
 ## Table of Contents
 
-### 📚 Project Overview
-- [📖 About the Project](#-about-the-project)
-- [✨ Features](#-features)
-- [🖼️ Screenshots](#-screenshots)
-
-### 🛠️ Technical Details
-- [🛠️ Tech Stack](#-tech-stack)
-- [📡 API Endpoints](#-api-endpoints)
-- [👤 Roles & Permissions](#-roles-&-permissions)
-- [🔒 Security Features](#-security-features)
-  
-### 🛠️ Project Structure
-- [📂 Folder Structure](#-folder-structure)
-- [🗄️ Database Design](#-database-design)
-
-### 🚀 Getting Started
-- [Clone & Run (manual)](#clone--run-manual)
-- [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon)
-- [📂 Project Structure](#-project-structure)
-
-### 🗺️ Roadmap & License
-- [🗺️ Roadmap](#️-roadmap)
-- [📜 License](#-license)
-
-### 📬 Contact / Support
-- [📬 Contact](#-contact)
-
+| Section | Items |
+|---------|-------|
+| 📚 Project Overview | [📖 About the Project](#-about-the-project) • [✨ Features](#-features) • [🖼️ Screenshots](#-screenshots) |
+| 🛠️ Technical Details | [🛠️ Tech Stack](#-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions-&-security) |
+| 🏗️ Project Structure | [📂 Folder Structure](#-folder-structure) • [🗄️ Database Design](#-database-design) |
+| 🚀 Getting Started | [Clone & Run (manual)](#clone--run-manual) • [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon) |
+| 🗺️ Roadmap & License | [🗺️ Roadmap](#-roadmap) • [📜 License](#-license) |
+| 📬 Contact / Support | [📬 Contact](#-contact) |
 
 ---
 
@@ -105,7 +86,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
-      <p>This is the user managmenet page. It provides the following features:</p>
+      <p>This is the user management page. It provides the following features:</p>
         <ul>
           <li>Remove user from the database</li>
           <li>Disable/enable user access</li>
@@ -279,7 +260,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     </td>
     <td valign="top" style="padding-left:20px;">
       <ul>
-    <p>This is one of the main pages of the application, where specific route with it's details are displayed.</p>
+    <p>This is one of the main pages of the application, where specific route with its details are displayed.</p>
     <li>Main information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
     <li>Author/Admin actions: If the current user is the <b>author</b> or <b>admin</b>, additional buttons appear for <b>deleting the route</b> and <b>adding images</b> to the gallery. Both functionalities are secured with <code>Spring security</code> in the backend.</li>
     <li>Dynamic GPX visualization: Displays route paths using <b>Leaflet.js</b>.</li>
@@ -382,30 +363,20 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
    <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/42919274-af59-4e9f-a37e-b08429455102">
   <img src="https://github.com/user-attachments/assets/42919274-af59-4e9f-a37e-b08429455102" style="width:500px; height:auto;"/>
-</a>
-    </td>
+</a></td>
     <td valign="top" style="padding-left:20px;">
       <p>User is able to edit dynamically own profile as follows:</p>
  <ul>
-  <li>
-    Clicking <b>Edit</b> opens a <b>modal window</b> without page reload, keeping the experience smooth and fast.
-  </li>
-  <li>
-    <b>Editable fields:</b> First Name, Last Name, About Me, and Social Accounts.
-  </li>
-  <li>
-    <b>Username:</b> Always visible but <i>non-editable</i> to preserve account identity.
-  </li>
-  <li>
-    <b>Actions:</b>
+  <li>Clicking <b>Edit</b> opens a <b>modal window</b> without page reload, keeping the experience smooth and fast.</li>
+  <li><b>Editable fields:</b> First Name, Last Name, About Me, and Social Accounts.</li>
+  <li><b>Username:</b> Always visible but <i>non-editable</i> to preserve account identity.</li>
+  <li><b>Actions:</b>
     <ul>
       <li><b>Save Changes</b> – Updates the user data asynchronously (via Fetch API) without refreshing the page.</li>
       <li><b>Reset</b> – Cancels edits and restores the profile to its last saved state.</li>
     </ul>
   </li>
-  <li>
-    All interactions are <b>asynchronous</b> for better UX, with immediate feedback on changes.
-  </li>
+  <li>All interactions are <b>asynchronous</b> for better UX, with immediate feedback on changes.</li>
 </ul>
     </td>
   </tr>
@@ -478,10 +449,10 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 | GET    | `/admin/notifications`     | Get users  table    | Admin  |
 | GET    | `/admin/statistics`     | Get most visited endpoints    | Admin  |
 | POST    | `/admin/statistics/reset`     | Reset most visited endpoints    | Admin  |
-| PUT   | `/admin//api/change-user-access/{email}`  | Enable/disable user's account | Admin  |
-| PUT   | `/admin/api/change-user-lock-status/{email}`| Change user roles  | Admin  |
+| PUT   | `/admin/api/change-user-access/{email}`  | Enable/disable user | Admin  |
+| PUT   | `/admin/api/change-user-lock-status/{email}`| Lock/unlock user | Admin  |
 | PATCH   | `/admin/api/update-roles`| Change user roles  | Admin  |
-| DELETE   | `/admin//api/remove-user/{email}`| Change user roles  | Admin  |
+| DELETE   | `/admin/api/remove-user/{email}`| Remove user  | Admin  |
 
 ### 🏠 Home page
 | Method | Endpoint                  | Description             | Access |
@@ -492,8 +463,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ### 🖼️ Cloudinary API
 | Method | Endpoint                  | Description             | Access |
 |--------|---------------------------|-------------------------|--------|
-| POST    | `/pictures/add`     | User (author) add picture to route | User |
-| DELETE    | `/pictures/delete`     | User (author) deletes picture from route | User |
+| POST    | `/pictures/add`     | User add picture to route | User |
+| DELETE    | `/pictures/delete`     | User deletes picture from route | User |
 | POST    | `/api/profile/image-upload`     | User uploads new profile image | User |
 | DELETE    | `/api/profile/image-delete`     | User deletes old profile image  | User |
 
@@ -505,7 +476,28 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ---
 
-### 👤 Roles & Permissions  
+### 👤🔒 Roles, Permissions & Security
+
+## 🔐 Security Features  
+
+- **Spring Security integration** – full authentication & authorization layer.  
+- **Role-based access control (RBAC)** – Roles include `Guest`, `User`, `Author`, and `Admin` (see [Roles & Permissions](#-roles--permissions)).  
+- **Account lockout policy** –  
+  - 5 failed login attempts → account locked for 15 minutes.  
+  - 3 lockouts → account automatically disabled (requires Admin reactivation).  
+- **Secure registration flow** –  
+  - New users are *disabled* by default until Admin approval.  
+  - Admin receives a notification event and can approve/deny.  
+  - Email notifications supported for unapproved users.  
+- **Password handling** – all passwords are stored using strong **PasswordEncoder hashing**.  
+- **CSRF protection** – enabled for all state-changing requests.  
+- **Input validation** – both frontend & backend validation for forms (XSS / SQL Injection prevention).  
+- **Authorization annotations** – critical actions like deleting routes or managing users are protected with `@PreAuthorize` checks.  
+- **HTTPS-support** – the application can be deployed securely with SSL certificates to ensure encrypted communication between clients and the server.
+- **Session management** – invalid sessions are prevented, and concurrent logins can be restricted.  
+- **Admin-only tools** – sensitive features (user management, endpoint statistics, role updates) are restricted strictly to Admins.  
+
+##👤 Roles & Permissions
 
 | Feature / Permission       | Guest | User | Author | Admin |
 |----------------------------|:-----:|:----:|:------:|:-----:|
@@ -527,28 +519,39 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ---
 
-## 🔐 Security Features  
-
-- **Spring Security integration** – full authentication & authorization layer.  
-- **Role-based access control (RBAC)** – Roles include `Guest`, `User`, `Author`, and `Admin` (see [Roles & Permissions](#-roles--permissions)).  
-- **Account lockout policy** –  
-  - 5 failed login attempts → account locked for 15 minutes.  
-  - 3 lockouts → account automatically disabled (requires Admin reactivation).  
-- **Secure registration flow** –  
-  - New users are *disabled* by default until Admin approval.  
-  - Admin receives a notification event and can approve/deny.  
-  - Email notifications supported for unapproved users.  
-- **Password handling** – all passwords are stored using strong **PasswordEncoder hashing**.  
-- **CSRF protection** – enabled for all state-changing requests.  
-- **Input validation** – both frontend & backend validation for forms (XSS / SQL Injection prevention).  
-- **Authorization annotations** – critical actions like deleting routes or managing users are protected with `@PreAuthorize` checks.  
-- **HTTPS-support** – the application can be deployed securely with SSL certificates to ensure encrypted communication between clients and the server.
-- **Session management** – invalid sessions are prevented, and concurrent logins can be restricted.  
-- **Admin-only tools** – sensitive features (user management, endpoint statistics, role updates) are restricted strictly to Admins.  
-
----
-
 ## 🚀 Getting Started
+
+### 🔧 Configuration (`application.properties`)
+
+Before running the application, update `src/main/resources/application.properties` with your own credentials:
+
+```properties
+# ===============================
+# = DATABASE CONFIGURATION
+# ===============================
+spring.datasource.url=jdbc:mysql://localhost:3306/pathfinder?useSSL=false&serverTimezone=UTC
+spring.datasource.username=your_db_username
+spring.datasource.password=your_db_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# ===============================
+# = CLOUDINARY CONFIGURATION
+# ===============================
+cloudinary.cloud-name=your_cloud_name
+cloudinary.api-key=your_api_key
+cloudinary.api-secret=your_api_secret
+
+# ===============================
+# = MAIL CONFIGURATION (Optional)
+# ===============================
+spring.mail.host=smtp.example.com
+spring.mail.port=587
+spring.mail.username=your_email@example.com
+spring.mail.password=your_email_password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+```
 
 ### Clone & Run (manual)
 ```bash
@@ -625,7 +628,7 @@ src/
 
 The application uses a relational database to manage users, roles, routes, messages, and related content. Key tables and relationships are as follows:
 
-- users – Stores user account information, profile details, status flags (enabled, locked, etc.), and social media links.
+- users – Stores user account information, profile details, status flags (enabled, locked, isAccountExpired etc.), and social media links.
 - roles – Defines user roles (admin, moderator, user).
 - users_roles – Join table connecting users to their assigned roles (many-to-many relationship).
 - categories – Stores route categories (bicycle, car, motorcycle, pedestrian).
@@ -637,10 +640,7 @@ The application uses a relational database to manage users, roles, routes, messa
 
 Relationships:
 
-- Users can have multiple roles via users_roles.
-- Routes are authored by users (author_id) and can belong to multiple categories.
-- Each route can have multiple pictures and comments.
-- Messages link two users (author → recipient).
+<table> <tr> <th>Entity</th> <th>Related Entity</th> <th>Relationship</th> <th>Description</th> </tr> <tr> <td><code>users</code></td> <td><code>roles</code></td> <td>Many-to-Many</td> <td>Users can have multiple roles via <code>users_roles</code>.</td> </tr> <tr> <td><code>routes</code></td> <td><code>users</code></td> <td>Many-to-One</td> <td>Each route is authored by a single user (<code>author_id</code>).</td> </tr> <tr> <td><code>routes</code></td> <td><code>categories</code></td> <td>Many-to-Many</td> <td>A route can belong to multiple categories via <code>routes_categories</code>.</td> </tr> <tr> <td><code>routes</code></td> <td><code>routes_pictures</code></td> <td>One-to-Many</td> <td>Each route can have multiple pictures.</td> </tr> <tr> <td><code>routes</code></td> <td><code>comments</code></td> <td>One-to-Many</td> <td>Each route can have multiple comments. Supports parent-child threading.</td> </tr> <tr> <td><code>messages</code></td> <td><code>users</code></td> <td>Many-to-One</td> <td>Each message has an <b>author</b> and a <b>recipient</b> (both users).</td> </tr> </table>
 
 ---
 
