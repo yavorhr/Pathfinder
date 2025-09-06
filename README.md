@@ -521,6 +521,38 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ## 🚀 Getting Started
 
+### 🔧 Configuration (`application.properties`)
+
+Before running the application, update `src/main/resources/application.properties` with your own credentials:
+
+```properties
+# ===============================
+# = DATABASE CONFIGURATION
+# ===============================
+spring.datasource.url=jdbc:mysql://localhost:3306/pathfinder?useSSL=false&serverTimezone=UTC
+spring.datasource.username=your_db_username
+spring.datasource.password=your_db_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# ===============================
+# = CLOUDINARY CONFIGURATION
+# ===============================
+cloudinary.cloud-name=your_cloud_name
+cloudinary.api-key=your_api_key
+cloudinary.api-secret=your_api_secret
+
+# ===============================
+# = MAIL CONFIGURATION (Optional)
+# ===============================
+spring.mail.host=smtp.example.com
+spring.mail.port=587
+spring.mail.username=your_email@example.com
+spring.mail.password=your_email_password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+```
+
 ### Clone & Run (manual)
 ```bash
 # Clone the repository
