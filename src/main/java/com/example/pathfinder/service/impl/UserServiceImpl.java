@@ -198,13 +198,8 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void increaseUserFailedLoginAttempts(UserEntity user) {
-    Integer failedAttempts = user.getFailedLoginAttempts();
-
-    if (failedAttempts == null) {
-      failedAttempts = 0;
-    }
-
-    user.setFailedLoginAttempts(user.getFailedLoginAttempts() + 1);
+    int failedAttempts = user.getFailedLoginAttempts() + 1;
+    user.setFailedLoginAttempts(failedAttempts);
 
     if (user.getFailedLoginAttempts() == 5) {
       this.lockAccount(user);
@@ -225,7 +220,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void lockAccount(UserEntity user) {
-    user.setLockedAccountCounter(+1);
+    user.setLockedAccountCounter(user.getTimesLocked() + 1);
     user.setAccountLocked(true);
     user.setLockTime(LocalDateTime.now().plusMinutes(15));
     user.setFailedLoginAttempts(0);
