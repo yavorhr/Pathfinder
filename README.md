@@ -436,7 +436,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 | GET    | `/routes/{category}`  | Get routes by category       | User        |
 | GET    | `/routes/details/{id}`  | Get route by ID            | User        |
 | GET    | `/routes/most-commented` | Get the routes with most comments | User |
-| POST   | `/routes/add`       | Create new route               | User        |
+| POST   | `/routes`       | Create new route               | User        |
 | DELETE | `/routes/delete`  | Delete a route (author/admin only) | User/Admin  |
 
 ### 👤 Profile
