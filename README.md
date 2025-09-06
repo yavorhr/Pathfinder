@@ -523,20 +523,29 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ### 🧪 Testing & Coverage
 
-- **90%+ coverage** with **JUnit 5** and **Spring MockMVC**.  
+#### ✅ Overview
+- **90%+ coverage** achieved with **JUnit 5** and **Spring MockMVC**.  
 - Unit tests for services, repositories, and utility classes.  
 - Integration tests for controllers and security configuration.  
-- Coverage reports generated with **JaCoCo** (`mvn clean test`).  
-- To run the tests with mvn, open bash terminal in the main folder and run:
+- Coverage reports generated with **JaCoCo** (`mvn clean test`).
+
+#### ⚡ Running Tests:
+Open a terminal in the project root and run:
   ```bash
   ./mvnw clean test
   ```
-Coverage report is available at:
+
+📊 Coverage Report
+
+- After running tests, the full coverage report is available at:
+
 ```bash
 target/site/jacoco/index.html
-
 ```
-Testing coverage in % by packages :
+
+📈 Coverage by Package
+
+<details> <summary>Click to expand coverage table</summary>
 
 | Package | Coverage | Coverage Bar |
 |---------|-------------|--------------|
@@ -560,9 +569,9 @@ Testing coverage in % by packages :
 | com.example.pathfinder.model.entity.enums | 100% ✅ | ██████████ |
 | com.example.pathfinder.model.common | 100% ✅ | ██████████ |
 | com.example.pathfinder.validation.route | 100% ✅ | ██████████ |
+</details>
 
-
-Snip with the current test coverage : 
+🖼️ Snapshot
 
    <a href="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589">
             <img src="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
