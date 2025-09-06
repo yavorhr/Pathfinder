@@ -869,5 +869,5 @@ Created by Yavor 👨‍💻
 
 - [LinkedIn](https://www.linkedin.com/in/yavorhr)  
 - [GitHub](https://github.com/yavorhr)  
-- [Website]([https://github.com/hristoy](https://yavorhr.github.io)  
+- [Website](https://yavorhr.github.io)  
 
