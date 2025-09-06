@@ -324,7 +324,7 @@ public class RouteServiceImplTest {
 
     Category category = expectedRoutes.get(0).getCategories().stream().findFirst().get();
     Assertions.assertEquals(CategoryEnum.CAR, category.getName());
-    Assertions.assertEquals("/images/pic4", viewModels.getFirst().getPictureUrl());
+    Assertions.assertEquals("/images/pic4.jpg", viewModels.getFirst().getPictureUrl());
   }
 
   @Test
