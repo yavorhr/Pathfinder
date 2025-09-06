@@ -93,7 +93,7 @@ public class RouteControllerTest {
     mockMvc.perform(get("/routes"))
             .andExpect(status().isOk())
             .andExpect(view().name("routes"))
-            .andExpect(model().attributeExists("routes"));
+            .andExpect(model().attributeExists("routesPage"));
   }
 
   @Test
