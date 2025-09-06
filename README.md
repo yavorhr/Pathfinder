@@ -86,7 +86,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
-      <p>This is the user managmenet page. It provides the following features:</p>
+      <p>This is the user management page. It provides the following features:</p>
         <ul>
           <li>Remove user from the database</li>
           <li>Disable/enable user access</li>
@@ -260,7 +260,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     </td>
     <td valign="top" style="padding-left:20px;">
       <ul>
-    <p>This is one of the main pages of the application, where specific route with it's details are displayed.</p>
+    <p>This is one of the main pages of the application, where specific route with its details are displayed.</p>
     <li>Main information section: Shows route details such as <b>name</b>, <b>categories</b>, <b>total distance</b>, and <b>difficulty level</b>.</li>
     <li>Author/Admin actions: If the current user is the <b>author</b> or <b>admin</b>, additional buttons appear for <b>deleting the route</b> and <b>adding images</b> to the gallery. Both functionalities are secured with <code>Spring security</code> in the backend.</li>
     <li>Dynamic GPX visualization: Displays route paths using <b>Leaflet.js</b>.</li>
@@ -449,10 +449,10 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 | GET    | `/admin/notifications`     | Get users  table    | Admin  |
 | GET    | `/admin/statistics`     | Get most visited endpoints    | Admin  |
 | POST    | `/admin/statistics/reset`     | Reset most visited endpoints    | Admin  |
-| PUT   | `/admin//api/change-user-access/{email}`  | Enable/disable user's account | Admin  |
-| PUT   | `/admin/api/change-user-lock-status/{email}`| Change user roles  | Admin  |
+| PUT   | `/admin/api/change-user-access/{email}`  | Enable/disable user | Admin  |
+| PUT   | `/admin/api/change-user-lock-status/{email}`| Lock/unlock user | Admin  |
 | PATCH   | `/admin/api/update-roles`| Change user roles  | Admin  |
-| DELETE   | `/admin//api/remove-user/{email}`| Change user roles  | Admin  |
+| DELETE   | `/admin/api/remove-user/{email}`| Remove user  | Admin  |
 
 ### 🏠 Home page
 | Method | Endpoint                  | Description             | Access |
@@ -463,8 +463,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ### 🖼️ Cloudinary API
 | Method | Endpoint                  | Description             | Access |
 |--------|---------------------------|-------------------------|--------|
-| POST    | `/pictures/add`     | User (author) add picture to route | User |
-| DELETE    | `/pictures/delete`     | User (author) deletes picture from route | User |
+| POST    | `/pictures/add`     | User add picture to route | User |
+| DELETE    | `/pictures/delete`     | User deletes picture from route | User |
 | POST    | `/api/profile/image-upload`     | User uploads new profile image | User |
 | DELETE    | `/api/profile/image-delete`     | User deletes old profile image  | User |
 
