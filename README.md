@@ -21,7 +21,7 @@
 | Section | Items |
 |---------|-------|
 | 📚 Project Overview | [📖 About the Project](#-about-the-project) • [✨ Features](#-features) • [🖼️ Screenshots](#-screenshots) |
-| 🛠️ Technical Details | [🛠️ Tech Stack](#-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) |
+| 🛠️ Technical Details | [🛠️ Tech Stack](#-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage)|
 | 🏗️ Project Structure | [📂 Folder Structure](#-folder-structure) • [🗄️ Database Design](#-database-design) |
 | 🚀 Getting Started | [🔧 Configuration](#-configuration) • [Clone & Run (manual)](#clone--run-manual) • [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon) |
 | 🗺️ Roadmap & License | [🗺️ Roadmap](#-roadmap) • [📜 License](#-license) |
@@ -70,7 +70,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 - Lock/unlock, change roles, remove accounts and send notifications dynamically
   
 ### 🧪 Testing
-- **95%+ test coverage with JUnit & MockMVC**  
+- **90%+ coverage** with **JUnit 5** and **Spring MockMVC**.  
+- Unit tests for services, repositories, and utility classes.  
+- Integration tests for controllers and security configuration.  
 
 ---
 
@@ -516,6 +518,43 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 | Access Endpoint Stats      | ❌    | ❌   | ❌     | ✅    |
 | Approve new registrations  | ❌    | ❌   | ❌     | ✅    |
 | Send email notifications   | ❌    | ❌   | ❌     | ✅    |
+
+## 🧪 Testing & Coverag
+
+### 🧪 Testing
+
+- **95%+ coverage** with **JUnit 5** and **Spring MockMVC**.  
+- Unit tests for services, repositories, and utility classes.  
+- Integration tests for controllers and security configuration.  
+- Coverage reports generated with **JaCoCo** (`mvn clean test`).  
+- Run tests:
+  ```bash
+  ./mvnw clean test
+  ```
+  
+| Package | Instructions | Coverage Bar |
+|---------|-------------|--------------|
+| **Total** | 90% ✅ | ██████████ |
+| com.example.pathfinder.model.view | 83% 🟡 | █████████ |
+| com.example.pathfinder.config | 80% 🟡 | ████████ |
+| com.example.pathfinder.util.cloudinary | 28% ⚠️ | ███ |
+| com.example.pathfinder.service.schedulers | 34% ⚠️ | ████ |
+| com.example.pathfinder.service.impl | 96% ✅ | ██████████ |
+| com.example.pathfinder.model.entity | 93% ✅ | ██████████ |
+| com.example.pathfinder.web.exception | 21% ⚠️ | ██ |
+| com.example.pathfinder.model.service | 93% ✅ | ██████████ |
+| com.example.pathfinder.validation.register | 82% 🟡 | █████████ |
+| com.example.pathfinder.model.binding | 98% ✅ | ██████████ |
+| com.example.pathfinder.service.events | 83% 🟡 | █████████ |
+| com.example.pathfinder.validation | 82% 🟡 | █████████ |
+| com.example.pathfinder | 37% ⚠️ | ████ |
+| com.example.pathfinder.web | 99% ✅ | ██████████ |
+| com.example.pathfinder.web.interceptor | 94% ✅ | ██████████ |
+| com.example.pathfinder.service.impl.principal | 99% ✅ | ██████████ |
+| com.example.pathfinder.model.entity.enums | 100% ✅ | ██████████ |
+| com.example.pathfinder.model.common | 100% ✅ | ██████████ |
+| com.example.pathfinder.validation.route | 100% ✅ | ██████████ |
+
 
 ---
 
