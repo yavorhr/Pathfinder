@@ -859,8 +859,7 @@ Relationships:
 
 ## 📜 License
 
-This project is currently unlicensed.
-For a student/portfolio project, a license isn’t mandatory — but if you want others to use or build on your code, MIT is the simplest choice.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
@@ -868,7 +867,7 @@ For a student/portfolio project, a license isn’t mandatory — but if you want
 
 Created by Yavor 👨‍💻
 
-- LinkedIn
-- GitHub
-
+- [LinkedIn](https://www.linkedin.com/in/yavorhr)  
+- [GitHub](https://github.com/yavorhr)  
+- [Website]([https://github.com/hristoy](https://yavorhr.github.io)  
 
