@@ -685,7 +685,150 @@ src/
 
 ## 📂 Database Design
 
-<img width="1398" height="1433" alt="pathfinder" src="https://github.com/user-attachments/assets/f5117a00-e7ab-408a-9d0b-a7371de31c61" />
+<img width="1208" height="1200" alt="pathfinder" src="https://github.com/user-attachments/assets/f5117a00-e7ab-408a-9d0b-a7371de31c61" />
+
+<details>
+<summary>Click to expand SQL ERD</summary>
+
+```sql
+create table categories
+(
+	id bigint auto_increment
+		primary key,
+	description tinytext null,
+	name enum('BICYCLE', 'CAR', 'MOTORCYCLE', 'PEDESTRIAN') not null,
+	constraint UKt8o6pivur7nn124jehx7cygw5
+		unique (name)
+);
+
+create table roles
+(
+	id bigint auto_increment
+		primary key,
+	role enum('ADMIN', 'MODERATOR', 'USER') not null
+);
+
+create table users
+(
+	id bigint auto_increment
+		primary key,
+	about_me tinytext null,
+	is_account_expired bit null,
+	is_account_locked bit null,
+	birthday date not null,
+	disabled_time datetime(6) null,
+	email varchar(255) not null,
+	is_enabled bit not null,
+	facebook_account varchar(255) null,
+	failed_login_attempts int null,
+	first_name varchar(255) not null,
+	gender enum('FEMALE', 'MALE') not null,
+	instagram_account varchar(255) null,
+	last_failed_login datetime(6) null,
+	last_login_time datetime(6) null,
+	last_name varchar(255) not null,
+	level enum('ADVANCED', 'BEGINNER', 'INTERMEDIATE') null,
+	linked_in_account varchar(255) null,
+	lock_time datetime(6) null,
+	password varchar(255) not null,
+	profile_image_public_id varchar(255) null,
+	profile_image_url varchar(255) null,
+	registration_date datetime(6) not null,
+	times_locked int null,
+	username varchar(255) not null,
+	constraint UK6dotkott2kjsp8vw4d0m25fb7
+		unique (email),
+	constraint UKr43af9ap4edm43mmtq01oddj6
+		unique (username)
+);
+
+create table messages
+(
+	id bigint auto_increment
+		primary key,
+	date_time datetime(6) not null,
+	text_content tinytext null,
+	author_id bigint null,
+	recipient_id bigint null,
+	constraint FKhdkwfnspwb3s60j27vpg0rpg6
+		foreign key (recipient_id) references users (id),
+	constraint FKowtlim26svclkatusptbgi7u1
+		foreign key (author_id) references users (id)
+);
+
+create table routes
+(
+	id bigint auto_increment
+		primary key,
+	description mediumtext null,
+	distance int not null,
+	gpx_coordinates mediumtext null,
+	level enum('ADVANCED', 'BEGINNER', 'INTERMEDIATE') not null,
+	name varchar(255) not null,
+	video_url varchar(255) null,
+	author_id bigint null,
+	constraint UKgclhuhdkauatimjoqj7kc210i
+		unique (name),
+	constraint FK718folur1fr8yq7n1rg56us16
+		foreign key (author_id) references users (id)
+);
+
+create table comments
+(
+	id bigint auto_increment
+		primary key,
+	approved bit not null,
+	created datetime(6) not null,
+	text_content tinytext not null,
+	author_id bigint null,
+	parent_comment_id bigint null,
+	route_id bigint null,
+	constraint FK7h839m3lkvhbyv3bcdv7sm4fj
+		foreign key (parent_comment_id) references comments (id),
+	constraint FKk3vmpmcbl2rk8skwr6u88083p
+		foreign key (route_id) references routes (id),
+	constraint FKn2na60ukhs76ibtpt9burkm27
+		foreign key (author_id) references users (id)
+);
+
+create table routes_categories
+(
+	route_id bigint not null,
+	category_id bigint not null,
+	primary key (route_id, category_id),
+	constraint FKl5w79kvquf55leml6tsjemkj
+		foreign key (route_id) references routes (id),
+	constraint FKsvm6cu2e9y41d45ulbuayiaw4
+		foreign key (category_id) references categories (id)
+);
+
+create table routes_pictures
+(
+	id bigint auto_increment
+		primary key,
+	public_id varchar(255) null,
+	title varchar(255) null,
+	url varchar(255) null,
+	author_id bigint null,
+	route_id bigint null,
+	constraint FKfd7d35xgox56flr4lu3i8kj2x
+		foreign key (author_id) references users (id),
+	constraint FKj7v3h4c77afevntgwpfji2qpu
+		foreign key (route_id) references routes (id)
+);
+
+create table users_roles
+(
+	user_id bigint not null,
+	role_id bigint not null,
+	primary key (user_id, role_id),
+	constraint FK2o0jvgh89lemvvo17cbqvdxaa
+		foreign key (user_id) references users (id),
+	constraint FKj6m8fwv7oqv74fcehir1a9ffy
+		foreign key (role_id) references roles (id)
+);
+```
+</details>
 
 The application uses a relational database to manage users, roles, routes, messages, and related content. Key tables and relationships are as follows:
 
