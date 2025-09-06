@@ -126,7 +126,7 @@ public class RouteController {
   }
 
   @PreAuthorize("@routeServiceImpl.isOwnerOrIsAdmin(#principal.username, #routeId)")
-  @DeleteMapping("/delete")
+  @DeleteMapping
   public String deleteRoute(@RequestParam Long routeId, @AuthenticationPrincipal UserDetails principal) {
 
     this.routeService.deleteRouteById(routeId);

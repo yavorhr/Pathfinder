@@ -216,7 +216,7 @@ public class RouteControllerTest {
   @Test
   void testDeleteRoute() throws Exception {
 
-    mockMvc.perform(delete("/routes/delete")
+    mockMvc.perform(delete("/routes")
             .with(csrf())
             .param("routeId", route1.getId().toString()))
             .andExpect(status().is3xxRedirection())
