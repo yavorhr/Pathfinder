@@ -103,7 +103,7 @@ public class RouteController {
     return "add-route";
   }
 
-  @PostMapping("/add")
+  @PostMapping
   public String addRoute(@AuthenticationPrincipal UserDetails principal,
                          @Valid RouteAddBindingModel routeAddBindingModel,
                          BindingResult bindingResult,

@@ -9,7 +9,7 @@
     <div th:replace="fragments/home-button"></div>
 
         <form id="add-route-form" class="route-card"
-              th:action="@{/routes/add}" th:object="${routeAddBindingModel}"
+              th:action="@{/routes}" th:object="${routeAddBindingModel}"
               method="post" enctype="multipart/form-data">
 
             <h3 class="route-card__header">Add a New Route</h3>

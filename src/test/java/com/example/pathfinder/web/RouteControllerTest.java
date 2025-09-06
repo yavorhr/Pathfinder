@@ -177,7 +177,7 @@ public class RouteControllerTest {
             "<gpx></gpx>".getBytes()
     );
 
-    mockMvc.perform(multipart("/routes/add")
+    mockMvc.perform(multipart("/routes")
             .file(gpxFile)
             .param("name", "") // missing required name
             .param("description", "Too short")
@@ -200,7 +200,7 @@ public class RouteControllerTest {
             "<gpx></gpx>".getBytes()
     );
 
-    mockMvc.perform(multipart("/routes/add")
+    mockMvc.perform(multipart("/routes")
             .file(gpxFile)
             .param("name", "New Route")
             .param("description", "A very nice route")
