@@ -519,9 +519,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 | Approve new registrations  | ❌    | ❌   | ❌     | ✅    |
 | Send email notifications   | ❌    | ❌   | ❌     | ✅    |
 
-## 🧪 Testing & Coverag
+---
 
-### 🧪 Testing
+### 🧪 Testing & Coverage
 
 - **90%+ coverage** with **JUnit 5** and **Spring MockMVC**.  
 - Unit tests for services, repositories, and utility classes.  
@@ -536,8 +536,9 @@ Coverage report is available at:
 target/site/jacoco/index.html
 
 ```
+Testing coverage in % by packages :
 
-| Package | Instructions | Coverage Bar |
+| Package | Coverage | Coverage Bar |
 |---------|-------------|--------------|
 | **Total** | 90% ✅ | ██████████ |
 | com.example.pathfinder.model.view | 83% 🟡 | █████████ |
