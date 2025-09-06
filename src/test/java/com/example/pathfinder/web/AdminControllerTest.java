@@ -101,7 +101,7 @@ public class AdminControllerTest {
   @Test
   void changeUserAccess_shouldReturnUpdatedStatus() throws Exception {
 
-    mockMvc.perform(put("/admin/change-user-access/admin@abv.bg")
+    mockMvc.perform(put("/admin/api/change-user-access/admin@abv.bg")
             .with(csrf()))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.email").value("admin@abv.bg"))
@@ -137,7 +137,7 @@ public class AdminControllerTest {
 
     String json = new ObjectMapper().writeValueAsString(response);
 
-    mockMvc.perform(put("/admin/change-user-lock-status/admin@abv.bg")
+    mockMvc.perform(put("/admin/api/change-user-lock-status/admin@abv.bg")
             .with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
             .content(json))
