@@ -30,12 +30,14 @@
 ---
 
 ## 📖 About the Project
+
 Pathfinder is a MVC full-stack application that allows users to **create, share, and explore travel routes** with detailed metadata. 
 
 The application is fully responsive — optimized for desktop, tablet, and smartphones.
 It leverages **JavaScript (Fetch API)** to handle many actions dynamically without page reloads, providing a smoother, SPA-like user experience on top of the MVC architecture.
 
-> ⚡ Built with **Java + Spring Boot (MVC)** for the backend, and **Thymeleaf, JavaScript, HTML5, and CSS3** for the frontend visualizations.   
+> ⚡ Built with **Java + Spring Boot (MVC)** for the backend, and **Thymeleaf, JavaScript, HTML5, and CSS3** for the frontend visualizations.
+
 ---
 
 ## ✨ Features
@@ -158,6 +160,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ---
 
 ### Register
+
 <table>
   <tr>
     <td valign="top" width="50%">
@@ -576,8 +579,7 @@ target/site/jacoco/index.html
    <a href="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589">
             <img src="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
-
-
+		  
 ---
 
 ## 🚀 Getting Started
@@ -631,8 +633,6 @@ cd pathfinder
 A ready-to-use docker-compose.yml will be provided for easy setup.
 
 ---
-
-# Project Structure
 
 ## 📂 Folder Structure
 
