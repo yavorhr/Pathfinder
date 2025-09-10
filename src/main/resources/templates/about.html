@@ -1,77 +1,77 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(additionalCss='/css/about.css')">
 
-<head th:replace="fragments/head"></head>
 
 <body>
-<head th:replace="fragments/head :: head(additionalCss='/css/about.css')">
-    <div th:replace="fragments/home-button"></div>
-    <main>
+<head th:replace="fragments/head"></head>
+<div th:replace="fragments/home-button"></div>
+<main>
 
-        <div class="wrapper">
-            <div class="info">
-                <div class="section full">
-                    <h4>About Pathfinder</h4>
-                    <p>
-                        <strong>Pathfinder</strong> is a full-stack web application that lets users
-                        <em>create, share, and explore travel routes</em> with rich details like GPX coordinates,
-                        videos, and image galleries. It’s designed to be responsive and provide a smooth user experience
-                        with dynamic updates powered by the Fetch API.
-                    </p>
-                </div>
+    <div class="wrapper">
+        <div class="info">
+            <div class="section full">
+                <h4>About Pathfinder</h4>
+                <p>
+                    <strong>Pathfinder</strong> is a full-stack web application that lets users
+                    <em>create, share, and explore travel routes</em> with rich details like GPX coordinates,
+                    videos, and image galleries. It’s designed to be responsive and provide a smooth user experience
+                    with dynamic updates powered by the Fetch API.
+                </p>
+            </div>
 
-                <div class="section">
-                    <h5>Key Features</h5>
-                    <ul>
-                        <li>🛤️ Add and explore routes by category (Pedestrian, Bicycle, Motorcycle, Car)</li>
-                        <li>📍 Attach GPX coordinates, YouTube videos, and image galleries</li>
-                        <li>🌦️ Live weather forecast integration (OpenWeather API)</li>
-                        <li>👤 User profiles with customization and leveling system</li>
-                        <li>💬 Dynamic interactions without page reloads</li>
-                        <li>👥 Admin panel with user management & statistics</li>
-                    </ul>
-                </div>
+            <div class="section">
+                <h5>Key Features</h5>
+                <ul>
+                    <li>🛤️ Add and explore routes by category (Pedestrian, Bicycle, Motorcycle, Car)</li>
+                    <li>📍 Attach GPX coordinates, YouTube videos, and image galleries</li>
+                    <li>🌦️ Live weather forecast integration (OpenWeather API)</li>
+                    <li>👤 User profiles with customization and leveling system</li>
+                    <li>💬 Dynamic interactions without page reloads</li>
+                    <li>👥 Admin panel with user management & statistics</li>
+                </ul>
+            </div>
 
-                <div class="section">
-                    <h5>Tech Stack</h5>
-                    <ul>
-                        <li>
-                            <strong>Backend:</strong> Java, Spring Boot, Spring Security
-                        </li>
-                        <li>
-                            <strong>Frontend:</strong> Thymeleaf, JavaScript, HTML5, CSS3
-                        </li>
-                        <li>
-                            <strong>Database:</strong> MySQL
-                        </li>
-                        <li>
-                            <strong>Integrations:</strong> Cloudinary API, OpenWeather API, Chart.js
-                        </li>
-                    </ul>
+            <div class="section">
+                <h5>Tech Stack</h5>
+                <ul>
+                    <li>
+                        <strong>Backend:</strong> Java, Spring Boot, Spring Security
+                    </li>
+                    <li>
+                        <strong>Frontend:</strong> Thymeleaf, JavaScript, HTML5, CSS3
+                    </li>
+                    <li>
+                        <strong>Database:</strong> MySQL
+                    </li>
+                    <li>
+                        <strong>Integrations:</strong> Cloudinary API, OpenWeather API, Chart.js
+                    </li>
+                </ul>
 
-                </div>
+            </div>
 
-                <div class="section">
-                    <h5>Roadmap</h5>
-                    <ul>
-                        <li>🐳 Docker support with docker-compose</li>
-                        <li>🔑 Social login (Google, GitHub)</li>
-                        <li>💬 Messaging feature between users</li>
-                        <li>🗑️ Admin ability to delete comments</li>
-                    </ul>
-                </div>
+            <div class="section">
+                <h5>Roadmap</h5>
+                <ul>
+                    <li>🐳 Docker support with docker-compose</li>
+                    <li>🔑 Social login (Google, GitHub)</li>
+                    <li>💬 Messaging feature between users</li>
+                    <li>🗑️ Admin ability to delete comments</li>
+                </ul>
+            </div>
 
-                <div class="section full">
-                    <h5>About the Author</h5>
-                    <p th:class="author-info">
-                        Project created by <strong>Yavor Hristozov </strong><br>
-                        <a href="https://github.com/yavorhr" target="_blank">GitHub</a> |
-                        <a href="https://linkedin.com/in/yavorhr" target="_blank">LinkedIn</a> |
-                        <a href="https://yavorhr.github.io" target="_blank">Website</a> |
-                    </p>
-                </div>
+            <div class="section full">
+                <h5>About the Author</h5>
+                <p th:class="author-info">
+                    Project created by <strong>Yavor Hristozov </strong><br>
+                    <a href="https://github.com/yavorhr" target="_blank">GitHub</a> |
+                    <a href="https://linkedin.com/in/yavorhr" target="_blank">LinkedIn</a> |
+                    <a href="https://yavorhr.github.io" target="_blank">Website</a> |
+                </p>
             </div>
         </div>
-    </main>
-    <footer th:replace="fragments/footer"></footer>
+    </div>
+</main>
+<footer th:replace="fragments/footer"></footer>
 </body>
