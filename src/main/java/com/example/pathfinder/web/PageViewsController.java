@@ -52,7 +52,7 @@ public class PageViewsController {
     model.addAttribute("chartLabels", pageLabels);
     model.addAttribute("chartData", pageViews);
 
-    return "most-viewed";
+    return "/admin/most-viewed";
   }
 
   @PostMapping("/admin/statistics/reset")

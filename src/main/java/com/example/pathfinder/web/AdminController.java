@@ -40,7 +40,7 @@ public class AdminController {
     model.addAttribute("currentPage", page);
     model.addAttribute("totalPages", usersPage.getTotalPages());
 
-    return "notifications";
+    return "/admin/notifications";
   }
 
   @PreAuthorize("@userServiceImpl.isNotModifyingOwnProfile(#principal.username, #email)")
