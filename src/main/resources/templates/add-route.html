@@ -5,9 +5,8 @@
 </head>
 
 <body>
-<main>
     <div th:replace="fragments/home-button"></div>
-
+<main>
         <form id="add-route-form" class="route-card"
               th:action="@{/routes}" th:object="${routeAddBindingModel}"
               method="post" enctype="multipart/form-data">
@@ -106,7 +105,6 @@
                 <button id="addRouteButton" type="submit" class="btn-primary">Add Route</button>
             </div>
         </form>
-
 </main>
 
 <footer th:replace="fragments/footer"></footer>
