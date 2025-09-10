@@ -1,5 +1,3 @@
-
-
 /* Common CSS */
 .home-nav-item {
     position: absolute;
@@ -145,6 +143,7 @@
 }
 
 .col-background {
+    padding: 0!important;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -200,7 +199,25 @@ select {
 }
 
 .invalid-feedback {
-    background: #fbeaea!important;
+    background: #fbeaea !important;
+}
+
+.form_container label.col-form-label {
+    display: block;
+    margin-bottom: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 22px;
+    color: white;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.form_container label.col-form-label:hover {
+    color: #ffd700;
+    transition: all 0.2s ease-in-out;
 }
 
 /* TABLET: 768px - 1024px */
@@ -230,7 +247,7 @@ select {
         max-width: 100%;
     }
 
-    .form_container{
+    .form_container {
         width: 100%;
         max-width: 400px;
         margin: 0 auto;
