@@ -21,7 +21,7 @@
 | Section | Items |
 |---------|-------|
 | 📚 Project Overview | [📖 About the Project](#-about-the-project) • [✨ Features](#-features) • [🖼️ Screenshots](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-screenshots) |
-| 🛠️ Technical Details |  [🛠️ Tech Stack](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage)|
+| ⚙️ Technical Details |  [🛠️ Tech Stack](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage)|
 | 🏗️ Project Structure | [📂 Folder Structure](#-folder-structure) • [🗄️ Database Design](#-database-design) |
 | 🚀 Getting Started | [🔧 Configuration](https://github.com/yavorhr/Pathfinder/blob/main/README.md#-configuration-applicationproperties) • [Clone & Run (manual)](#clone--run-manual) • [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon) |
 | 🗺️ Roadmap & License | [🗺️ Roadmap](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-roadmap) • [📜 License](#-license) |
@@ -29,7 +29,7 @@
 
 ---
 
-<h1>Project overview</h1>
+# 📚 Project Overview
 
 ## 📖 About the Project
 
@@ -412,6 +412,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ---
 
+# ⚙️ Technical Details
+
 ## 🛠️ Tech Stack
 
 | Category | Technologies |
@@ -584,7 +586,7 @@ target/site/jacoco/index.html
 		  
 ---
 
-## 🚀 Getting Started
+# 🚀 Getting Started
 
 ### 🔧 Configuration (`application.properties`)
 
@@ -635,6 +637,8 @@ cd pathfinder
 A ready-to-use docker-compose.yml will be provided for easy setup.
 
 ---
+
+ # 🏗️ Project Structure
 
 ## 📂 Folder Structure
 
@@ -850,7 +854,7 @@ Relationships:
 
 ---
 
- ## 🗺️ Roadmap
+ # 🗺️ Roadmap
 
 - [ ] Docker setup with `docker-compose`
 - [ ] Add social login (Google, GitHub)
@@ -859,13 +863,13 @@ Relationships:
 
 ---
 
-## 📜 License
+# 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 📬 Contact
+# 📬 Contact
 
 Created by Yavor Hristozov 👨‍💻
 
