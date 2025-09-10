@@ -81,6 +81,12 @@ main {
     font-size: 0.9rem;
 }
 
+.gpx-distance-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
 /* Form-row */
 .form-row {
     display: flex;
