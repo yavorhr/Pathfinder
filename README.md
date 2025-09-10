@@ -586,59 +586,7 @@ target/site/jacoco/index.html
 		  
 ---
 
-# 🚀 Getting Started
-
-### 🔧 Configuration (`application.properties`)
-
-Before running the application, update `src/main/resources/application.properties` with your own credentials:
-
-```properties
-# ===============================
-# = DATABASE CONFIGURATION
-# ===============================
-spring.datasource.url=jdbc:mysql://localhost:3306/pathfinder?useSSL=false&serverTimezone=UTC
-spring.datasource.username=your_db_username
-spring.datasource.password=your_db_password
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-
-# ===============================
-# = CLOUDINARY CONFIGURATION
-# ===============================
-cloudinary.cloud-name=your_cloud_name
-cloudinary.api-key=your_api_key
-cloudinary.api-secret=your_api_secret
-
-# ===============================
-# = MAIL CONFIGURATION (Optional)
-# ===============================
-spring.mail.host=smtp.example.com
-spring.mail.port=587
-spring.mail.username=your_email@example.com
-spring.mail.password=your_email_password
-spring.mail.properties.mail.smtp.auth=true
-spring.mail.properties.mail.smtp.starttls.enable=true
-```
-
-### Clone & Run (manual)
-```bash
-# Clone the repository
-git clone https://github.com/your-username/pathfinder.git
-cd pathfinder
-
-# Configure application.properties with your MySQL + Cloudinary credentials
-
-# Build & run
-./mvnw clean install
-./mvnw spring-boot:run
-```
-
-### 🐳 Run with Docker (coming soon)
-A ready-to-use docker-compose.yml will be provided for easy setup.
-
----
-
- # 🏗️ Project Structure
+# 🏗️ Project Structure
 
 ## 📂 Folder Structure
 
@@ -851,6 +799,58 @@ The application uses a relational database to manage users, roles, routes, messa
 Relationships:
 
 <table> <tr> <th>Entity</th> <th>Related Entity</th> <th>Relationship</th> <th>Description</th> </tr> <tr> <td><code>users</code></td> <td><code>roles</code></td> <td>Many-to-Many</td> <td>Users can have multiple roles via <code>users_roles</code>.</td> </tr> <tr> <td><code>routes</code></td> <td><code>users</code></td> <td>Many-to-One</td> <td>Each route is authored by a single user (<code>author_id</code>).</td> </tr> <tr> <td><code>routes</code></td> <td><code>categories</code></td> <td>Many-to-Many</td> <td>A route can belong to multiple categories via <code>routes_categories</code>.</td> </tr> <tr> <td><code>routes</code></td> <td><code>routes_pictures</code></td> <td>One-to-Many</td> <td>Each route can have multiple pictures.</td> </tr> <tr> <td><code>routes</code></td> <td><code>comments</code></td> <td>One-to-Many</td> <td>Each route can have multiple comments. Supports parent-child threading.</td> </tr> <tr> <td><code>messages</code></td> <td><code>users</code></td> <td>Many-to-One</td> <td>Each message has an <b>author</b> and a <b>recipient</b> (both users).</td> </tr> </table>
+
+---
+
+# 🚀 Getting Started
+
+### 🔧 Configuration (`application.properties`)
+
+Before running the application, update `src/main/resources/application.properties` with your own credentials:
+
+```properties
+# ===============================
+# = DATABASE CONFIGURATION
+# ===============================
+spring.datasource.url=jdbc:mysql://localhost:3306/pathfinder?useSSL=false&serverTimezone=UTC
+spring.datasource.username=your_db_username
+spring.datasource.password=your_db_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# ===============================
+# = CLOUDINARY CONFIGURATION
+# ===============================
+cloudinary.cloud-name=your_cloud_name
+cloudinary.api-key=your_api_key
+cloudinary.api-secret=your_api_secret
+
+# ===============================
+# = MAIL CONFIGURATION (Optional)
+# ===============================
+spring.mail.host=smtp.example.com
+spring.mail.port=587
+spring.mail.username=your_email@example.com
+spring.mail.password=your_email_password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+```
+
+### Clone & Run (manual)
+```bash
+# Clone the repository
+git clone https://github.com/your-username/pathfinder.git
+cd pathfinder
+
+# Configure application.properties with your MySQL + Cloudinary credentials
+
+# Build & run
+./mvnw clean install
+./mvnw spring-boot:run
+```
+
+### 🐳 Run with Docker (coming soon)
+A ready-to-use docker-compose.yml will be provided for easy setup.
 
 ---
 
