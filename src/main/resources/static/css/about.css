@@ -6,11 +6,12 @@
 
 .home-nav-item {
     position: absolute;
-    top: 15px;
-    left: 0;
+    top: 20px;
+    left: 15px;
 }
 
-/* About page */
+/* Page CSS */
+
 .info {
     display: grid;
     grid-gap: 2rem;

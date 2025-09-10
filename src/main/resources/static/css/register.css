@@ -1,10 +1,20 @@
 
+
+/* Common CSS */
+.home-nav-item {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+
+/* Layout */
 .div-wrapper {
+    width: 40%;
+    min-width: 1000px;
+    padding: 20px;
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-    padding: 20px;
-    width: 100%;
-    min-width: 1000px;
+    background: rgba(255, 255, 255, 0.1);
     box-sizing: border-box;
 }
 
@@ -191,35 +201,6 @@ select {
 
 .invalid-feedback {
     background: #fbeaea!important;
-}
-/* Home button */
-.home-nav-item {
-    position: absolute;
-    top: -15px;
-    left: 0;
-    background: transparent;
-}
-
-.home-nav-item a {
-    background-color: transparent;
-}
-
-.navbar-icon {
-    padding: 10px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--primary);
-    transition: all 0.3s ease;
-}
-
-.navbar-icon:hover {
-    width: 80px;
-    height: 80px;
-    border-color: black;
-    background-color: white;
-    transform: scale(1.1);
 }
 
 /* TABLET: 768px - 1024px */

@@ -14,7 +14,8 @@ body {
     align-items: center;
 }
 
-/* Login page - layout */
+/* Layout */
+
 .login-parent {
     width: 100%;
     padding: 50px;
