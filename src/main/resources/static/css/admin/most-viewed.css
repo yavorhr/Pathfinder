@@ -1,5 +1,7 @@
+/* Common CSS */
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     background: #f4f6f9;
     margin: 0;
     padding: 2rem;
@@ -12,6 +14,8 @@ main {
     flex-direction: column;
     align-items: center;
 }
+
+/* Most viewed page */
 
 .container {
     max-width: 1000px;
