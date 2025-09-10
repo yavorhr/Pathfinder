@@ -45,6 +45,24 @@ body {
     font-size: 20px;
     margin-top: 10px;
 }
+/* Labels styling - Login, Register, Add route */
+form label {
+    margin-bottom: 5px;
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    color: white;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+form label:hover {
+    color: #ffd700;
+    transition: all 0.2s ease-in-out;
+}
 
 .wrapper {
     display: grid;
