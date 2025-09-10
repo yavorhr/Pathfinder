@@ -20,7 +20,7 @@
 
 | Section | Items |
 |---------|-------|
-| 📚 Project Overview | [📖 About the Project](#-about-the-project) • [✨ Features](#-features) • [🖼️ Screenshots](#screenshots) |
+| 📚 Project Overview | [📖 About the Project](#-about-the-project) • [✨ Features](#-features) • [🖼️ Screenshots](#-screenshots) |
 | 🛠️ Technical Details | [🛠️ Tech Stack](#-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage)|
 | 🏗️ Project Structure | [📂 Folder Structure](#-folder-structure) • [🗄️ Database Design](#-database-design) |
 | 🚀 Getting Started | [🔧 Configuration](#-configuration) • [Clone & Run (manual)](#clone--run-manual) • [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon) |
