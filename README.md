@@ -407,7 +407,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ---
 
-## Tech Stack
+## Tech Stack 🛠️
 
 | Category | Technologies |
 |----------|--------------|
