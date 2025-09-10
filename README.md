@@ -478,9 +478,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ---
 
-### 👤🔒 Roles, Permissions & Security
+## 👤🔒 Roles, Permissions & Security
 
-## 🔐 Security Features  
+### 🔐 Security Features  
 
 - **Spring Security integration** – full authentication & authorization layer.  
 - **Role-based access control (RBAC)** – Roles include `Guest`, `User`, `Author`, and `Admin` (see [Roles & Permissions](#-roles--permissions)).  
@@ -499,7 +499,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 - **Session management** – invalid sessions are prevented, and concurrent logins can be restricted.  
 - **Admin-only tools** – sensitive features (user management, endpoint statistics, role updates) are restricted strictly to Admins.  
 
-##👤 Roles & Permissions
+### 👤 Roles & Permissions
 
 | Feature / Permission       | Guest | User | Author | Admin |
 |----------------------------|:-----:|:----:|:------:|:-----:|
@@ -521,15 +521,15 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ---
 
-### 🧪 Testing & Coverage
+## 🧪 Testing & Coverage
 
-#### ✅ Overview
+### ✅ Overview
 - **90%+ coverage** achieved with **JUnit 5** and **Spring MockMVC**.  
 - Unit tests for services, repositories, and utility classes.  
 - Integration tests for controllers and security configuration.  
 - Coverage reports generated with **JaCoCo** (`mvn clean test`).
 
-#### ⚡ Running Tests:
+### ⚡ Running Tests:
 Open a terminal in the project root and run:
   ```bash
   ./mvnw clean test
