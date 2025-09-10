@@ -45,6 +45,9 @@ main {
 
 /* Body */
 .route-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     padding: 1.5rem;
 }
 
