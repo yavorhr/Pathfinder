@@ -865,7 +865,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 📬 Contact
 
-Created by Yavor 👨‍💻
+Created by Yavor Hristozov 👨‍💻
 
 - [LinkedIn](https://www.linkedin.com/in/yavorhr)  
 - [GitHub](https://github.com/yavorhr)  
