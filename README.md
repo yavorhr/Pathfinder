@@ -29,6 +29,8 @@
 
 ---
 
+# 📚 Project Overview
+
 ## 📖 About the Project
 
 Pathfinder is a MVC full-stack application that allows users to **create, share, and explore travel routes** with detailed metadata. 
