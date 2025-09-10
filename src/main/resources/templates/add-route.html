@@ -33,9 +33,9 @@
                            th:errors="*{description}" class="error-text"></small>
                 </div>
 
-                <div class="form-row">
+                <div class="gpx-distance-wrapper">
                     <!-- GPX -->
-                    <div class="form-group col-6">
+                    <div >
                         <label for="inputGpx">GPX File</label>
                         <input type="file" th:field="*{gpxCoordinates}"
                                id="inputGpx" class="form-control-file">
@@ -43,7 +43,7 @@
                                th:errors="*{gpxCoordinates}" class="error-text"></small>
                     </div>
                     <!-- Distance -->
-                    <div class="form-group col-6">
+                    <div >
                         <label for="distance">Distance (km)</label>
                         <input type="number" th:field="*{distance}"
                                id="distance" class="form-control" placeholder="e.g. 12.3">
@@ -102,7 +102,7 @@
             </div>
 
             <div class="route-card__footer">
-                <button id="addRouteButton" type="submit" class="btn-primary">Add Route</button>
+                <button id="addRouteButton" type="submit" class="btn btn-primary">Add Route</button>
             </div>
         </form>
 </main>
