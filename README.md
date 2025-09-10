@@ -23,7 +23,7 @@
 | 📚 Project Overview | [📖 About the Project](#-about-the-project) • [✨ Features](#-features) • [🖼️ Screenshots](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-screenshots) |
 | 🛠️ Technical Details |  [🛠️ Tech Stack](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage)|
 | 🏗️ Project Structure | [📂 Folder Structure](#-folder-structure) • [🗄️ Database Design](#-database-design) |
-| 🚀 Getting Started | [🔧 Configuration](#-configuration) • [Clone & Run (manual)](#clone--run-manual) • [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon) |
+| 🚀 Getting Started | [🔧 Configuration](https://github.com/yavorhr/Pathfinder/blob/main/README.md#-configuration-applicationproperties) • [Clone & Run (manual)](#clone--run-manual) • [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon) |
 | 🗺️ Roadmap & License | [🗺️ Roadmap](#-roadmap) • [📜 License](#-license) |
 | 📬 Contact / Support | [📬 Contact](#-contact) |
 
