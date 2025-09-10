@@ -202,23 +202,7 @@ select {
     background: #fbeaea !important;
 }
 
-.form_container label.col-form-label {
-    display: block;
-    margin-bottom: 5px;
-    background: rgba(0, 0, 0, 0.2);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-    font-size: 22px;
-    color: white;
-    font-weight: 700;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-}
 
-.form_container label.col-form-label:hover {
-    color: #ffd700;
-    transition: all 0.2s ease-in-out;
-}
 
 /* TABLET: 768px - 1024px */
 @media screen and (max-width: 1024px) {
