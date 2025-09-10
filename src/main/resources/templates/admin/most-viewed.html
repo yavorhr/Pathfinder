@@ -2,10 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 
-<head>
-    <meta charset="UTF-8">
-    <title>Most Viewed Pages</title>
-    <link rel="stylesheet" th:href="@{/css/admin/most-viewed.css}">
+<head th:replace="fragments/head :: head(additionalCss='/css/admin/most-viewed.css')">
 </head>
 
 <body>
