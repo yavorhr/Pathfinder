@@ -17,6 +17,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
+    width: 100%;
 }
 
 .details-main-2-col {

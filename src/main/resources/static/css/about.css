@@ -1,3 +1,5 @@
+/* Common CSS */
+
 .wrapper {
     margin-top: 3rem;
 }
@@ -8,6 +10,7 @@
     left: 0;
 }
 
+/* About page */
 .info {
     display: grid;
     grid-gap: 2rem;

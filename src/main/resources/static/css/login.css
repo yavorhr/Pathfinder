@@ -1,11 +1,4 @@
-.login-parent {
-    width: 100%;
-    padding: 50px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-}
+/* Common CSS */
 
 body {
     display: flex;
@@ -19,6 +12,16 @@ body {
     flex-direction: column;
     justify-content: start;
     align-items: center;
+}
+
+/* Login page - layout */
+.login-parent {
+    width: 100%;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
 }
 
 .content-wrapper {

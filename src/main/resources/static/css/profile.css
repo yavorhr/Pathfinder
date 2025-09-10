@@ -1,13 +1,16 @@
+/* Common CSS */
+
 body {
     min-height: 100vh;
 }
 
-/* Home button position */
 .home-nav-item {
     position: absolute;
     top: 15px;
     left: 0;
 }
+
+/* Profile page */
 
 .add-image-wrapper {
     display: flex;

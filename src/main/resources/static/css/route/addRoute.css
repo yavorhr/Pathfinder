@@ -1,3 +1,4 @@
+/* Common CSS */
 
 body {
     display: flex;
@@ -7,11 +8,12 @@ body {
 
 main {
     display: flex !important;
+    flex: 1;
     flex-direction: column;
     align-items: center;
+    justify-content: start;
 }
 
-/* Home button */
 .home-nav-item {
     display: block;
     position: absolute;
