@@ -114,7 +114,7 @@ public class RouteController {
               .addFlashAttribute("routeAddBindingModel", routeAddBindingModel)
               .addFlashAttribute("org.springframework.validation.BindingResult.routeAddBindingModel", bindingResult);
 
-      return "redirect:add";
+      return "redirect:/routes/add";
     }
 
     AddRouteServiceModel routeServiceModel = this.modelMapper.map(routeAddBindingModel, AddRouteServiceModel.class);
