@@ -3,7 +3,9 @@ package com.example.pathfinder.model.service;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import jakarta.persistence.Lob;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Set;
 
 public class AddRouteServiceModel {
@@ -15,8 +17,13 @@ public class AddRouteServiceModel {
   private Long authorId;
   private Set<CategoryEnum> categories;
   private Integer distance;
+  private List<MultipartFile> pictures;
 
   public AddRouteServiceModel() {
+  }
+
+  public List<MultipartFile> getPictures() {
+    return pictures;
   }
 
   public Integer getDistance() {
@@ -74,6 +81,11 @@ public class AddRouteServiceModel {
 
   public AddRouteServiceModel setVideoUrl(String videoUrl) {
     this.videoUrl = videoUrl;
+    return this;
+  }
+
+  public AddRouteServiceModel setPictures(List<MultipartFile> pictures) {
+    this.pictures = pictures;
     return this;
   }
 

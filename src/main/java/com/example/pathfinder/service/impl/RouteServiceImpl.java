@@ -1,6 +1,7 @@
 package com.example.pathfinder.service.impl;
 
 import com.example.pathfinder.model.entity.Category;
+import com.example.pathfinder.model.entity.Picture;
 import com.example.pathfinder.model.entity.Route;
 import com.example.pathfinder.model.entity.UserRoleEntity;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
@@ -13,6 +14,8 @@ import com.example.pathfinder.service.CategoryService;
 import com.example.pathfinder.service.RouteService;
 import com.example.pathfinder.service.UserService;
 import com.example.pathfinder.service.events.UpdateUserLevelEvent;
+import com.example.pathfinder.util.cloudinary.CloudinaryImage;
+import com.example.pathfinder.util.cloudinary.CloudinaryService;
 import com.example.pathfinder.web.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
@@ -20,6 +23,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -33,13 +39,15 @@ public class RouteServiceImpl implements RouteService {
   private final UserService userService;
   private final CategoryService categoryService;
   private final ApplicationEventPublisher eventPublisher;
+  private final CloudinaryService cloudinaryService;
 
-  public RouteServiceImpl(RouteRepository repository, ModelMapper modelMapper, UserService userService, CategoryService categoryService, ApplicationEventPublisher eventPublisher) {
+  public RouteServiceImpl(RouteRepository repository, ModelMapper modelMapper, UserService userService, CategoryService categoryService, ApplicationEventPublisher eventPublisher, CloudinaryService cloudinaryService) {
     this.routeRepository = repository;
     this.modelMapper = modelMapper;
     this.userService = userService;
     this.categoryService = categoryService;
     this.eventPublisher = eventPublisher;
+    this.cloudinaryService = cloudinaryService;
   }
 
   @Override
@@ -73,13 +81,24 @@ public class RouteServiceImpl implements RouteService {
   }
 
   @Override
-  public Long addNewRoute(AddRouteServiceModel routeServiceModel, String email) {
+  public Long addNewRoute(AddRouteServiceModel routeServiceModel, String email) throws IOException {
     Route route = this.modelMapper.map(routeServiceModel, Route.class);
 
     var author = this.userService.findByEmail(email);
 
     route.setAuthor(author);
     route.setCategories(mapCategories(routeServiceModel.getCategories()));
+
+    for (MultipartFile file : routeServiceModel.getPictures()) {
+      CloudinaryImage uploaded = cloudinaryService.upload(file, "routes");
+      Picture picture = new Picture();
+      picture.setUrl(uploaded.getUrl());
+      picture.setPublicId(uploaded.getPublicId());
+      picture.setRoute(route);
+      picture.setAuthor(author);
+      picture.setTitle(convertTitle(file.getOriginalFilename()));
+      route.getPictures().add(picture);
+    }
 
     route = this.routeRepository.save(route);
 
@@ -146,6 +165,18 @@ public class RouteServiceImpl implements RouteService {
   }
 
   // Helpers
+
+  private String convertTitle(String originalName) {
+    if (originalName != null) {
+      int dotIndex = originalName.lastIndexOf('.');
+
+      if (dotIndex > 0) {
+        originalName = originalName.substring(0, dotIndex);
+      }
+    }
+    return originalName;
+  }
+
   private RouteViewModel mapToViewModel(Route r) {
     RouteViewModel viewModel = this.modelMapper.map(r, RouteViewModel.class);
 

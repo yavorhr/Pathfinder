@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Set;
 
 public class RouteAddBindingModel {
@@ -19,8 +20,15 @@ public class RouteAddBindingModel {
   private String videoUrl;
   private Set<CategoryEnum> categories;
   private Integer distance;
+  private List<MultipartFile> pictures;
 
   public RouteAddBindingModel() {
+  }
+
+  @NotNull(message = "At least one image is required")
+  @NotEmpty(message = "At least one image is required")
+  public List<MultipartFile> getPictures() {
+    return pictures;
   }
 
   @NotNull(message = "Please insert distance")
@@ -82,6 +90,11 @@ public class RouteAddBindingModel {
 
   public RouteAddBindingModel setGpxCoordinates(MultipartFile gpxCoordinates) {
     this.gpxCoordinates = gpxCoordinates;
+    return this;
+  }
+
+  public RouteAddBindingModel setPictures(List<MultipartFile> pictures) {
+    this.pictures = pictures;
     return this;
   }
 

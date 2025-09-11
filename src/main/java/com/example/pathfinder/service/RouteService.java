@@ -7,6 +7,7 @@ import com.example.pathfinder.model.view.RouteViewModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public interface RouteService {
 
   RouteDetailsServiceModel findRouteByIdWithCanModifyProperty(String email, Long id);
 
-  Long addNewRoute(AddRouteServiceModel routeServiceModel, String username);
+  Long addNewRoute(AddRouteServiceModel routeServiceModel, String username) throws IOException;
 
   boolean findRouteByName(String name);
 
