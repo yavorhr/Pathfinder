@@ -38,7 +38,7 @@ public class Route extends BaseEntity {
     return comments;
   }
 
-  @OneToMany(mappedBy = "route", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "route", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   public Set<Picture> getPictures() {
     return pictures;
   }
