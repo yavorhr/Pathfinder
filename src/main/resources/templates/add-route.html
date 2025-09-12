@@ -23,7 +23,7 @@
                        th:errors="*{name}" class="error-text"></small>
             </div>
 
-            <!-- Description (large, auto-resizing) -->
+            <!-- Description -->
             <div class="form-group">
                 <label for="inputDescription">Description</label>
                 <textarea th:field="*{description}" id="inputDescription"
@@ -33,7 +33,7 @@
                        th:errors="*{description}" class="error-text"></small>
             </div>
 
-            <div class="gpx-distance-wrapper">
+            <div class="div-wrapper">
                 <!-- GPX -->
                 <div>
                     <label for="inputGpx">GPX File</label>
@@ -46,13 +46,13 @@
                 <div>
                     <label for="inputPictures">Add pictures</label>
                     <input type="file" th:field="*{pictures}"
-                           id="inputPictures" class="form-control-file">
+                           id="inputPictures" class="form-control-file" multiple>
                     <small th:if="${#fields.hasErrors('pictures')}"
                            th:errors="*{pictures}" class="error-text"></small>
                 </div>
             </div>
 
-            <div class="gpx-distance-wrapper">
+            <div class="div-wrapper">
                 <div>
                     <label for="distance">Distance (km)</label>
                     <input type="number" th:field="*{distance}"
