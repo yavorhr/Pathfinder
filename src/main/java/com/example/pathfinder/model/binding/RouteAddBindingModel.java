@@ -3,10 +3,7 @@ package com.example.pathfinder.model.binding;
 import com.example.pathfinder.model.entity.enums.CategoryEnum;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 import com.example.pathfinder.validation.route.UniqueRouteName;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -60,8 +57,7 @@ public class RouteAddBindingModel {
     return level;
   }
 
-  @Size(min = 11, max = 11, message = "Link should be exact 11 symbols")
-  @NotNull
+  @Pattern(regexp = "^$|^[a-zA-Z0-9_-]{11}$", message = "YouTube video ID must be 11 characters")
   public String getVideoUrl() {
     return videoUrl;
   }
