@@ -9,8 +9,13 @@
 <main>
     <div class="wrapper"
          th:object="${routeDetails}">
-        <div class="details-main details-main-3-col">
-            <section class="route-info text-center">
+        <div class="details-main"
+             th:classappend="(${hasVideo and hasGpx} ? ' details-main-3-col'
+                     : (${hasVideo or hasGpx} ? ' details-main-2-col'
+                     : ' details-main-no-media'))">
+
+
+        <section class="route-info text-center">
                 <form class="delete-route-form"
                       th:method="DELETE"
                       th:action="@{/routes}">
@@ -47,7 +52,8 @@
 
                     <div class="difficulty-icons">
                         <img class="level-img" src="/images/difficulty-level.png" alt="Level 1"/>
-                        <img class="level-img" th:if="*{level.name() == 'INTERMEDIATE'}" src="/images/difficulty-level.png"
+                        <img class="level-img" th:if="*{level.name() == 'INTERMEDIATE'}"
+                             src="/images/difficulty-level.png"
                              alt="Level 2"/>
                         <th:block th:if="*{level.name() == 'ADVANCED'}">
                             <img class="level-img" src="/images/difficulty-level.png" alt="Level 2"/>
@@ -83,15 +89,17 @@
                 </th:block>
             </section>
 
-            <section
-                    class="col-md-auto"
-                    id="map">
-                <!-- Inject the GPX data as a global JavaScript variable -->
-                <script
-                        th:inline="javascript">
-                    var gpxData = /*[[${routeDetails.gpxCoordinates}]]*/ "";
-                </script>
-            </section>
+            <th:block th:if="*{!gpxCoordinates.isEmpty()}">
+                <section
+                        class="col-md-auto"
+                        id="map">
+                    <!-- Inject the GPX data as a global JavaScript variable -->
+                    <script
+                            th:inline="javascript">
+                        var gpxData = /*[[${routeDetails.gpxCoordinates}]]*/ "";
+                    </script>
+                </section>
+            </th:block>
 
             <th:block th:if="*{isVideoUrlAvailable()}">
                 <section id="video">
