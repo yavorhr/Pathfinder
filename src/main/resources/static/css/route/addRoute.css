@@ -84,10 +84,15 @@ main {
     font-size: 0.9rem;
 }
 
-.gpx-distance-wrapper{
+.div-wrapper {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2rem;
+}
+
+/* Full length of GPX, Add Pictures, Distance and Level */
+.div-wrapper div {
+    width: 50%;
 }
 
 /* Form-row */
