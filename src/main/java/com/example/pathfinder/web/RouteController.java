@@ -83,6 +83,11 @@ public class RouteController {
                     RouteDetailsViewModel.class);
 
     model.addAttribute("routeDetails", route);
+
+    model.addAttribute("hasVideo", route.isVideoUrlAvailable());
+    model.addAttribute("hasGpx", route.getGpxCoordinates() != null && !route.getGpxCoordinates().isEmpty());
+
+
     return "route-details";
   }
 
