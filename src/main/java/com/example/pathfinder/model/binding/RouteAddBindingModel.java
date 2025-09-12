@@ -25,8 +25,6 @@ public class RouteAddBindingModel {
   public RouteAddBindingModel() {
   }
 
-  @NotNull(message = "At least one image is required")
-  @NotEmpty(message = "At least one image is required")
   public List<MultipartFile> getPictures() {
     return pictures;
   }
