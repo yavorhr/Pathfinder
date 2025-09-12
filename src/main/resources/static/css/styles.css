@@ -45,6 +45,7 @@ body {
     font-size: 20px;
     margin-top: 10px;
 }
+
 /* Labels styling - Login, Register, Add route */
 form label {
     margin-bottom: 5px;
@@ -227,4 +228,20 @@ footer {
     color: var(--light);
     text-align: center;
     padding: 1rem;
+}
+
+/* Tablet: 768px - 1024px */
+@media screen and (max-width: 1024px) {
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 18px;
+    }
+}
+
+/* Tablet: below 768px */
+@media screen and (max-width: 768px) {
+    .btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 16px;
+    }
 }
