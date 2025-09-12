@@ -310,9 +310,26 @@
 /* Tablet mode */
 @media (max-width: 1024px) {
     .details-main {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 
+    .details-main-no-media {
+        grid-template-columns: 1fr;
+    }
+
+    .details-main-no-media .route-info,
+    .details-main-no-media .route-description,
+    .details-main-no-media .gallery,
+    .details-main-no-media .comments {
+        grid-column: 1;
+        grid-row: auto;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .details-main-no-media .route-description {
+        margin-bottom: 10px;
+    }
 
     .details-main .gallery {
         grid-column: 1/3;
@@ -334,16 +351,11 @@
     .track-info .meta span {
         color: #0d6efd;
     }
-
 }
 
 /* Smartphone mode */
 @media (max-width: 768px) {
     .details-main {
-        grid-template-columns: 1fr;
-    }
-
-    .details-main-no-media {
         grid-template-columns: 1fr;
     }
 
