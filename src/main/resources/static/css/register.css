@@ -277,11 +277,11 @@ select {
 
     .social-input {
         text-indent: 0;
-        padding-left: 10px;
+        padding-left: 45px !important;
     }
 
     .social-icon {
-        position: static;
+        position: absolute;
         align-self: flex-start;
         margin-bottom: 5px;
     }
