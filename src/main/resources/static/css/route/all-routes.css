@@ -21,7 +21,6 @@
     padding: 3rem;
 
     background: var(--primary);
-    box-shadow: var(--shadow);
 }
 
 .road img {
@@ -106,7 +105,7 @@
 }
 
 /* Phone view */
-@media (max-width: 600px) {
+@media (max-width: 724px) {
     .search-form input {
         width: 250px;
     }
@@ -131,6 +130,7 @@
     }
 
     .road .btn {
+        display: inline-block !important;
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
     }
