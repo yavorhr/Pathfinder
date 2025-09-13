@@ -11,17 +11,17 @@
 }
 
 /* Road */
-
 .road {
-    background: var(--primary);
-    max-width: 1800px;
-    box-shadow: var(--shadow);
     display: grid;
     grid-gap: 30px;
     grid-template-columns: repeat(2, 1fr);
-    padding: 3rem;
     grid-row: auto;
-    align-items: center;
+    align-items: start;
+    max-width: 1800px;
+    padding: 3rem;
+
+    background: var(--primary);
+    box-shadow: var(--shadow);
 }
 
 .road img {
@@ -91,6 +91,8 @@
     font-weight: bold;
 }
 
+
+
 /* Tablet view */
 @media (max-width: 1024px) {
     .road {
@@ -132,6 +134,4 @@
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
     }
-
-
 }
