@@ -98,6 +98,9 @@ public class RouteController {
             this.routeService.findMostCommentedRoute(principal.getUsername()),
             RouteDetailsViewModel.class);
 
+    model.addAttribute("hasVideo", viewModel.isVideoUrlAvailable());
+    model.addAttribute("hasGpx", viewModel.getGpxCoordinates() != null && !viewModel.getGpxCoordinates().isEmpty());
+
     model.addAttribute("routeDetails", viewModel);
 
     return "route-details";
