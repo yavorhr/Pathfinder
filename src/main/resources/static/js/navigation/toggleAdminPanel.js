@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const dropdownToggle = document.querySelector(".dropdown");
     const dropdownMenu = document.querySelector(".dropdown-menu");
-
+    const logoutButton = document.querySelector(".logout-item");
     const menuItems = dropdownMenu ? dropdownMenu.querySelectorAll(".dropdown-item") : [];
 
     if (dropdownToggle) {
@@ -9,6 +9,16 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
 
             dropdownMenu.classList.toggle("show");
+
+            // To move below Logout and About buttons
+            if (window.innerWidth <= 768) {
+                if (dropdownMenu.classList.contains("show")) {
+                    const dropdownHeight = dropdownMenu.scrollHeight;
+                    logoutButton.style.marginTop = dropdownHeight + "px";
+                } else {
+                    logoutButton.style.marginTop = "0";
+                }
+            }
         });
     }
 
