@@ -1,40 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const dropdownToggle = document.querySelector(".dropdown");
-    const dropdownMenu = document.querySelector(".dropdown-menu");
+    const adminBtn = document.getElementById("navbarDropdown");
+    const popover = document.getElementById("adminPopover");
     const logoutButton = document.querySelector(".logout-item");
-    const menuItems = dropdownMenu ? dropdownMenu.querySelectorAll(".dropdown-item") : [];
 
-    if (dropdownToggle) {
-        dropdownToggle.addEventListener("click", function (event) {
-            event.preventDefault();
+    adminBtn.addEventListener("click", function (e) {
+        e.preventDefault();
 
-            dropdownMenu.classList.toggle("show");
+        if (window.innerWidth > 768) {
+            // Desktop / tablet floating popover
+            popover.classList.toggle("show");
+            const rect = adminBtn.getBoundingClientRect();
+            popover.style.top = rect.bottom + window.scrollY + "px";
+            popover.style.left = rect.left + window.scrollX + "px";
 
-            // To move below Logout and About buttons
-            if (window.innerWidth <= 768) {
-                if (dropdownMenu.classList.contains("show")) {
-                    const dropdownHeight = dropdownMenu.scrollHeight;
-                    logoutButton.style.marginTop = dropdownHeight + "px";
-                } else {
-                    logoutButton.style.marginTop = "0";
-                }
+            const popoverRect = popover.getBoundingClientRect();
+            if (popoverRect.right > window.innerWidth) {
+                popover.style.left = window.innerWidth - popoverRect.width - 10 + "px";
             }
-        });
-    }
-
-    document.addEventListener("click", function (event) {
-        if (dropdownToggle && !dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.classList.remove("show");
+        } else {
+            popover.classList.toggle("show");
         }
     });
 
-    menuItems.forEach(item => {
-        item.addEventListener("click", function (event) {
-            dropdownMenu.classList.remove("show");
-            event.stopPropagation();
-        });
+    // Close popover when clicking outside
+    document.addEventListener("click", function (e) {
+        if (!adminBtn.contains(e.target) && !popover.contains(e.target)) {
+            popover.classList.remove("show");
+            logoutButton.style.marginTop = "0";
+
+        }
     });
-
 });
-
-
