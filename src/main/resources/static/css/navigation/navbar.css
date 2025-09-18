@@ -46,7 +46,9 @@
 }
 
 .nav-item a:hover,
-#logout-form input:hover {
+.dropdown-item
+#logout-form input:hover,
+.dropdown-popover .dropdown-item:hover {
     background: var(--dark);
     color: var(--light);
     transform: scale(1.1);
@@ -84,10 +86,6 @@
 }
 
 /* Admin Dropdown */
-.dropdown-menu {
-    border: none !important;
-    background-color: transparent !important;
-}
 
 .dropdown-item::before {
     content: "";
@@ -103,10 +101,42 @@
     border-left: 0.3em solid currentColor;
 }
 
-.dropdown-menu.show div {
-    margin-bottom: 8px;
+.dropdown-popover {
+    position: absolute;
+    flex-direction: column;
+    min-width: 180px;
+    z-index: 1000;
+    padding: 5px 0;
+    opacity: 0;
+    transform: translateY(-15px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.dropdown-popover.show {
+    opacity: 1;
+    /*display: flex;*/
+    gap: 5px;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Popover items */
+.dropdown-popover .dropdown-item {
+    padding: 8px 12px;   border-radius: 4px;
+    white-space: nowrap;
+    cursor: pointer;
+
+    background: var(--primary);
+    color: var(--dark);
+    text-transform: uppercase;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dropdown-popover > .dropdown-item{
+    margin-bottom: 5px;
+}
 
 /* Tablets */
 @media (max-width: 1024px) {
@@ -132,6 +162,23 @@
 
 /* Mobile styles: max 768px */
 @media (max-width: 768px) {
+
+    .dropdown-popover {
+        position: static !important;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 55%;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .dropdown-popover.show {
+        max-height: 500px; /* enough for all items */
+        opacity: 1;
+    }
+
     .logout-item {
         transition: margin-top 0.3s ease;
     }
@@ -171,10 +218,5 @@
         object-fit: cover;
     }
 
-    /* Dropdown */
-    .dropdown-menu {
-        margin-left: 10px !important;
-        margin-top: 13px!important;
-        width: 70%;
-    }
+
 }

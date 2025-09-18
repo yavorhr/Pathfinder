@@ -31,17 +31,13 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Admin
                         </a>
-                        <div class="dropdown-menu">
-                            <div>
-                                <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/notifications}">Users
-                                    panel</a>
-                            </div>
-                            <div>
-                                <a class="dropdown-item btn btn-link nav-link" th:href="@{/admin/statistics}">Most
-                                    viewed</a>
-                            </div>
-                        </div>
                     </li>
+
+                    <div class="dropdown-popover" id="adminPopover">
+                        <a class="dropdown-item" href="/admin/notifications">Users Panel</a>
+                        <a class="dropdown-item" href="/admin/statistics">Most Viewed</a>
+                    </div>
+
                     <li class="nav-item logout-item">
                         <form id="logout-form"
                               th:action="@{/users/logout}"
