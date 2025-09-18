@@ -115,7 +115,6 @@
 
 .dropdown-popover.show {
     opacity: 1;
-    /*display: flex;*/
     gap: 5px;
     pointer-events: auto;
     transform: translateY(0);
@@ -124,13 +123,13 @@
 /* Popover items */
 .dropdown-popover .dropdown-item {
     padding: 8px 12px;   border-radius: 4px;
+    background: var(--primary);
     white-space: nowrap;
     cursor: pointer;
+    box-shadow: var(--shadow);
 
-    background: var(--primary);
     color: var(--dark);
     text-transform: uppercase;
-    box-shadow: var(--shadow);
     transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -175,7 +174,7 @@
     }
 
     .dropdown-popover.show {
-        max-height: 500px; /* enough for all items */
+        max-height: 500px;
         opacity: 1;
     }
 
@@ -217,6 +216,4 @@
         border-radius: 50%;
         object-fit: cover;
     }
-
-
 }
