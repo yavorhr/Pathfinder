@@ -57,6 +57,15 @@
     grid-area: top-box-b;
 }
 
+/* Weather boxes */
+
+.weather-boxes-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
 /* Boxes */
 .boxes {
     display: grid;
@@ -96,7 +105,6 @@
 }
 
 /* The most commented route */
-
 .most-commented {
     background: var(--primary);
     max-width: 1800px;
@@ -134,10 +142,57 @@
 /* Tablet (768px–1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
     .main-content .top-container {
+        display: grid;
         grid-template-areas:
-      'showcase showcase'
-      'top-box-a top-box-b';
-        grid-template-columns: 1fr 1fr;
+        'showcase showcase'
+        'top-box-a top-box-b';
+        grid-template-columns: auto auto;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .top-box-a {
+        grid-area: top-box-a;
+    }
+
+    .top-box-b {
+        grid-area: top-box-b;
+    }
+
+    /* Categories boxes  */
+    .boxes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        justify-items: center;
+    }
+
+    .main-btn {
+        width: 90%;
+        overflow: hidden;
+    }
+
+    .main-btn .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .main-btn .box img {
+        height: 80px;
+        width: auto;
+    }
+
+    .main-btn .box h3 {
+        font-size: 1rem;
+        margin: 6px 0 2px;
+    }
+
+    .main-btn .box p {
+        font-size: 0.8rem;
+        margin: 0;
     }
 
     .main-content .showcase {
@@ -181,8 +236,8 @@
     }
 
     .main-content .showcase {
+        min-height: 300px;
         padding: 1rem;
-        min-height: auto;
         text-align: center;
         align-items: center;
     }
@@ -198,16 +253,12 @@
     .main-content .top-box {
         padding: 1rem;
         text-align: center;
+        max-height: 200px;
     }
 
     .main-content .top-box img {
         max-width: 100px;
         height: auto;
-    }
-
-    .main-content .boxes {
-        grid-template-columns: 1fr;
-        padding: 1rem;
     }
 
     .main-content .box {
@@ -217,6 +268,45 @@
     .main-content .most-commented {
         grid-template-columns: 1fr;
         padding: 1rem;
+    }
+
+    /* Categories buttons */
+    .boxes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        justify-items: center;
+    }
+
+    .main-btn {
+        display: block;
+        width: 100%;
+        max-height: 150px;
+        overflow: hidden;
+    }
+
+    .main-btn .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 8px;
+    }
+
+    .main-btn .box img {
+        height: 80px;
+        width: auto;
+    }
+
+    .main-btn .box h3 {
+        font-size: 1rem;
+        margin: 6px 0 2px;
+    }
+
+    .main-btn .box p {
+        font-size: 0.8rem;
+        margin: 0;
     }
 
     .most-commented img {
