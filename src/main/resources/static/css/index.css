@@ -78,6 +78,7 @@
     text-align: center;
     padding: 1.5rem 2rem;
     box-shadow: var(--shadow);
+    height: 300px;
 }
 
 /* Routes categories buttons */
