@@ -161,7 +161,6 @@
 
 /* Mobile styles: max 768px */
 @media (max-width: 768px) {
-
     .dropdown-popover {
         position: static !important;
         flex-direction: column;
