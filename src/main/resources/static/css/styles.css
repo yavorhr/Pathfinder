@@ -47,7 +47,9 @@ body {
 }
 
 /* Labels styling - Login, Register, Add route */
-form label {
+form.login-form label,
+.profile-data-wrapper .firstName-label,
+.profile-data-wrapper .lastName-label {
     margin-bottom: 5px;
     display: block;
     text-align: center;
@@ -60,7 +62,7 @@ form label {
     background: rgba(0, 0, 0, 0.2);
 }
 
-form label:hover {
+form label:hover{
     color: #ffd700;
     transition: all 0.2s ease-in-out;
 }
