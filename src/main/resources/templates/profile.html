@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="profile-data-wrapper">
                                     <label for="lastName-input" class="lastName-label">Last name:</label>
-                                    <input  id="lastName-input" class="form-control" type="text" th:value="*{lastName}">
+                                    <input id="lastName-input" class="form-control" type="text" th:value="*{lastName}">
                                     <span id="lastName-error" class="error-message text-danger"></span>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                             <li>
                                 <i class="fab fa-facebook-square"></i>
                                 <span
-
+                                        class="show-social-icon"
                                         th:text="*{facebookAcc}"
                                         id="facebook-display"></span>
                                 <input
@@ -112,7 +112,7 @@
                             <li>
                                 <i class="fab fa-instagram"></i>
                                 <span
-
+                                        class="show-social-icon"
                                         th:text="*{instagramAcc}"
                                         id="instagram-display"></span>
                                 <input
@@ -124,7 +124,7 @@
                             <li>
                                 <i class="fab fa-linkedin"></i>
                                 <span
-
+                                        class="show-social-icon"
                                         th:value="*{linkedIn}"
                                         id="linkedin-display"></span>
                                 <input
@@ -133,11 +133,13 @@
                                         type="text"
                                         name="*{linkedIn}">
                             </li>
-                            <li id="email-wrapper">
+                            <li class="email-wrapper">
                                 <i class="fa fa-envelope"></i>
-                                <span th:if="*{email}"
-                                      th:text="*{email}"
-                                      id="email-display"></span>
+                                <span
+                                        class="show-social-icon"
+                                        th:if="*{email}"
+                                        th:text="*{email}"
+                                        id="email-display"></span>
                             </li>
                         </ul>
 
@@ -145,7 +147,8 @@
                             <div class="buttons mt-8">
                                 <button id="edit-button" class="btn btn-outline-primary px-3 py-2">Edit</button>
                                 <button id="save-button" class="btn btn-primary px-3 py-2 d-none">Save</button>
-                                <button id="reset-button" class="btn btn-outline-secondary px-3 py-2 d-none">Reset</button>
+                                <button id="reset-button" class="btn btn-outline-secondary px-3 py-2 d-none">Reset
+                                </button>
                             </div>
                         </div>
                     </form>
