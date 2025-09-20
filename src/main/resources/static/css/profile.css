@@ -17,6 +17,7 @@ body {
     flex-direction: column;
     align-content: center;
     align-items: center;
+    margin-top: 1rem;
 }
 
 .profile-main {
@@ -152,6 +153,7 @@ body {
 
 .social-list {
     margin-bottom: 4rem;
+    margin-top: 3rem;
 }
 
 .social-list label {
@@ -195,7 +197,7 @@ body {
 }
 
 .full-name-wrapper {
-    margin-bottom: 20px;
+    margin-bottom: 2rem
 }
 
 .full-name-display {
@@ -260,7 +262,8 @@ body {
     pointer-events: none;
 }
 
-.add-image-wrapper:hover #upload-button {
+.add-image-wrapper:hover #upload-button,
+.add-image-wrapper.show-upload #upload-button {
     opacity: 1;
     pointer-events: auto;
 }
