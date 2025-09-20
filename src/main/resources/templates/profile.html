@@ -40,30 +40,28 @@
                                id="id-input">
                         <div id="full-name-wrapper">
                             <p class="full-name-title">Full name: </p>
-                            <div class="profile-data-wrapper name-wrapper">
-                                <label class="mt-2 mb-0 first-name-label d-none" for="firstName-input">First
-                                    name: </label>
-                                <span id="firstName-display"
-                                      th:text="*{firstName}">Test</span>
-                                <input id="firstName-input"
-                                       class="form-control d-none"
-                                       type="text"
-                                       th:value="*{firstName}">
-                                <span id="firstName-error" class="error-message text-danger "></span>
+
+                            <!-- Display mode -->
+                            <div class="full-name-display">
+                                <span id="firstName-display" th:text="*{firstName}">Test</span>
+                                <span id="lastName-display" th:text="*{lastName}">Testov</span>
                             </div>
 
-                            <div class="profile-data-wrapper name-wrapper">
-                                <label class="mt-2 mb-0 last-name-label  d-none" for="lastName-input">Last
-                                    name: </label>
-                                <span id="lastName-display"
-                                      th:text="*{lastName}">Testov</span>
-                                <input id="lastName-input"
-                                       class="form-control d-none"
-                                       type="text"
-                                       th:value="*{lastName}">
-                                <span id="lastName-error" class="error-message text-danger"></span>
+                            <!-- Edit mode -->
+                            <div class="full-name-edit d-none">
+                                <div class="profile-data-wrapper">
+                                    <label for="firstName-label">First name:</label>
+                                    <input id="firstName-input" class="form-control" type="text" th:value="*{firstName}">
+                                    <span id="firstName-error" class="error-message text-danger"></span>
+                                </div>
+                                <div class="profile-data-wrapper">
+                                    <label for="lastName-label">Last name:</label>
+                                    <input id="lastName-input" class="form-control" type="text" th:value="*{lastName}">
+                                    <span id="lastName-error" class="error-message text-danger"></span>
+                                </div>
                             </div>
                         </div>
+
                         <div class="profile-data-wrapper">
                             <label class="mt-2 mb-0" for="username-input">Username: </label>
 
