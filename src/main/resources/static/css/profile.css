@@ -92,13 +92,28 @@ body {
 }
 
 .profile-data-wrapper {
-    max-width: 50%;
     margin: 0 auto;
     font-size: 20px;
 }
 
-.profile-data-wrapper label {
-    font-weight: bold;
+.profile-data-wrapper.age,
+.profile-data-wrapper.username {
+    display: block;
+    max-width: 212px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: none;
+    background: rgba(0, 0, 0, 0.07);
+    cursor: not-allowed;
+    border: 1px solid #ced4da;
+
+    font-weight: 500;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 18px;
+    color: gray;
 }
 
 .social-list {
