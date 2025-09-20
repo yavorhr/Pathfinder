@@ -127,6 +127,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (firstD) originalValues["firstName-display"] = firstD.textContent;
         if (lastD) originalValues["lastName-display"] = lastD.textContent;
 
+        // Hide email wrapper
+        const emailWrapper = qs('.email-wrapper');
+        if (emailWrapper) emailWrapper.classList.add("d-none");
+
         // toggle full name containers if present
         const fullDisplay = qs(".full-name-display");
         const fullEdit = qs(".full-name-edit");
@@ -254,11 +258,15 @@ document.addEventListener("DOMContentLoaded", function () {
             if (displayEl) displayEl.classList.remove("d-none");
         });
 
+        // Hide email wrapper
+        const emailWrapper = qs('.email-wrapper');
+        if (emailWrapper) emailWrapper.classList.remove("d-none");
+
         // Restore first/last name text and toggle containers
         const fullEdit = qs(".full-name-edit");
         const fullDisplay = qs(".full-name-display");
-
         if (fullEdit) fullEdit.classList.add("d-none");
+
         if (fullDisplay) {
             if (originalValues["firstName-display"]) qs("#firstName-display").textContent = originalValues["firstName-display"];
             if (originalValues["lastName-display"]) qs("#lastName-display").textContent = originalValues["lastName-display"];
@@ -282,4 +290,28 @@ document.addEventListener("DOMContentLoaded", function () {
         if (resetButton) resetButton.classList.add("d-none");
         editButton.classList.remove("d-none");
     }
+
+    // Toggle image upload button on click
+    const addImageWrapper = document.querySelector(".add-image-wrapper");
+
+    addImageWrapper.addEventListener("click", () => {
+        addImageWrapper.classList.toggle("show-upload");
+    });
+
+    // Toggle social icons on click
+    const socialItems = document.querySelectorAll(".social-list li");
+    socialItems.forEach(item => {
+        item.addEventListener("click", (e) => {
+            // Toggle tooltip visibility
+            item.classList.toggle("show-social-icon");
+
+            // Toggle the other items
+            socialItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove("show-social-icon");
+                }
+            });
+        });
+    });
+
 });
