@@ -1,244 +1,288 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const editButton = document.getElementById("edit-button");
-    const saveButton = document.getElementById("save-button");
-    const resetButton = document.getElementById("reset-button");
-    const inputFields = document.querySelectorAll("input:not(#upload-input):not(#username-input), textarea");
+    const qs = (s) => document.querySelector(s);
+    const qsa = (s) => Array.from(document.querySelectorAll(s));
 
+    const editButton = qs("#edit-button");
+    const saveButton = qs("#save-button");
+    const resetButton = qs("#reset-button");
+
+// exclude upload, username, age and hidden id input from editable fields
+    const inputFields = qsa("input:not(#upload-input):not(#username-input):not(#id-input), textarea")
+        .filter(input => !input.closest("#age-wrapper")); // also exclude age (though it's span-only)
+
+    // CSRF
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute("content");
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute("content");
 
-    const uploadButton = document.getElementById("upload-button");
-    const uploadInput = document.getElementById("upload-input");
-    const profileImage = document.getElementById("profile-image");
+    // Upload elements
+    const uploadButton = qs("#upload-button");
+    const uploadInput = qs("#upload-input");
+    const profileImage = qs("#profile-image");
 
-    uploadButton.addEventListener("click", () => {
-        uploadInput.click(); // Open file selection dialog
-    });
+    if (!editButton) {
+        console.error("Missing #edit-button in DOM — profile editor will not initialize.");
+        return;
+    }
 
-    uploadInput.addEventListener("change", async (event) => {
-        const file = event.target.files[0];
+    // Save/Reset hidden at start
+    if (saveButton) {
+        saveButton.classList.add("d-none");
+    }
 
-        if (file) {
+    if (resetButton) {
+        resetButton.classList.add("d-none")
+    }
+
+    // Snapshot of original values in enableMode
+    let originalValues = {};
+
+    // Upload handlers
+    if (uploadButton && uploadInput) {
+        uploadButton.addEventListener("click", () => uploadInput.click());
+        uploadInput.addEventListener("change", async (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
             const formData = new FormData();
             formData.append("file", file);
 
             try {
+                const headers = {};
+                if (csrfHeader && csrfToken) headers[csrfHeader] = csrfToken;
+
                 const response = await fetch("/api/profile/image-upload", {
                     method: "POST",
-                    headers: {
-                        [csrfHeader]: csrfToken
-                    },
+                    headers,
                     body: formData,
                 });
 
-                if (response.ok) {
-                    const data = await response.json();
-
-                    let oldPublicInputElement = document.getElementById("oldProfileImagePublicId");
-                    let oldPublicId = oldPublicInputElement.value;
-
-                    oldPublicInputElement.value = data.publicId;
-
-                    profileImage.src = data.url;
-
-                    if (oldPublicId) {
-                        await deleteOldProfilePicture(oldPublicId);
-                    }
-
-                } else {
-                    const error = await response.json();
-                    alert(error.error || "Failed to upload profile picture.");
+                if (!response.ok) {
+                    const err = await response.json().catch(() => ({}));
+                    alert(err.error || "Failed to upload profile picture.");
+                    return;
                 }
-            } catch (error) {
+
+                const data = await response.json();
+                const oldPublicInputElement = qs("#oldProfileImagePublicId");
+                const oldPublicId = oldPublicInputElement ? oldPublicInputElement.value : null;
+
+                if (oldPublicInputElement) oldPublicInputElement.value = data.publicId;
+                if (profileImage) profileImage.src = data.url;
+
+                if (oldPublicId) await deleteOldProfilePicture(oldPublicId);
+            } catch (err) {
+                console.error(err);
                 alert("An error occurred while uploading the picture.");
             }
-        }
-    });
-
-    function deleteOldProfilePicture(publicId) {
-        fetch("/api/profile/image-delete", {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                [csrfHeader]: csrfToken
-            },
-            body: JSON.stringify({publicId: publicId}),
-        })
-            .then(response => response.json())
-            .then(data => console.log("Old profile picture deleted successfully."))
-            .catch(error => console.error("Error deleting image:", error));
+        });
     }
 
-    // Attach event listener to "Edit" button
-    editButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent form submission
+    function deleteOldProfilePicture(publicId) {
+        const headers = {"Content-Type": "application/json"};
+        if (csrfHeader && csrfToken) headers[csrfHeader] = csrfToken;
+
+        return fetch("/api/profile/image-delete", {
+            method: "DELETE",
+            headers,
+            body: JSON.stringify({publicId}),
+        })
+            .then(res => res.json().catch(() => ({})))
+            .then(() => console.log("Old profile picture deleted."))
+            .catch(e => console.error("Error deleting image:", e));
+    }
+
+    // Event listeners
+    editButton.addEventListener("click", function (e) {
+        e.preventDefault();
         enableEditMode();
     });
 
-    // Function to enable edit mode
-    function enableEditMode() {
-
-        const usernameDisplay = document.getElementById("username-display");
-        const usernameInput = document.getElementById("username-input");
-
-        document.querySelector(".social-list").classList.add("max-width")
-
-        if (usernameDisplay && usernameInput) {
-            usernameDisplay.classList.add("d-none");
-            usernameInput.classList.remove("d-none");
-        }
-
-        document.querySelector('.full-name-title').classList.add('d-none');
-        document.querySelector('.last-name-label').classList.remove('d-none');
-        document.querySelector('.first-name-label').classList.remove('d-none');
-        document.querySelectorAll('.name-wrapper').forEach(e => e.classList.add('dynamic-width'))
-
-        inputFields.forEach(input => {
-            const displayElement = document.getElementById(input.id.replace("-input", "-display"));
-
-            // Hide age
-            document.getElementById('age-wrapper').classList.add("d-none");
-            document.getElementById('email-wrapper').classList.add("d-none");
-
-            if (displayElement) {
-                displayElement.classList.add("d-none"); // Hide display element
-            }
-            input.classList.remove("d-none"); // Show input field
-        });
-
-        editButton.classList.add("d-none"); // Hide Edit button
-        saveButton.classList.remove("d-none"); // Show Save button
-        resetButton.classList.remove("d-none"); // Show Reset button
+    if (saveButton) {
+        saveButton.addEventListener("click", function (e) {
+            e.preventDefault();
+            saveChanges();
+        })
     }
 
-    // Attach event listener to "Save" button
-    saveButton.addEventListener("click", function (event) {
-        event.preventDefault();
-        saveChanges();
-    });
+    if (resetButton) {
+        resetButton.addEventListener("click", function (e) {
+            e.preventDefault();
+            resetChanges();
+        })
+    }
 
-    // Function to save changes
-    function saveChanges() {
+    // Enable edit mode
+    function enableEditMode() {
+        originalValues = {};
 
-        const updatedData = {
-            id: document.getElementById("id-input").value.trim(),
-            firstName: document.getElementById("firstName-input").value.trim(),
-            lastName: document.getElementById("lastName-input").value.trim(),
-            aboutMe: document.getElementById("description-input").value.trim(),
-            facebookAcc: document.getElementById("facebook-input").value.trim(),
-            instagramAcc: document.getElementById("instagram-input").value.trim(),
-            linkedIn: document.getElementById("linkedin-input").value.trim()
+        // snapshot input values
+        inputFields.forEach(input => {
+            originalValues[input.id] = input.value;
+        });
+
+        // snapshot visible displays (first & last name)
+        const firstD = qs("#firstName-display");
+        const lastD = qs("#lastName-display");
+
+        if (firstD) originalValues["firstName-display"] = firstD.textContent;
+        if (lastD) originalValues["lastName-display"] = lastD.textContent;
+
+        // toggle full name containers if present
+        const fullDisplay = qs(".full-name-display");
+        const fullEdit = qs(".full-name-edit");
+        const fullNameTitle = qs(".full-name-title");
+
+        if (fullDisplay) fullDisplay.classList.add("d-none");
+        if (fullEdit) fullEdit.classList.remove("d-none");
+
+        // hide any display elements and show inputs
+        inputFields.forEach(input => {
+            const displayEl = qs(`#${input.id.replace("-input", "")}-display`);
+            if (displayEl) displayEl.classList.add("d-none");
+            input.classList.remove("d-none");
+        });
+
+        if (fullNameTitle) fullNameTitle.classList.add("d-none");
+
+        // toggle buttons
+        editButton.classList.add("d-none");
+        if (saveButton) saveButton.classList.remove("d-none");
+        if (resetButton) resetButton.classList.remove("d-none");
+    }
+
+    // Save changes
+    async function saveChanges() {
+        // build payload defensively
+        const payload = {
+            id: qs("#id-input") ? qs("#id-input").value.trim() : "",
+            firstName: qs("#firstName-input") ? qs("#firstName-input").value.trim() : "",
+            lastName: qs("#lastName-input") ? qs("#lastName-input").value.trim() : "",
+            aboutMe: qs("#description-input") ? qs("#description-input").value.trim() : "",
+            facebookAcc: qs("#facebook-input") ? qs("#facebook-input").value.trim() : "",
+            instagramAcc: qs("#instagram-input") ? qs("#instagram-input").value.trim() : "",
+            linkedIn: qs("#linkedin-input") ? qs("#linkedin-input").value.trim() : ""
         };
 
-        // Clear previous error messages
-        document.querySelectorAll(".error-message").forEach(error => error.textContent = "");
+        // clear previous validation messages
+        qsa(".error-message").forEach(e => e.textContent = "");
 
-        document.querySelector(".social-list").classList.remove("max-width")
-        // Collect data from input fields
+        const socialList = qs(".social-list");
+        if (socialList) socialList.classList.remove("max-width");
+
+        // update display elements immediately (same behavior you had)
         inputFields.forEach(input => {
-            const fieldName = input.id.replace("-input", ""); // Extract field name
-            updatedData[fieldName] = input.value.trim(); // Add field value to data object
-
-            // Update display elements
-            const displayElement = document.getElementById(`${fieldName}-display`);
-            if (displayElement) {
-                displayElement.textContent = input.value.trim(); // Update display element
-            }
+            const key = input.id.replace("-input", "");
+            payload[key] = input.value.trim();
+            const displayEl = qs(`#${key}-display`);
+            if (displayEl) displayEl.textContent = input.value.trim();
         });
 
-        // Send the updated data to the server using a POST request
-        fetch("/users/profile/edit", {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                [csrfHeader]: csrfToken,
-            },
-            body: JSON.stringify(updatedData),
-        })
-            .then(async response => {
-                const data = await response.json();
+        try {
+            const headers = {"Content-Type": "application/json"};
+            if (csrfHeader && csrfToken) headers[csrfHeader] = csrfToken;
 
-                if (!response.ok) {
-                    // Validation errors received
-
-                    Object.keys(data).forEach(field => {
-                        const errorMessage = data[field];
-                        const errorElement = document.getElementById(`${field}-error`);
-                        if (errorElement) {
-                            errorElement.textContent = errorMessage;
-                        }
-                    });
-                    throw new Error("Validation failed");
-                }
-
-                alert("Profile updated successfully!");
-
-                document.getElementById("firstName-display").textContent = data.firstName;
-                document.getElementById("lastName-display").textContent = data.lastName;
-                document.getElementById("username-display").textContent = data.username;
-                document.getElementById("description-display").textContent = data.aboutMe;
-                document.getElementById("facebook-display").textContent = data.facebookAcc;
-                document.getElementById("instagram-display").textContent = data.instagramAcc;
-                document.getElementById("linkedin-display").textContent = data.linkedIn;
-
-                inputFields.forEach(input => {
-                    const displayElement = document.getElementById(input.id.replace("-input", "-display"));
-                    input.classList.add("d-none");
-                    if (displayElement) {
-                        displayElement.classList.remove("d-none");
-                    }
-                });
-
-                document.querySelector('.full-name-title').classList.remove('d-none');
-                document.querySelector('.last-name-label').classList.add('d-none');
-                document.querySelector('.first-name-label').classList.add('d-none');
-                document.querySelectorAll('.name-wrapper').forEach(e => e.classList.remove('dynamic-width'))
-
-                saveButton.classList.add("d-none");
-                resetButton.classList.add("d-none");
-                editButton.classList.remove("d-none");
-            })
-            .catch(error => {
-                console.error("Error while updating profile:", error);
-
-                if (error.message !== "Validation failed") {
-                    alert("An unexpected error occurred. Please try again.");
-                }
+            const res = await fetch("/users/profile/edit", {
+                method: "PATCH",
+                headers,
+                body: JSON.stringify(payload),
             });
+
+            const data = await res.json().catch(() => ({}));
+
+            if (!res.ok) {
+                // show validation errors under fields
+                Object.keys(data || {}).forEach(field => {
+                    const errEl = qs(`#${field}-error`);
+                    if (errEl) errEl.textContent = data[field];
+                });
+                console.warn("Validation failed", data);
+                return;
+            }
+
+            alert("Profile updated successfully!");
+
+            // refresh displayed values from server response (safe)
+            if (data.firstName) qs("#firstName-display") && (qs("#firstName-display").textContent = data.firstName);
+            if (data.lastName) qs("#lastName-display") && (qs("#lastName-display").textContent = data.lastName);
+            if (data.username) qs("#username-display") && (qs("#username-display").textContent = data.username);
+            if (data.aboutMe) qs("#description-display") && (qs("#description-display").textContent = data.aboutMe);
+            if (data.facebookAcc) qs("#facebook-display") && (qs("#facebook-display").textContent = data.facebookAcc);
+            if (data.instagramAcc) qs("#instagram-display") && (qs("#instagram-display").textContent = data.instagramAcc);
+            if (data.linkedIn) qs("#linkedin-display") && (qs("#linkedin-display").textContent = data.linkedIn);
+
+            // hide inputs and show displays
+            inputFields.forEach(input => {
+                input.classList.add("d-none");
+                const displayEl = qs(`#${input.id.replace("-input", "")}-display`);
+                if (displayEl) displayEl.classList.remove("d-none");
+            });
+
+            // update originalValues snapshot to new saved state (so future reset uses current saved values)
+            inputFields.forEach(input => originalValues[input.id] = input.value);
+
+            // toggle full-name containers
+            const fullEdit = qs(".full-name-edit");
+            const fullDisplay2 = qs(".full-name-display");
+            if (fullEdit) fullEdit.classList.add("d-none");
+            if (fullDisplay2) fullDisplay2.classList.remove("d-none");
+
+            // restore labels/wrappers if you still use old markup (safeguard)
+            const lastLabel = qs('.last-name-label');
+            if (lastLabel) lastLabel.classList.add('d-none');
+            const firstLabel = qs('.first-name-label');
+            if (firstLabel) firstLabel.classList.add('d-none');
+            qsa('.name-wrapper').forEach(e => e.classList.remove('dynamic-width'));
+
+            // buttons back to view mode
+            if (saveButton) saveButton.classList.add("d-none");
+            if (resetButton) resetButton.classList.add("d-none");
+            editButton.classList.remove("d-none");
+
+        } catch (err) {
+            console.error("Error while saving profile:", err);
+            alert("An unexpected error occurred. Please try again.");
+        }
     }
 
-    // Attach event listener to "Reset" button
-    resetButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent default form submission
-        resetChanges();
-    });
-
-    // Function to reset changes
+    // Reset changes using snapshot
     function resetChanges() {
-        document.querySelector('.full-name-title').classList.remove('d-none');
-        document.querySelector('.last-name-label').classList.add('d-none');
-        document.querySelector('.first-name-label').classList.add('d-none');
-        document.querySelectorAll('.name-wrapper').forEach(e => e.classList.remove('dynamic-width'))
-
-        document.querySelector(".social-list").classList.remove("max-width")
-
+        // Restore all input values from snapshot (if available)
         inputFields.forEach(input => {
-            const displayElement = document.getElementById(input.id.replace("-input", "-display"));
-
-            if (displayElement) {
-                input.value = displayElement.textContent; // Reset input value to display value
+            if (originalValues.hasOwnProperty(input.id)) {
+                input.value = originalValues[input.id];
             }
-            input.classList.add("d-none"); // Hide input fields
-
-            if (displayElement) {
-                displayElement.classList.remove("d-none"); // Show display elements
-            }
-
-            document.querySelectorAll(".error-message").forEach(error => error.textContent = "");
+            // hide input and show display element
+            input.classList.add("d-none");
+            const displayEl = qs(`#${input.id.replace("-input", "")}-display`);
+            if (displayEl) displayEl.classList.remove("d-none");
         });
 
-        saveButton.classList.add("d-none"); // Hide Save button
-        resetButton.classList.add("d-none"); // Hide Reset button
-        editButton.classList.remove("d-none"); // Show Edit button
+        // Restore first/last name text and toggle containers
+        const fullEdit = qs(".full-name-edit");
+        const fullDisplay = qs(".full-name-display");
+
+        if (fullEdit) fullEdit.classList.add("d-none");
+        if (fullDisplay) {
+            if (originalValues["firstName-display"]) qs("#firstName-display").textContent = originalValues["firstName-display"];
+            if (originalValues["lastName-display"]) qs("#lastName-display").textContent = originalValues["lastName-display"];
+            fullDisplay.classList.remove("d-none");
+        } else {
+            // fallback: handle old labels/wrappers
+            const title = qs(".full-name-title");
+            if (title) title.classList.remove("d-none");
+            const lastLabel = qs('.last-name-label');
+            if (lastLabel) lastLabel.classList.add('d-none');
+            const firstLabel = qs('.first-name-label');
+            if (firstLabel) firstLabel.classList.add('d-none');
+            qsa('.name-wrapper').forEach(e => e.classList.remove('dynamic-width'));
+        }
+
+        // clear errors
+        qsa(".error-message").forEach(e => e.textContent = "");
+
+        // restore buttons
+        if (saveButton) saveButton.classList.add("d-none");
+        if (resetButton) resetButton.classList.add("d-none");
+        editButton.classList.remove("d-none");
     }
 });
