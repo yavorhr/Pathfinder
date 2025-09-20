@@ -116,7 +116,7 @@ body {
     color: gray;
 }
 
-.profile-data-wrapper.age * ,
+.profile-data-wrapper.age *,
 .profile-data-wrapper.username * {
     cursor: not-allowed !important;
     user-select: none;
@@ -194,7 +194,7 @@ body {
     transform: scale(1.3);
 }
 
-.full-name-wrapper{
+.full-name-wrapper {
     margin-bottom: 20px;
 }
 
@@ -216,6 +216,13 @@ body {
 
 .dynamic-width {
     width: 50%
+}
+
+/* About me input */
+#description-input {
+    height: 180px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .details-main-single-row {
