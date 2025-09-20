@@ -39,7 +39,6 @@
                                name="id"
                                id="id-input">
                         <div id="full-name-wrapper">
-                            <p class="full-name-title">Full name: </p>
 
                             <!-- Display mode -->
                             <div class="full-name-display">
@@ -50,19 +49,19 @@
                             <!-- Edit mode -->
                             <div class="full-name-edit d-none">
                                 <div class="profile-data-wrapper">
-                                    <label for="firstName-label">First name:</label>
-                                    <input id="firstName-input" class="form-control" type="text" th:value="*{firstName}">
+                                    <label for="firstName-label" class="firstName-label" >First name:</label>
+                                    <input id="firstName-label" class="form-control" type="text" th:value="*{firstName}">
                                     <span id="firstName-error" class="error-message text-danger"></span>
                                 </div>
                                 <div class="profile-data-wrapper">
-                                    <label for="lastName-label">Last name:</label>
-                                    <input id="lastName-input" class="form-control" type="text" th:value="*{lastName}">
+                                    <label for="lastName-label" class="lastName-label">Last name:</label>
+                                    <input id="lastName-label" class="form-control" type="text" th:value="*{lastName}">
                                     <span id="lastName-error" class="error-message text-danger"></span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="profile-data-wrapper">
+                        <div class="profile-data-wrapper username">
                             <label class="mt-2 mb-0" for="username-input">Username: </label>
 
                             <!-- Display mode -->
@@ -79,7 +78,7 @@
                             <span id="username-error" class="error-message text-danger"></span>
                         </div>
 
-                        <div id="age-wrapper" class="profile-data-wrapper">
+                        <div id="age-wrapper" class="profile-data-wrapper age">
                             <label class="mt-2 mb-0">Age: </label>
                             <span id="age-display"
                                   th:text="*{age}">33</span>
