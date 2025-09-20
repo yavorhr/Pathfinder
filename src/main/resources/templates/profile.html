@@ -28,7 +28,7 @@
                            th:value="${userViewModel.profileImagePublicId == null
                            ? ''
                            : userViewModel.profileImagePublicId}">
-                    <button id="upload-button" class="btn btn-outline-primary mt-2">Change</button>
+                    <button id="upload-button" class="btn btn-outline-primary px-2 py-2 mt-2">Change</button>
                 </div>
                 <div class="text-center mt-3">
                     <form id="profile-form" th:object="${userViewModel}"
@@ -143,9 +143,9 @@
 
                         <div class="buttons">
                             <div class="buttons mt-8">
-                                <button id="edit-button" class="btn btn-outline-primary px-4">Edit</button>
-                                <button id="save-button" class="btn btn-primary px-4 d-none">Save</button>
-                                <button id="reset-button" class="btn btn-outline-secondary px-4 d-none">Reset</button>
+                                <button id="edit-button" class="btn btn-outline-primary px-3 py-2">Edit</button>
+                                <button id="save-button" class="btn btn-primary px-3 py-2 d-none">Save</button>
+                                <button id="reset-button" class="btn btn-outline-secondary px-3 py-2 d-none">Reset</button>
                             </div>
                         </div>
                     </form>
