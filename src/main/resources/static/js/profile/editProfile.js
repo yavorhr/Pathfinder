@@ -130,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // toggle full name containers if present
         const fullDisplay = qs(".full-name-display");
         const fullEdit = qs(".full-name-edit");
-        const fullNameTitle = qs(".full-name-title");
 
         if (fullDisplay) fullDisplay.classList.add("d-none");
         if (fullEdit) fullEdit.classList.remove("d-none");
@@ -141,8 +140,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (displayEl) displayEl.classList.add("d-none");
             input.classList.remove("d-none");
         });
-
-        if (fullNameTitle) fullNameTitle.classList.add("d-none");
 
         // toggle buttons
         editButton.classList.add("d-none");
