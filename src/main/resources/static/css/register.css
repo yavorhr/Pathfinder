@@ -17,7 +17,7 @@
 }
 
 /* Register elements alignment */
-.form_container {
+.register-form{
     display: flex;
     flex-direction: column;
     align-items: center;
