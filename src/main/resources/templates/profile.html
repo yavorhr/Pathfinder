@@ -4,11 +4,8 @@
 <head th:replace="fragments/head :: head(additionalCss='/css/profile.css')">
 
 <body>
-
 <main class="p-5 profile-main">
-
     <div th:replace="fragments/home-button"></div>
-
     <div class="profile-container">
         <div class="row d-flex justify-content-center">
             <div class="profile-card p-3 py-4"
@@ -84,11 +81,11 @@
                         </div>
 
                         <div class="px-4 profile-data-wrapper description">
-                            <p id="description-display"
+                            <q id="description-display"
                                th:text="*{aboutMe}"
                                class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim et nostrum
                                 optio perferendis quam quod ratione rem sit soluta ut! A dolor laborum, maiores neque
-                                nesciunt quis rerum sunt suscipit.</p>
+                                nesciunt quis rerum sunt suscipit.</q>
                         </div>
 
                         <textarea id="description-input"
