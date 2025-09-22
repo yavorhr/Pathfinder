@@ -10,6 +10,10 @@
     margin-top: 7rem;
 }
 
+.btn {
+    padding: 1rem !important;
+}
+
 /* Road */
 .road {
     display: grid;
@@ -89,7 +93,6 @@
     color: var(--primary);
     font-weight: bold;
 }
-
 
 
 /* Tablet view */
