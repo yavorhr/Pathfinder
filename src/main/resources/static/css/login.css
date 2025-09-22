@@ -45,6 +45,26 @@ body {
     min-width: 500px;
 }
 
+/* Register link */
+.register-text {
+    color: var(--body-color);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.register-link {
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.2s ease-in-out;
+}
+
+.register-link:hover {
+    color: var(--darker-blue);
+    text-decoration: underline;
+}
+
 /* Tablet (768px - 1024px) */
 @media screen and (max-width: 1024px) {
     .login-parent {

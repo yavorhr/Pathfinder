@@ -41,6 +41,14 @@
                         <button class="btn mt-3" type="submit">Login</button>
                     </div>
                 </form>
+
+                <div class="mt-3 register-link-wrapper">
+                    <p class="register-text">
+                        Don’t have an account ?
+                        <a th:href="@{/users/register}" class="register-link">Register now</a>
+                    </p>
+                </div>
+
                 <div th:if="${login_error_message}">
                     <p th:text="${login_error_message}"
                        class="error-text">Error passed by model</p>
