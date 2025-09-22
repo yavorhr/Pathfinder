@@ -166,8 +166,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 <table>
   <tr>
     <td valign="top" width="50%">
-      <a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
-        <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="width:500px; height:auto;"/>
+      <a href="https://github.com/user-attachments/assets/3639b06e-7e93-4904-a6d2-af55f46e3f2e">
+        <img src="https://github.com/user-attachments/assets/3639b06e-7e93-4904-a6d2-af55f46e3f2e" style="width:500px; height:auto;"/>
       </a>
     </td>
      <td valign="top" style="padding-left:20px;">
@@ -179,8 +179,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
         <li>
           Includes <b>input validation</b>: minimal field length, unique email/username, required options (e.g., gender).  
           <br/>
-          <a href="https://github.com/user-attachments/assets/e74f2622-e74c-49b8-9e4a-01dd3c56aa86">
-            <img src="https://github.com/user-attachments/assets/e74f2622-e74c-49b8-9e4a-01dd3c56aa86" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          <a href="https://github.com/user-attachments/assets/9ca7e7aa-4f4c-481b-b953-aecba4b1fcd6">
+            <img src="https://github.com/user-attachments/assets/9ca7e7aa-4f4c-481b-b953-aecba4b1fcd6" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
         </li>
         <li>After successful registration, users are redirected to <b>Login</b>.</li>
@@ -191,14 +191,16 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </table>
 
 ---
+![login](https://github.com/user-attachments/assets/)
+![login-error](https://github.com/user-attachments/assets/b2f2c2d5-fedc-4fa2-a172-b5fa986771aa)
 
 ### Login
 
 <table>
   <tr>
      <td valign="top" width="50%">
-       <a href="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8">
-        <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" style="width:500px; height:auto;"/>
+       <a href="https://github.com/user-attachments/assets/1fec1b02-436f-41f8-bf1a-f0ebd5e4ddd7">
+        <img src="https://github.com/user-attachments/assets/1fec1b02-436f-41f8-bf1a-f0ebd5e4ddd7" style="width:500px; height:auto;"/>
       </a>
     </td>
      <td valign="top" style="padding-left:20px;">
