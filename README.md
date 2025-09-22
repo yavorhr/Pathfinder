@@ -339,12 +339,13 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ---
 
 ### User profile
+![profile]
 
 <table>
   <tr>
    <td valign="top" width="50%">
-<a href="https://github.com/user-attachments/assets/9fa7a9bb-594b-4689-8bea-d3bf11b7a06c">
-  <img src="https://github.com/user-attachments/assets/9fa7a9bb-594b-4689-8bea-d3bf11b7a06c" style="width:500px; height:auto;"/>
+<a href="https://github.com/user-attachments/assets/ac9a7eec-7d15-4b6b-8930-1199ae093f9e">
+  <img src="https://github.com/user-attachments/assets/ac9a7eec-7d15-4b6b-8930-1199ae093f9e" style="width:500px; height:auto;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
@@ -364,12 +365,13 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ---
 
 ### User profile in "Edit mode"
+![profile-edit]
 
 <table>
   <tr>
    <td valign="top" width="50%">
-<a href="https://github.com/user-attachments/assets/42919274-af59-4e9f-a37e-b08429455102">
-  <img src="https://github.com/user-attachments/assets/42919274-af59-4e9f-a37e-b08429455102" style="width:500px; height:auto;"/>
+<a href="https://github.com/user-attachments/assets/767f09d6-96f0-405a-b8cf-0e15b4cf02b8">
+  <img src="https://github.com/user-attachments/assets/767f09d6-96f0-405a-b8cf-0e15b4cf02b8" style="width:500px; height:auto;"/>
 </a></td>
     <td valign="top" style="padding-left:20px;">
       <p>User is able to edit dynamically own profile as follows:</p>
