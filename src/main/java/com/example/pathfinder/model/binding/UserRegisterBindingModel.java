@@ -30,19 +30,19 @@ public class UserRegisterBindingModel {
 
   @UniqueUsername
   @NotNull
-  @Size(min = 4, max = 20, message = "Username must be between 4 and 20 symbols")
+  @Size(min = 4, max = 20, message = "Must be between 4 and 20 symbols")
   public String getUsername() {
     return username;
   }
 
   @NotNull
-  @Size(min = 3, max = 20, message = "Fist name must be between 3 and 20 symbols")
+  @Size(min = 3, max = 20, message = "Must be between 3 and 20 symbols")
   public String getFirstName() {
     return this.firstName;
   }
 
   @NotNull
-  @Size(min = 3, max = 20, message = "Last name must be between 3 and 20 symbols")
+  @Size(min = 3, max = 20, message = "Must be between 3 and 20 symbols")
   public String getLastName() {
     return this.lastName;
   }
