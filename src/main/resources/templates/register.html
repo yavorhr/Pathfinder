@@ -25,7 +25,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('firstName')}"
                                th:errors="*{firstName}"
-                               class="errors alert alert-danger invalid-feedback">
+                               class="error-text">
                             </p>
                         </div>
                         <div class="col">
@@ -37,7 +37,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('lastName')}"
                                th:errors="*{lastName}"
-                               class="errors alert alert-danger invalid-feedback">
+                               class="error-text">
                             </p>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('username')}"
                                th:errors="*{username}"
-                               class="errors alert alert-danger invalid-feedback">
+                               class="error-text">
                             </p>
                         </div>
                         <div class="col">
@@ -65,7 +65,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('email')}"
                                th:errors="*{email}"
-                               class="errors alert alert-danger invalid-feedback">
+                               class="error-text">
                             </p>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                             </div>
                             <p th:if="${#fields.hasErrors('gender')}"
                                th:text="${#fields.errors('gender')[0]}"
-                               class="errors alert alert-danger invalid-feedback">
+                               class="error-text">
                             </p>
                         </div>
                         <div class="col col-background">
@@ -109,7 +109,7 @@
                             </div>
                             <p th:if="${#fields.hasErrors('day') ||
                              #fields.hasErrors('month') ||
-                             #fields.hasErrors('year')}" class="errors alert alert-danger">
+                             #fields.hasErrors('year')}" class="error-text">
                                 Please select birthday
                             </p>
                         </div>
@@ -159,7 +159,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('password')}"
                                th:errors="*{password}"
-                               class="errors alert alert-danger invalid-feedback">
+                               class="error-text">
                             </p>
                         </div>
 
@@ -172,7 +172,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('confirmPassword')}"
                                th:errors="*{confirmPassword}"
-                               class="errors alert alert-danger invalid-feedback">
+                               class="error-text">
                             </p>
                         </div>
                     </div>
