@@ -18,7 +18,7 @@ public class UserLoginController {
 
         switch (type) {
           case ACCOUNT_LOCKED -> model.addAttribute("login_error_message", "Your account is locked. Try again in 15 minutes.");
-          case ACCOUNT_DISABLED -> model.addAttribute("login_error_message", "Your account is disabled. Admin will contact you.");
+          case ACCOUNT_DISABLED -> model.addAttribute("login_error_message", "Your account is currently disabled.");
           case INVALID_CREDENTIALS -> model.addAttribute("login_error_message", "Invalid credentials. Please try again.");
           case ACCOUNT_EXPIRED -> model.addAttribute("login_error_message", "Your account has expired.");
           case USER_NOT_FOUND -> model.addAttribute("login_error_message", "User with this email does not exist.");
