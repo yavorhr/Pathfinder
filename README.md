@@ -339,7 +339,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ---
 
 ### User profile
-![profile]
 
 <table>
   <tr>
@@ -365,7 +364,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ---
 
 ### User profile in "Edit mode"
-![profile-edit]
 
 <table>
   <tr>
@@ -386,6 +384,11 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     </ul>
   </li>
   <li>All interactions are <b>asynchronous</b> for better UX, with immediate feedback on changes.</li>
+	     <li><b>Input validation:</b> Input validation is applied on First name and Last name of the user. <b>Invalid inputs</b> are displayed directly on the form to guide the user.</li>
+     <a href="https://github.com/user-attachments/assets/da1d7b4b-c215-4e11-b802-070f9373fc39">
+        <br/>
+            <img src="https://github.com/user-attachments/assets/da1d7b4b-c215-4e11-b802-070f9373fc39" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          </a>
 </ul>
     </td>
   </tr>
