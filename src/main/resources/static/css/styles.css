@@ -1,8 +1,9 @@
 :root {
     --primary: #ddd;
     --dark: #333;
-    --light: #fff;
     --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    --light: #fff;
+    --gray: gray;
     --lightGray: rgba(241, 241, 241, 0.8);
     --first-color: hsl(82, 60%, 28%);
     --title-color: hsl(0, 0%, 15%);
@@ -64,7 +65,7 @@ form#add-route-form label,
     background: rgba(0, 0, 0, 0.2);
 }
 
-form label:hover{
+form label:hover {
     color: #ffd700;
     transition: all 0.2s ease-in-out;
 }

@@ -7,7 +7,12 @@ body {
 .home-nav-item {
     position: absolute;
     top: 15px;
-    left: 0;
+    left: 33px;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    padding: 0 !important;
 }
 
 /* Layout */
@@ -17,6 +22,7 @@ body {
     flex-direction: column;
     align-content: center;
     align-items: center;
+
     margin-top: 1rem;
 }
 
@@ -32,7 +38,6 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    cursor: pointer;
 }
 
 .profile-container {
@@ -40,13 +45,13 @@ body {
 }
 
 .profile-card:before {
-    content: "";
     position: absolute;
+    content: "";
     left: 0;
     top: 0;
-    width: 4px;
     height: 100%;
-    background-color: #bbbef5;
+    width: 4px;
+    background-color: var(--primary);
     transform: scaleY(1);
     transition: all 0.5s;
     transform-origin: bottom
@@ -59,10 +64,10 @@ body {
 }
 
 .level-badge {
-    background-color: #6c757d;
+    background-color: var(--gray);
     padding: 0.5rem 1rem;
     border-radius: 1rem;
-    color: white;
+    color: var(--body-color);
     font-weight: bold;
     text-transform: uppercase;
     display: inline-block;
@@ -78,7 +83,7 @@ body {
     top: 0;
     width: 4px;
     height: 100%;
-    background-color: #0833e3;
+    background-color: var(--darker-blue);
     transform: scaleY(0);
     transition: all 0.5s;
     transform-origin: bottom
@@ -86,10 +91,6 @@ body {
 
 .profile-card:hover::after {
     transform: scaleY(1)
-}
-
-.fonts {
-    font-size: 20px
 }
 
 .profile-data-wrapper {
@@ -128,6 +129,33 @@ body {
     margin-top: 2rem;
 }
 
+
+
+/* Upload image */
+.add-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+#upload-button {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    pointer-events: none;
+}
+
+.add-image-wrapper:hover #upload-button,
+.add-image-wrapper.show-upload #upload-button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Social list */
 .social-list {
     display: flex;
     justify-content: space-evenly;
@@ -147,16 +175,8 @@ body {
     gap: 5px;
 
     padding: 10px;
-    color: #0833e3;
+    color: var(--darker-blue);
     font-size: 19px
-}
-
-.btn {
-    padding: 0 !important;
-}
-
-#edit-button{
-    margin-top: 2rem;
 }
 
 .social-list label {
@@ -169,20 +189,22 @@ body {
 }
 
 .social-list li span {
+    position: absolute;
     opacity: 0;
     visibility: hidden;
-    position: absolute;
     top: 40px;
     left: 50%;
-    transform: translateX(-50%);
-    background-color: #f9f9f9;
+
+    width: max-content;
+    background-color: var(--body-color);
     padding: 5px 10px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
     transition: opacity 0.5s ease, visibility 0.5s ease;
     z-index: 10;
     color: black;
-    width: max-content;
+    transform: translateX(-50%);
 }
 
 .social-list li i {
@@ -195,6 +217,12 @@ body {
     cursor: pointer;
 }
 
+.social-list li .show-social-icon {
+    opacity: 1;
+    visibility: unset;
+}
+
+/* Full name */
 #full-name-wrapper {
     margin-bottom: 2rem
 }
@@ -207,37 +235,31 @@ body {
     justify-content: center;
 }
 
-.social-list li .show-social-icon {
-    opacity: 1;
-    visibility: unset;
-}
-
 .full-name-edit {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 300px;
+    max-width: 350px;
     margin: 0 auto;
 }
 
-.dynamic-width {
-    width: 50%
+.full-name-edit .profile-data-wrapper {
+    width: 100%;
 }
 
-/* About me input */
+/* Description */
+
+.fonts {
+    font-size: 20px
+}
+
 #description-input {
     height: 180px;
     max-width: 700px;
-    margin: 0 auto;
+    margin-bottom: 3rem;
 }
 
-.details-main-single-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    grid-auto-rows: minmax(100px, auto);
-}
-
+/* Age & username fields */
 .read-only-input {
     background-color: #f0f0f0;
     color: #6c757d;
@@ -250,26 +272,14 @@ body {
     box-shadow: none;
 }
 
-.add-image-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
+/* Buttons */
+
+#edit-button {
+    margin-top: 2rem;
 }
 
-#upload-button {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -10px;
-    pointer-events: none;
-}
-
-.add-image-wrapper:hover #upload-button,
-.add-image-wrapper.show-upload #upload-button {
-    opacity: 1;
-    pointer-events: auto;
+.buttons {
+    margin-top: 2rem;
 }
 
 /* Tablet view */
