@@ -191,8 +191,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 </table>
 
 ---
-![login](https://github.com/user-attachments/assets/)
-![login-error](https://github.com/user-attachments/assets/b2f2c2d5-fedc-4fa2-a172-b5fa986771aa)
 
 ### Login
 
@@ -213,11 +211,11 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
         <li>If account is locked 3 times → becomes <b>disabled</b> (admin-only reactivation).</li>
         <li>Detailed <b>error messages</b> appear on the login screen.</li>
        <br/>
-          <a href="https://github.com/user-attachments/assets/b3b4cedf-e048-48b1-acc2-31ea3691e8ee">
-            <img src="https://github.com/user-attachments/assets/b3b4cedf-e048-48b1-acc2-31ea3691e8ee" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          <a href="https://github.com/user-attachments/assets/b2f2c2d5-fedc-4fa2-a172-b5fa986771aa">
+            <img src="https://github.com/user-attachments/assets/b2f2c2d5-fedc-4fa2-a172-b5fa986771aa" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
-        <a href="https://github.com/user-attachments/assets/0d556747-b70f-4bb6-a38f-abd57af1178c">
-            <img src="https://github.com/user-attachments/assets/0d556747-b70f-4bb6-a38f-abd57af1178c" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+        <a href="https://github.com/user-attachments/assets/4c20821c-1379-40c1-82c0-2d453c775762">
+            <img src="https://github.com/user-attachments/assets/4c20821c-1379-40c1-82c0-2d453c775762" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
       </ul>
        </p>
