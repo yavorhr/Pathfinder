@@ -123,15 +123,18 @@ body {
     user-select: none;
 }
 
+.profile-data-wrapper.description {
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+}
+
 .social-list {
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 4rem;
-    margin-top: 3rem;
     width: 60%;
+    margin: 0 auto;
+    padding: 0;
     list-style: none;
-
-    padding: 0
 }
 
 .social-list.max-width {
@@ -150,6 +153,10 @@ body {
 
 .btn {
     padding: 0 !important;
+}
+
+#edit-button{
+    margin-top: 2rem;
 }
 
 .social-list label {
