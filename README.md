@@ -166,8 +166,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 <table>
   <tr>
     <td valign="top" width="50%">
-      <a href="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc">
-        <img src="https://github.com/user-attachments/assets/e10280a0-acb1-46ee-b3b9-dec7daec94dc" style="width:500px; height:auto;"/>
+      <a href="https://github.com/user-attachments/assets/3639b06e-7e93-4904-a6d2-af55f46e3f2e">
+        <img src="https://github.com/user-attachments/assets/3639b06e-7e93-4904-a6d2-af55f46e3f2e" style="width:500px; height:auto;"/>
       </a>
     </td>
      <td valign="top" style="padding-left:20px;">
@@ -179,8 +179,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
         <li>
           Includes <b>input validation</b>: minimal field length, unique email/username, required options (e.g., gender).  
           <br/>
-          <a href="https://github.com/user-attachments/assets/e74f2622-e74c-49b8-9e4a-01dd3c56aa86">
-            <img src="https://github.com/user-attachments/assets/e74f2622-e74c-49b8-9e4a-01dd3c56aa86" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          <a href="https://github.com/user-attachments/assets/9ca7e7aa-4f4c-481b-b953-aecba4b1fcd6">
+            <img src="https://github.com/user-attachments/assets/9ca7e7aa-4f4c-481b-b953-aecba4b1fcd6" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
         </li>
         <li>After successful registration, users are redirected to <b>Login</b>.</li>
@@ -197,8 +197,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 <table>
   <tr>
      <td valign="top" width="50%">
-       <a href="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8">
-        <img src="https://github.com/user-attachments/assets/7074df9b-1109-4700-b704-561915fc32e8" style="width:500px; height:auto;"/>
+       <a href="https://github.com/user-attachments/assets/1fec1b02-436f-41f8-bf1a-f0ebd5e4ddd7">
+        <img src="https://github.com/user-attachments/assets/1fec1b02-436f-41f8-bf1a-f0ebd5e4ddd7" style="width:500px; height:auto;"/>
       </a>
     </td>
      <td valign="top" style="padding-left:20px;">
@@ -211,11 +211,11 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
         <li>If account is locked 3 times → becomes <b>disabled</b> (admin-only reactivation).</li>
         <li>Detailed <b>error messages</b> appear on the login screen.</li>
        <br/>
-          <a href="https://github.com/user-attachments/assets/b3b4cedf-e048-48b1-acc2-31ea3691e8ee">
-            <img src="https://github.com/user-attachments/assets/b3b4cedf-e048-48b1-acc2-31ea3691e8ee" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          <a href="https://github.com/user-attachments/assets/b2f2c2d5-fedc-4fa2-a172-b5fa986771aa">
+            <img src="https://github.com/user-attachments/assets/b2f2c2d5-fedc-4fa2-a172-b5fa986771aa" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
-        <a href="https://github.com/user-attachments/assets/0d556747-b70f-4bb6-a38f-abd57af1178c">
-            <img src="https://github.com/user-attachments/assets/0d556747-b70f-4bb6-a38f-abd57af1178c" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+        <a href="https://github.com/user-attachments/assets/4c20821c-1379-40c1-82c0-2d453c775762">
+            <img src="https://github.com/user-attachments/assets/4c20821c-1379-40c1-82c0-2d453c775762" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
       </ul>
        </p>
@@ -286,8 +286,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 <table>
   <tr>
     <td valign="top" width="50%">
-    <a href="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8">
-        <img src="https://github.com/user-attachments/assets/a98e0b03-5b57-40f5-b05a-216e36cd09e8"
+    <a href="https://github.com/user-attachments/assets/4ac5d197-d9ae-4242-a39d-f10933531fdc">
+        <img src="https://github.com/user-attachments/assets/4ac5d197-d9ae-4242-a39d-f10933531fdc"
               style="width:500px; height:auto;"/>
     </a>
 </td>
@@ -302,9 +302,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     <li><b>Categories selection:</b> Users can select one or multiple categories (e.g., Pedestrian, Bicycle, Car, Motorcycle).</li>
     <li><b>Difficulty level:</b> Users can choose the route’s difficulty (e.g., Beginner, Intermediate, Advanced).</li>
     <li><b>Input validation:</b> All fields are validated on the frontend and backend, including required fields, GPX data correctness, and valid YouTube URL format.</li>
-     <a href="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210">
+     <a href="https://github.com/user-attachments/assets/201d7cbb-7da1-4b06-9fa7-b4f4ad81e595">
         <br/>
-            <img src="https://github.com/user-attachments/assets/c2c4045d-65c6-4a44-adeb-4146dec6b210" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+            <img src="https://github.com/user-attachments/assets/201d7cbb-7da1-4b06-9fa7-b4f4ad81e595" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
     <li>User feedback: <b>Invalid inputs</b> are displayed directly on the form to guide the user.</li>
     <li><b>Data persistence:</b> Submitted routes are saved in the <b>MySQL database</b>, linked to the submitting user.</li>
