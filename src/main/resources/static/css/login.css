@@ -14,6 +14,10 @@ body {
     align-items: center;
 }
 
+.btn {
+    padding: 1rem 2rem !important;
+}
+
 /* Layout */
 
 .login-parent {
