@@ -143,8 +143,8 @@ main {
 }
 
 .category-pill:has(input:checked) {
-    background: #007bff;
-    border-color: #0056b3;
+    background: var(--blue) !important;
+    border-color: var(--darker-blue);
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
     transform: translateY(-2px);
 }
