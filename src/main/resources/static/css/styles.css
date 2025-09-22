@@ -48,6 +48,8 @@ body {
 
 /* Labels styling - Login, Register, Add route */
 form.login-form label,
+form.register-form label,
+form#add-route-form label,
 .profile-data-wrapper .firstName-label,
 .profile-data-wrapper .lastName-label {
     margin-bottom: 5px;
