@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const saveButton = qs("#save-button");
     const resetButton = qs("#reset-button");
 
-// exclude upload, username, age and hidden id input from editable fields
+    // exclude upload, username, age and hidden id input from editable fields
     const inputFields = qsa("input:not(#upload-input):not(#username-input):not(#id-input), textarea")
         .filter(input => !input.closest("#age-wrapper")); // also exclude age (though it's span-only)
 
@@ -25,13 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Save/Reset hidden at start
-    if (saveButton) {
-        saveButton.classList.add("d-none");
-    }
-
-    if (resetButton) {
-        resetButton.classList.add("d-none")
-    }
+    if (saveButton) saveButton.classList.add("d-none");
+    if (resetButton) resetButton.classList.add("d-none")
 
     // Snapshot of original values in enableMode
     let originalValues = {};
@@ -127,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (firstD) originalValues["firstName-display"] = firstD.textContent;
         if (lastD) originalValues["lastName-display"] = lastD.textContent;
 
-        // Hide email wrapper
+        // Hide email envelope (not editable)
         const emailWrapper = qs('.email-wrapper');
         if (emailWrapper) emailWrapper.classList.add("d-none");
 
@@ -153,7 +148,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Save changes
     async function saveChanges() {
-        // build payload defensively
         const payload = {
             id: qs("#id-input") ? qs("#id-input").value.trim() : "",
             firstName: qs("#firstName-input") ? qs("#firstName-input").value.trim() : "",
@@ -164,13 +158,10 @@ document.addEventListener("DOMContentLoaded", function () {
             linkedIn: qs("#linkedin-input") ? qs("#linkedin-input").value.trim() : ""
         };
 
-        // clear previous validation messages
-        qsa(".error-message").forEach(e => e.textContent = "");
-
         const socialList = qs(".social-list");
         if (socialList) socialList.classList.remove("max-width");
 
-        // update display elements immediately (same behavior you had)
+        // update display elements immediately
         inputFields.forEach(input => {
             const key = input.id.replace("-input", "");
             payload[key] = input.value.trim();
@@ -192,9 +183,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!res.ok) {
                 // show validation errors under fields
-                Object.keys(data || {}).forEach(field => {
-                    const errEl = qs(`#${field}-error`);
-                    if (errEl) errEl.textContent = data[field];
+                Object.keys(data).forEach(field => {
+                    const errorSpan = document.getElementById(`${field}-error`);
+                    if (errorSpan) {
+                        if (data[field]) {
+                            errorSpan.textContent = data[field];
+                            errorSpan.classList.add("error-text");
+                        } else {
+                            errorSpan.textContent = ""; // clear message
+                            errorSpan.classList.remove("error-text");
+                        }
+                    }
                 });
                 console.warn("Validation failed", data);
                 return;
@@ -202,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             alert("Profile updated successfully!");
 
-            // refresh displayed values from server response (safe)
+            // refresh displayed values
             if (data.firstName) qs("#firstName-display") && (qs("#firstName-display").textContent = data.firstName);
             if (data.lastName) qs("#lastName-display") && (qs("#lastName-display").textContent = data.lastName);
             if (data.username) qs("#username-display") && (qs("#username-display").textContent = data.username);
@@ -273,17 +272,12 @@ document.addEventListener("DOMContentLoaded", function () {
             fullDisplay.classList.remove("d-none");
         } else {
             // fallback: handle old labels/wrappers
-            const title = qs(".full-name-title");
-            if (title) title.classList.remove("d-none");
             const lastLabel = qs('.last-name-label');
             if (lastLabel) lastLabel.classList.add('d-none');
             const firstLabel = qs('.first-name-label');
             if (firstLabel) firstLabel.classList.add('d-none');
             qsa('.name-wrapper').forEach(e => e.classList.remove('dynamic-width'));
         }
-
-        // clear errors
-        qsa(".error-message").forEach(e => e.textContent = "");
 
         // restore buttons
         if (saveButton) saveButton.classList.add("d-none");
@@ -302,13 +296,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const socialItems = document.querySelectorAll(".social-list li");
     socialItems.forEach(item => {
         item.addEventListener("click", (e) => {
-            // Toggle tooltip visibility
-            item.classList.toggle("show-social-icon");
+            const span = item.querySelector('span');
+            span.classList.toggle("show-social-icon");
 
-            // Toggle the other items
             socialItems.forEach(otherItem => {
                 if (otherItem !== item) {
-                    otherItem.classList.remove("show-social-icon");
+                    const span = item.querySelector('span');
+                    span.classList.remove("show-social-icon");
                 }
             });
         });
