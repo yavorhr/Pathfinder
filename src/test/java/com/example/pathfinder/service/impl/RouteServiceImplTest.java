@@ -28,10 +28,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @ExtendWith(MockitoExtension.class)
@@ -266,6 +263,7 @@ public class RouteServiceImplTest {
     serviceModel.setAuthorId(admin.getId());
     serviceModel.setName(route1.getName());
     serviceModel.setCategories(route1.getCategories().stream().map(Category::getName).collect(Collectors.toSet()));
+    serviceModel.setPictures(new ArrayList<>());
 
     //1.1 Mock dependencies
     Mockito.when(modelMapper.map(serviceModel, Route.class)).thenReturn(route1);
