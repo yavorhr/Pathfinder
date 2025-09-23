@@ -38,7 +38,7 @@ public class RouteAddBindingModel {
     return name;
   }
 
-  @Size(min = 3, message = "Description should beat least 5 symbols long")
+  @Size(min = 5, message = "Description should beat least 5 symbols long")
   public String getDescription() {
     return description;
   }
