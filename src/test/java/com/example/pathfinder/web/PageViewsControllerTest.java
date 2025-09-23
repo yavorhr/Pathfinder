@@ -65,7 +65,7 @@ public class PageViewsControllerTest {
   void mostViewed_shouldReturnTopPagesAndModelAttributes() throws Exception {
     mockMvc.perform(get("/admin/statistics"))
             .andExpect(status().isOk())
-            .andExpect(view().name("most-viewed"))
+            .andExpect(view().name("/admin/most-viewed"))
             .andExpect(model().attributeExists("topPages", "chartLabels", "chartData"))
             .andExpect(content().string(containsString("/home")))
             .andExpect(content().string(containsString("/about")))
