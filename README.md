@@ -21,7 +21,7 @@
 | Section | Items |
 |---------|-------|
 | 📚 Project Overview | [📖 About the Project](#-about-the-project) • [✨ Features](#-features) • [🖼️ Screenshots](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-screenshots) |
-| ⚙️ Technical Details |  [🛠️ Tech Stack](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage)| [⚠️ Exceptions & Error Handling](#-exceptions--error-handling)
+| ⚙️ Technical Details |  [🛠️ Tech Stack](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage) • [⚠️ Exceptions & Error Handling](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-exceptions--error-handling) |
 | 🏗️ Project Structure | [📂 Folder Structure](#-folder-structure) • [🗄️ Database Design](#-database-design) |
 | 🚀 Getting Started | [🔧 Configuration](https://github.com/yavorhr/Pathfinder/blob/main/README.md#-configuration-applicationproperties) • [Clone & Run (manual)](#clone--run-manual) • [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon) |
 | 🗺️ Roadmap & License | [🗺️ Roadmap](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-roadmap) • [📜 License](#-license) |
@@ -592,7 +592,72 @@ target/site/jacoco/index.html
    <a href="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589">
             <img src="https://github.com/user-attachments/assets/109b1ad5-8416-4924-92da-38c04830d589" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
-		  
+		
+---
+
+# ⚠️ Exceptions & Error Handling
+
+This project uses Spring Boot’s @ControllerAdvice and @ExceptionHandler annotations for centralized exception handling.
+
+- Exceptions are thrown in controllers or services whenever an error occurs:
+  - AccessDeniedException → thrown when a user tries to access a resource without proper permissions.
+  - ObjectNotFoundException → thrown when a requested resource is not found in the database.
+  - All other unexpected exceptions (e.g., NullPointerException, database errors) are caught by a generic 500 handler.
+
+- Exception handling:
+  - Each exception type has a dedicated handler that sets the appropriate HTTP status and returns a user-friendly error view (error/403.html, error/404.html, or error/500.html).
+  - Spring automatically routes the thrown exception to the most specific handler first.
+  - The generic 500 handler acts as a catch-all for any unhandled exceptions, preventing stack traces from being exposed to the user.
+
+<table>
+  <tr>
+    <td valign="top" width="50%">
+      <a href="https://github.com/user-attachments/assets/d3450bd2-6e41-4ebc-beb2-9f98f1f20504">
+        <img src="https://github.com/user-attachments/assets/d3450bd2-6e41-4ebc-beb2-9f98f1f20504" style="width:500px; height:auto;"/>
+      </a>
+    </td>
+     <td valign="top" style="padding-left:20px;">
+		 <p>AccessDeniedException (HTTP 403)</p>
+      <ul>
+        <li>Triggered when a user tries to access a resource or perform an action they don’t have permission for.</li>
+        <li>Ensures that users cannot bypass security roles or permissions.</li>
+		    <li>View returned: error/403.html</li>
+      </ul>
+    </td>
+  </tr>
+	 <tr>
+    <td valign="top" width="50%">
+      <a href="https://github.com/user-attachments/assets/9af96a71-2552-4db1-95da-8726f9e3b653">
+        <img src="https://github.com/user-attachments/assets/9af96a71-2552-4db1-95da-8726f9e3b653" style="width:500px; height:auto;"/>
+      </a>
+    </td>
+     <td valign="top" style="padding-left:20px;">
+		 <p>ObjectNotFoundException (HTTP 404)</p>
+      <ul>
+        <li>Triggered when a requested resource (like a user, route, or entity) does not exist in the database.</li>
+        <li>Provides a user-friendly message with information about the missing resource.</li>
+		  <li>View returned: error/404.html</li>
+      </ul>
+    </td>
+  </tr>
+	 <tr>
+    <td valign="top" width="50%">
+      <a href="https://github.com/user-attachments/assets/dad90f2d-4e0b-41e9-8af2-549dae3938d9">
+        <img src="https://github.com/user-attachments/assets/dad90f2d-4e0b-41e9-8af2-549dae3938d9" style="width:500px; height:auto;"/>
+      </a>
+    </td>
+     <td valign="top" style="padding-left:20px;">
+		 <p>GenericServerException (HTTP 500)</p>
+      <ul>
+        <li>Triggered when an unexpected server error occurs.</li>
+        <li>Prevents sensitive stack traces from leaking to users and shows a user-friendly error page.</li>
+		  <li>View returned: error/500.html</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+
 ---
 
 # 🏗️ Project Structure
