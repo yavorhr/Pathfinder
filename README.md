@@ -21,7 +21,7 @@
 | Section | Items |
 |---------|-------|
 | 📚 Project Overview | [📖 About the Project](#-about-the-project) • [✨ Features](#-features) • [🖼️ Screenshots](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-screenshots) |
-| ⚙️ Technical Details |  [🛠️ Tech Stack](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage) • [⚠️ Exceptions & Error Handling](#-exceptions--error-handling) |
+| ⚙️ Technical Details |  [🛠️ Tech Stack](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage) • [⚠️ Exceptions & Error Handling](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-exceptions--error-handling) |
 | 🏗️ Project Structure | [📂 Folder Structure](#-folder-structure) • [🗄️ Database Design](#-database-design) |
 | 🚀 Getting Started | [🔧 Configuration](https://github.com/yavorhr/Pathfinder/blob/main/README.md#-configuration-applicationproperties) • [Clone & Run (manual)](#clone--run-manual) • [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon) |
 | 🗺️ Roadmap & License | [🗺️ Roadmap](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-roadmap) • [📜 License](#-license) |
