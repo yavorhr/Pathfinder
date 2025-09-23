@@ -47,10 +47,16 @@
 
 .nav-item a:hover,
 .dropdown-item
-#logout-form input:hover,
 .dropdown-popover .dropdown-item:hover {
     background: var(--dark);
     color: var(--light);
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
+.logout-item .btn:hover{
+    background: var(--dark) !important;
+    color: var(--light) !important;
     transform: scale(1.1);
     text-decoration: none;
 }
