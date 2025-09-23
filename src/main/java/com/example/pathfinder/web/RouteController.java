@@ -118,7 +118,6 @@ public class RouteController {
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes) throws IOException {
 
-
     if (routeAddBindingModel.getPictures() == null ||
             routeAddBindingModel.getPictures().isEmpty() ||
             routeAddBindingModel.getPictures().stream().allMatch(MultipartFile::isEmpty)) {
