@@ -209,13 +209,19 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
         <li>Checks for: <b>Locked</b>, <b>Disabled</b>, or <b>Expired</b> accounts.</li>
         <li>If 5 failed attempts (valid username, wrong password) → account is <b>locked for 15 minutes</b> using Spring Scheduler.</li>
         <li>If account is locked 3 times → becomes <b>disabled</b> (admin-only reactivation).</li>
-        <li>Detailed <b>error messages</b> appear on the login screen.</li>
+        <li>The backend returns specific error messages to the client (e.g. account locked, account expired, user disabled, or user not found). This is implemented only for development and testing use and it is not advised for production where it exposes sensitive authentication information.</li>
        <br/>
           <a href="https://github.com/user-attachments/assets/b2f2c2d5-fedc-4fa2-a172-b5fa986771aa">
             <img src="https://github.com/user-attachments/assets/b2f2c2d5-fedc-4fa2-a172-b5fa986771aa" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
-        <a href="https://github.com/user-attachments/assets/4c20821c-1379-40c1-82c0-2d453c775762">
-            <img src="https://github.com/user-attachments/assets/4c20821c-1379-40c1-82c0-2d453c775762" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+        <a href="https://github.com/user-attachments/assets/a1864c2c-60dc-4c43-b3b6-f48f317ce5c5">
+            <img src="https://github.com/user-attachments/assets/a1864c2c-60dc-4c43-b3b6-f48f317ce5c5" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          </a>
+		   <a href="https://github.com/user-attachments/assets/0ca8093b-b2d1-476a-9071-7d8990c0a506">
+            <img src="https://github.com/user-attachments/assets/0ca8093b-b2d1-476a-9071-7d8990c0a506" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          </a>
+		   <a href="https://github.com/user-attachments/assets/da152506-37e2-400e-b961-92b5a9226858">
+            <img src="https://github.com/user-attachments/assets/da152506-37e2-400e-b961-92b5a9226858" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
       </ul>
        </p>
