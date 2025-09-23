@@ -21,7 +21,7 @@
 | Section | Items |
 |---------|-------|
 | 📚 Project Overview | [📖 About the Project](#-about-the-project) • [✨ Features](#-features) • [🖼️ Screenshots](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-screenshots) |
-| ⚙️ Technical Details |  [🛠️ Tech Stack](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage)|
+| ⚙️ Technical Details |  [🛠️ Tech Stack](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-tech-stack) • [📡 API Endpoints](#-api-endpoints) • [👤🔒 Roles, Permissions & Security](#-roles-permissions--security) • [🧪 Testing & Coverage](#-testing--coverage)| [⚠️ Exceptions & Error Handling](#-exceptions--error-handling)
 | 🏗️ Project Structure | [📂 Folder Structure](#-folder-structure) • [🗄️ Database Design](#-database-design) |
 | 🚀 Getting Started | [🔧 Configuration](https://github.com/yavorhr/Pathfinder/blob/main/README.md#-configuration-applicationproperties) • [Clone & Run (manual)](#clone--run-manual) • [🐳 Run with Docker (coming-soon)](#-run-with-docker-coming-soon) |
 | 🗺️ Roadmap & License | [🗺️ Roadmap](https://github.com/yavorhr/Pathfinder/blob/main/README.md#%EF%B8%8F-roadmap) • [📜 License](#-license) |
@@ -202,7 +202,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
       </a>
     </td>
      <td valign="top" style="padding-left:20px;">
-       <p>
     <ul>
         <li>Implemented with <b>Spring Security filter chain</b>.</li>
         <li>Custom <code>loginSuccessHandler</code> and <code>loginFailureHandler</code>.</li>
@@ -224,7 +223,6 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
             <img src="https://github.com/user-attachments/assets/da152506-37e2-400e-b961-92b5a9226858" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
       </ul>
-       </p>
     </td>
   </tr>
 </table>
