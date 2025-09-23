@@ -550,7 +550,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 ### ⚡ Running Tests:
 Open a terminal in the project root and run:
   ```bash
-  ./mvnw clean test
+  ./mvn clean test
   ```
 
 📊 Coverage Report
