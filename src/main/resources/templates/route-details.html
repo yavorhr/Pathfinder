@@ -89,7 +89,7 @@
                 </th:block>
             </section>
 
-            <th:block th:if="*{!gpxCoordinates.isEmpty()}">
+            <th:block th:if="${hasGpx}">
                 <section
                         class="col-md-auto"
                         id="map">
