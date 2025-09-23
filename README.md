@@ -605,11 +605,11 @@ This project uses Spring Boot’s @ControllerAdvice and @ExceptionHandler annota
 
 - Exception handling:
 
---Each exception type has a dedicated handler that sets the appropriate HTTP status and returns a user-friendly error view (error/403.html, error/404.html, or error/500.html).
+-- Each exception type has a dedicated handler that sets the appropriate HTTP status and returns a user-friendly error view (error/403.html, error/404.html, or error/500.html).
 
---Spring automatically routes the thrown exception to the most specific handler first.
+-- Spring automatically routes the thrown exception to the most specific handler first.
 
---The generic 500 handler acts as a catch-all for any unhandled exceptions, preventing stack traces from being exposed to the user.
+-- The generic 500 handler acts as a catch-all for any unhandled exceptions, preventing stack traces from being exposed to the user.
 
 <table>
   <tr>
