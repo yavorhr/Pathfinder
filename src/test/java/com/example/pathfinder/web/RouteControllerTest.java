@@ -13,23 +13,29 @@ import com.example.pathfinder.repository.CategoryRepository;
 import com.example.pathfinder.repository.CommentRepository;
 import com.example.pathfinder.repository.RouteRepository;
 import com.example.pathfinder.repository.UserRepository;
+import com.example.pathfinder.util.cloudinary.CloudinaryImage;
+import com.example.pathfinder.util.cloudinary.CloudinaryService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
+import static org.mockito.ArgumentMatchers.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -63,6 +69,9 @@ public class RouteControllerTest {
   private UserRepository userRepository;
   @Autowired
   private CommentRepository commentRepository;
+
+  @MockBean
+  private CloudinaryService cloudinaryService;
 
   @BeforeEach
   void setup() {
@@ -205,6 +214,13 @@ public class RouteControllerTest {
             "pic.jpg",
             "image/jpeg",
             "fake image content".getBytes());
+
+    CloudinaryImage fakeImage = new CloudinaryImage()
+            .setPublicId("fakePublicId")
+            .setUrl("http://fake-cloudinary-url/test.jpg");
+
+    Mockito.when(cloudinaryService.upload(any(MultipartFile.class), any(String.class)))
+            .thenReturn(fakeImage);
 
     mockMvc.perform(multipart("/routes")
             .file(gpxFile)
