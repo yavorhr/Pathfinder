@@ -65,7 +65,7 @@ form#add-route-form label,
     background: rgba(0, 0, 0, 0.2);
 }
 
-form label:hover {
+form label:hover:not(.username-label, .age-label){
     color: #ffd700;
     transition: all 0.2s ease-in-out;
 }
