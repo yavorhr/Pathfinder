@@ -195,7 +195,7 @@ public class RouteControllerTest {
             .param("categories", "BICYCLE")
             .with(csrf()))
             .andExpect(status().is3xxRedirection())
-            .andExpect(redirectedUrl("add"))
+            .andExpect(redirectedUrl("/routes/add"))
             .andExpect(flash().attributeExists("routeAddBindingModel"))
             .andExpect(flash().attributeExists("org.springframework.validation.BindingResult.routeAddBindingModel"));
   }
