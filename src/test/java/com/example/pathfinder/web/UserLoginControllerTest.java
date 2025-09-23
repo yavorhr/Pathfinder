@@ -22,7 +22,7 @@ public class UserLoginControllerTest {
   @ParameterizedTest
   @CsvSource({
           "ACCOUNT_LOCKED, Your account is locked. Try again in 15 minutes.",
-          "ACCOUNT_DISABLED, Your account is disabled. Admin will contact you.",
+          "ACCOUNT_DISABLED, Your account is currently disabled.",
           "INVALID_CREDENTIALS, Invalid credentials. Please try again.",
           "ACCOUNT_EXPIRED, Your account has expired.",
           "USER_NOT_FOUND, User with this email does not exist.",
