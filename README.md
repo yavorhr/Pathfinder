@@ -598,18 +598,16 @@ target/site/jacoco/index.html
 # ⚠️ Exceptions & Error Handling
 
 This project uses Spring Boot’s @ControllerAdvice and @ExceptionHandler annotations for centralized exception handling.
+
 - Exceptions are thrown in controllers or services whenever an error occurs:
--- AccessDeniedException → thrown when a user tries to access a resource without proper permissions.
--- ObjectNotFoundException → thrown when a requested resource is not found in the database.
--- All other unexpected exceptions (e.g., NullPointerException, database errors) are caught by a generic 500 handler.
+  - AccessDeniedException → thrown when a user tries to access a resource without proper permissions.
+  - ObjectNotFoundException → thrown when a requested resource is not found in the database.
+  - All other unexpected exceptions (e.g., NullPointerException, database errors) are caught by a generic 500 handler.
 
 - Exception handling:
-
--- Each exception type has a dedicated handler that sets the appropriate HTTP status and returns a user-friendly error view (error/403.html, error/404.html, or error/500.html).
-
--- Spring automatically routes the thrown exception to the most specific handler first.
-
--- The generic 500 handler acts as a catch-all for any unhandled exceptions, preventing stack traces from being exposed to the user.
+  - Each exception type has a dedicated handler that sets the appropriate HTTP status and returns a user-friendly error view (error/403.html, error/404.html, or error/500.html).
+  - Spring automatically routes the thrown exception to the most specific handler first.
+  - The generic 500 handler acts as a catch-all for any unhandled exceptions, preventing stack traces from being exposed to the user.
 
 <table>
   <tr>
