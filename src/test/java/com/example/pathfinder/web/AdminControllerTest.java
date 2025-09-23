@@ -86,7 +86,7 @@ public class AdminControllerTest {
             .param("page", "0")
             .param("size", "5"))
             .andExpect(status().isOk())
-            .andExpect(view().name("notifications"))
+            .andExpect(view().name("/admin/notifications"))
             .andExpect(model().attributeExists("usersPage", "users", "loggedInUserEmail", "query", "currentPage", "totalPages"));
   }
 
