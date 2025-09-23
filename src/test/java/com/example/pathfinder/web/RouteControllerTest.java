@@ -200,8 +200,15 @@ public class RouteControllerTest {
             "<gpx></gpx>".getBytes()
     );
 
+    MockMultipartFile picture = new MockMultipartFile(
+            "pictures",
+            "pic.jpg",
+            "image/jpeg",
+            "fake image content".getBytes());
+
     mockMvc.perform(multipart("/routes")
             .file(gpxFile)
+            .file(picture)
             .param("name", "New Route")
             .param("description", "A very nice route")
             .param("level", "BEGINNER")
