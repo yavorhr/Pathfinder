@@ -290,8 +290,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 <table>
   <tr>
     <td valign="top" width="50%">
-    <a href="https://github.com/user-attachments/assets/assets/8331e225-1c0f-434b-a637-389095204844">
-        <img src="https://github.com/user-attachments/assets/assets/8331e225-1c0f-434b-a637-389095204844"
+    <a href="https://github.com/user-attachments/assets/assets/5cb56413-4c90-42d9-a760-bf79e0e4c520">
+        <img src="https://github.com/user-attachments/assets/assets/5cb56413-4c90-42d9-a760-bf79e0e4c520"
               style="width:500px; height:auto;"/>
     </a>
 </td>
