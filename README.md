@@ -290,8 +290,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 <table>
   <tr>
     <td valign="top" width="50%">
-    <a href="https://github.com/user-attachments/assets/4ac5d197-d9ae-4242-a39d-f10933531fdc">
-        <img src="https://github.com/user-attachments/assets/4ac5d197-d9ae-4242-a39d-f10933531fdc"
+    <a href="https://github.com/user-attachments/assets/assets/8331e225-1c0f-434b-a637-389095204844">
+        <img src="https://github.com/user-attachments/assets/assets/8331e225-1c0f-434b-a637-389095204844"
               style="width:500px; height:auto;"/>
     </a>
 </td>
@@ -306,9 +306,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     <li><b>Categories selection:</b> Users can select one or multiple categories (e.g., Pedestrian, Bicycle, Car, Motorcycle).</li>
     <li><b>Difficulty level:</b> Users can choose the route’s difficulty (e.g., Beginner, Intermediate, Advanced).</li>
     <li><b>Input validation:</b> All fields are validated on the frontend and backend, including required fields, GPX data correctness, and valid YouTube URL format.</li>
-     <a href="https://github.com/user-attachments/assets/201d7cbb-7da1-4b06-9fa7-b4f4ad81e595">
+     <a href="https://github.com/user-attachments/assets/cd614527-9621-4b4c-a373-895f2f59e539">
         <br/>
-            <img src="https://github.com/user-attachments/assets/201d7cbb-7da1-4b06-9fa7-b4f4ad81e595" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+            <img src="https://github.com/user-attachments/assets/cd614527-9621-4b4c-a373-895f2f59e539" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
     <li>User feedback: <b>Invalid inputs</b> are displayed directly on the form to guide the user.</li>
     <li><b>Data persistence:</b> Submitted routes are saved in the <b>MySQL database</b>, linked to the submitting user.</li>
