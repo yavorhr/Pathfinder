@@ -20,7 +20,7 @@
                 <input th:field="*{name}" type="text" id="inputName"
                        class="form-control" placeholder="Enter route name">
                 <small th:if="${#fields.hasErrors('name')}"
-                       th:errors="*{name}" class="error-text"></small>
+                       th:errors="*{name}" class="error-text text-center"></small>
             </div>
 
             <!-- Description -->
@@ -30,7 +30,7 @@
                           class="form-control textarea-lg"
                           placeholder="Describe your route (at least 5 characters)"></textarea>
                 <small th:if="${#fields.hasErrors('description')}"
-                       th:errors="*{description}" class="error-text"></small>
+                       th:errors="*{description}" class="error-text text-center"></small>
             </div>
 
             <div class="div-wrapper">
@@ -40,7 +40,7 @@
                     <input type="file" th:field="*{gpxCoordinates}"
                            id="inputGpx" class="form-control-file">
                     <small th:if="${#fields.hasErrors('gpxCoordinates')}"
-                           th:errors="*{gpxCoordinates}" class="error-text"></small>
+                           th:errors="*{gpxCoordinates}" class="error-text text-center"></small>
                 </div>
                 <!-- Pictures -->
                 <div>
@@ -48,7 +48,7 @@
                     <input type="file" th:field="*{pictures}"
                            id="inputPictures" class="form-control-file" multiple>
                     <small th:if="${#fields.hasErrors('pictures')}"
-                           th:errors="*{pictures}" class="error-text"></small>
+                           th:errors="*{pictures}" class="error-text text-center"></small>
                 </div>
             </div>
 
@@ -58,19 +58,19 @@
                     <input type="number" th:field="*{distance}"
                            id="distance" class="form-control" placeholder="e.g. 12.3">
                     <small th:if="${#fields.hasErrors('distance')}"
-                           th:errors="*{distance}" class="error-text"></small>
+                           th:errors="*{distance}" class="error-text text-center"></small>
                 </div>
 
                 <!-- Level -->
                 <div class="form-group">
                     <label for="level">Difficulty Level</label>
                     <select id="level" th:field="*{level}" class="form-control">
-                        <option value="" disabled>Select level</option>
+                        <option value="" >Select level</option>
                         <option th:each="l : ${T(com.example.pathfinder.model.entity.enums.LevelEnum).values()}"
                                 th:value="${l}" th:text="${l}"></option>
                     </select>
                     <small th:if="${#fields.hasErrors('level')}"
-                           th:errors="*{level}" class="error-text"></small>
+                           th:errors="*{level}" class="error-text text-center"></small>
                 </div>
             </div>
 
@@ -80,7 +80,7 @@
                 <input id="videoUrl" type="text" th:field="*{videoUrl}"
                        class="form-control " placeholder="Last 11 characters">
                 <small th:if="${#fields.hasErrors('videoUrl')}"
-                       th:errors="*{videoUrl}" class="error-text"></small>
+                       th:errors="*{videoUrl}" class="error-text text-center"></small>
             </div>
 
             <!-- Categories -->
@@ -107,7 +107,7 @@
                     </label>
                 </div>
                 <small th:if="${#fields.hasErrors('categories')}"
-                       th:errors="*{categories}" class="error-text"></small>
+                       th:errors="*{categories}" class="error-text text-center"></small>
             </div>
         </div>
 
