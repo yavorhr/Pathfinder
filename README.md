@@ -166,8 +166,8 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 <table>
   <tr>
     <td valign="top" width="50%">
-      <a href="https://github.com/user-attachments/assets/3639b06e-7e93-4904-a6d2-af55f46e3f2e">
-        <img src="https://github.com/user-attachments/assets/3639b06e-7e93-4904-a6d2-af55f46e3f2e" style="width:500px; height:auto;"/>
+      <a href="https://github.com/user-attachments/assets/fbf51917-faff-4dc0-9f3c-0702d5497e9f">
+        <img src="https://github.com/user-attachments/assets/fbf51917-faff-4dc0-9f3c-0702d5497e9f" style="width:500px; height:auto;"/>
       </a>
     </td>
      <td valign="top" style="padding-left:20px;">
@@ -177,10 +177,10 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
         <li>Only after Admin approval the user can log in.</li>
         <li>Admin can also send an <b>email notification</b> to unapproved users.</li>
         <li>
-          Includes <b>input validation</b>: minimal field length, unique email/username, required options (e.g., gender).  
+          Includes <b>input validation</b>: minimal fields length, unique email/username, required selected options (e.g., gender, biirthday, categories).  
           <br/>
-          <a href="https://github.com/user-attachments/assets/9ca7e7aa-4f4c-481b-b953-aecba4b1fcd6">
-            <img src="https://github.com/user-attachments/assets/9ca7e7aa-4f4c-481b-b953-aecba4b1fcd6" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+          <a href="https://github.com/user-attachments/assets/1b825eb5-7a97-4b80-bd99-7634b9f6c878">
+            <img src="https://github.com/user-attachments/assets/1b825eb5-7a97-4b80-bd99-7634b9f6c878" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
         </li>
         <li>After successful registration, users are redirected to <b>Login</b>.</li>
