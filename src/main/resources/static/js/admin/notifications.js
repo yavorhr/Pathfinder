@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
     const deleteButtons = document.querySelectorAll(".delete-btn");
-    const emailButtons = document.querySelectorAll(".email-btn");
+    const emailButtons = document.querySelectorAll(".send-email-btn");
 
     // Disable buttons for logged in user
     document.querySelectorAll("tr").forEach(tr => {
