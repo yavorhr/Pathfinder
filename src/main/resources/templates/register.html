@@ -96,20 +96,31 @@
                         <div class="col col-background">
                             <label class="col-form-label">Date of Birth:</label>
                             <div class="dob_dropdowns">
-                                <select id="year" th:field="*{year}" disabled>
-                                    <option value="" disabled selected>Year</option>
+                                <select id="year" th:field="*{year}" class="text-center">
+                                    <option value="" selected >Year</option>
+                                    <option th:each="y : ${#numbers.sequence(1900, 2025)}"
+                                            th:value="${y}" th:text="${y}">
+                                    </option>
                                 </select>
 
-                                <select id="month" th:field="*{month}" disabled>
+                                <select id="month" th:field="*{month}" class="text-center">
+                                    <option value="" selected >Month</option>
+                                    <option th:each="m : ${#numbers.sequence(1,12)}"
+                                            th:value="${m}" th:text="${m}">
+                                    </option>
                                 </select>
 
-                                <select id="day" th:field="*{day}" disabled>
+                                <select id="day" th:field="*{day}" class="text-center">
+                                    <option value="" selected >Day</option>
+                                    <option th:each="d : ${#numbers.sequence(1,31)}"
+                                            th:value="${d}" th:text="${d}">
+                                    </option>
                                 </select>
 
                             </div>
                             <p th:if="${#fields.hasErrors('day') ||
                              #fields.hasErrors('month') ||
-                             #fields.hasErrors('year')}" class="error-text">
+                             #fields.hasErrors('year')}" class="error-text text-center">
                                 Please select birthday
                             </p>
                         </div>
@@ -188,6 +199,6 @@
 </main>
 
 <footer th:replace="fragments/footer"></footer>
-<script src="/js/register/birthdayCalender.js"></script>
+<!--<script src="/js/register/birthdayCalender.js"></script>-->
 </body>
 </html>
