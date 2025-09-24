@@ -25,7 +25,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('firstName')}"
                                th:errors="*{firstName}"
-                               class="error-text">
+                               class="error-text text-center">
                             </p>
                         </div>
                         <div class="col">
@@ -37,7 +37,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('lastName')}"
                                th:errors="*{lastName}"
-                               class="error-text">
+                               class="error-text text-center">
                             </p>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('username')}"
                                th:errors="*{username}"
-                               class="error-text">
+                               class="error-text text-center">
                             </p>
                         </div>
                         <div class="col">
@@ -65,7 +65,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('email')}"
                                th:errors="*{email}"
-                               class="error-text">
+                               class="error-text text-center">
                             </p>
                         </div>
                     </div>
@@ -95,15 +95,21 @@
                         </div>
                         <div class="col col-background">
                             <label class="col-form-label">Date of Birth:</label>
-                            <div class="dob_dropdowns">
-                                <select id="year" th:field="*{year}" class="text-center">
+                            <div class="dob_dropdowns p-1">
+                                <select
+                                        id="year"
+                                        th:field="*{year}"
+                                        class="text-center">
                                     <option value="" selected >Year</option>
                                     <option th:each="y : ${#numbers.sequence(1900, 2025)}"
                                             th:value="${y}" th:text="${y}">
                                     </option>
                                 </select>
 
-                                <select id="month" th:field="*{month}">
+                                <select
+                                        id="month"
+                                        th:field="*{month}"
+                                        class="text-center">
                                     <option value="" selected>Month</option>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
@@ -119,7 +125,10 @@
                                     <option value="12">December</option>
                                 </select>
 
-                                <select id="day" th:field="*{day}" class="text-center">
+                                <select
+                                        id="day"
+                                        th:field="*{day}"
+                                        class="text-center">
                                     <option value="" selected >Day</option>
                                     <option th:each="d : ${#numbers.sequence(1,31)}"
                                             th:value="${d}" th:text="${d}">
@@ -179,7 +188,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('password')}"
                                th:errors="*{password}"
-                               class="error-text">
+                               class="error-text text-center">
                             </p>
                         </div>
 
@@ -192,7 +201,7 @@
                                    class="form-control">
                             <p th:if="${#fields.hasErrors('confirmPassword')}"
                                th:errors="*{confirmPassword}"
-                               class="error-text">
+                               class="error-text text-center">
                             </p>
                         </div>
                     </div>
