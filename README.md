@@ -285,15 +285,16 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ---
 
+
+
 ### Create route
 
 <table>
   <tr>
     <td valign="top" width="50%">
-    <a href="https://github.com/user-attachments/assets/assets/5cb56413-4c90-42d9-a760-bf79e0e4c520">
-        <img src="https://github.com/user-attachments/assets/assets/5cb56413-4c90-42d9-a760-bf79e0e4c520"
-              style="width:500px; height:auto;"/>
-    </a>
+  <a href="https://github.com/user-attachments/assets/5cb56413-4c90-42d9-a760-bf79e0e4c520">
+  <img src="https://github.com/user-attachments/assets/5cb56413-4c90-42d9-a760-bf79e0e4c520"  style="width:500px; height:auto;"/>
+</a>
 </td>
      <td valign="top" style="padding-left:20px;">
        <p>This is the place where user can add route to the application.
