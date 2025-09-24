@@ -88,7 +88,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   <tr>
     <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1">
-  <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" style="width:500px; height:auto;"/>
+  <img src="https://github.com/user-attachments/assets/9e06ce71-c6df-4609-9e71-3dd11491e5d1" style="width:500px; height:300px;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
@@ -262,11 +262,11 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   <tr>
    <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193">
-  <img src="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193"  style="width:500px; height:auto;"/>
+  <img src="https://github.com/user-attachments/assets/3f5ea2e2-381c-429a-baad-b44929908193"  style="width:500px; height:300px;"/>
 </a>
  <br/>
 <a href="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c">
-  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c"  style="width:500px; height:auto;"/>
+  <img src="https://github.com/user-attachments/assets/96fbac8f-f164-47ba-8ca2-135a12ca505c"  style="width:500px; height:200px;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
@@ -285,15 +285,16 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
 
 ---
 
+
+
 ### Create route
 
 <table>
   <tr>
     <td valign="top" width="50%">
-    <a href="https://github.com/user-attachments/assets/4ac5d197-d9ae-4242-a39d-f10933531fdc">
-        <img src="https://github.com/user-attachments/assets/4ac5d197-d9ae-4242-a39d-f10933531fdc"
-              style="width:500px; height:auto;"/>
-    </a>
+  <a href="https://github.com/user-attachments/assets/5cb56413-4c90-42d9-a760-bf79e0e4c520">
+  <img src="https://github.com/user-attachments/assets/5cb56413-4c90-42d9-a760-bf79e0e4c520"  style="width:500px; height:auto;"/>
+</a>
 </td>
      <td valign="top" style="padding-left:20px;">
        <p>This is the place where user can add route to the application.
@@ -306,9 +307,9 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
     <li><b>Categories selection:</b> Users can select one or multiple categories (e.g., Pedestrian, Bicycle, Car, Motorcycle).</li>
     <li><b>Difficulty level:</b> Users can choose the route’s difficulty (e.g., Beginner, Intermediate, Advanced).</li>
     <li><b>Input validation:</b> All fields are validated on the frontend and backend, including required fields, GPX data correctness, and valid YouTube URL format.</li>
-     <a href="https://github.com/user-attachments/assets/201d7cbb-7da1-4b06-9fa7-b4f4ad81e595">
+     <a href="https://github.com/user-attachments/assets/cd614527-9621-4b4c-a373-895f2f59e539">
         <br/>
-            <img src="https://github.com/user-attachments/assets/201d7cbb-7da1-4b06-9fa7-b4f4ad81e595" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
+            <img src="https://github.com/user-attachments/assets/cd614527-9621-4b4c-a373-895f2f59e539" style="height:120px; width:auto; margin-top:6px; border:1px solid #ccc;"/>
           </a>
     <li>User feedback: <b>Invalid inputs</b> are displayed directly on the form to guide the user.</li>
     <li><b>Data persistence:</b> Submitted routes are saved in the <b>MySQL database</b>, linked to the submitting user.</li>
@@ -404,7 +405,7 @@ It leverages **JavaScript (Fetch API)** to handle many actions dynamically witho
   <tr>
    <td valign="top" width="50%">
 <a href="https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e">
-  <img src="https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e" style="width:500px; height:auto;"/>
+  <img src="https://github.com/user-attachments/assets/c3903367-3c7f-4624-ba8f-984cb9b1608e" style="width:500px; height:350px;"/>
 </a>
     </td>
     <td valign="top" style="padding-left:20px;">
