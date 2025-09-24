@@ -33,12 +33,12 @@ public class RouteAddBindingModel {
   }
 
   @UniqueRouteName
-  @Size(min = 3, max = 20, message = "Name should be between 3 and 20 symbols")
+  @Size(min = 3, max = 20, message = "Should be between 3 and 20 chars")
   public String getName() {
     return name;
   }
 
-  @Size(min = 5, message = "Description should beat least 5 symbols long")
+  @Size(min = 5, message = "Should beat at least 5 chars long")
   public String getDescription() {
     return description;
   }
@@ -52,12 +52,12 @@ public class RouteAddBindingModel {
     return categories;
   }
 
-  @NotNull
+  @NotNull(message = "Please select level")
   public LevelEnum getLevel() {
     return level;
   }
 
-  @Pattern(regexp = "^$|^[a-zA-Z0-9_-]{11}$", message = "YouTube video ID must be 11 characters")
+  @Pattern(regexp = "^$|^[a-zA-Z0-9_-]{11}$", message = "YouTube video ID should be 11 chars")
   public String getVideoUrl() {
     return videoUrl;
   }
