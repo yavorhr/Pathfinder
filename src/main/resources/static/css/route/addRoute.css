@@ -27,8 +27,8 @@ main {
     max-width: 600px;
     margin-top: 4rem;
     background: rgba(255, 255, 255, 0.25);
-    border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
     overflow: hidden;
 }
 
@@ -37,10 +37,11 @@ main {
     margin: 0;
     padding: 1.5rem;
     background: rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
     font-size: 1.75rem;
     text-align: center;
     color: #333;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /* Body */
@@ -58,7 +59,7 @@ main {
 }
 
 .textarea-lg:focus {
-    border-color: #007bff;
+    border-color: var(--blue);
 }
 
 /* Inputs */
