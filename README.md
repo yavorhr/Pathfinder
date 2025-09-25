@@ -49,11 +49,11 @@ The application is fully responsive and optimized for desktop, tablet, and mobil
 
   - Cloudinary for media storage
 
--  Leaflet.js for interactive map rendering
+  - Leaflet.js for interactive map rendering
 
--  Chart.js for data visualization
+  - Chart.js for data visualization
 
--  Redis (Dockerized) for caching and performance optimization
+  - Redis (Dockerized) for caching and performance optimization
 
 ---
 
