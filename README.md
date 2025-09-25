@@ -39,20 +39,21 @@ The application is fully responsive and optimized for desktop, tablet, and mobil
 
 > ⚙️ Tech Stack:
 
-Backend: Java, Spring Boot (MVC), REST APIs
+- Backend: Java, Spring Boot (MVC), REST APIs
 
-Frontend: Thymeleaf, JavaScript, HTML5, CSS3, Bootstrap
+- Frontend: Thymeleaf, JavaScript, HTML5, CSS3, Bootstrap
 
-Design: Responsive design, dynamic data updates, metadata-driven UI
-Integrations:
+- Design: Responsive design, dynamic data updates, metadata-driven UI
 
-- Cloudinary for media storage
+- Integrations:
 
-- Leaflet.js for interactive map rendering
+-  Cloudinary for media storage
 
-- Chart.js for data visualization
+-  Leaflet.js for interactive map rendering
 
-- Redis (Dockerized) for caching and performance optimization
+-  Chart.js for data visualization
+
+-  Redis (Dockerized) for caching and performance optimization
 
 ---
 
