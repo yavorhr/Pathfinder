@@ -53,6 +53,7 @@ body {
     height: 100%;
     width: 4px;
     background-color: var(--primary);
+
     transform: scaleY(1);
     transition: all 0.5s;
     transform-origin: bottom
@@ -277,7 +278,6 @@ body {
 }
 
 /* Buttons */
-
 #edit-button {
     margin-top: 2rem;
 }
