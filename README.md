@@ -47,7 +47,7 @@ The application is fully responsive and optimized for desktop, tablet, and mobil
 
 - Integrations:
 
--  Cloudinary for media storage
+  - Cloudinary for media storage
 
 -  Leaflet.js for interactive map rendering
 
