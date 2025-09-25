@@ -33,12 +33,27 @@
 
 ## 📖 About the Project
 
-Pathfinder is a MVC full-stack application that allows users to **create, share, and explore travel routes** with detailed metadata. 
+Pathfinder is a full-stack MVC web application that enables users to create, share, and explore travel routes enriched with detailed metadata such as distance, difficulty, landmarks, and more.
 
-The application is fully responsive — optimized for desktop, tablet, and smartphones.
-It leverages **JavaScript (Fetch API)** to handle many actions dynamically without page reloads, providing a smoother, SPA-like user experience on top of the MVC architecture.
+The application is fully responsive and optimized for desktop, tablet, and mobile devices. It uses JavaScript (Fetch API) to handle dynamic interactions without page reloads, creating a smooth, SPA-like experience while preserving the Spring MVC architecture.
 
-> ⚡ Built with **Java + Spring Boot (MVC)** for the backend, and **Thymeleaf, JavaScript, HTML5, and CSS3** for the frontend visualizations.
+> ⚙️ Tech Stack:
+
+- Backend: Java, Spring Boot (MVC), REST APIs
+
+- Frontend: Thymeleaf, JavaScript, HTML5, CSS3, Bootstrap
+
+- Design: Responsive design, dynamic data updates, metadata-driven UI
+
+- Integrations:
+
+  - Cloudinary for media storage
+
+  - Leaflet.js for interactive map rendering
+
+  - Chart.js for data visualization
+
+  - Redis (Dockerized) for caching and performance optimization
 
 ---
 
