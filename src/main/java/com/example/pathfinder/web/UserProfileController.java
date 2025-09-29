@@ -1,5 +1,4 @@
 package com.example.pathfinder.web;
-
 import com.example.pathfinder.model.binding.ProfileUpdateBindingModel;
 import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.service.UserProfileServiceModel;
