@@ -27,7 +27,7 @@ public class PageViewInterceptor implements HandlerInterceptor {
 
     redis.opsForValue().increment(key);
 
-    // ALSO update sorted set for top pages
+    // Update sorted set for top pages
     redis.opsForZSet().incrementScore("views:sorted", uri, 1);
 
     System.out.println("PageViewInterceptor hit URI=" + uri);

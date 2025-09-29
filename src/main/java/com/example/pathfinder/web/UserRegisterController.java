@@ -1,5 +1,4 @@
 package com.example.pathfinder.web;
-
 import com.example.pathfinder.model.binding.UserRegisterBindingModel;
 import com.example.pathfinder.model.service.UserRegisterServiceModel;
 import com.example.pathfinder.service.UserService;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.time.LocalDate;
 
 @Controller

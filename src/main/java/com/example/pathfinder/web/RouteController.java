@@ -1,5 +1,4 @@
 package com.example.pathfinder.web;
-
 import com.example.pathfinder.model.binding.RouteAddBindingModel;
 import com.example.pathfinder.model.service.AddRouteServiceModel;
 import com.example.pathfinder.model.view.RouteDetailsViewModel;

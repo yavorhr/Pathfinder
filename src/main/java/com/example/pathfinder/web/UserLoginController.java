@@ -1,5 +1,4 @@
 package com.example.pathfinder.web;
-
 import com.example.pathfinder.model.entity.enums.LoginErrorType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
