@@ -1,7 +1,6 @@
 package com.example.pathfinder.service.events;
 
 import org.springframework.context.ApplicationEvent;
-
 import java.time.LocalDateTime;
 
 public class UserRegisteredEvent extends ApplicationEvent {
